@@ -124,7 +124,11 @@
                 clip-rule="evenodd"></path>
             </svg>
           </span>
+<<<<<<< HEAD
           <span class="sidebar-text">pengaturan</span>
+=======
+          <span class="sidebar-text">Pengaturan</span>
+>>>>>>> 808ad03728529e80fa769cdcad6b62cb68f13590
         </a>
       </li>
       <li class="nav-item">
@@ -138,7 +142,7 @@
                   clip-rule="evenodd"></path>
               </svg>
             </span>
-            <span class="sidebar-text">Calendar</span>
+            <span class="sidebar-text">Kalender</span>
           </span>
         </a>
       </li>
