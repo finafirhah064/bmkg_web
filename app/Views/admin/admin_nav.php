@@ -1,4 +1,4 @@
-<nav id="sidebarMenu" class="sidebar d-lg-block bg-gray-800 text-white collapse" data-simplebar>
+<nav id="sidebarMenu" class="sidebar d-lg-block bg-gray-800 text-white collapse" data-simplebar >
   <div class="sidebar-inner px-4 pt-3">
     <!-- <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
       <div class="d-flex align-items-center">
@@ -49,20 +49,58 @@
           <span class="sidebar-text">Dashboard</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a href="https://demo.themesberg.com/volt-pro/pages/kanban.html" target="_blank"
-          class="nav-link d-flex justify-content-between">
+            <li class="nav-item">
+        <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
+          data-bs-target="#submenu-components">
           <span>
             <span class="sidebar-icon">
               <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
-                </path>
+                <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path>
+                <path fill-rule="evenodd"
+                  d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
+                  clip-rule="evenodd"></path>
               </svg>
             </span>
-            <span class="sidebar-text">Kanban</span>
+            <span class="sidebar-text">Components</span>
           </span>
-        </a>
+          <span class="link-arrow">
+            <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </span>
+        <div class="multi-level collapse " role="list" id="submenu-components" aria-expanded="false">
+          <ul class="flex-column nav">
+            <li class="nav-item">
+              <a class="nav-link" target="_blank"
+                href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/components/accordions/">
+                <span class="sidebar-text">All Components</span>
+              </a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="../../pages/components/buttons.html">
+                <span class="sidebar-text">Buttons</span>
+              </a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="../../pages/components/forms.html">
+                <span class="sidebar-text">Forms</span>
+              </a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="../../pages/components/modals.html">
+                <span class="sidebar-text">Modals</span>
+              </a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="../../pages/components/typography.html">
+                <span class="sidebar-text">Typography</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </li>
       <li class="nav-item ">
         <a href="../../pages/transactions.html" class="nav-link">
@@ -207,64 +245,6 @@
             <li class="nav-item">
               <a class="nav-link" href="../../pages/examples/500.html">
                 <span class="sidebar-text">500 Not Found</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li class="nav-item">
-        <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
-          data-bs-target="#submenu-components">
-          <span>
-            <span class="sidebar-icon">
-              <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path>
-                <path fill-rule="evenodd"
-                  d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
-                  clip-rule="evenodd"></path>
-              </svg>
-            </span>
-            <span class="sidebar-text">Components</span>
-          </span>
-          <span class="link-arrow">
-            <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clip-rule="evenodd"></path>
-            </svg>
-          </span>
-        </span>
-        <div class="multi-level collapse " role="list" id="submenu-components" aria-expanded="false">
-          <ul class="flex-column nav">
-            <li class="nav-item">
-              <a class="nav-link" target="_blank"
-                href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/components/accordions/">
-                <span class="sidebar-text">All Components</span>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../../pages/components/buttons.html">
-                <span class="sidebar-text">Buttons</span>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../../pages/components/notifications.html">
-                <span class="sidebar-text">Notifications</span>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../../pages/components/forms.html">
-                <span class="sidebar-text">Forms</span>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../../pages/components/modals.html">
-                <span class="sidebar-text">Modals</span>
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="../../pages/components/typography.html">
-                <span class="sidebar-text">Typography</span>
               </a>
             </li>
           </ul>
