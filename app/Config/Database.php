@@ -28,7 +28,7 @@ class Database extends Config
         'DSN'          => '',
         'hostname'     => 'localhost',
         'username'     => 'root',
-        'password'     => 'husna',
+        'password'     => 'lltlfadyll123',
 
         'database'     => 'db_webbmkg',
         'DBDriver'     => 'MySQLi',
