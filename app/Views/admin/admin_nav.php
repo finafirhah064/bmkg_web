@@ -88,20 +88,42 @@
           </span>
         </a>
       </li>
+     <li class="nav-item">
+  <span class="nav-link collapsed d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
+    data-bs-target="#submenu-hilal">
+    <span>
+      <span class="sidebar-icon">
+        <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 23 23"
+          stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+        </svg>
+      </span>
+      <span class="sidebar-text">Hilal</span>
+    </span>
+    <span class="link-arrow">
+      <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </span>
+  </span>
+  <div class="multi-level collapse" role="list" id="submenu-hilal" aria-expanded="false">
+    <ul class="flex-column nav">
       <li class="nav-item">
-        <a href="<?php echo base_url('Hilal'); ?>" class="nav-link d-flex justify-content-between">
-          <span>
-            <span class="sidebar-icon">
-              <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 23 23"
-                stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
-              </svg>
-            </span>
-            <span class="sidebar-text">Hilal</span>
-          </span>
+        <a class="nav-link" href="<?php echo base_url('hilal'); ?>">
+          <span class="sidebar-text">Data Hilal</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('hilal/gambar'); ?>">
+          <span class="sidebar-text">Gambar Hilal</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</li>
       <li class="nav-item">
         <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
           data-bs-target="#submenu-pages">
