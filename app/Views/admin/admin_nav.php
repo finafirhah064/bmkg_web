@@ -61,7 +61,7 @@
                   clip-rule="evenodd"></path>
               </svg>
             </span>
-            <span class="sidebar-text">Components</span>
+            <span class="sidebar-text">Administrasi</span>
           </span>
           <span class="link-arrow">
             <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -112,7 +112,7 @@
                 clip-rule="evenodd"></path>
             </svg>
           </span>
-          <span class="sidebar-text">Transactions</span>
+          <span class="sidebar-text">Gempa</span>
         </a>
       </li>
       <li class="nav-item ">
@@ -124,18 +124,7 @@
                 clip-rule="evenodd"></path>
             </svg>
           </span>
-<<<<<<< HEAD
-<<<<<<< HEAD
-          <span class="sidebar-text">Pengaturan</span>
-=======
-          <span class="sidebar-text">pengaturan</span>
->>>>>>> perbaiki-tampilan
-=======
-          <span class="sidebar-text">pengaturan</span>
-=======
-          <span class="sidebar-text">Pengaturan</span>
->>>>>>> 808ad03728529e80fa769cdcad6b62cb68f13590
->>>>>>> c05873eeb6c75b43fd9c6288d09f3d73a93fef9d
+          <span class="sidebar-text">Petir</span>
         </a>
       </li>
       <li class="nav-item">
@@ -149,7 +138,7 @@
                   clip-rule="evenodd"></path>
               </svg>
             </span>
-            <span class="sidebar-text">Kalender</span>
+            <span class="sidebar-text">Hilal</span>
           </span>
         </a>
       </li>
@@ -164,7 +153,7 @@
                   clip-rule="evenodd"></path>
               </svg>
             </span>
-            <span class="sidebar-text">Map</span>
+            <span class="sidebar-text">Meteografi</span>
           </span>
         </a>
       </li>
@@ -179,7 +168,7 @@
                   clip-rule="evenodd"></path>
               </svg>
             </span>
-            <span class="sidebar-text">Tables</span>
+            <span class="sidebar-text">Terbit Tenggelam</span>
           </span>
           <span class="link-arrow">
             <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
