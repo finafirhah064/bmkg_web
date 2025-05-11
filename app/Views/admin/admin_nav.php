@@ -85,11 +85,6 @@
               </a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="../../pages/components/notifications.html">
-                <span class="sidebar-text">Notifications</span>
-              </a>
-            </li>
-            <li class="nav-item ">
               <a class="nav-link" href="../../pages/components/forms.html">
                 <span class="sidebar-text">Forms</span>
               </a>
@@ -106,21 +101,6 @@
             </li>
           </ul>
         </div>
-      </li>
-      <li class="nav-item">
-        <a href="https://demo.themesberg.com/volt-pro/pages/kanban.html" target="_blank"
-          class="nav-link d-flex justify-content-between">
-          <span>
-            <span class="sidebar-icon">
-              <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
-                </path>
-              </svg>
-            </span>
-            <span class="sidebar-text">Kanban</span>
-          </span>
-        </a>
       </li>
       <li class="nav-item ">
         <a href="../../pages/transactions.html" class="nav-link">
@@ -144,7 +124,11 @@
                 clip-rule="evenodd"></path>
             </svg>
           </span>
+<<<<<<< HEAD
           <span class="sidebar-text">Pengaturan</span>
+=======
+          <span class="sidebar-text">pengaturan</span>
+>>>>>>> perbaiki-tampilan
         </a>
       </li>
       <li class="nav-item">
