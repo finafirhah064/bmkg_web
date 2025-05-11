@@ -158,7 +158,7 @@
                   clip-rule="evenodd"></path>
               </svg>
             </span>
-            <span class="sidebar-text">Calendar</span>
+            <span class="sidebar-text">Kalender</span>
           </span>
         </a>
       </li>
