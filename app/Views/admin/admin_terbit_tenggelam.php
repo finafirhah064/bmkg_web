@@ -21,7 +21,7 @@
                     </form>
                     <!-- / Search form -->
                 </div>
-                                <ul class="navbar-nav align-items-center">
+                <ul class="navbar-nav align-items-center">
                     <li class="nav-item dropdown ms-lg-3">
                         <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -79,14 +79,14 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Bootstrap tables</li>
+                <li class="breadcrumb-item"><a href="#">Data</a></li>
+                <li class="breadcrumb-item active" aria-current="page">erbit Tenggelam</li>
             </ol>
         </nav>
 
         <div class="d-flex justify-content-between w-100 flex-wrap">
             <div class="mb-3 mb-lg-0">
-                <h1 class="h4">Bootstrap tables</h1>
+                <h1 class="h4">Data Terbit Tenggelam</h1>
                 <p class="mb-0">Dozens of reusable components built to provide buttons, alerts, popovers, and more.</p>
             </div>
             <div>
@@ -113,51 +113,46 @@
                         <tr>
                             <th class="border-0 rounded-start">ID</th>
                             <th class="border-0">Tanggal</th>
-                            <th class="border-0">Tekanan Udara</th>
-                            <th class="border-0">Kelembaban 07</th>
-                            <th class="border-0">Kelembaban 13</th>
-                            <th class="border-0">Kelembaban 18</th>
-                            <th class="border-0">Kecepatan Rata-rata</th>
-                            <th class="border-0">Arah Terbanyak</th>
-                            <th class="border-0">Kecepatan Terbesar</th>
-                            <th class="border-0">Arah Kecepatan Terbesar</th>
+                            <th class="border-0">Waktu Terbit</th>
+                            <th class="border-0">Waktu Tenggelam</th>
+                            <th class="border-0">Kecamatan</th>
                             <th class="border-0 rounded-end">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Contoh data -->
-                        <tr>
-                            <td>1</td>
-                            <td>2025-05-11</td>
-                            <td>1013.2</td>
-                            <td>85.4</td>
-                            <td>70.1</td>
-                            <td>68.9</td>
-                            <td>4.5</td>
-                            <td>Barat Daya</td>
-                            <td>7.8</td>
-                            <td>Timur Laut</td>
-                        </tr>
-                        <!-- Tambah baris data lain sesuai kebutuhan -->
+                        <?php $no=0; foreach($dataMb as $row): $no++; ?>
+                            <tr>
+                                <td><?= $no; ?></td>
+                                <td><?= $row->tanggal; ?></td>
+                                <td><?= $row->waktu_terbit; ?></td>
+                                <td><?= $row->waktu_tenggelam; ?></td>
+                                <td><?= $row->kecamatan; ?></td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
+
                 </table>
             </div>
         </div>
     </div>
 
 
-<!-- Scripts -->
-<script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
-<script src="../../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../../vendor/onscreen/dist/on-screen.umd.min.js"></script>
-<script src="../../vendor/nouislider/distribute/nouislider.min.js"></script>
-<script src="../../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-<script src="../../vendor/chartist/dist/chartist.min.js"></script>
-<script src="../../vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-<script src="../../vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
-<script src="../../vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-<script src="../../vendor/notyf/notyf.min.js"></script>
-<script src="../../vendor/simplebar/dist/simplebar.min.js"></script>
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-<script src="../../assets/js/volt.js"></script>
+    <!-- Scripts -->
+    <script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="../../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../vendor/onscreen/dist/on-screen.umd.min.js"></script>
+    <script src="../../vendor/nouislider/distribute/nouislider.min.js"></script>
+    <script src="../../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="../../vendor/chartist/dist/chartist.min.js"></script>
+    <script src="../../vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="../../vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
+    <script src="../../vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="../../vendor/notyf/notyf.min.js"></script>
+    <script src="../../vendor/simplebar/dist/simplebar.min.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="../../assets/js/volt.js"></script>
