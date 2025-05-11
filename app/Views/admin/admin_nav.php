@@ -124,7 +124,7 @@
                 clip-rule="evenodd"></path>
             </svg>
           </span>
-          <span class="sidebar-text">Settings</span>
+          <span class="sidebar-text">pengaturan</span>
         </a>
       </li>
       <li class="nav-item">
