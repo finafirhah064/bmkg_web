@@ -125,10 +125,17 @@
             </svg>
           </span>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <span class="sidebar-text">Pengaturan</span>
 =======
           <span class="sidebar-text">pengaturan</span>
 >>>>>>> perbaiki-tampilan
+=======
+          <span class="sidebar-text">pengaturan</span>
+=======
+          <span class="sidebar-text">Pengaturan</span>
+>>>>>>> 808ad03728529e80fa769cdcad6b62cb68f13590
+>>>>>>> c05873eeb6c75b43fd9c6288d09f3d73a93fef9d
         </a>
       </li>
       <li class="nav-item">
