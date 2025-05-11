@@ -11,4 +11,12 @@ class Home extends BaseController
         echo view('admin/admin_dashboard');
         echo view('admin/admin_footer');
     }
+
+    public function terbit_tenggelam()
+    {
+        echo view('admin/admin_header');
+        echo view('admin/admin_nav');
+        echo view('admin/admin_terbit_tenggelam');
+        echo view('admin/admin_footer');
+    }
 }
