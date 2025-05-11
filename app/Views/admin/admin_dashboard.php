@@ -29,7 +29,7 @@
                                 <img class="avatar rounded-circle" alt="Image placeholder"
                                     src="../../assets/img/team/bmkg.jpg">
                                 <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                                    <span class="mb-0 font-small fw-bold text-gray-900">Arum</span>
+                                    <span class="mb-0 font-small fw-bold text-gray-900">Admin</span>
                                 </div>
                             </div>
                         </a>
