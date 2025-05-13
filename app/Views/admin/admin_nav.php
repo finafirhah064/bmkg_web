@@ -31,7 +31,7 @@
     </div> -->
 
     <!-- VOLT (DIHAPUS AJA) -->
-    <!-- <ul class="nav flex-column pt-3 pt-md-0">
+    <ul class="nav flex-column pt-3 pt-md-0">
       <li class="nav-item">
         <a href="../../index.html" class="nav-link d-flex align-items-center">
           <span class="sidebar-icon">
@@ -48,7 +48,7 @@
               <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
               <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
             </svg>
-          </span> -->
+          </span>
           <span class="sidebar-text">Dashboard</span>
         </a>
       </li>
