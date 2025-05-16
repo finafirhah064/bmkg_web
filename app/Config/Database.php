@@ -29,7 +29,6 @@ class Database extends Config
         'hostname'     => 'localhost',
         'username'     => 'root',
         'password'     => 'husna',
-
         'database'     => 'db_webbmkg',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
