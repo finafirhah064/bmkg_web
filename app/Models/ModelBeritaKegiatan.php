@@ -4,18 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-
-
-class ModelTerbitTenggelam extends Model
+class ModelBeritaKegiatan extends Model
 {
-    protected $table = 'terbit_tenggelam'; // nama tabel di database
-    protected $primaryKey = 'id_terbit_tenggelam'; // sesuaikan dengan primary key yang kamu pakai
+    protected $table = 'berita_kegiatan'; // nama tabel di database
+    protected $primaryKey = 'id_berita'; // sesuaikan dengan primary key yang kamu pakai
 
     protected $useAutoIncrement = true;
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['tanggal', 'waktu_terbit', 'waktu_tenggelam', 'kecamatan'];
+    protected $allowedFields = ['tanggal', 'judul', 'isi'];
 
     protected $useTimestamps = false; // atau true kalau pakai created_at, updated_at
 
@@ -25,13 +23,12 @@ class ModelTerbitTenggelam extends Model
     }
 
     // Menampilkan semua data
-    public function tampilterbitenggelam()
+    public function tampilberitakegiatan()
     {
         return $this->db->table($this->table)->get()->getResult();
     }
 
     // Mengambil data berdasarkan ID
-// Mengambil data berdasarkan ID
     public function getById($id)
     {
         return $this->db->table($this->table)
@@ -42,10 +39,10 @@ class ModelTerbitTenggelam extends Model
 
 
     // Menyimpan data baru
-    public function simpanterbittenggelam($table, $data)
+    public function simpanberitakegiatan($table, $data)
     {
         // Validasi data
-        if (empty($data['tanggal']) || empty($data['waktu_terbit']) || empty($data['waktu_tenggelam']) || empty($data['kecamatan'])) {
+        if (empty($data['tanggal']) || empty($data['judul']) || empty($data['isi'])) {
             return false;
         }
 
@@ -61,7 +58,7 @@ class ModelTerbitTenggelam extends Model
     }
 
     // Mengedit data
-    public function updateTerbitTenggelam($table, $data, $where)
+    public function updateberitakegiatan($table, $data, $where)
     {
         return $this->db->table($table)->update($data, $where);
     }

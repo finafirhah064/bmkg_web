@@ -126,7 +126,7 @@
         <div class="multi-level collapse " role="list" id="submenu-pages" aria-expanded="false">
           <ul class="flex-column nav">
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url('/'); ?>">
+              <a class="nav-link" href="<?php echo base_url('admin_tekanan_udara'); ?>">
                 <span class="sidebar-text">Temperatur</span>
               </a>
             </li>
@@ -165,6 +165,22 @@
               </svg>
             </span>
             <span class="sidebar-text">Terbit Tenggelam</span>
+          </span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="<?php echo base_url('BeritaKegiatan'); ?>"
+          class="nav-link d-flex justify-content-between">
+          <span>
+            <span class="sidebar-icon">
+              <svg class="icon icon-xs me-2" fill="currentColor" stroke="currentColor" stroke-width="1.5"
+                viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 3v1.5m0 15V21m9-9h-1.5M3 12H1.5m16.364 6.364l-1.06-1.06M6.343 6.343L5.282 5.282m0 13.435l1.06-1.06M18.364 5.636l-1.06 1.06M12 8a4 4 0 100 8 4 4 0 000-8z">
+                </path>
+              </svg>
+            </span>
+            <span class="sidebar-text">Berita Kegiatan</span>
           </span>
         </a>
       </li>

@@ -79,18 +79,18 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item"><a href="#">Terbit Tenggelam</a></li>
+                <li class="breadcrumb-item"><a href="#">Berita Kegiatan</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Data</li>
             </ol>
         </nav>
 
         <div class="d-flex justify-content-between w-100 flex-wrap">
             <div class="mb-3 mb-lg-0">
-                <h1 class="h4">Data Terbit Tenggelam</h1>
+                <h1 class="h4">Data Berita Kegiatan</h1>
                 <p class="mb-0">Dozens of reusable components built to provide buttons, alerts, popovers, and more.</p>
             </div>
             <div>
-                <a href="<?php echo base_url('FormTerbitTenggelam'); ?>"
+                <a href="<?php echo base_url('form/BeritaKegiatan'); ?>"
                     class="btn btn-outline-gray-600 d-inline-flex align-items-center">
                     <!-- <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
@@ -118,9 +118,8 @@
                         <tr>
                             <th class="border-0 rounded-start">ID</th>
                             <th class="border-0">Tanggal</th>
-                            <th class="border-0">Waktu Terbit</th>
-                            <th class="border-0">Waktu Tenggelam</th>
-                            <th class="border-0">Kota/Kecamatan</th>
+                            <th class="border-0">Judul</th>
+                            <th class="border-0">Teks</th>
                             <th class="border-0 rounded-end">Action</th>
                         </tr>
                     </thead>
@@ -131,12 +130,11 @@
                             <tr>
                                 <td><?= $no; ?></td>
                                 <td><?= $row->tanggal; ?></td>
-                                <td><?= $row->waktu_terbit; ?></td>
-                                <td><?= $row->waktu_tenggelam; ?></td>
-                                <td><?= $row->kecamatan; ?></td>
+                                <td><?= $row->judul; ?></td>
+                                <td><?= $row->isi; ?></td>
                                 <td>
-                                    <a href="<?= base_url('/Home/updateterbittenggelam/' . $row->id_terbit_tenggelam); ?>" class="btn btn-sm btn-primary">Edit</a>
-                                    <a href="<?= base_url('/Home/deleteterbittenggelam/' . $row->id_terbit_tenggelam); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
+                                    <a href="<?= base_url('/Home/updateterbittenggelam/' . $row->id_berita); ?>" class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="<?= base_url('delete/BeritaKegiatan/' . $row->id_berita); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
