@@ -122,7 +122,7 @@
         <div class="multi-level collapse " role="list" id="submenu-hilal" aria-expanded="false">
           <ul class="flex-column nav">
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url('hilal'); ?>">
+              <a class="nav-link" href="<?php echo base_url('Hilal'); ?>">
                 <span class="sidebar-text">Data Hilal</span>
               </a>
             </li>

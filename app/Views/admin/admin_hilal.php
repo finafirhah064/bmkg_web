@@ -109,7 +109,7 @@
                         <tbody>
                             <?php foreach ($pengamatan as $item): ?>
                             <tr>
-                                <td><span class="fw-bold"><?= $item['id']; ?></span></td>
+                                <td><span class="fw-bold"><?= $item['id_pengamatan_hilal']; ?></span></td>
                                 <td><?= date('d/m/Y', strtotime($item['tanggal_observasi'])); ?></td>
                                 <td>
                                     <span class="fw-bold"><?= $item['bulan_hijri']; ?></span>
@@ -147,30 +147,30 @@
                                         '<span class="badge bg-secondary">Draft</span>' ?>
                                 </td>
                                 <td>
-                                    <a href="<?= base_url("hilal/gambar/{$item['id']}") ?>" 
+                                    <a href="<?= base_url("hilal/gambar/{$item['id_pengamatan_hilal']}") ?>" 
                                        class="btn btn-sm btn-info me-1" title="Kelola Gambar">
                                        <i class="fas fa-image"></i>
                                     </a>
                                     <button class="btn btn-sm btn-warning me-1" data-bs-toggle="modal" 
-                                        data-bs-target="#editModal<?= $item['id']; ?>" title="Edit">
+                                        data-bs-target="#editModal<?= $item['id_pengamatan_hilal']; ?>" title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                     <button class="btn btn-sm btn-danger" data-bs-toggle="modal" 
-                                        data-bs-target="#deleteModal<?= $item['id']; ?>" title="Hapus">
+                                        data-bs-target="#deleteModal<?= $item['id_pengamatan_hilal']; ?>" title="Hapus">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </td>
                             </tr>
                             
                             <!-- Edit Modal for each row -->
-                            <div class="modal fade" id="editModal<?= $item['id']; ?>" tabindex="-1" aria-hidden="true">
+                            <div class="modal fade" id="editModal<?= $item['id_pengamatan_hilal']; ?>" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title">Edit Pengamatan Hilal</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <form action="hilal/update/<?= $item['id']; ?>" method="post">
+                                        <form action="hilal/update/<?= $item['id_pengamatan_hilal']; ?>" method="post">
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -282,8 +282,8 @@
                                                             <textarea class="form-control" name="kondisi_cuaca" rows="2"><?= $item['kondisi_cuaca']; ?></textarea>
                                                         </div>
                                                         <div class="mb-3 form-check">
-                                                            <input type="checkbox" class="form-check-input" name="dipublikasikan" id="publish<?= $item['id']; ?>" value="1" <?= $item['dipublikasikan'] ? 'checked' : ''; ?>>
-                                                            <label class="form-check-label" for="publish<?= $item['id']; ?>">Publikasikan</label>
+                                                            <input type="checkbox" class="form-check-input" name="dipublikasikan" id="publish<?= $item['id_pengamatan_hilal']; ?>" value="1" <?= $item['dipublikasikan'] ? 'checked' : ''; ?>>
+                                                            <label class="form-check-label" for="publish<?= $item['id_pengamatan_hilal']; ?>">Publikasikan</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -298,7 +298,7 @@
                             </div>
                             
                             <!-- Delete Modal for each row -->
-                            <div class="modal fade" id="deleteModal<?= $item['id']; ?>" tabindex="-1" aria-hidden="true">
+                            <div class="modal fade" id="deleteModal<?= $item['id_pengamatan_hilal']; ?>" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -312,7 +312,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                            <a href="hilal/delete/<?= $item['id']; ?>" class="btn btn-danger">Hapus</a>
+                                            <a href="hilal/delete/<?= $item['id_pengamatan_hilal']; ?>" class="btn btn-danger">Hapus</a>
                                         </div>
                                     </div>
                                 </div>
