@@ -29,8 +29,11 @@
         </a>
       </div>
     </div> -->
+<<<<<<< HEAD
 
     <!-- VOLT (DIHAPUS AJA) -->
+=======
+>>>>>>> 7ffdabffcbeb1ecc69e88c1a7ecc4c6fef1a1011
     <ul class="nav flex-column pt-3 pt-md-0">
       <li class="nav-item">
         <!-- <a href="../../index.html" class="nav-link d-flex align-items-center">
@@ -42,7 +45,11 @@
       </li>
 
       <li class="nav-item  active ">
+<<<<<<< HEAD
         <a href="<?php echo base_url('/'); ?>" class="nav-link"> 
+=======
+        <a href="<?php echo base_url('/'); ?>" class="nav-link">
+>>>>>>> 7ffdabffcbeb1ecc69e88c1a7ecc4c6fef1a1011
           <span class="sidebar-icon">
             <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
@@ -53,15 +60,13 @@
         </a>
       </li>
       <li class="nav-item">
-        <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
-          data-bs-target="#submenu-components">
+        <span class="nav-link collapsed d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-admin">
           <span>
             <span class="sidebar-icon">
-              <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path>
-                <path fill-rule="evenodd"
-                  d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
-                  clip-rule="evenodd"></path>
+              <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 23 23"
+                stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
               </svg>
             </span>
             <span class="sidebar-text">Administrasi</span>
@@ -74,6 +79,20 @@
             </svg>
           </span>
         </span>
+        <div class="multi-level collapse " role="list" id="submenu-admin" aria-expanded="false">
+          <ul class="flex-column nav">
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url('nama_routes'); ?>">
+                <span class="sidebar-text">Mahasiswa</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url('karep'); ?>">
+                <span class="sidebar-text">PKL</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </li>
 <<<<<<< Updated upstream
       <li class="nav-item">
@@ -85,7 +104,6 @@
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M9.348 14.652a3.75 3.75 0 0 1 0-5.304m5.304 0a3.75 3.75 0 0 1 0 5.304m-7.425 2.121a6.75 6.75 0 0 1 0-9.546m9.546 0a6.75 6.75 0 0 1 0 9.546M5.106 18.894c-3.808-3.807-3.808-9.98 0-13.788m13.788 0c3.808 3.807 3.808 9.98 0 13.788M12 12h.008v.008H12V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
               </svg>
-
             </span>
             <span class="sidebar-text">GEMPA</span>
 =======
@@ -102,45 +120,43 @@
           </span>
         </a>
       </li>
-     <li class="nav-item">
-  <span class="nav-link collapsed d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
-    data-bs-target="#submenu-hilal">
-    <span>
-      <span class="sidebar-icon">
-        <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 23 23"
-          stroke-width="1.5" stroke="currentColor" class="size-6">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
-        </svg>
-      </span>
-      <span class="sidebar-text">Hilal</span>
-    </span>
-    <span class="link-arrow">
-      <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd"
-          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-          clip-rule="evenodd"></path>
-      </svg>
-    </span>
-  </span>
-  <div class="multi-level collapse" role="list" id="submenu-hilal" aria-expanded="false">
-    <ul class="flex-column nav">
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('hilal'); ?>">
-          <span class="sidebar-text">Data Hilal</span>
-        </a>
+        <span class="nav-link collapsed d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-hilal">
+          <span>
+            <span class="sidebar-icon">
+              <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 23 23"
+                stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+              </svg>
+            </span>
+            <span class="sidebar-text">Hilal</span>
+          </span>
+          <span class="link-arrow">
+            <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </span>
+        <div class="multi-level collapse " role="list" id="submenu-hilal" aria-expanded="false">
+          <ul class="flex-column nav">
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url('Hilal'); ?>">
+                <span class="sidebar-text">Data Hilal</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo base_url('hilal/gambar'); ?>">
+                <span class="sidebar-text">Gambar Hilal</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('hilal/gambar'); ?>">
-          <span class="sidebar-text">Gambar Hilal</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</li>
-      <li class="nav-item">
-        <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-bs-toggle="collapse"
-          data-bs-target="#submenu-pages">
+        <span class="nav-link collapsed d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-meteografi">
           <span>
             <span class="sidebar-icon">
               <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 23 23"
@@ -159,10 +175,10 @@
             </svg>
           </span>
         </span>
-        <div class="multi-level collapse " role="list" id="submenu-pages" aria-expanded="false">
+        <div class="multi-level collapse " role="list" id="submenu-meteografi" aria-expanded="false">
           <ul class="flex-column nav">
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url('/'); ?>">
+              <a class="nav-link" href="<?php echo base_url('admin_tekanan_udara'); ?>">
                 <span class="sidebar-text">Temperatur</span>
               </a>
             </li>
@@ -189,8 +205,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="<?php echo base_url('TerbitTenggelam'); ?>"
-          class="nav-link d-flex justify-content-between">
+        <a href="<?php echo base_url('TerbitTenggelam'); ?>" class="nav-link d-flex justify-content-between">
           <span>
             <span class="sidebar-icon">
               <svg class="icon icon-xs me-2" fill="currentColor" stroke="currentColor" stroke-width="1.5"
@@ -201,6 +216,21 @@
               </svg>
             </span>
             <span class="sidebar-text">Terbit Tenggelam</span>
+          </span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="<?php echo base_url('BeritaKegiatan'); ?>" class="nav-link d-flex justify-content-between">
+          <span>
+            <span class="sidebar-icon">
+              <svg class="icon icon-xs me-2" fill="currentColor" stroke="currentColor" stroke-width="1.5"
+                viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 3v1.5m0 15V21m9-9h-1.5M3 12H1.5m16.364 6.364l-1.06-1.06M6.343 6.343L5.282 5.282m0 13.435l1.06-1.06M18.364 5.636l-1.06 1.06M12 8a4 4 0 100 8 4 4 0 000-8z">
+                </path>
+              </svg>
+            </span>
+            <span class="sidebar-text">Berita Kegiatan</span>
           </span>
         </a>
       </li>
