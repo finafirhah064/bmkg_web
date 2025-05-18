@@ -185,4 +185,12 @@ class Home extends BaseController
         
         return redirect()->back()->with('error', 'Gambar tidak ditemukan');
     }
+
+    public function user_dashboard()
+    {
+        echo view('user/user_header');
+        echo view('user/user_footer');
+        // echo view('admin/admin_dashboard');
+        // echo view('admin/admin_footer');
+    }
 }

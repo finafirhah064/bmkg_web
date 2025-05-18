@@ -98,8 +98,8 @@
                             d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
                             clip-rule="evenodd"></path>
                     </svg> -->
-                    <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor">
+                    <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
@@ -118,6 +118,7 @@
                         <tr>
                             <th class="border-0 rounded-start">ID</th>
                             <th class="border-0">Tanggal</th>
+                            <th class="border-0">Gambar</th>
                             <th class="border-0">Judul</th>
                             <th class="border-0">Teks</th>
                             <th class="border-0 rounded-end">Action</th>
@@ -130,16 +131,26 @@
                             <tr>
                                 <td><?= $no; ?></td>
                                 <td><?= $row->tanggal; ?></td>
-                                <td><?= $row->judul; ?></td>
-                                <td><?= $row->isi; ?></td>
                                 <td>
-                                    <a href="<?= base_url('/Home/updateterbittenggelam/' . $row->id_berita); ?>" class="btn btn-sm btn-primary">Edit</a>
-                                    <a href="<?= base_url('delete/BeritaKegiatan/' . $row->id_berita); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
+                                    <?php if ($row->gambar): ?>
+                                        <img src="<?= base_url('uploads/berita/' . $row->gambar); ?>" alt="gambar"
+                                            style="width:100px; height:auto;">
+                                    <?php else: ?>
+                                        <span class="text-muted">—</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td><?= $row->judul; ?></td>
+                                <td><?= substr(strip_tags($row->isi), 0, 100) . '...'; ?></td>
+                                <td>
+                                    <a href="<?= base_url('/update/FormBeritaKegiatan/' . $row->id_berita); ?>"
+                                        class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="<?= base_url('delete/BeritaKegiatan/' . $row->id_berita); ?>"
+                                        class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
-
                 </table>
             </div>
         </div>

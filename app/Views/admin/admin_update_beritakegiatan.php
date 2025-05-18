@@ -112,18 +112,21 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow components-section">
                 <div class="card-body">
-                    <?php if (session()->getFlashdata('success')): ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <?= session()->getFlashdata('success') ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    <?php elseif (session()->getFlashdata('error')): ?>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <?= session()->getFlashdata('error') ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
+                    <?php if (current_url() == base_url('BeritaKegiatan')): ?>
+                        <?php if (session()->getFlashdata('success')): ?>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <?= session()->getFlashdata('success') ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php elseif (session()->getFlashdata('error')): ?>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <?= session()->getFlashdata('error') ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php endif; ?>
                     <?php endif; ?>
-                    <form method="POST" action="<?= site_url('add/BeritaKegiatan') ?>" enctype="multipart/form-data">
+                    <form method="POST" action="<?= site_url('update/BeritaKegiatan/' . $berita_kegiatan->id_berita) ?>"
+                        enctype="multipart/form-data">
                         <div class="row mb-4">
                             <!-- Kolom Kiri -->
                             <!-- <div class="col-md-6"> -->
@@ -138,28 +141,26 @@
                                                     d="M12 1.75a10.25 10.25 0 1 0 10.25 10.25A10.262 10.262 0 0 0 12 1.75Zm.75 11a.75.75 0 0 1-.75.75H8.5a.75.75 0 0 1 0-1.5h2.25V7a.75.75 0 0 1 1.5 0Z" />
                                             </svg> -->
                                     <!-- </span> -->
-                                    <input type="text" class="form-control" id="judul" name="judul" value="<?= old('judul') ?>" required>
+                                    <input type="text" class="form-control" id="judul" name="judul"
+                                        value="<?= $berita_kegiatan->judul ?>" required>
                                 </div>
                             </div>
                             <div class="mb-4">
                                 <label for="gambar">Gambar</label>
+                                <!-- Tampilkan nama file gambar sebelumnya -->
+                                <?php if (!empty($berita_kegiatan->gambar)): ?>
+                                    <p class="text-muted">Gambar saat ini: <strong><?= $berita_kegiatan->gambar; ?></strong>
+                                    </p>
+                                <?php endif; ?>
                                 <div class="input-group">
-                                    <input type="file" name="gambar" required>
+                                    <input type="file" name="gambar" value="<?= $berita_kegiatan->gambar ?>">
                                 </div>
                             </div>
                             <!-- Waktu Tenggelam -->
                             <div class="mb-4">
                                 <label for="isi">Konten</label>
-                                <!-- <div class="input-group"> -->
-                                <!-- <span class="input-group-text"> -->
-                                <!-- Ikon jam -->
-                                <!-- <svg class="icon icon-xs text-gray-600" fill="currentColor"
-                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M12 1.75a10.25 10.25 0 1 0 10.25 10.25A10.262 10.262 0 0 0 12 1.75Zm.75 11a.75.75 0 0 1-.75.75H8.5a.75.75 0 0 1 0-1.5h2.25V7a.75.75 0 0 1 1.5 0Z" />
-                                            </svg> -->
-                                <!-- </span> -->
-                                <input id="isi" type="hidden" name="isi" class="form-control" required>
+                                <input id="isi" type="hidden" name="isi" class="form-control"
+                                    value="<?= $berita_kegiatan->isi ?>" required>
                                 <trix-editor input="isi"></trix-editor>
                                 <!-- </div> -->
                             </div>
