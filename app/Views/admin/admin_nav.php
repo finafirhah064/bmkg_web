@@ -29,11 +29,8 @@
         </a>
       </div>
     </div> -->
-<<<<<<< HEAD
 
     <!-- VOLT (DIHAPUS AJA) -->
-=======
->>>>>>> 7ffdabffcbeb1ecc69e88c1a7ecc4c6fef1a1011
     <ul class="nav flex-column pt-3 pt-md-0">
       <li class="nav-item">
         <!-- <a href="../../index.html" class="nav-link d-flex align-items-center">
@@ -90,7 +87,7 @@
           </ul>
         </div>
       </li>
-<<<<<<< Updated upstream
+
       <li class="nav-item">
         <a href="<?php echo base_url('Gempa'); ?>" class="nav-link d-flex justify-content-between">
           <span>
@@ -102,7 +99,7 @@
               </svg>
             </span>
             <span class="sidebar-text">GEMPA</span>
-=======
+
       <li class="nav-item ">
         <a href="../../pages/tables.html" class="nav-link">
           <span class="sidebar-icon">
@@ -112,7 +109,6 @@
                 d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
                 clip-rule="evenodd"></path>
             </svg>
->>>>>>> Stashed changes
           </span>
         </a>
       </li>
