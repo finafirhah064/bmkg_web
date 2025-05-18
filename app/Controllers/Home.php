@@ -19,6 +19,8 @@ class Home extends BaseController
         echo view('admin/admin_footer');
     }
 
+    // ==================== TERBIT TENGGELAM ====================
+
     public function terbit_tenggelam()
     {
         $mb = new ModelTerbitTenggelam();
@@ -32,6 +34,8 @@ class Home extends BaseController
         echo view('admin/admin_terbit_tenggelam', $data);
         echo view('admin/admin_footer');
     }
+
+    // ==================== GEMPA ====================
 
     public function gempa()
     {
