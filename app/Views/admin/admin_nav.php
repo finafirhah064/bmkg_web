@@ -45,11 +45,7 @@
       </li>
 
       <li class="nav-item  active ">
-<<<<<<< HEAD
         <a href="<?php echo base_url('/'); ?>" class="nav-link"> 
-=======
-        <a href="<?php echo base_url('/'); ?>" class="nav-link">
->>>>>>> 7ffdabffcbeb1ecc69e88c1a7ecc4c6fef1a1011
           <span class="sidebar-icon">
             <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
