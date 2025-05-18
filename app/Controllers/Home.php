@@ -48,6 +48,7 @@ class Home extends BaseController
         echo view('admin/admin_footer');
     }
 
+
     // ==================== HILAL FUNCTIONALITY ====================
     
     public function hilal()
