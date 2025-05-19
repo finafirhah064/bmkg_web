@@ -123,66 +123,55 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     <?php endif; ?>
-                    <form method="POST" action="<?= site_url('add/BeritaKegiatan') ?>">
+                    <form method="POST" action="<?= site_url('add/BeritaKegiatan') ?>" enctype="multipart/form-data">
                         <div class="row mb-4">
                             <!-- Kolom Kiri -->
-                            <class="col-md-6">
-                                <div class="mb-4">
-                                    <label for="tanggal">Tanggal</label>
-                                    <div class="input-group">
-                                        <!-- <span class="input-group-text"> -->
-                                        <!-- Ikon kalender -->
-                                        <!-- <svg class="icon icon-xs text-gray-600" fill="currentColor"
-                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                                    clip-rule="evenodd" />
-                                            </svg> -->
-                                        <!-- </span> -->
-                                        <input type="date" class="form-control" id="tanggal" name="tanggal" required>
-                                    </div>
-                                </div>
-
-                                <!-- Waktu Terbit -->
-                                <div class="mb-4">
-                                    <label for="Judul">Judul</label>
-                                    <div class="input-group">
-                                        <!-- <span class="input-group-text"> -->
-                                        <!-- Ikon jam -->
-                                        <!-- <svg class="icon icon-xs text-gray-600" fill="currentColor"
+                            <!-- <div class="col-md-6"> -->
+                            <div class="mb-4">
+                                <label for="judul">Judul</label>
+                                <div class="input-group">
+                                    <!-- <span class="input-group-text"> -->
+                                    <!-- Ikon jam -->
+                                    <!-- <svg class="icon icon-xs text-gray-600" fill="currentColor"
                                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M12 1.75a10.25 10.25 0 1 0 10.25 10.25A10.262 10.262 0 0 0 12 1.75Zm.75 11a.75.75 0 0 1-.75.75H8.5a.75.75 0 0 1 0-1.5h2.25V7a.75.75 0 0 1 1.5 0Z" />
                                             </svg> -->
-                                        <!-- </span> -->
-                                        <input type="text" class="form-control" id="judul" name="judul" required>
-                                    </div>
-                                </div>
-
-                                <!-- Waktu Tenggelam -->
-                                <div class="mb-4">
-                                    <label for="Isi">Isi</label>
-                                    <div class="input-group">
-                                        <!-- <span class="input-group-text"> -->
-                                        <!-- Ikon jam -->
-                                        <!-- <svg class="icon icon-xs text-gray-600" fill="currentColor"
-                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M12 1.75a10.25 10.25 0 1 0 10.25 10.25A10.262 10.262 0 0 0 12 1.75Zm.75 11a.75.75 0 0 1-.75.75H8.5a.75.75 0 0 1 0-1.5h2.25V7a.75.75 0 0 1 1.5 0Z" />
-                                            </svg> -->
-                                        <!-- </span> -->
-                                        <input type="text" class="form-control" id="isi" name="isi" required>
-                                    </div>
+                                    <!-- </span> -->
+                                    <input type="text" class="form-control" id="judul" name="judul" value="<?= old('judul') ?>" required>
                                 </div>
                             </div>
+                            <div class="mb-4">
+                                <label for="gambar">Gambar</label>
+                                <div class="input-group">
+                                    <input type="file" name="gambar" required>
+                                </div>
+                            </div>
+                            <!-- Waktu Tenggelam -->
+                            <div class="mb-4">
+                                <label for="isi">Konten</label>
+                                <!-- <div class="input-group"> -->
+                                <!-- <span class="input-group-text"> -->
+                                <!-- Ikon jam -->
+                                <!-- <svg class="icon icon-xs text-gray-600" fill="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M12 1.75a10.25 10.25 0 1 0 10.25 10.25A10.262 10.262 0 0 0 12 1.75Zm.75 11a.75.75 0 0 1-.75.75H8.5a.75.75 0 0 1 0-1.5h2.25V7a.75.75 0 0 1 1.5 0Z" />
+                                            </svg> -->
+                                <!-- </span> -->
+                                <input id="isi" type="hidden" name="isi" class="form-control" required>
+                                <trix-editor input="isi"></trix-editor>
+                                <!-- </div> -->
+                            </div>
                         </div>
-
-                        <!-- Tombol Submit Lebar Penuh -->
-                        <button type="submit" class="btn btn-primary w-100">Submit</button>
-                    </form>
                 </div>
+
+                <!-- Tombol Submit Lebar Penuh -->
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+                </form>
             </div>
         </div>
+    </div>
     </div>
 
 
@@ -205,3 +194,7 @@
     <script src="../../vendor/simplebar/dist/simplebar.min.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="../../assets/js/volt.js"></script>
+
+    <!-- Trix Editor -->
+    <link rel="stylesheet" href="https://unpkg.com/trix@1.3.1/dist/trix.css">
+    <script src="https://unpkg.com/trix@1.3.1/dist/trix.js"></script>
