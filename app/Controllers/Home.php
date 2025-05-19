@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ModelTerbitTenggelam;
 use App\Models\ModelPengamatanHilal;
+use App\Models\ModelGambarHilal;
 
 class Home extends BaseController
 {
@@ -18,6 +19,8 @@ class Home extends BaseController
         echo view('admin/admin_footer');
     }
 
+    // ==================== TERBIT TENGGELAM ====================
+
     public function terbit_tenggelam()
     {
         $mb = new ModelTerbitTenggelam();
@@ -31,6 +34,8 @@ class Home extends BaseController
         echo view('admin/admin_terbit_tenggelam', $data);
         echo view('admin/admin_footer');
     }
+
+    // ==================== GEMPA ====================
 
     public function gempa()
     {
@@ -131,5 +136,67 @@ class Home extends BaseController
         $model = new ModelPengamatanHilal();
         $model->delete($id);
         return redirect()->to(base_url('hilal'))->with('success', 'Data pengamatan hilal berhasil dihapus');
+    }
+
+  public function gambar_hilal($id_pengamatan)
+   {
+        $modelHilal = new ModelPengamatanHilal();
+        $modelGambar = new ModelGambarHilal();
+        
+        $data = [
+            'title' => 'Kelola Gambar Hilal',
+            'pengamatan' => $modelHilal->find($id_pengamatan),
+            'gambar' => $modelGambar->where('id_pengamatan', $id_pengamatan)->findAll()
+        ];
+        
+        echo view('admin/admin_header', $data);
+        echo view('admin/admin_nav');
+        echo view('admin/admin_hilal_gambar', $data);
+        echo view('admin/admin_footer');
+    }
+
+    public function upload_gambar_hilal()
+    {
+        $model = new ModelGambarHilal();
+        $id_pengamatan = $this->request->getPost('id_pengamatan');
+        $file = $this->request->getFile('gambar');
+
+        if ($file->isValid() && !$file->hasMoved()) {
+            $newName = $file->getRandomName();
+            $file->move(ROOTPATH . 'public/uploads/hilal', $newName);
+
+            $data = [
+                'id_pengamatan' => $id_pengamatan,
+                'path_gambar' => 'uploads/hilal/' . $newName,
+                'keterangan' => $this->request->getPost('keterangan'),
+                'adalah_gambar_utama' => $this->request->getPost('gambar_utama') ? 1 : 0
+            ];
+
+            $model->insert($data);
+        }
+
+        return redirect()->to(base_url("hilal/gambar/$id_pengamatan"))->with('success', 'Gambar berhasil diupload');
+    }
+
+    public function delete_gambar_hilal($id)
+    {
+        $model = new ModelGambarHilal();
+        $gambar = $model->find($id);
+        
+        if ($gambar && file_exists(ROOTPATH . 'public/' . $gambar['path_gambar'])) {
+            unlink(ROOTPATH . 'public/' . $gambar['path_gambar']);
+            $model->delete($id);
+            return redirect()->back()->with('success', 'Gambar berhasil dihapus');
+        }
+        
+        return redirect()->back()->with('error', 'Gambar tidak ditemukan');
+    }
+
+    public function user_dashboard()
+    {
+        echo view('user/user_header');
+        echo view('user/user_footer');
+        // echo view('admin/admin_dashboard');
+        // echo view('admin/admin_footer');
     }
 }
