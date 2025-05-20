@@ -80,15 +80,7 @@
                 </div>
             </div>
         </div>
-<!-- Tab Navigation -->
-        <ul class="nav nav-tabs mb-4">
-            <li class="nav-item">
-                <a class="nav-link active" id="data-tab" data-bs-toggle="tab" href="#data-hilal">Data Hilal</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="gambar-tab" data-bs-toggle="tab" href="#gambar-hilal">Gambar Hilal</a>
-            </li>
-        </ul>
+
         <!-- Table Card -->
         <div class="card border-0 shadow mb-4">
             <div class="card-body">

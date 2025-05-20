@@ -48,15 +48,17 @@ class Home extends BaseController
         echo view('admin/admin_footer');
     }
 
-
     // ==================== HILAL FUNCTIONALITY ====================
-    
+
     public function hilal()
     {
         $model = new ModelPengamatanHilal();
         $data = [
             'title' => 'Pengamatan Hilal',
-            'pengamatan' => $model->orderBy('tanggal_observasi', 'DESC')->findAll()
+            'pengamatan' => $model->where('dipublikasikan', 1)
+                                  //->orderBy('tanggal_observasi', 'DESC')//
+                                  ->orderBy('id_pengamatan_hilal', 'ASC')
+                                  ->findAll()
         ];
         
         echo view('admin/admin_header', $data);
@@ -136,8 +138,8 @@ class Home extends BaseController
         return redirect()->to(base_url('hilal'))->with('success', 'Data pengamatan hilal berhasil dihapus');
     }
 
-    public function gambar_hilal($id_pengamatan)
-    {
+  public function gambar_hilal($id_pengamatan)
+   {
         $modelHilal = new ModelPengamatanHilal();
         $modelGambar = new ModelGambarHilal();
         
