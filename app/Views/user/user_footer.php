@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <img class="navbar-brand-dark mb-4" height="35" src="./assets/img/brand/light.svg" alt="Logo light">
+                <img class="navbar-brand-dark mb-4" height="35" src="../../assets/img/brand/light.svg" alt="Logo light">
                 <p>Volt is a Premium Bootstrap 5 Admin Dashboard bringing together beautiful UI/UX design and functional elements.</p>
                 <ul class="social-buttons mb-5 mb-lg-0">
                     <li>
@@ -68,7 +68,7 @@
         <div class="row">
             <div class="col mb-md-0">
                 <a href="https://themesberg.com" target="_blank" class="d-flex justify-content-center">
-                    <img src="./assets/img/themesberg-logo-alt.svg" height="35" class="mb-4" alt="Themesberg Logo">
+                    <img src="../../assets/img/themesberg-logo-alt.svg" height="35" class="mb-4" alt="Themesberg Logo">
                 </a>
             <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
                 <p class="fw-normal font-small mb-0">Copyright © Themesberg 2019-<span class="current-year">2021</span>. All rights reserved.</p>

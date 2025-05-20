@@ -16,7 +16,7 @@ class Terbit_Tenggelam extends BaseController
 
         echo view('admin/admin_header');
         echo view('admin/admin_nav');
-        echo view('admin/admin_terbit_tenggelam', $data);
+        echo view('admin/terbit_tenggelam/admin_terbit_tenggelam', $data);
         echo view('admin/admin_footer');
     }
 
@@ -26,7 +26,7 @@ class Terbit_Tenggelam extends BaseController
         // $data['terbit_tenggelam'] = $mb->getById($id);  // Ambil data berdasarkan ID
         echo view('admin/admin_header');
         echo view('admin/admin_nav');
-        echo view('admin/admin_form_terbit_tenggelam');
+        echo view('admin/terbit_tenggelam/admin_form_terbit_tenggelam');
         echo view('admin/admin_footer');
     }
 
@@ -36,7 +36,7 @@ class Terbit_Tenggelam extends BaseController
         $data['terbit_tenggelam'] = $mb->getById($id);
         echo view('admin/admin_header');
         echo view('admin/admin_nav');
-        echo view('admin/admin_update_terbit_tenggelam', $data);
+        echo view('admin/terbit_tenggelam/admin_update_terbit_tenggelam', $data);
         echo view('admin/admin_footer');
     }
 

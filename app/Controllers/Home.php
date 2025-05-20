@@ -195,8 +195,9 @@ class Home extends BaseController
     public function user_dashboard()
     {
         echo view('user/user_header');
+        echo view('user/user_dashboard');
         echo view('user/user_footer');
-        // echo view('admin/admin_dashboard');
+        
         // echo view('admin/admin_footer');
     }
 }

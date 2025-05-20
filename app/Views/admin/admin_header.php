@@ -49,7 +49,15 @@
     <link type="text/css" href="../../vendor/notyf/notyf.min.css" rel="stylesheet">
 
     <!-- Volt CSS -->
-    <link type="text/css" href="../../css/volt.css" rel="stylesheet">
+    <link type="text/css" href="../../css/volt.css" rel="stylesheet">   
+    <!-- Bootstrap JS (Wajib untuk collapse/dropdown) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- text editor -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
+
+
+    
 
     <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
 

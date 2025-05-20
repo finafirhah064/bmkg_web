@@ -160,7 +160,7 @@
                             <div class="mb-4">
                                 <label for="isi">Konten</label>
                                 <input id="isi" type="hidden" name="isi" class="form-control"
-                                    value="<?= $berita_kegiatan->isi ?>" required>
+                                    value="<?= htmlspecialchars($berita_kegiatan->isi) ?>" required>
                                 <trix-editor input="isi"></trix-editor>
                                 <!-- </div> -->
                             </div>

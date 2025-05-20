@@ -28,8 +28,6 @@ $segment1 = $uri->getSegment(1); // bagian pertama dari URL (misalnya: 'dashboar
 
 
 
-
-
     <!-- <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
       <div class="d-flex align-items-center">
         <div class="avatar-lg me-4">
@@ -167,6 +165,7 @@ $segment1 = $uri->getSegment(1); // bagian pertama dari URL (misalnya: 'dashboar
       });
     </script>
 
+
     <ul class="nav flex-column">
       <!-- <li class="nav-item">
         <a href="../../index.html" class="nav-link d-flex align-items-center">
@@ -189,7 +188,7 @@ $segment1 = $uri->getSegment(1); // bagian pertama dari URL (misalnya: 'dashboar
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link <?= $segment1 == 'administrasi' ? 'active' : ''; ?>" href="<?= base_url('administrasi'); ?>">
+        <a class="nav-link" href="<?= base_url('admin/administrasi'); ?>">
           <span class="sidebar-icon text-dark">
             <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 23 23"
               stroke-width="1.5" stroke="currentColor">
@@ -197,47 +196,11 @@ $segment1 = $uri->getSegment(1); // bagian pertama dari URL (misalnya: 'dashboar
                 d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
             </svg>
           </span>
-<<<<<<< HEAD
-        </span>
-        <div class="multi-level collapse " role="list" id="submenu-admin" aria-expanded="false">
-          <ul class="flex-column nav">
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url('nama_routes'); ?>">
-                <span class="sidebar-text">Mahasiswa</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url('karep'); ?>">
-                <span class="sidebar-text">PKL</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a href="<?php echo base_url('Gempa'); ?>" class="nav-link d-flex justify-content-between">
-          <span>
-            <span class="sidebar-icon">
-              <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M9.348 14.652a3.75 3.75 0 0 1 0-5.304m5.304 0a3.75 3.75 0 0 1 0 5.304m-7.425 2.121a6.75 6.75 0 0 1 0-9.546m9.546 0a6.75 6.75 0 0 1 0 9.546M5.106 18.894c-3.808-3.807-3.808-9.98 0-13.788m13.788 0c3.808 3.807 3.808 9.98 0 13.788M12 12h.008v.008H12V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-              </svg>
-            <span class="sidebar-text">GEMPA</span>
-          </span>
-=======
           <span class="sidebar-text">Administrasi</span>
->>>>>>> 2478ae7da623bd64cd28f5890d8cdf9fa017e67e
         </a>
       </li>
 
       <li class="nav-item">
-<<<<<<< HEAD
-        <a href="<?php echo base_url('Hilal'); ?>" class="nav-link d-flex justify-content-between">
-          <span>
-              <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 23 23"
-                stroke-width="1.5" stroke="currentColor" class="size-6">
-=======
         <a class="nav-link" href="<?= base_url('admin/buku_tamu'); ?>">
           <span class="sidebar-icon">
             <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
@@ -261,7 +224,7 @@ $segment1 = $uri->getSegment(1); // bagian pertama dari URL (misalnya: 'dashboar
 
       <!-- Contoh perbaikan untuk menu GEMPA -->
       <li class="nav-item">
-        <a href="<?php echo base_url('Gempa'); ?>" class="nav-link d-flex align-items-center">
+        <a href="<?php echo base_url('Gempa'); ?>" class="nav-link d-flex align-items-center <?= $segment1 == 'Gempa' ? 'active' : ''; ?>">
           <span class="sidebar-icon me-3">
             <svg class="icon icon-xs" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -274,20 +237,17 @@ $segment1 = $uri->getSegment(1); // bagian pertama dari URL (misalnya: 'dashboar
 
       <li class="nav-item">
         <a class="nav-link d-flex align-items-center justify-content-between" data-bs-toggle="collapse"
-          data-bs-target="#submenu-hilal">
+          href="#submenu-hilal" role="button" aria-expanded="false" aria-controls="submenu-hilal">
           <span class="d-flex align-items-center">
             <span class="sidebar-icon me-3">
               <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 23 23" stroke-width="1.5"
                 stroke="currentColor">
->>>>>>> 2478ae7da623bd64cd28f5890d8cdf9fa017e67e
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
               </svg>
+            </span>
             <span class="sidebar-text">Hilal</span>
           </span>
-<<<<<<< HEAD
-        </a>
-=======
           <span class="link-arrow">
             <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
@@ -310,12 +270,11 @@ $segment1 = $uri->getSegment(1); // bagian pertama dari URL (misalnya: 'dashboar
             </li>
           </ul>
         </div>
->>>>>>> 2478ae7da623bd64cd28f5890d8cdf9fa017e67e
       </li>
       <li class="nav-item">
         <!-- Meteografi with dropdown -->
         <a class="nav-link d-flex align-items-center justify-content-between" data-bs-toggle="collapse"
-          data-bs-target="#submenu-meteografi">
+          href="#submenu-meteografi" role="button" aria-expanded="false" aria-controls="submenu-meteografi">
           <span class="d-flex align-items-center">
             <span class="sidebar-icon me-3">
               <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 23 23" stroke-width="1.5"
@@ -379,13 +338,8 @@ $segment1 = $uri->getSegment(1); // bagian pertama dari URL (misalnya: 'dashboar
 
       <li class="nav-item">
         <!-- Berita Kegiatan -->
-        <a href="<?php echo base_url('BeritaKegiatan'); ?>" class="nav-link d-flex align-items-center">
+        <a href="<?php echo base_url('BeritaKegiatan'); ?>" class="nav-link d-flex align-items-center <?= $segment1 == 'BeritaKegiatan' ? 'active' : ''; ?>">
           <span class="sidebar-icon me-3">
-            <!-- <svg class="icon icon-xs" fill="currentColor" stroke="currentColor" stroke-width="1.5" viewBox="0 0 23 23"
-              xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M12 3v1.5m0 15V21m9-9h-1.5M3 12H1.5m16.364 6.364l-1.06-1.06M6.343 6.343L5.282 5.282m0 13.435l1.06-1.06M18.364 5.636l-1.06 1.06M12 8a4 4 0 100 8 4 4 0 000-8z" />
-            </svg> -->
             <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 23 23" stroke-width="1.5"
               stroke="currentColor" class="size-6">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -408,9 +362,6 @@ $segment1 = $uri->getSegment(1); // bagian pertama dari URL (misalnya: 'dashboar
           <span class="sidebar-text">Documentation <span class="badge badge-sm bg-secondary ms-1 text-gray-800">v1.4</span></span>
         </a>
       </li> -->
-      <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
-
-
     </ul>
   </div>
 </nav>

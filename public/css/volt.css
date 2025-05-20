@@ -22876,8 +22876,9 @@ textarea.form-control-lg {
 }
 
 .sidebar .nav-item .nav-link:hover {
-    color: #F2F4F6;
-    background-color: #374151;
+    background-color: rgb(69, 170, 253); /* warna hover */
+    color: #000 !important;
+    font-weight: 600;
 }
 
 .sidebar .nav-link + .multi-level {

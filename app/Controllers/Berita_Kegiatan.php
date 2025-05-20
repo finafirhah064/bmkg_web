@@ -16,7 +16,7 @@ class Berita_Kegiatan extends BaseController
 
         echo view('admin/admin_header');
         echo view('admin/admin_nav');
-        echo view('admin/admin_beritakegiatan', $data);
+        echo view('admin/berita_kegiatan/admin_beritakegiatan', $data);
         echo view('admin/admin_footer');
     }
 
@@ -26,7 +26,7 @@ class Berita_Kegiatan extends BaseController
         // $data['terbit_tenggelam'] = $mb->getById($id);  // Ambil data berdasarkan ID
         echo view('admin/admin_header');
         echo view('admin/admin_nav');
-        echo view('admin/admin_form_beritakegiatan');
+        echo view('admin/berita_kegiatan/admin_form_beritakegiatan');
         echo view('admin/admin_footer');
     }
 
@@ -36,7 +36,7 @@ class Berita_Kegiatan extends BaseController
         $data['berita_kegiatan'] = $mb->getById($id);
         echo view('admin/admin_header');
         echo view('admin/admin_nav');
-        echo view('admin/admin_update_beritakegiatan', $data);
+        echo view('admin/berita_kegiatan/admin_update_beritakegiatan', $data);
         echo view('admin/admin_footer');
     }
 
