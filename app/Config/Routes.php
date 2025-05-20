@@ -5,8 +5,10 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
-$routes->get('user/dashboard', 'Home::user_dashboard');
+$routes->get('/', 'Home::user_dashboard');
+$routes->get('admin/login', 'Login::index');
+$routes->post('admin/loginauth','Login::auth');
+$routes->get('admin/dashboard', 'Home::dashboard');
 
 // Terbit Tenggelam
 $routes->get('TerbitTenggelam', 'Terbit_Tenggelam::view_terbit_tenggelam');

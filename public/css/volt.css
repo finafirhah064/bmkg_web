@@ -5465,8 +5465,8 @@ textarea.form-control-lg {
 
 .btn-gray-800 {
     color: #ffffff;
-    background-color: #1F2937;
-    border-color: #1F2937;
+    background-color: rgb(106, 173, 240);
+    border-color: rgb(106, 173, 240);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(17, 24, 39, 0.075);
 }
 

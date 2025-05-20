@@ -8,6 +8,13 @@ use App\Models\ModelGambarHilal;
 
 class Home extends BaseController
 {
+    public function dashboard()
+    {
+        echo view('admin/admin_header');
+        echo view('admin/admin_nav');
+        echo view('admin/admin_dashboard');
+        echo view('admin/admin_footer');
+    }
     public function index()
     {
         $data = [
