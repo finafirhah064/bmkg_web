@@ -1,6 +1,23 @@
+<?php
+$uri = service('uri'); // mengambil instance URI
+$segment1 = $uri->getSegment(1); // bagian pertama dari URL (misalnya: 'dashboard', 'administrasi', dll)
+?>
+
 <nav id="sidebarMenu" class="sidebar d-lg-block collapse" data-simplebar style="background-color:rgb(245, 250, 255);">
+  <!-- Di dalam <head> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
   <div class="sidebar-inner px-3 pt-3">
     <!-- Logo dan Judul -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+
     <div class="d-flex align-items-center gap-3 mb-4 px-2">
       <img src="../../assets/img/team/bmkg.jpg" alt="BMKG Logo" width="60" height="60" class="logo">
       <div class="text-start">
@@ -8,6 +25,8 @@
         <div class="sidebar-subtitle">Karangkates</div>
       </div>
     </div>
+
+
 
 
 
@@ -41,7 +60,6 @@
       </div>
     </div> -->
     <style>
-      /* Gaya dasar sidebar */
       .sidebar {
         width: 280px;
         min-height: 100vh;
@@ -50,44 +68,28 @@
         top: 0;
         bottom: 0;
         z-index: 1000;
-        box-shadow: 0 0.125rem 0.25rem rgba(127, 195, 227, 0.79);
+        box-shadow: 0 0.125rem 0.25rem rgba(80, 192, 244, 0.79);
         transition: all 0.3s;
-      }
-
-      .sidebar {
-        width: 280px;
-        min-height: 100vh;
-        position: fixed;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        z-index: 1000;
-        box-shadow: 0 0.125rem 0.25rem rgba(127, 195, 227, 0.79);
-        transition: all 0.3s;
+        background-color: rgb(106, 173, 240);
         color: #000 !important;
-        /* Tambahkan ini */
       }
 
-      /* Tambahkan rule ini */
       .sidebar * {
         color: inherit !important;
       }
 
       .sidebar-title {
-        color: #000 !important;
         font-weight: 600;
-        line-height: 1.2;
         font-size: 1rem;
+        line-height: 1.2;
       }
 
       .sidebar-subtitle {
-        color: #000 !important;
         font-size: 0.9rem;
         letter-spacing: 3px;
       }
 
       .sidebar .nav-link {
-        color: #000 !important;
         font-weight: 500;
         border-radius: 5px;
         margin: 2px 5px;
@@ -95,55 +97,17 @@
         display: flex;
         align-items: center;
         transition: all 0.2s;
-      }
-
-      .sidebar .nav-link:hover {
-        background-color: rgb(231, 217, 217);
-        color: #000 !important;
-      }
-
-      .sidebar .nav-link.active {
-        background-color: rgb(222, 213, 213);
-        color: #000 !important;
-        font-weight: 600;
-      }
-
-      /* ... (kode CSS lainnya tetap sama) ... */
-
-      /* Judul sidebar */
-      .sidebar-title {
-        color: #000;
-        font-weight: 600;
-        line-height: 1.2;
-        font-size: 1rem;
-      }
-
-      .sidebar-subtitle {
-        color: #000;
-        font-size: 0.9rem;
-        letter-spacing: 3px;
-      }
-
-      /* Item menu */
-      .sidebar .nav-link {
-        color: #555;
-        font-weight: 500;
-        border-radius: 5px;
-        margin: 2px 5px;
-        padding: 10px 15px;
-        display: flex;
-        align-items: center;
-        transition: all 0.2s;
+        color: #555 !important;
       }
 
       .sidebar .nav-link:hover {
         background-color: #f0f0f0;
-        color: #000;
+        color: #000 !important;
       }
 
       .sidebar .nav-link.active {
-        background-color: #e0e0e0;
-        color: #000;
+        background-color: rgb(69, 170, 253);
+        color: #000 !important;
         font-weight: 600;
       }
 
@@ -158,22 +122,10 @@
         margin-left: 10px;
       }
 
-      /* Submenu */
       .multi-level {
         padding-left: 15px;
       }
 
-      .sidebar-title {
-        color: #000;
-        /* Warna hitam untuk judul */
-      }
-
-      .sidebar-subtitle {
-        color: #000;
-        /* Warna hitam untuk subjudul */
-      }
-
-      /* Responsif */
       @media (max-width: 992px) {
         .sidebar {
           transform: translateX(-100%);
@@ -184,7 +136,6 @@
           transform: translateX(0);
         }
 
-        /* Tambahkan tombol toggle untuk mobile */
         .sidebar-toggle {
           display: block;
           position: fixed;
@@ -196,19 +147,19 @@
     </style>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
+      document.addEventListener('DOMContentLoaded', function() {
         const sidebar = document.getElementById('sidebarMenu');
         const toggleBtn = document.createElement('button');
         toggleBtn.className = 'btn btn-primary sidebar-toggle d-lg-none';
         toggleBtn.innerHTML = '☰ Menu';
         document.body.appendChild(toggleBtn);
 
-        toggleBtn.addEventListener('click', function () {
+        toggleBtn.addEventListener('click', function() {
           sidebar.classList.toggle('show');
         });
-
+        toggleBtn.setAttribute('aria-label', 'Toggle sidebar menu');
         // Tutup sidebar saat mengklik di luar
-        document.addEventListener('click', function (e) {
+        document.addEventListener('click', function(e) {
           if (!sidebar.contains(e.target) && e.target !== toggleBtn) {
             sidebar.classList.remove('show');
           }
@@ -226,8 +177,8 @@
         </a>
       </li> -->
 
-      <li class="nav-item  active ">
-        <a href="<?php echo base_url('/'); ?>" class="nav-link">
+      <li class="nav-item">
+        <a class="nav-link <?= $segment1 == '' ? 'active' : ''; ?>" href="<?= base_url('/'); ?>">
           <span class="sidebar-icon">
             <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
@@ -238,7 +189,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/administrasi'); ?>">
+        <a class="nav-link <?= $segment1 == 'administrasi' ? 'active' : ''; ?>" href="<?= base_url('administrasi'); ?>">
           <span class="sidebar-icon text-dark">
             <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 23 23"
               stroke-width="1.5" stroke="currentColor">
@@ -374,7 +325,7 @@
 
       <li class="nav-item">
         <!-- Terbit Tenggelam -->
-        <a href="<?php echo base_url('TerbitTenggelam'); ?>" class="nav-link d-flex align-items-center">
+        <a class="nav-link <?= $segment1 == 'TerbitTenggelam' ? 'active' : ''; ?>" href="<?= base_url('TerbitTenggelam'); ?>">
           <span class="sidebar-icon me-3">
             <svg class="icon icon-xs" fill="currentColor" stroke="currentColor" stroke-width="1.5" viewBox="0 0 23 23"
               xmlns="http://www.w3.org/2000/svg">
@@ -417,6 +368,9 @@
           <span class="sidebar-text">Documentation <span class="badge badge-sm bg-secondary ms-1 text-gray-800">v1.4</span></span>
         </a>
       </li> -->
+      <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
+
+
     </ul>
   </div>
 </nav>
