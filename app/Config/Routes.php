@@ -7,7 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::user_dashboard');
 $routes->get('admin/login', 'Login::index');
-$routes->post('admin/loginauth','Login::auth');
+$routes->post('admin/loginauth', 'Login::auth');
 $routes->get('admin/dashboard', 'Home::dashboard');
 
 // Terbit Tenggelam
@@ -39,28 +39,24 @@ $routes->get('hilal/gambar/(:num)', 'Home::gambar_hilal/$1');
 $routes->post('hilal/upload-gambar', 'Home::upload_gambar_hilal');
 $routes->get('hilal/delete-gambar/(:num)', 'Home::delete_gambar_hilal/$1');
 
-// Routes untuk Mahasiswa
-$routes->group('mahasiswa', function ($routes) {
-    $routes->get('', 'Admin\Mahasiswa::index');
-    $routes->get('tambah', 'Admin\Mahasiswa::tambah');
-    $routes->post('simpan', 'Admin\Mahasiswa::simpan');
-    $routes->get('edit/(:num)', 'Admin\Mahasiswa::edit/$1');
-    $routes->post('update/(:num)', 'Admin\Mahasiswa::update/$1');
-    $routes->get('hapus/(:num)', 'Admin\Mahasiswa::hapus/$1');
 
-    $routes->get('export', 'Admin\Mahasiswa::export');
-    $routes->get('export/bulanan', 'Admin\Mahasiswa::exportBulanan');
-    $routes->get('export/tahunan', 'Admin\Mahasiswa::exportTahunan');
 
-    $routes->get('log-ekspor', 'Admin\Mahasiswa::logEkspor');
-});
+// Routes untuk Administrasi
+$routes->get('administrasi', 'Administrasi::index');
+$routes->get('administrasi/form_administrasi', 'Administrasi::form_administrasi');
+$routes->get('administrasi/form_update_administrasi/(:num)', 'Administrasi::form_update_administrasi/$1');
+$routes->post('administrasi/save_administrasi', 'Administrasi::save_administrasi');
+$routes->post('administrasi/update_administrasi/(:num)', 'Administrasi::update_administrasi/$1');
+$routes->get('administrasi/delete_administrasi/(:num)', 'Administrasi::delete_administrasi/$1');
+$routes->get('administrasi/export_excel', 'Administrasi::export_excel');
+$routes->post('administrasi/process_upload', 'Administrasi::process_upload');
+$routes->post('administrasi/process_upload', 'Administrasi::process_upload');
 
-// Routes untuk Pengajuan Surat langsung di sini, tanpa group admin lagi
-$routes->get('pengajuan_surat', 'Admin\PengajuanSurat::list'); // URL: /admin/pengajuan_surat
-$routes->get('pengajuan_surat/approve/(:num)', 'Admin\PengajuanSurat::approve/$1');
-$routes->get('pengajuan_surat/reject/(:num)', 'Admin\PengajuanSurat::reject/$1');
-$routes->get('pengajuan_surat/download/(:segment)', 'Admin\PengajuanSurat::download/$1');
-$routes->get('pengajuan_surat/export', 'Admin\PengajuanSurat::export');
+//buku tamu
+$routes->get('buku_tamu', 'BukuTamu::index');
+$routes->get('buku_tamu/export_excel', 'BukuTamu::export_excel');
 
-// Alias ke Mahasiswa::index
-$routes->get('administrasi', 'Admin\Mahasiswa::index');
+// Routes untuk Pengajuan Surat
+$routes->get('pengajuan_surat', 'PengajuanSurat::index');
+$routes->get('pengajuan_surat/export_excel', 'PengajuanSurat::export_excel');
+$routes->get('pengajuan_surat/ubah_status/(:num)/(:segment)', 'PengajuanSurat::ubah_status/$1/$2');

@@ -94,63 +94,57 @@
     </div>
 
     <!-- Form -->
-<div class="row">
-    <div class="col-12 mb-4">
-        <div class="card border-0 shadow components-section">
-            <div class="card-body">
-                <?php if (session()->getFlashdata('success')): ?>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <?= session()->getFlashdata('success') ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php elseif (session()->getFlashdata('error')): ?>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <?= session()->getFlashdata('error') ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php endif; ?>
-                <form method="POST" action="<?= site_url('Home/updateterbittenggelam/' . $terbit_tenggelam->id_terbit_tenggelam) ?>">
-                    <div class="row mb-4">
-                        <!-- Kolom Kiri -->
-                        <div class="col-md-6">
-                            <div class="mb-4">
-                                <label for="tanggal">Tanggal</label>
-                                <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= date('Y-m-d', strtotime($terbit_tenggelam->tanggal)) ?>" required>
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card border-0 shadow components-section">
+                <div class="card-body">
+                    <?php if (session()->getFlashdata('success')): ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?= session()->getFlashdata('success') ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php elseif (session()->getFlashdata('error')): ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <?= session()->getFlashdata('error') ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php endif; ?>
+                    <form method="POST" action="<?= site_url('Home/updateterbittenggelam/' . $terbit_tenggelam->id_terbit_tenggelam) ?>">
+                        <div class="row mb-4">
+                            <!-- Kolom Kiri -->
+                            <div class="col-md-6">
+                                <div class="mb-4">
+                                    <label for="tanggal">Tanggal</label>
+                                    <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= date('Y-m-d', strtotime($terbit_tenggelam->tanggal)) ?>" required>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="waktuTerbit">Waktu Terbit</label>
+                                    <input type="time" class="form-control" id="waktuTerbit" name="waktu_terbit" value="<?= $terbit_tenggelam->waktu_terbit ?>" required>
+                                </div>
                             </div>
 
-                            <div class="mb-4">
-                                <label for="waktuTerbit">Waktu Terbit</label>
-                                <input type="time" class="form-control" id="waktuTerbit" name="waktu_terbit" value="<?= $terbit_tenggelam->waktu_terbit ?>" required>
+                            <!-- Kolom Kanan -->
+                            <div class="col-md-6">
+                                <div class="mb-4">
+                                    <label for="waktuTenggelam">Waktu Tenggelam</label>
+                                    <input type="time" class="form-control" id="waktuTenggelam" name="waktu_tenggelam" value="<?= $terbit_tenggelam->waktu_tenggelam ?>" required>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="kecamatan">Kota/Kecamatan</label>
+                                    <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="<?= $terbit_tenggelam->kecamatan ?>" placeholder="Masukkan nama kecamatan">
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Kolom Kanan -->
-                        <div class="col-md-6">
-                            <div class="mb-4">
-                                <label for="waktuTenggelam">Waktu Tenggelam</label>
-                                <input type="time" class="form-control" id="waktuTenggelam" name="waktu_tenggelam" value="<?= $terbit_tenggelam->waktu_tenggelam ?>" required>
-                            </div>
-
-                            <div class="mb-4">
-                                <label for="kecamatan">Kota/Kecamatan</label>
-                                <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="<?= $terbit_tenggelam->kecamatan ?>" placeholder="Masukkan nama kecamatan">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tombol Submit Lebar Penuh -->
-                    <button type="submit" class="btn btn-primary w-100">Submit</button>
-                </form>
+                        <!-- Tombol Submit Lebar Penuh -->
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-
-
-
-
-
 
     <!-- Scripts -->
     <script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
