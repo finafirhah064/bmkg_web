@@ -5,7 +5,7 @@
             <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
                 <div class="d-flex align-items-center">
                     <!-- Search form -->
-                    <!-- <form class="navbar-search form-inline" id="navbar-search-main">
+                    <form class="navbar-search form-inline" id="navbar-search-main">
                         <div class="input-group input-group-merge search-bar">
                             <span class="input-group-text" id="topbar-addon">
                                 <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -18,10 +18,10 @@
                             <input type="text" class="form-control" id="topbarInputIconLeft" placeholder="Search"
                                 aria-label="Search" aria-describedby="topbar-addon">
                         </div>
-                    </form> -->
+                    </form>
                     <!-- / Search form -->
                 </div>
-                <!-- <ul class="navbar-nav align-items-center">
+                <ul class="navbar-nav align-items-center">
                     <li class="nav-item dropdown ms-lg-3">
                         <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -45,7 +45,7 @@
                             </a>
                         </div>
                     </li>
-                </ul> -->
+                </ul>
             </div>
         </div>
     </nav>
@@ -108,53 +108,85 @@
             </div>
         </div>
     </div>
-
-    <!-- Table Card -->
-    <div class="card border-0 shadow mb-4">
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-centered table-nowrap mb-0 rounded">
-                    <thead class="thead-light">
+<div class="card border-0 shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-centered table-nowrap mb-0 rounded">
+                <thead class="thead-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Tanggal</th>
+                        <th>Waktu</th>
+                        <th>Wilayah</th>
+                        <th>Jenis Petir</th>
+                        <th>Koordinat</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $no = 0; foreach ($dataPetir as $row): $no++; ?>
                         <tr>
-                            <th class="border-0 rounded-start">ID</th>
-                            <th class="border-0">Tanggal</th>
-                            <th class="border-0">Gambar</th>
-                            <th class="border-0">Judul</th>
-                            <th class="border-0">Teks</th>
-                            <th class="border-0 rounded-end">Action</th>
+                            <td><?= $no; ?></td>
+                            <td><?= $row->tanggal; ?></td>
+                            <td><?= $row->waktu_sambaran; ?></td>
+                            <td><?= $row->wilayah; ?></td>
+                            <td><?= $row->jenis_petir; ?></td>
+                            <td><?= $row->latitude; ?>, <?= $row->longitude; ?></td>
+                            <td>
+                                <button class="btn btn-info btn-sm"
+                                    onclick="openMapModal('<?= $row->latitude; ?>', '<?= $row->longitude; ?>', '<?= $row->wilayah; ?> - <?= $row->jenis_petir; ?>')">
+                                    Lihat Peta
+                                </button>
+                                <a href="..." class="btn btn-sm btn-primary">Edit</a>
+                                <a href="..." class="btn btn-sm btn-danger">Hapus</a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <?php $no = 0;
-                        foreach ($dataMb as $row):
-                            $no++; ?>
-                            <tr>
-                                <td><?= $no; ?></td>
-                                <td><?= $row->tanggal; ?></td>
-                                <td>
-                                    <?php if ($row->gambar): ?>
-                                        <img src="<?= base_url('uploads/berita/' . $row->gambar); ?>" alt="gambar"
-                                            style="width:100px; height:auto;">
-                                    <?php else: ?>
-                                        <span class="text-muted">—</span>
-                                    <?php endif; ?>
-                                </td>
-                                <td><?= $row->judul; ?></td>
-                                <td><?= substr(strip_tags($row->isi), 0, 100) . '...'; ?></td>
-                                <td>
-                                    <a href="<?= base_url('/update/FormBeritaKegiatan/' . $row->id_berita); ?>"
-                                        class="btn btn-sm btn-primary">Edit</a>
-                                    <a href="<?= base_url('delete/BeritaKegiatan/' . $row->id_berita); ?>"
-                                        class="btn btn-danger btn-sm"
-                                        onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Peta Sambaran Petir</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+      </div>
+      <div class="modal-body">
+        <div id="mapContainer" style="height: 400px; width: 100%;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    let map;
+
+    function openMapModal(lat, lng, popupText) {
+        // Tampilkan modal
+        const modal = new bootstrap.Modal(document.getElementById('mapModal'));
+        modal.show();
+
+        setTimeout(() => {
+            // Jika peta sudah ada, hapus dulu
+            if (map) {
+                map.remove();
+            }
+
+            // Inisialisasi peta
+            map = L.map('mapContainer').setView([lat, lng], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+            L.marker([lat, lng]).addTo(map).bindPopup(popupText).openPopup();
+        }, 300); // delay untuk menunggu modal tampil dengan benar
+    }
+</script>
+
 
 
     <!-- Scripts -->
