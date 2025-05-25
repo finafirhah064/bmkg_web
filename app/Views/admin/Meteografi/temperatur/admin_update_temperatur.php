@@ -80,85 +80,98 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item"><a href="#">Berita Kegiatan</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Data</li>
+                <li class="breadcrumb-item active" aria-current="page">Form Tambah</li>
             </ol>
         </nav>
-
         <div class="d-flex justify-content-between w-100 flex-wrap">
             <div class="mb-3 mb-lg-0">
-                <h1 class="h4">Data Berita Kegiatan</h1>
+                <h1 class="h4">Tambah Data</h1>
                 <p class="mb-0">Dozens of reusable components built to provide buttons, alerts, popovers, and more.</p>
             </div>
             <div>
-                <a href="<?php echo base_url('form/BeritaKegiatan'); ?>"
-                    class="btn btn-outline-gray-600 d-inline-flex align-items-center">
-                    <!-- <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                            clip-rule="evenodd"></path>
-                    </svg> -->
-                    <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-                    Tambah
-                </a>
+                <form action="<?= site_url('TerbitTenggelam/process_upload') ?>" method="post"
+                    enctype="multipart/form-data">
+                    <input type="file" name="excel_file" id="fileInput" style="display: none;" accept=".xls,.xlsx,.csv"
+                        onchange="this.form.submit();">
+                    <a href="#" class="btn btn-outline-gray-600 d-inline-flex align-items-center"
+                        onclick="document.getElementById('fileInput').click(); return false;">
+                        <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m15 11.25-3-3m0 0-3 3m3-3v7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        Upload
+                    </a>
+                </form>
             </div>
         </div>
     </div>
 
-    <!-- Table Card -->
-    <div class="card border-0 shadow mb-4">
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-centered table-nowrap mb-0 rounded">
-                    <thead class="thead-light">
-                        <tr>
-                            <th class="border-0 rounded-start">ID</th>
-                            <th class="border-0">Tanggal</th>
-                            <th class="border-0">Gambar</th>
-                            <th class="border-0">Judul</th>
-                            <th class="border-0">Teks</th> 
-                            <th class="border-0 rounded-end">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $no = 0;
-                        foreach ($dataMb as $row):
-                            $no++; ?>
-                            <tr>
-                                <td><?= $no; ?></td>
-                                <td><?= $row->tanggal; ?></td>
-                                <td>
-                                    <?php if ($row->gambar): ?>
-                                        <img src="<?= base_url('uploads/berita/' . $row->gambar); ?>" alt="gambar"
-                                            style="width:100px; height:auto;">
-                                    <?php else: ?>
-                                        <span class="text-muted">—</span>
-                                    <?php endif; ?>
-                                </td>
-                                <td><?= $row->judul; ?></td>
-                                <td><?= substr(strip_tags($row->isi), 0, 100) . '...'; ?></td>
-                                <td>
-                                    <a href="<?= base_url('/update/FormBeritaKegiatan/' . $row->id_berita); ?>"
-                                        class="btn btn-sm btn-primary">Edit</a>
-                                    <a href="<?= base_url('delete/BeritaKegiatan/' . $row->id_berita); ?>"
-                                        class="btn btn-danger btn-sm"
-                                        onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+<form method="POST" action="<?= site_url('Temperatur/update_temperatur/' . $temperatur->id_temperatur) ?>">
+    <div class="row mb-4">
+        <!-- Kolom Kiri -->
+        <div class="col-md-6">
+            <div class="mb-4">
+                <label for="bulan">Bulan</label>
+                <input type="text" class="form-control" name="bulan" value="<?= $temperatur->bulan ?>" required>
+            </div>
+            <div class="mb-4">
+                <label for="tahun">Tahun</label>
+                <input type="number" class="form-control" name="tahun" value="<?= $temperatur->tahun ?>" required>
+            </div>
+            <div class="mb-4">
+                <label for="tgl">Tanggal</label>
+                <input type="date" class="form-control" name="tgl" value="<?= date('Y-m-d', strtotime($temperatur->tgl)) ?>" required>
+            </div>
+            <div class="mb-4">
+                <label for="temperatur_07">Temperatur 07:00</label>
+                <input type="number" step="0.1" class="form-control" name="temperatur_07" value="<?= $temperatur->temperatur_07 ?>" required>
+            </div>
+            <div class="mb-4">
+                <label for="temperatur_13">Temperatur 13:00</label>
+                <input type="number" step="0.1" class="form-control" name="temperatur_13" value="<?= $temperatur->temperatur_13 ?>" required>
+            </div>
+            <div class="mb-4">
+                <label for="temperatur_18">Temperatur 18:00</label>
+                <input type="number" step="0.1" class="form-control" name="temperatur_18" value="<?= $temperatur->temperatur_18 ?>" required>
+            </div>
+        </div>
+
+        <!-- Kolom Kanan -->
+        <div class="col-md-6">
+            <div class="mb-4">
+                <label for="rata2">Rata-rata</label>
+                <input type="number" step="0.1" class="form-control" name="rata2" value="<?= $temperatur->rata2 ?>" required>
+            </div>
+            <div class="mb-4">
+                <label for="max">Max</label>
+                <input type="number" step="0.1" class="form-control" name="max" value="<?= $temperatur->max ?>" required>
+            </div>
+            <div class="mb-4">
+                <label for="min">Min</label>
+                <input type="number" step="0.1" class="form-control" name="min" value="<?= $temperatur->min ?>" required>
+            </div>
+            <div class="mb-4">
+                <label for="curah_hujan_07">Curah Hujan (mm)</label>
+                <input type="number" step="0.1" class="form-control" name="curah_hujan_07" value="<?= $temperatur->curah_hujan_07 ?>">
+            </div>
+            <div class="mb-4">
+                <label for="penyinaran_matahari">Penyinaran Matahari (%)</label>
+                <input type="number" class="form-control" name="penyinaran_matahari" value="<?= $temperatur->penyinaran_matahari ?>">
+            </div>
+            <div class="mb-4">
+                <label for="peristiwa_khusus">Peristiwa Cuaca Khusus</label>
+                <input type="text" class="form-control" name="peristiwa_khusus" value="<?= $temperatur->peristiwa_khusus ?>">
             </div>
         </div>
     </div>
 
+    <button type="submit" class="btn btn-primary w-100">Simpan Perubahan</button>
+</form>
 
-    <!-- Scripts -->
-    <script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
+
+  <!-- Scripts -->
+  <script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="../../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../../vendor/onscreen/dist/on-screen.umd.min.js"></script>
     <script src="../../vendor/nouislider/distribute/nouislider.min.js"></script>

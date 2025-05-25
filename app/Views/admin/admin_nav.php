@@ -296,12 +296,12 @@ $segment1 = $uri->getSegment(1); // bagian pertama dari URL (misalnya: 'dashboar
         <div class="multi-level collapse" role="list" id="submenu-meteografi">
           <ul class="flex-column nav">
             <li class="nav-item">
-              <a class="nav-link ps-4" href="<?php echo base_url('admin_tekanan_udara'); ?>">
+            <a class="nav-link" href="<?= base_url('Temperatur'); ?>">
                 <span class="sidebar-text">Temperatur</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link ps-4" href="<?php echo base_url('/'); ?>">
+              <a class="nav-link ps-4" href="<?php echo base_url('tekananudara'); ?>">
                 <span class="sidebar-text">Udara</span>
               </a>
             </li>

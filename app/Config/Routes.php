@@ -39,6 +39,30 @@ $routes->get('hilal/gambar/(:num)', 'Home::gambar_hilal/$1');
 $routes->post('hilal/upload-gambar', 'Home::upload_gambar_hilal');
 $routes->get('hilal/delete-gambar/(:num)', 'Home::delete_gambar_hilal/$1');
 
+// Temperatur Routes 
+$routes->group('Temperatur', function($routes) {
+    $routes->get('/', 'Temperatur::view_temperatur'); // Tampilkan semua data
+    $routes->get('form_temperatur', 'Temperatur::form_temperatur'); // Form tambah
+    $routes->post('save_temperatur', 'Temperatur::save_temperatur'); // Simpan data
+    $routes->get('form_update_temperatur/(:num)', 'Temperatur::form_update_temperatur/$1'); // Form edit
+    $routes->post('update_temperatur/(:num)', 'Temperatur::update_temperatur/$1'); // Simpan update
+    $routes->get('delete_temperatur/(:num)', 'Temperatur::delete_temperatur/$1'); // Hapus data
+    $routes->post('upload_excel', 'Temperatur::upload_excel'); // Upload Excel
+});
+
+// Udara Routes 
+// ROUTES UNTUK TEKANAN UDARA
+$routes->get('/tekananudara', 'TekananUdara::view'); // Tampilkan tabel
+$routes->get('/tekananudara/form', 'TekananUdara::form'); // Form tambah data
+$routes->post('/tekananudara/save', 'TekananUdara::save'); // Simpan data baru
+
+$routes->get('/tekananudara/form_update/(:num)', 'TekananUdara::form_update/$1'); // Form edit
+$routes->post('/tekananudara/update/(:num)', 'TekananUdara::update/$1'); // Proses update
+
+$routes->get('/tekananudara/delete/(:num)', 'TekananUdara::delete/$1'); // Hapus data
+
+$routes->post('/tekananudara/upload_excel', 'TekananUdara::upload_excel'); // Upload Excel
+ 
 // Routes untuk Mahasiswa
 $routes->group('mahasiswa', function ($routes) {
     $routes->get('', 'Admin\Mahasiswa::index');
