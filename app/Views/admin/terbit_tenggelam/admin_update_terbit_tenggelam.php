@@ -4,7 +4,7 @@
             <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
                 <div class="d-flex align-items-center">
                     <!-- Search form -->
-                    <form class="navbar-search form-inline" id="navbar-search-main">
+                    <!-- <form class="navbar-search form-inline" id="navbar-search-main">
                         <div class="input-group input-group-merge search-bar">
                             <span class="input-group-text" id="topbar-addon">
                                 <svg class="icon icon-xs" x-description="Heroicon name: solid/search"
@@ -18,10 +18,10 @@
                             <input type="text" class="form-control" id="topbarInputIconLeft" placeholder="Search"
                                 aria-label="Search" aria-describedby="topbar-addon">
                         </div>
-                    </form>
+                    </form> -->
                     <!-- / Search form -->
                 </div>
-                <ul class="navbar-nav align-items-center">
+                <!-- <ul class="navbar-nav align-items-center">
                     <li class="nav-item dropdown ms-lg-3">
                         <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -45,7 +45,7 @@
                             </a>
                         </div>
                     </li>
-                </ul>
+                </ul> -->
     </nav>
 
     <!-- Mobile Navbar -->
@@ -94,63 +94,57 @@
     </div>
 
     <!-- Form -->
-<div class="row">
-    <div class="col-12 mb-4">
-        <div class="card border-0 shadow components-section">
-            <div class="card-body">
-                <?php if (session()->getFlashdata('success')): ?>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <?= session()->getFlashdata('success') ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php elseif (session()->getFlashdata('error')): ?>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <?= session()->getFlashdata('error') ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php endif; ?>
-                <form method="POST" action="<?= site_url('Home/updateterbittenggelam/' . $terbit_tenggelam->id_terbit_tenggelam) ?>">
-                    <div class="row mb-4">
-                        <!-- Kolom Kiri -->
-                        <div class="col-md-6">
-                            <div class="mb-4">
-                                <label for="tanggal">Tanggal</label>
-                                <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= date('Y-m-d', strtotime($terbit_tenggelam->tanggal)) ?>" required>
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card border-0 shadow components-section">
+                <div class="card-body">
+                    <?php if (session()->getFlashdata('success')): ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?= session()->getFlashdata('success') ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php elseif (session()->getFlashdata('error')): ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <?= session()->getFlashdata('error') ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php endif; ?>
+                    <form method="POST" action="<?= site_url('Home/updateterbittenggelam/' . $terbit_tenggelam->id_terbit_tenggelam) ?>">
+                        <div class="row mb-4">
+                            <!-- Kolom Kiri -->
+                            <div class="col-md-6">
+                                <div class="mb-4">
+                                    <label for="tanggal">Tanggal</label>
+                                    <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= date('Y-m-d', strtotime($terbit_tenggelam->tanggal)) ?>" required>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="waktuTerbit">Waktu Terbit</label>
+                                    <input type="time" class="form-control" id="waktuTerbit" name="waktu_terbit" value="<?= $terbit_tenggelam->waktu_terbit ?>" required>
+                                </div>
                             </div>
 
-                            <div class="mb-4">
-                                <label for="waktuTerbit">Waktu Terbit</label>
-                                <input type="time" class="form-control" id="waktuTerbit" name="waktu_terbit" value="<?= $terbit_tenggelam->waktu_terbit ?>" required>
+                            <!-- Kolom Kanan -->
+                            <div class="col-md-6">
+                                <div class="mb-4">
+                                    <label for="waktuTenggelam">Waktu Tenggelam</label>
+                                    <input type="time" class="form-control" id="waktuTenggelam" name="waktu_tenggelam" value="<?= $terbit_tenggelam->waktu_tenggelam ?>" required>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="kecamatan">Kota/Kecamatan</label>
+                                    <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="<?= $terbit_tenggelam->kecamatan ?>" placeholder="Masukkan nama kecamatan">
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Kolom Kanan -->
-                        <div class="col-md-6">
-                            <div class="mb-4">
-                                <label for="waktuTenggelam">Waktu Tenggelam</label>
-                                <input type="time" class="form-control" id="waktuTenggelam" name="waktu_tenggelam" value="<?= $terbit_tenggelam->waktu_tenggelam ?>" required>
-                            </div>
-
-                            <div class="mb-4">
-                                <label for="kecamatan">Kota/Kecamatan</label>
-                                <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="<?= $terbit_tenggelam->kecamatan ?>" placeholder="Masukkan nama kecamatan">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tombol Submit Lebar Penuh -->
-                    <button type="submit" class="btn btn-primary w-100">Submit</button>
-                </form>
+                        <!-- Tombol Submit Lebar Penuh -->
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-
-
-
-
-
 
     <!-- Scripts -->
     <script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>

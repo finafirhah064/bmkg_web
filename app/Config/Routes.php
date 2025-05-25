@@ -7,7 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::user_dashboard');
 $routes->get('admin/login', 'Login::index');
-$routes->post('admin/loginauth','Login::auth');
+$routes->post('admin/loginauth', 'Login::auth');
 $routes->get('admin/dashboard', 'Home::dashboard');
 
 // Terbit Tenggelam
@@ -19,8 +19,7 @@ $routes->get('/Home/deleteterbittenggelam/(:num)', 'Terbit_Tenggelam::delete_ter
 $routes->get('FormTerbitTenggelam', 'Terbit_Tenggelam::form_terbit_tenggelam');
 $routes->post('TerbitTenggelam/process_upload', 'Terbit_Tenggelam::process_upload');
 
-// tekanan_udara
-$routes->get('admin_tekanan_udara', 'tekanan_udara::tampil_tekanan_udara');
+
 
 //Berita Kegiatan
 $routes->get('BeritaKegiatan', 'Berita_Kegiatan::view_beritakegiatan');
@@ -31,13 +30,11 @@ $routes->get('/update/FormBeritaKegiatan/(:num)', 'Berita_Kegiatan::form_update_
 $routes->post('update/BeritaKegiatan/(:num)', 'Berita_Kegiatan::update_beritakegiatan/$1');
 
 // Hilal Routes - PASTIKAN PENULISAN 'hilal' KONSISTEN
-$routes->get('Hilal', 'Home::hilal'); // GET /hilal
-$routes->post('hilal/simpan', 'Home::simpan_hilal');
-$routes->post('hilal/update/(:num)', 'Home::update_hilal/$1');
-$routes->get('hilal/delete/(:num)', 'Home::delete_hilal/$1');
-$routes->get('hilal/gambar/(:num)', 'Home::gambar_hilal/$1');
-$routes->post('hilal/upload-gambar', 'Home::upload_gambar_hilal');
-$routes->get('hilal/delete-gambar/(:num)', 'Home::delete_gambar_hilal/$1');
+$routes->get('hilal', 'Home::hilal'); 
+$routes->get('Hilal', 'Home::hilal'); 
+$routes->post('hilal/simpan', 'HilalController::simpan_hilal');
+$routes->post('hilal/update/(:num)', 'HilalController::update_hilal/$1');
+$routes->get('hilal/delete/(:num)', 'HilalController::delete_hilal/$1');
 
 // Temperatur Routes 
 $routes->group('Temperatur', function($routes) {
@@ -72,19 +69,28 @@ $routes->group('mahasiswa', function ($routes) {
     $routes->post('update/(:num)', 'Admin\Mahasiswa::update/$1');
     $routes->get('hapus/(:num)', 'Admin\Mahasiswa::hapus/$1');
 
-    $routes->get('export', 'Admin\Mahasiswa::export');
-    $routes->get('export/bulanan', 'Admin\Mahasiswa::exportBulanan');
-    $routes->get('export/tahunan', 'Admin\Mahasiswa::exportTahunan');
-
-    $routes->get('log-ekspor', 'Admin\Mahasiswa::logEkspor');
+$routes->get('hilal/gambar', 'GambarHilalController::index');
+$routes->post('hilal/upload_gambar', 'GambarHilalController::upload_gambar');
+$routes->post('hilal/update_gambar/(:num)', 'GambarHilalController::update_gambar/$1');
+$routes->get('hilal/delete_gambar/(:num)', 'GambarHilalController::delete_gambar/$1');
 });
 
-// Routes untuk Pengajuan Surat langsung di sini, tanpa group admin lagi
-$routes->get('pengajuan_surat', 'Admin\PengajuanSurat::list'); // URL: /admin/pengajuan_surat
-$routes->get('pengajuan_surat/approve/(:num)', 'Admin\PengajuanSurat::approve/$1');
-$routes->get('pengajuan_surat/reject/(:num)', 'Admin\PengajuanSurat::reject/$1');
-$routes->get('pengajuan_surat/download/(:segment)', 'Admin\PengajuanSurat::download/$1');
-$routes->get('pengajuan_surat/export', 'Admin\PengajuanSurat::export');
+// Routes untuk Administrasi
+$routes->get('administrasi', 'Administrasi::index');
+$routes->get('administrasi/form_administrasi', 'Administrasi::form_administrasi');
+$routes->get('administrasi/form_update_administrasi/(:num)', 'Administrasi::form_update_administrasi/$1');
+$routes->post('administrasi/save_administrasi', 'Administrasi::save_administrasi');
+$routes->post('administrasi/update_administrasi/(:num)', 'Administrasi::update_administrasi/$1');
+$routes->get('administrasi/delete_administrasi/(:num)', 'Administrasi::delete_administrasi/$1');
+$routes->get('administrasi/export_excel', 'Administrasi::export_excel');
+$routes->post('administrasi/process_upload', 'Administrasi::process_upload');
+$routes->post('administrasi/process_upload', 'Administrasi::process_upload');
 
-// Alias ke Mahasiswa::index
-$routes->get('administrasi', 'Admin\Mahasiswa::index');
+//buku tamu
+$routes->get('buku_tamu', 'BukuTamu::index');
+$routes->get('buku_tamu/export_excel', 'BukuTamu::export_excel');
+
+// Routes untuk Pengajuan Surat
+$routes->get('pengajuan_surat', 'PengajuanSurat::index');
+$routes->get('pengajuan_surat/export_excel', 'PengajuanSurat::export_excel');
+$routes->get('pengajuan_surat/ubah_status/(:num)/(:segment)', 'PengajuanSurat::ubah_status/$1/$2');

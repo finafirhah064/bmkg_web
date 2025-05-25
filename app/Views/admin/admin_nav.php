@@ -187,8 +187,9 @@ $segment1 = $uri->getSegment(1); // bagian pertama dari URL (misalnya: 'dashboar
           <span class="sidebar-text">Dashboard</span>
         </a>
       </li>
+
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/administrasi'); ?>">
+        <a class="nav-link <?= $segment1 == 'administrasi' ? 'active' : ''; ?>" href="<?= base_url('administrasi'); ?>">
           <span class="sidebar-icon text-dark">
             <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 23 23"
               stroke-width="1.5" stroke="currentColor">
@@ -201,7 +202,7 @@ $segment1 = $uri->getSegment(1); // bagian pertama dari URL (misalnya: 'dashboar
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/buku_tamu'); ?>">
+        <a class="nav-link <?= $segment1 == 'buku_tamu' ? 'active' : ''; ?>" href="<?= base_url('buku_tamu'); ?>">
           <span class="sidebar-icon">
             <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
               <path d="M3 4h18v2H3V4zm0 4h18v2H3V8zm0 4h18v2H3v-2zm0 4h18v2H3v-2z" />
@@ -212,7 +213,7 @@ $segment1 = $uri->getSegment(1); // bagian pertama dari URL (misalnya: 'dashboar
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/pengajuan_surat'); ?>">
+        <a class="nav-link <?= $segment1 == 'pengajuan_surat' ? 'active' : ''; ?>" href="<?= base_url('pengajuan_surat'); ?>">
           <span class="sidebar-icon">
             <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
               <path d="M6 2h9a2 2 0 012 2v2h-2V4H6v16h6v2H6a2 2 0 01-2-2V4a2 2 0 012-2zm10 10l4 4v-3h3l-4-4h-3v3z" />

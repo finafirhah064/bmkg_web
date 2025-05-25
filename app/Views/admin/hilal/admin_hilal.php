@@ -18,6 +18,16 @@
         .badge-visibility {
             min-width: 80px;
         }
+        .btn-custom {
+    background-color: #4CAF50; /* Hijau */
+    color: white;
+    border: none;
+}
+
+.btn-custom:hover {
+    background-color: #45a049; /* Warna hover */
+}
+
     </style>
 </head>
 
@@ -28,25 +38,23 @@
             <div class="container-fluid px-0">
                 <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
                     <div class="d-flex align-items-center">
-                        <!-- Search form -->
-                        <form class="navbar-search form-inline" id="navbar-search-main">
-                            <div class="input-group input-group-merge search-bar">
-                                <span class="input-group-text" id="topbar-addon">
-                                    <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                        fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </span>
-                                <input type="text" class="form-control" id="topbarInputIconLeft" placeholder="Search"
-                                    aria-label="Search" aria-describedby="topbar-addon">
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
         </nav>
+         <?php if(session()->getFlashdata('success')): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?= session()->getFlashdata('success'); ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
+
+    <?php if(session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?= session()->getFlashdata('error'); ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
 
         <!-- Breadcrumb -->
         <div class="py-4">
@@ -73,13 +81,15 @@
                     <p class="mb-0">Manajemen data observasi hilal bulanan</p>
                 </div>
                 <div>
-                    <a href="#" class="btn btn-outline-gray-600 d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#addModal">
-                        <i class="fas fa-plus me-2"></i>
-                        Tambah Data
-                    </a>
+                   <a href="#" class="btn btn-custom d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#addModal">
+    <i class="fas fa-plus me-2"></i>
+    Tambah Data
+</a>
+
                 </div>
             </div>
         </div>
+<!-- Tab Navigation -->
 
         <!-- Table Card -->
         <div class="card border-0 shadow mb-4">
@@ -138,11 +148,8 @@
                                         '<span class="badge bg-success">Published</span>' : 
                                         '<span class="badge bg-secondary">Draft</span>' ?>
                                 </td>
-                                <td>
-                                    <a href="<?= base_url("hilal/gambar/{$item['id_pengamatan_hilal']}") ?>" 
-                                       class="btn btn-sm btn-info me-1" title="Kelola Gambar">
-                                       <i class="fas fa-image"></i>
-                                    </a>
+                                  <td>
+                                   
                                     <button class="btn btn-sm btn-warning me-1" data-bs-toggle="modal" 
                                         data-bs-target="#editModal<?= $item['id_pengamatan_hilal']; ?>" title="Edit">
                                         <i class="fas fa-edit"></i>
@@ -162,7 +169,7 @@
                                             <h5 class="modal-title">Edit Pengamatan Hilal</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <form action="hilal/update/<?= $item['id_pengamatan_hilal']; ?>" method="post">
+                                        <form action="<?= base_url('hilal/update/' . $item['id_pengamatan_hilal']) ?>" method="post">
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -324,7 +331,8 @@
                         <h5 class="modal-title">Tambah Pengamatan Hilal</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="hilal/store" method="post">
+                    <form action="<?= base_url('hilal/simpan') ?>" method="post">
+
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-6">
@@ -450,7 +458,7 @@
                 </div>
             </div>
         </div>
-    </main>
+
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
