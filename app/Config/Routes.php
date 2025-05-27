@@ -35,6 +35,9 @@ $routes->get('Hilal', 'Home::hilal');
 $routes->post('hilal/simpan', 'HilalController::simpan_hilal');
 $routes->post('hilal/update/(:num)', 'HilalController::update_hilal/$1');
 $routes->get('hilal/delete/(:num)', 'HilalController::delete_hilal/$1');
+$routes->get('hilal/downloadExcel', 'HilalController::downloadExcel');
+$routes->post('hilal/uploadExcel', 'HilalController::uploadExcel');
+
 
 // Temperatur Routes 
 $routes->group('Temperatur', function($routes) {

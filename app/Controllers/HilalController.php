@@ -113,6 +113,96 @@ public function delete_hilal($id)
     $model->delete($id);
     return redirect()->to(base_url('hilal'))->with('success', 'Data pengamatan hilal berhasil dihapus');
 }
+public function downloadExcel()
+{
+    $model = new ModelPengamatanHilal();
+    $data = $model->findAll();
+
+    // Load PhpSpreadsheet library
+    $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+
+    // Header row
+    $sheet->setCellValue('A1', 'ID')
+          ->setCellValue('B1', 'Tanggal')
+          ->setCellValue('C1', 'Bulan Hijriyah')
+          ->setCellValue('D1', 'Lokasi')
+          ->setCellValue('E1', 'Tinggi Hilal')
+          ->setCellValue('F1', 'Visibilitas')
+          ->setCellValue('G1', 'Status')
+          ->setCellValue('H1', 'Aksi');
+
+    // Populate data
+    $row = 2;
+    foreach ($data as $item) {
+        $sheet->setCellValue('A' . $row, $item['id_pengamatan_hilal'])
+              ->setCellValue('B' . $row, date('d/m/Y', strtotime($item['tanggal_observasi'])))
+              ->setCellValue('C' . $row, $item['bulan_hijri'])
+              ->setCellValue('D' . $row, $item['lokasi'])
+              ->setCellValue('E' . $row, $item['tinggi_bulan'])
+              ->setCellValue('F' . $row, $item['status_visibilitas'])
+              ->setCellValue('G' . $row, $item['dipublikasikan'] ? 'Published' : 'Draft');
+        $row++;
+    }
+
+    // Set the response header to download the file
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="data_pengamatan_hilal.xlsx"');
+    header('Cache-Control: max-age=0');
+
+    // Write to file and send to browser
+    $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+    $writer->save('php://output');
+    exit;
+}
+public function uploadExcel()
+{
+    if ($this->request->getMethod() == 'post' && $this->validate([
+        'file' => 'uploaded[file]|ext_in[file,xlsx]'
+    ])) {
+        $file = $this->request->getFile('file');
+
+        // Load PhpSpreadsheet library
+        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file->getTempName());
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Loop through rows and insert data into database
+        $model = new ModelPengamatanHilal();
+        $row = 2;
+        while ($sheet->getCell('A' . $row)->getValue() != '') {
+            $data = [
+                'tahun_hijri' => $sheet->getCell('A' . $row)->getValue(),
+                'bulan_hijri' => $sheet->getCell('B' . $row)->getValue(),
+                'nama_bulan' => $sheet->getCell('C' . $row)->getValue(),
+                'tanggal_observasi' => $sheet->getCell('D' . $row)->getFormattedValue(),
+                'waktu_observasi' => $sheet->getCell('E' . $row)->getFormattedValue(),
+                'lokasi' => $sheet->getCell('F' . $row)->getValue(),
+                'latitude' => $sheet->getCell('G' . $row)->getValue(),
+                'longitude' => $sheet->getCell('H' . $row)->getValue(),
+                'ketinggian' => $sheet->getCell('I' . $row)->getValue(),
+                'status_visibilitas' => $sheet->getCell('J' . $row)->getValue(),
+                'deskripsi' => $sheet->getCell('K' . $row)->getValue(),
+                'kondisi_cuaca' => $sheet->getCell('L' . $row)->getValue(),
+                'waktu_terbenam_matahari' => $sheet->getCell('M' . $row)->getFormattedValue(),
+                'waktu_terbenam_bulan' => $sheet->getCell('N' . $row)->getFormattedValue(),
+                'azimuth_matahari' => $sheet->getCell('O' . $row)->getValue(),
+                'azimuth_bulan' => $sheet->getCell('P' . $row)->getValue(),
+                'tinggi_bulan' => $sheet->getCell('Q' . $row)->getValue(),
+                'elongasi' => $sheet->getCell('R' . $row)->getValue(),
+                'judul_laporan' => $sheet->getCell('S' . $row)->getValue(),
+                'dipublikasikan' => $sheet->getCell('T' . $row)->getValue() == 'Published' ? 1 : 0
+            ];
+
+            $model->insert($data);
+            $row++;
+        }
+
+        return redirect()->to(base_url('hilal'))->with('success', 'Data pengamatan hilal berhasil diupload');
+    }
+
+    return redirect()->back()->with('error', 'File tidak valid');
+}
+
 
 
 }

@@ -90,7 +90,20 @@
             </div>
         </div>
 <!-- Tab Navigation -->
-
+    <div class="card-body">
+        <a href="<?= base_url('hilal/downloadExcel'); ?>" class="btn btn-success mb-3">
+            <i class="fas fa-file-excel me-2"></i> Download Excel
+        </a>
+        <!-- Form Upload -->
+        <form action="<?= base_url('hilal/uploadExcel'); ?>" method="post" enctype="multipart/form-data" class="d-flex gap-2 align-items-end">
+            <div class="w-50">
+                <label for="file" class="form-label">Unggah File Excel</label>
+                <input type="file" class="form-control" id="file" name="file" accept=".xlsx" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Unggah</button>
+        </form>
+    </div>
+</div>
         <!-- Table Card -->
         <div class="card border-0 shadow mb-4">
             <div class="card-body">
@@ -321,7 +334,36 @@
                     </table>
                 </div>
             </div>
+            <div class="card border-0 shadow mt-4">
+
+
+
+
+
+<!-- Upload Modal -->
+<div class="modal fade" id="uploadModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Unggah Data Pengamatan Hilal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="<?= base_url('hilal/uploadExcel'); ?>" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Pilih File Excel</label>
+                        <input type="file" class="form-control" name="file" accept=".xlsx" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Unggah</button>
+                </div>
+            </form>
         </div>
+    </div>
+</div>
+
         
         <!-- Add Modal -->
         <div class="modal fade" id="addModal" tabindex="-1" aria-hidden="true">
