@@ -19,8 +19,7 @@ $routes->get('/Home/deleteterbittenggelam/(:num)', 'Terbit_Tenggelam::delete_ter
 $routes->get('FormTerbitTenggelam', 'Terbit_Tenggelam::form_terbit_tenggelam');
 $routes->post('TerbitTenggelam/process_upload', 'Terbit_Tenggelam::process_upload');
 
-// tekanan_udara
-$routes->get('admin_tekanan_udara', 'tekanan_udara::tampil_tekanan_udara');
+
 
 //Berita Kegiatan
 $routes->get('BeritaKegiatan', 'Berita_Kegiatan::view_beritakegiatan');
@@ -37,13 +36,44 @@ $routes->post('hilal/simpan', 'HilalController::simpan_hilal');
 $routes->post('hilal/update/(:num)', 'HilalController::update_hilal/$1');
 $routes->get('hilal/delete/(:num)', 'HilalController::delete_hilal/$1');
 
+// Temperatur Routes 
+$routes->group('Temperatur', function($routes) {
+    $routes->get('/', 'Temperatur::view_temperatur'); // Tampilkan semua data
+    $routes->get('form_temperatur', 'Temperatur::form_temperatur'); // Form tambah
+    $routes->post('save_temperatur', 'Temperatur::save_temperatur'); // Simpan data
+    $routes->get('form_update_temperatur/(:num)', 'Temperatur::form_update_temperatur/$1'); // Form edit
+    $routes->post('update_temperatur/(:num)', 'Temperatur::update_temperatur/$1'); // Simpan update
+    $routes->get('delete_temperatur/(:num)', 'Temperatur::delete_temperatur/$1'); // Hapus data
+    $routes->post('upload_excel', 'Temperatur::upload_excel'); // Upload Excel
+});
+
+// Udara Routes 
+// ROUTES UNTUK TEKANAN UDARA
+$routes->get('/tekananudara', 'TekananUdara::view'); // Tampilkan tabel
+$routes->get('/tekananudara/form', 'TekananUdara::form'); // Form tambah data
+$routes->post('/tekananudara/save', 'TekananUdara::save'); // Simpan data baru
+
+$routes->get('/tekananudara/form_update/(:num)', 'TekananUdara::form_update/$1'); // Form edit
+$routes->post('/tekananudara/update/(:num)', 'TekananUdara::update/$1'); // Proses update
+
+$routes->get('/tekananudara/delete/(:num)', 'TekananUdara::delete/$1'); // Hapus data
+
+$routes->post('/tekananudara/upload_excel', 'TekananUdara::upload_excel'); // Upload Excel
+ 
+// Routes untuk Mahasiswa
+$routes->group('mahasiswa', function ($routes) {
+    $routes->get('', 'Admin\Mahasiswa::index');
+    $routes->get('tambah', 'Admin\Mahasiswa::tambah');
+    $routes->post('simpan', 'Admin\Mahasiswa::simpan');
+    $routes->get('edit/(:num)', 'Admin\Mahasiswa::edit/$1');
+    $routes->post('update/(:num)', 'Admin\Mahasiswa::update/$1');
+    $routes->get('hapus/(:num)', 'Admin\Mahasiswa::hapus/$1');
 
 $routes->get('hilal/gambar', 'GambarHilalController::index');
 $routes->post('hilal/upload_gambar', 'GambarHilalController::upload_gambar');
 $routes->post('hilal/update_gambar/(:num)', 'GambarHilalController::update_gambar/$1');
 $routes->get('hilal/delete_gambar/(:num)', 'GambarHilalController::delete_gambar/$1');
-
-
+});
 
 // Routes untuk Administrasi
 $routes->get('administrasi', 'Administrasi::index');
