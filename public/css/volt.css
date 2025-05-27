@@ -1000,7 +1000,7 @@
     --bs-gray-700: #374151;
     --bs-gray-800: #1F2937;
     --bs-gray-900: #111827;
-    --bs-primary: #1F2937;
+    --bs-primary: #1D74C3;
     --bs-secondary: #f0bc74;
     --bs-tertiary: #31316A;
     --bs-success: #10B981;
@@ -1057,6 +1057,8 @@
     --bs-body-line-height: 1.5;
     --bs-body-color: #374151;
     --bs-body-bg: #F2F4F6;
+    --bmkg-primary: #1D74C3;
+    --bmkg-soft: #f5f9fd;
 }
 
 *,
@@ -28759,3 +28761,58 @@ article .h1, article .h2, article .h3, article .h4, article .h5, article .h6 {
     z-index: 9999;
 }
 /*# sourceMappingURL=volt.css.map */
+
+.card:hover {
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}
+
+.card-title {
+    font-size: 1.25rem;
+}
+
+.badge.bg-warning {
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+.berita-card {
+    transition: all 0.3s ease-in-out;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+}
+
+.berita-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.berita-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.card-title {
+    font-size: 1.15rem;
+}
+
+.btn-outline-primary {
+    border-color: #1D74C3;
+    color: #1D74C3;
+}
+
+.btn-outline-primary:hover {
+    background-color: #1D74C3;
+    color: #fff;
+}
+.berita-ringkasan {
+    color: #4a4a4a !important; /* Abu gelap, elegan */
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.text-bmkg {
+    color: #1D74C3 !important; /* Biru BMKG */
+}
+
