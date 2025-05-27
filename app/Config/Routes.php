@@ -69,11 +69,13 @@ $routes->group('mahasiswa', function ($routes) {
     $routes->post('update/(:num)', 'Admin\Mahasiswa::update/$1');
     $routes->get('hapus/(:num)', 'Admin\Mahasiswa::hapus/$1');
 
+
+});
+
 $routes->get('hilal/gambar', 'GambarHilalController::index');
 $routes->post('hilal/upload_gambar', 'GambarHilalController::upload_gambar');
 $routes->post('hilal/update_gambar/(:num)', 'GambarHilalController::update_gambar/$1');
 $routes->get('hilal/delete_gambar/(:num)', 'GambarHilalController::delete_gambar/$1');
-});
 
 // Routes untuk Administrasi
 $routes->get('administrasi', 'Administrasi::index');
