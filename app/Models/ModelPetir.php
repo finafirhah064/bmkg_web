@@ -6,60 +6,33 @@ use CodeIgniter\Model;
 
 class ModelPetir extends Model
 {
-    protected $table = 'petir'; // nama tabel di database
-    protected $primaryKey = 'id_petir'; // sesuaikan dengan primary key yang kamu pakai
+    protected $table = 'petir'; // Nama tabel di database
+    protected $primaryKey = 'id';
 
     protected $useAutoIncrement = true;
-    protected $returnType     = 'array';
+    protected $returnType = 'array'; // Default data type
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['tanggal', 'waktu_sambaran', 'wilayah', 'latitude', 'longitude', 'jenis_petir'];
+    protected $allowedFields = [
+        'tanggal', 'waktu_sambaran', 'wilayah', 'latitude', 'longitude', 'jenis_petir'
+    ];
 
-    protected $useTimestamps = false; // atau true kalau pakai created_at, updated_at
+    protected $useTimestamps = false;
 
-    function __construct()
+    // Tidak perlu constructor manual, Model CI4 sudah otomatis connect ke DB
+
+    // Optional: Custom method untuk semua data
+    public function getAllPetir()
     {
-        $this->db = db_connect();
+        return $this->findAll(); // sudah tersedia dari CI4
     }
 
-    // Menampilkan semua data
-    public function tampilpetir()
+    // Optional: Custom method untuk ambil data berdasarkan ID
+    public function getPetirById($id)
     {
-        return $this->db->table($this->table)->get()->getResult();
+        return $this->find($id); // sudah tersedia dari CI4
     }
 
-    // Mengambil data berdasarkan ID
-    public function getById($id)
-    {
-        return $this->db->table($this->table)
-            ->where($this->primaryKey, $id)
-            ->get()
-            ->getRow();
-    }
-
-
-    // Menyimpan data baru
-    // public function simpanberitakegiatan($table, $data)
-    // {
-    //     // Validasi data
-    //     if (empty($data['tanggal']) || empty($data['judul']) || empty($data['isi'])) {
-    //         return false;
-    //     }
-
-    //     return $this->db->table($table)->insert($data);
-    // }
-
-    // // Menghapus data berdasarkan ID
-    // public function hapus($id)
-    // {
-    //     return $this->db->table($this->table)
-    //         ->where($this->primaryKey, $id)
-    //         ->delete();
-    // }
-
-    // // Mengedit data
-    // public function updateberitakegiatan($table, $data, $where)
-    // {
-    //     return $this->db->table($table)->update($data, $where);
-    // }
+    // Tidak perlu simpanPetir, updatePetir, hapus manual
+    // Gunakan insert(), update(), delete() dari bawaan CI4
 }

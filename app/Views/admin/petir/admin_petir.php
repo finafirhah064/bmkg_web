@@ -5,7 +5,7 @@
             <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
                 <div class="d-flex align-items-center">
                     <!-- Search form -->
-                    <form class="navbar-search form-inline" id="navbar-search-main">
+                    <!-- <form class="navbar-search form-inline" id="navbar-search-main">
                         <div class="input-group input-group-merge search-bar">
                             <span class="input-group-text" id="topbar-addon">
                                 <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -18,10 +18,10 @@
                             <input type="text" class="form-control" id="topbarInputIconLeft" placeholder="Search"
                                 aria-label="Search" aria-describedby="topbar-addon">
                         </div>
-                    </form>
+                    </form> -->
                     <!-- / Search form -->
                 </div>
-                <ul class="navbar-nav align-items-center">
+                <!-- <ul class="navbar-nav align-items-center">
                     <li class="nav-item dropdown ms-lg-3">
                         <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -45,11 +45,10 @@
                             </a>
                         </div>
                     </li>
-                </ul>
+                </ul> -->
             </div>
         </div>
     </nav>
-
     <!-- Mobile Navbar -->
     <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
         <a class="navbar-brand me-lg-5" href="../../index.html">
@@ -64,81 +63,80 @@
             </button>
         </div>
     </nav>
-
-    <!-- Breadcrumb -->
-    <div class="py-4">
-        <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
-            <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
-                <li class="breadcrumb-item">
-                    <a href="#">
-                        <svg class="icon icon-xxs" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                            </path>
-                        </svg>
-                    </a>
-                </li>
-                <li class="breadcrumb-item"><a href="#">Berita Kegiatan</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Data</li>
-            </ol>
-        </nav>
-
-        <div class="d-flex justify-content-between w-100 flex-wrap">
-            <div class="mb-3 mb-lg-0">
-                <h1 class="h4">Data Berita Kegiatan</h1>
-                <p class="mb-0">Dozens of reusable components built to provide buttons, alerts, popovers, and more.</p>
-            </div>
-            <div>
-                <a href="<?php echo base_url('form/BeritaKegiatan'); ?>"
-                    class="btn btn-outline-gray-600 d-inline-flex align-items-center">
-                    <!-- <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20"
+<!-- Breadcrumb --> 
+<div class="py-4">
+    <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+        <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+            <li class="breadcrumb-item">
+                <a href="#">
+                    <svg class="icon icon-xxs" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                            clip-rule="evenodd"></path>
-                    </svg> -->
-                    <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                        </path>
                     </svg>
-                    Tambah
                 </a>
-            </div>
+            </li>
+            <li class="breadcrumb-item"><a href="#">Petir</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+    </nav>
+
+    <div class="d-flex justify-content-between w-100 flex-wrap">
+        <div class="mb-3 mb-lg-0">
+            <h1 class="h4">Data Petir</h1>
+            <p class="mb-0">Informasi sambaran petir berdasarkan wilayah dan waktu kejadian.</p>
+        </div>
+        <div>
+            <a href="<?= site_url('Petir/form'); ?>"
+                class="btn btn-outline-gray-600 d-inline-flex align-items-center">
+                <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                Tambah
+            </a>
         </div>
     </div>
+</div>
+
+<!-- Table Card -->
 <div class="card border-0 shadow mb-4">
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-centered table-nowrap mb-0 rounded">
                 <thead class="thead-light">
                     <tr>
-                        <th>ID</th>
-                        <th>Tanggal</th>
-                        <th>Waktu</th>
-                        <th>Wilayah</th>
-                        <th>Jenis Petir</th>
-                        <th>Koordinat</th>
-                        <th>Action</th>
+                        <th class="border-0 rounded-start">ID</th>
+                        <th class="border-0">Tanggal</th>
+                        <th class="border-0">Waktu Sambaran</th>
+                        <th class="border-0">Wilayah</th>
+                        <th class="border-0">Latitude</th>
+                        <th class="border-0">Longitude</th>
+                        <th class="border-0">Jenis Petir</th>
+                        <th class="border-0 rounded-end">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $no = 0; foreach ($dataPetir as $row): $no++; ?>
+                    <?php $no = 0;
+                    foreach ($dataPetir as $row):
+                        $no++; ?>
                         <tr>
                             <td><?= $no; ?></td>
-                            <td><?= $row->tanggal; ?></td>
-                            <td><?= $row->waktu_sambaran; ?></td>
-                            <td><?= $row->wilayah; ?></td>
-                            <td><?= $row->jenis_petir; ?></td>
-                            <td><?= $row->latitude; ?>, <?= $row->longitude; ?></td>
+                            <td><?= $row['tanggal']; ?></td>
+                            <td><?= $row['waktu_sambaran']; ?></td>
+                            <td><?= $row['wilayah']; ?></td>
+                            <td><?= $row['latitude']; ?></td>
+                            <td><?= $row['longitude']; ?></td>
+                            <td><?= $row['jenis_petir']; ?></td>
                             <td>
                                 <button class="btn btn-info btn-sm"
-                                    onclick="openMapModal('<?= $row->latitude; ?>', '<?= $row->longitude; ?>', '<?= $row->wilayah; ?> - <?= $row->jenis_petir; ?>')">
+                                    onclick="openMapModal('<?= $row['latitude']; ?>', '<?= $row['longitude']; ?>', '<?= $row['wilayah']; ?> - <?= $row['jenis_petir']; ?>')">
                                     Lihat Peta
                                 </button>
-                                <a href="..." class="btn btn-sm btn-primary">Edit</a>
-                                <a href="..." class="btn btn-sm btn-danger">Hapus</a>
+                                <a href="<?= base_url('/Petir/form_update/' . $row['id']); ?>" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="<?= base_url('/Petir/delete/' . $row['id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -148,7 +146,7 @@
     </div>
 </div>
 
-<!-- Modal -->
+    <!-- Modal -->
 <div class="modal fade" id="mapModal" tabindex="-1" aria-labelledby="mapModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
@@ -187,8 +185,6 @@
     }
 </script>
 
-
-
     <!-- Scripts -->
     <script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="../../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -204,4 +200,8 @@
     <script src="../../vendor/simplebar/dist/simplebar.min.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="../../assets/js/volt.js"></script>
-    
+
+    <!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>

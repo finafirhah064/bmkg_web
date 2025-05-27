@@ -64,3 +64,13 @@ $routes->get('buku_tamu/export_excel', 'BukuTamu::export_excel');
 $routes->get('pengajuan_surat', 'PengajuanSurat::index');
 $routes->get('pengajuan_surat/export_excel', 'PengajuanSurat::export_excel');
 $routes->get('pengajuan_surat/ubah_status/(:num)/(:segment)', 'PengajuanSurat::ubah_status/$1/$2');
+
+
+//routes untuk petir
+$routes->get('Petir', 'Petir::view_petir');
+$routes->get('Petir/form', 'Petir::form');
+$routes->get('Petir/form_update/(:num)', 'Petir::form_update/$1');
+$routes->post('Petir/save', 'Petir::save');
+$routes->post('Petir/update/(:num)', 'Petir::update/$1');
+$routes->get('Petir/delete/(:num)', 'Petir::delete/$1');
+$routes->post('Petir/upload', 'Petir::upload');
