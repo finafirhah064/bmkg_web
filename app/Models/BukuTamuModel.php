@@ -10,12 +10,13 @@ class BukuTamuModel extends Model
     protected $primaryKey = 'id';
     protected $allowedFields = [
         'nama',
-        'instansi',
-        'email',
         'no_hp',
-        'keperluan',
-        'tanggal',
-        'foto_kegiatan'
+        'instansi',
+        'kegiatan',
+        'foto_kegiatan',
+        'tanggal_kunjungan',
+        'waktu_kunjungan'
     ];
+
     protected $returnType = 'object';
 }

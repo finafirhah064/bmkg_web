@@ -30,8 +30,8 @@ $routes->get('/update/FormBeritaKegiatan/(:num)', 'Berita_Kegiatan::form_update_
 $routes->post('update/BeritaKegiatan/(:num)', 'Berita_Kegiatan::update_beritakegiatan/$1');
 
 // Hilal Routes - PASTIKAN PENULISAN 'hilal' KONSISTEN
-$routes->get('hilal', 'Home::hilal'); 
-$routes->get('Hilal', 'Home::hilal'); 
+$routes->get('hilal', 'Home::hilal');
+$routes->get('Hilal', 'Home::hilal');
 $routes->post('hilal/simpan', 'HilalController::simpan_hilal');
 $routes->post('hilal/update/(:num)', 'HilalController::update_hilal/$1');
 $routes->get('hilal/delete/(:num)', 'HilalController::delete_hilal/$1');
@@ -40,7 +40,7 @@ $routes->post('hilal/uploadExcel', 'HilalController::uploadExcel');
 
 
 // Temperatur Routes 
-$routes->group('Temperatur', function($routes) {
+$routes->group('Temperatur', function ($routes) {
     $routes->get('/', 'Temperatur::view_temperatur'); // Tampilkan semua data
     $routes->get('form_temperatur', 'Temperatur::form_temperatur'); // Form tambah
     $routes->post('save_temperatur', 'Temperatur::save_temperatur'); // Simpan data
@@ -62,7 +62,7 @@ $routes->post('/tekananudara/update/(:num)', 'TekananUdara::update/$1'); // Pros
 $routes->get('/tekananudara/delete/(:num)', 'TekananUdara::delete/$1'); // Hapus data
 
 $routes->post('/tekananudara/upload_excel', 'TekananUdara::upload_excel'); // Upload Excel
- 
+
 // Routes untuk Mahasiswa
 $routes->group('mahasiswa', function ($routes) {
     $routes->get('', 'Admin\Mahasiswa::index');
@@ -71,8 +71,6 @@ $routes->group('mahasiswa', function ($routes) {
     $routes->get('edit/(:num)', 'Admin\Mahasiswa::edit/$1');
     $routes->post('update/(:num)', 'Admin\Mahasiswa::update/$1');
     $routes->get('hapus/(:num)', 'Admin\Mahasiswa::hapus/$1');
-
-
 });
 
 $routes->get('hilal/gambar', 'GambarHilalController::index');
@@ -94,6 +92,10 @@ $routes->post('administrasi/process_upload', 'Administrasi::process_upload');
 //buku tamu
 $routes->get('buku_tamu', 'BukuTamu::index');
 $routes->get('buku_tamu/export_excel', 'BukuTamu::export_excel');
+$routes->post('buku-tamu/simpan', 'BukuTamu::simpan');
+$routes->get('buku-tamu', 'BukuTamu::form'); // route untuk halaman form buku tamu user
+
+
 
 // Routes untuk Pengajuan Surat
 $routes->get('pengajuan_surat', 'PengajuanSurat::index');

@@ -65,6 +65,7 @@
                             <th>Foto</th>
                             <th>Tanggal</th>
                             <th>Waktu</th>
+                            <th>Waktu Submit</th>
                         </tr>
                     </thead>
                     <tbody>
