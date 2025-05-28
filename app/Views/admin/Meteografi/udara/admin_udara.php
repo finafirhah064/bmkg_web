@@ -114,7 +114,6 @@
             </div>
         </div>
     </div>
-</main>
 
   <!-- Scripts -->
   <script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>

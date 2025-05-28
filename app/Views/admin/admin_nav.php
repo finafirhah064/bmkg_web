@@ -297,7 +297,7 @@ $segment1 = $uri->getSegment(1); // bagian pertama dari URL (misalnya: 'dashboar
         <div class="multi-level collapse" role="list" id="submenu-meteografi">
           <ul class="flex-column nav">
             <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('Temperatur'); ?>">
+            <a class="nav-link ps-4" href="<?= base_url('Temperatur'); ?>">
                 <span class="sidebar-text">Temperatur</span>
               </a>
             </li>
