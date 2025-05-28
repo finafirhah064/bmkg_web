@@ -23,6 +23,18 @@
             text-align: center;
             color: #9ab;
         }
+
+        footer {
+            background-color: #003973;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
     </style>
 
 

@@ -149,7 +149,7 @@
                 <div class="collapse navbar-collapse" id="navbar_global">
                     <ul class="navbar-nav ms-auto navbar-nav-hover align-items-lg-center">
                         <li class="nav-item me-3">
-                            <a href="#top" class="nav-link">Home</a>
+                            <a href=<?= base_url('user/dashboard') ?> class="nav-link">Home</a>
                         </li>
 
                         <li class="nav-item dropdown me-3">
@@ -168,7 +168,8 @@
                                 Layanan Publik
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="layananDropdown">
-                                <li><a class="dropdown-item" href="#">Buku Tamu</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('buku-tamu') ?>">Buku Tamu</a></li>
+
                                 <li><a class="dropdown-item" href="#">Pengajuan Surat</a></li>
                                 <li><a class="dropdown-item" href="#">Cek Status Surat</a></li>
                             </ul>
