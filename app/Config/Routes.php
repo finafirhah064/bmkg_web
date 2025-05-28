@@ -35,6 +35,9 @@ $routes->get('Hilal', 'Home::hilal');
 $routes->post('hilal/simpan', 'HilalController::simpan_hilal');
 $routes->post('hilal/update/(:num)', 'HilalController::update_hilal/$1');
 $routes->get('hilal/delete/(:num)', 'HilalController::delete_hilal/$1');
+$routes->get('hilal/downloadExcel', 'HilalController::downloadExcel');
+$routes->post('hilal/uploadExcel', 'HilalController::uploadExcel');
+
 
 // Temperatur Routes 
 $routes->group('Temperatur', function($routes) {
@@ -69,11 +72,13 @@ $routes->group('mahasiswa', function ($routes) {
     $routes->post('update/(:num)', 'Admin\Mahasiswa::update/$1');
     $routes->get('hapus/(:num)', 'Admin\Mahasiswa::hapus/$1');
 
+
+});
+
 $routes->get('hilal/gambar', 'GambarHilalController::index');
 $routes->post('hilal/upload_gambar', 'GambarHilalController::upload_gambar');
 $routes->post('hilal/update_gambar/(:num)', 'GambarHilalController::update_gambar/$1');
 $routes->get('hilal/delete_gambar/(:num)', 'GambarHilalController::delete_gambar/$1');
-});
 
 // Routes untuk Administrasi
 $routes->get('administrasi', 'Administrasi::index');
