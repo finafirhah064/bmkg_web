@@ -88,10 +88,11 @@
                                     <td><?= esc($row['status']) ?></td>
                                     <td><?= esc($row['tanggal_pengajuan']) ?></td>
                                     <td>
-                                        <a href="<?= base_url('pengajuan_surat/ubah_status/' . $row['id_pengajuan_surat'] . '/Disetujui') ?>" class="btn btn-sm btn-success">Setujui</a>
-                                        <a href="<?= base_url('pengajuan_surat/ubah_status/' . $row['id_pengajuan_surat'] . '/Ditolak') ?>" class="btn btn-sm btn-danger">Tolak</a>
-                                        <a href="<?= base_url('pengajuan_surat/ubah_status/' . $row['id_pengajuan_surat'] . '/Pending') ?>" class="btn btn-sm btn-warning">Pending</a>
+                                        <a href="<?= base_url('admin/pengajuan_surat/ubah_status/' . $row['id_pengajuan_surat'] . '/Disetujui') ?>" class="btn btn-sm btn-success">Setujui</a>
+                                        <a href="<?= base_url('admin/pengajuan_surat/ubah_status/' . $row['id_pengajuan_surat'] . '/Ditolak') ?>" class="btn btn-sm btn-danger">Tolak</a>
+                                        <a href="<?= base_url('admin/pengajuan_surat/ubah_status/' . $row['id_pengajuan_surat'] . '/Pending') ?>" class="btn btn-sm btn-warning">Pending</a>
                                     </td>
+
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

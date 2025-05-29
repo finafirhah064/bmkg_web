@@ -170,8 +170,9 @@
                             <ul class="dropdown-menu" aria-labelledby="layananDropdown">
                                 <li><a class="dropdown-item" href="<?= base_url('buku-tamu') ?>">Buku Tamu</a></li>
 
-                                <li><a class="dropdown-item" href="#">Pengajuan Surat</a></li>
-                                <li><a class="dropdown-item" href="#">Cek Status Surat</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('pengajuan_surat') ?>">Pengajuan Surat</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('cek_status_surat') ?>">Cek Status Surat</a></li>
+
                             </ul>
                         </li>
 

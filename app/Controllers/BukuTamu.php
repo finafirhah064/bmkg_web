@@ -29,44 +29,53 @@ class BukuTamu extends BaseController
 
     public function export_excel()
     {
-        $model = new BukuTamuModel();
+        $model = new \App\Models\BukuTamuModel();
         $data = $model->findAll();
 
-        $spreadsheet = new Spreadsheet();
+        $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
+        // Header
         $sheet->setCellValue('A1', 'Nama');
         $sheet->setCellValue('B1', 'Instansi');
-        $sheet->setCellValue('C1', 'Email');
-        $sheet->setCellValue('D1', 'No HP');
-        $sheet->setCellValue('E1', 'Keperluan');
-        $sheet->setCellValue('F1', 'Tanggal');
-        $sheet->setCellValue('G1', 'Foto');
+        $sheet->setCellValue('C1', 'No. HP');
+        $sheet->setCellValue('D1', 'Kegiatan');
+        $sheet->setCellValue('E1', 'Waktu');
+        $sheet->setCellValue('F1', 'Foto');
 
+        // Data
         $row = 2;
         foreach ($data as $d) {
-            $sheet->setCellValue("A$row", $d->nama);
-            $sheet->setCellValue("B$row", $d->instansi);
-            $sheet->setCellValue("C$row", $d->email);
-            $sheet->setCellValue("D$row", $d->no_hp);
-            $sheet->setCellValue("E$row", $d->keperluan);
-            $sheet->setCellValue("F$row", $d->tanggal);
+            $sheet->setCellValue("A$row", $d->nama ?? '-');
+            $sheet->setCellValue("B$row", $d->instansi ?? '-');
+            $sheet->setCellValue("C$row", $d->no_hp ?? '-');
+            $sheet->setCellValue("D$row", $d->kegiatan ?? '-');
+
+            $createdAt = isset($d->created_at) && $d->created_at != null
+                ? date('d-m-Y H:i', strtotime($d->created_at))
+                : '-';
+            $sheet->setCellValue("E$row", $createdAt);
 
             $link = base_url('uploads/foto_kegiatan/' . $d->foto_kegiatan);
-            $sheet->setCellValue("G$row", $link);
-            $sheet->getCell("G$row")->getHyperlink()->setUrl($link);
-            $sheet->getStyle("G$row")->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLUE);
-            $sheet->getStyle("G$row")->getFont()->setUnderline(true);
+            $sheet->setCellValue("F$row", $link);
+            $sheet->getCell("F$row")->getHyperlink()->setUrl($link);
+            $sheet->getStyle("F$row")->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLUE);
+            $sheet->getStyle("F$row")->getFont()->setUnderline(true);
 
             $row++;
         }
 
-        $writer = new Xlsx($spreadsheet);
-        $filename = 'buku_tamu_' . date('Ymd') . '.xlsx';
 
+
+        // Download file
+        $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+        $filename = 'Laporan_Buku_Tamu_' . date('Ymd_His') . '.xlsx';
+
+        // Headers
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header("Content-Disposition: attachment;filename=\"$filename\"");
         header('Cache-Control: max-age=0');
+
         $writer->save('php://output');
         exit;
     }
@@ -110,6 +119,6 @@ class BukuTamu extends BaseController
             'tanggal' => date('Y-m-d')
         ]);
 
-        return redirect()->to('/buku_tamu')->with('success', 'Buku tamu berhasil dikirim.');
+        return redirect()->back()->with('success', 'Buku tamu berhasil dikirim.');
     }
 }

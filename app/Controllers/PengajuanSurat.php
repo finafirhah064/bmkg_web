@@ -75,4 +75,51 @@ class PengajuanSurat extends BaseController
         $writer->save('php://output');
         exit;
     }
+
+    public function form()
+    {
+        return view('user/user_pengajuan_surat');
+    }
+
+    public function simpan()
+    {
+        $model = new PengajuanSuratModel();
+
+        $fileSurat = $this->request->getFile('file_surat');
+        $namaFile = '';
+
+        if ($fileSurat && $fileSurat->isValid() && !$fileSurat->hasMoved()) {
+            $namaFile = time() . '_' . $fileSurat->getClientName();
+            $fileSurat->move('uploads/surat', $namaFile);
+        }
+
+        $model->insert([
+            'nama_pengaju' => $this->request->getPost('nama_pengaju'),
+            'no_hp' => $this->request->getPost('no_hp'),
+            'jenis_surat' => $this->request->getPost('jenis_surat'),
+            'keperluan' => $this->request->getPost('keperluan'),
+            'file_surat' => $namaFile,
+            'status' => 'Diajukan',
+            'tanggal_pengajuan' => date('Y-m-d')
+        ]);
+
+        return redirect()->to('pengajuan_surat')->with('success', 'Pengajuan surat berhasil dikirim.');
+    }
+
+    public function cek_status()
+    {
+        helper(['form']);
+        $data = []; // Tambahkan ini
+
+        if ($this->request->getMethod() === 'post') {
+            $nama = $this->request->getPost('nama_pengaju');
+
+            $suratModel = new \App\Models\PengajuanSuratModel();
+            $data['surats'] = $suratModel
+                ->like('nama_pengaju', $nama)
+                ->findAll();
+        }
+
+        return view('user/cek_status_surat', $data);
+    }
 }

@@ -98,9 +98,22 @@ $routes->get('buku-tamu', 'BukuTamu::form'); // route untuk halaman form buku ta
 
 
 // Routes untuk Pengajuan Surat
-$routes->get('pengajuan_surat', 'PengajuanSurat::index');
-$routes->get('pengajuan_surat/export_excel', 'PengajuanSurat::export_excel');
-$routes->get('pengajuan_surat/ubah_status/(:num)/(:segment)', 'PengajuanSurat::ubah_status/$1/$2');
+// ===== ROUTES USER =====
+$routes->post('pengajuan_surat/simpan', 'PengajuanSurat::simpan');
+
+// ===== ROUTES ADMIN =====
+$routes->get('admin/pengajuan_surat', 'PengajuanSurat::index');
+$routes->get('admin/pengajuan_surat/export_excel', 'PengajuanSurat::export_excel');
+$routes->get('admin/pengajuan_surat/ubah_status/(:num)/(:segment)', 'PengajuanSurat::ubah_status/$1/$2');
+$routes->match(['get', 'post'], 'cek_status_surat', 'PengajuanSurat::cek_status');
+
+$routes->get('pengajuan_surat', 'PengajuanSurat::form');
+
+
+
+
+
+
 
 
 //routes untuk petir

@@ -63,9 +63,7 @@
                             <th>Instansi</th>
                             <th>Kegiatan</th>
                             <th>Foto</th>
-                            <th>Tanggal</th>
                             <th>Waktu</th>
-                            <th>Waktu Submit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,8 +82,6 @@
                                         <span class="text-muted">Tidak ada</span>
                                     <?php endif; ?>
                                 </td>
-                                <td><?= esc($row->tanggal_kunjungan) ?></td>
-                                <td><?= esc($row->waktu_kunjungan) ?></td>
                                 <td><?= esc($row->created_at) ?></td>
                             </tr>
                         <?php endforeach; ?>
