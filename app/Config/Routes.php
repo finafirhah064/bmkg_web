@@ -37,6 +37,10 @@ $routes->post('hilal/update/(:num)', 'HilalController::update_hilal/$1');
 $routes->get('hilal/delete/(:num)', 'HilalController::delete_hilal/$1');
 $routes->get('hilal/downloadExcel', 'HilalController::downloadExcel');
 $routes->post('hilal/uploadExcel', 'HilalController::uploadExcel');
+// app/Config/Routes.php
+
+$routes->get('user/hilal', 'UserController::hilal');  // Menampilkan data hilal untuk user
+$routes->get('user/hilal/detail/(:segment)', 'UserController::detail/$1'); // Menampilkan detail pengamatan hilal
 
 
 // Temperatur Routes 
