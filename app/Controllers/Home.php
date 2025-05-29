@@ -10,11 +10,26 @@ class Home extends BaseController
 {
     public function dashboard()
     {
+        $mahasiswa = new \App\Models\AdministrasiModel();
+        $surat = new \App\Models\PengajuanSuratModel();
+        $petir = new \App\Models\ModelPetir();
+        $berita = new \App\Models\ModelBeritaKegiatan();
+
+        $data = [
+            'totalMahasiswa' => $mahasiswa->countAll(),
+            'totalSurat' => $surat->countAll(),
+            'totalPetir' => $petir->countAll(),
+            'totalBerita' => $berita->countAll(),
+            'dataPetir' => $petir->findAll() // ← semua data untuk peta
+        ];
+
         echo view('admin/admin_header');
         echo view('admin/admin_nav');
-        echo view('admin/admin_dashboard');
+        echo view('admin/admin_dashboard', $data); // ← data dikirim ke dashboard
         echo view('admin/admin_footer');
     }
+
+
     public function index()
     {
         $data = [
@@ -35,7 +50,7 @@ class Home extends BaseController
             'title' => 'Data Terbit Tenggelam',
             'dataMb' => $mb->tampilterbitenggelam()
         ];
-        
+
         echo view('admin/admin_header', $data);
         echo view('admin/admin_nav');
         echo view('admin/admin_terbit_tenggelam', $data);
@@ -63,11 +78,11 @@ class Home extends BaseController
         $data = [
             'title' => 'Pengamatan Hilal',
             'pengamatan' => $model->where('dipublikasikan', 1)
-                                  //->orderBy('tanggal_observasi', 'DESC')//
-                                  ->orderBy('id_pengamatan_hilal', 'ASC')
-                                  ->findAll()
+                //->orderBy('tanggal_observasi', 'DESC')//
+                ->orderBy('id_pengamatan_hilal', 'ASC')
+                ->findAll()
         ];
-        
+
         echo view('admin/admin_header', $data);
         echo view('admin/admin_nav');
         echo view('admin/hilal/admin_hilal', $data);
@@ -80,7 +95,7 @@ class Home extends BaseController
         echo view('user/user_header');
         echo view('user/user_dashboard');
         echo view('user/user_footer');
-        
+
         // echo view('admin/admin_footer');
     }
 }
