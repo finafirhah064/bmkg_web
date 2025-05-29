@@ -185,7 +185,7 @@
                                 <li><a class="dropdown-item" href="#">Temperatur</a></li>
                                 <li><a class="dropdown-item" href="#">Tekanan Udara</a></li>
                                 <li><a class="dropdown-item" href="#">Terbit & Tenggelam</a></li>
-                                <li><a class="dropdown-item" href="#">Hilal</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('user/hilal'); ?>">Hilal</a></li>
                                 <li><a class="dropdown-item" href="#">Hiposenter</a></li>
                             </ul>
                         </li>
@@ -196,8 +196,6 @@
     </header>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-
 </body>
 
 </html>
