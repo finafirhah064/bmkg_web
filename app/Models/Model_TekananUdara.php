@@ -65,4 +65,12 @@ class Model_TekananUdara extends Model
     {
         return $this->db->table($this->table)->update($data, $where);
     }
+
+    public function getTodayPressure()
+{
+    return $this->where('tgl', date('Y-m-d'))->asArray()->first();
+}
+
+
+
 }
