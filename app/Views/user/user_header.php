@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Primary Meta Tags -->
-    <title>BMKG</title>
+    <title>BMKG Karangkates</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="title" content="Volt - Free Bootstrap 5 Admin Dashboard">
     <meta name="author" content="Themesberg">
@@ -25,8 +25,9 @@
     <meta property="twitter:image" content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/volt-pro-bootstrap-5-dashboard/volt-pro-preview.jpg">
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="120x120" href="./assets/img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="/assets/img/bmkg-logo.png">
+    <!-- <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon/favicon-16x16.png"> -->
     <link rel="manifest" href="./assets/img/favicon/site.webmanifest">
     <link rel="mask-icon" href="/assets/img/favicon/safari-pinned-tab.svg" color="#ffffff">
     <meta name="msapplication-TileColor" content="#ffffff">
@@ -157,7 +158,7 @@
                                 Informasi
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="informasiDropdown">
-                                <li><a class="dropdown-item" href="#">Berita Kegiatan</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('user/beritakegiatan') ?>">Berita Kegiatan</a></li>
                                 <li><a class="dropdown-item" href="#">Pengumuman</a></li>
                                 <li><a class="dropdown-item" href="#">Tentang BMKG</a></li>
                             </ul>
@@ -194,12 +195,7 @@
         </nav>
     </header>
 
-    <!-- Bootstrap JS (required for responsive navbar) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Bootstrap 5 -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script> -->
-
 </body>
 
 </html>
