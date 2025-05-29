@@ -122,3 +122,10 @@ $routes->post('Gempa/update/(:num)', 'Gempa::update/$1');
 $routes->get('Gempa/delete/(:num)', 'Gempa::delete/$1');
 $routes->post('Gempa/upload', 'Gempa::upload');
 
+
+
+
+
+
+
+$routes->get('user/beritakegiatan', 'Berita_Kegiatan::user_beritakegiatan');
