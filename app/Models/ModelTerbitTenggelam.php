@@ -19,15 +19,10 @@ class ModelTerbitTenggelam extends Model
 
     protected $useTimestamps = false; // atau true kalau pakai created_at, updated_at
 
-    function __construct()
-    {
-        $this->db = db_connect();
-    }
-
     // Menampilkan semua data
     public function tampilterbitenggelam()
     {
-        return $this->db->table($this->table)->get()->getResult();
+        return $this->db->table($this->table)->get()->getResult('array');
     }
 
     // Mengambil data berdasarkan ID

@@ -85,8 +85,8 @@
         </nav>
         <div class="d-flex justify-content-between w-100 flex-wrap">
             <div class="mb-3 mb-lg-0">
-                <h1 class="h4">Data Terbit Tenggelam</h1>
-                <p class="mb-0">Dozens of reusable components built to provide buttons, alerts, popovers, and more.</p>
+                <h1 class="h4">Data Temperatur</h1>
+                <p class="mb-0">Data temperatur bulanan</p>
             </div>
             <div>
                 <a href="<?php echo base_url('Temperatur/form_temperatur'); ?>"

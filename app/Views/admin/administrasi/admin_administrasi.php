@@ -16,7 +16,6 @@
                                 value="<?= esc($keyword ?? '') ?>" aria-label="Search" aria-describedby="topbar-addon">
                         </div>
                     </form>
-
                 </div>
                 <ul class="navbar-nav align-items-center">
                     <li class="nav-item dropdown ms-lg-3">
@@ -46,7 +45,6 @@
             </div>
         </div>
     </nav>
-
     <!-- Breadcrumb -->
     <div class="py-4">
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
@@ -89,7 +87,6 @@
             </div>
         </div>
     </div>
-
     <!-- Table Card -->
     <div class="card border-0 shadow mb-4">
         <div class="card-body">

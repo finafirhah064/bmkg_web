@@ -10,22 +10,17 @@ class ModelBeritaKegiatan extends Model
     protected $primaryKey = 'id_berita'; // sesuaikan dengan primary key yang kamu pakai
 
     protected $useAutoIncrement = true;
-    protected $returnType     = 'array';
+    protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
     protected $allowedFields = ['tanggal', 'gambar', 'judul', 'isi'];
 
     protected $useTimestamps = false; // atau true kalau pakai created_at, updated_at
 
-    function __construct()
-    {
-        $this->db = db_connect();
-    }
-
     // Menampilkan semua data
     public function tampilberitakegiatan()
     {
-        return $this->db->table($this->table)->get()->getResult();
+        return $this->db->table($this->table)->get()->getResult('array'); // tambahkan 'array'
     }
 
     // Mengambil data berdasarkan ID
