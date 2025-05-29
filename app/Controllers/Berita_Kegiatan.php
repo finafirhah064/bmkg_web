@@ -155,4 +155,16 @@ class Berita_Kegiatan extends BaseController
         }
     }
 
+    public function user_beritakegiatan()
+    {
+        helper('text'); 
+        $model = new ModelBeritaKegiatan();
+        $data['berita'] = $model->findAll(); // Ambil semua berita dari database
+
+        echo view('user/user_header');
+        echo view('user/berita_kegiatan/user_beritakegiatan', $data); // kirim data ke view
+        echo view('user/user_footer');
+    }
+
+
 }
