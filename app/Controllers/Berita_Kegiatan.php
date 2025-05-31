@@ -10,15 +10,23 @@ class Berita_Kegiatan extends BaseController
 {
     public function view_beritakegiatan()
     {
-        $mb = new ModelBeritaKegiatan();
-        $datamb = $mb->tampilberitakegiatan();
-        $data = array('dataMb' => $datamb, );
+        $model = new ModelBeritaKegiatan();
+        $keyword = $this->request->getGet('keyword');
+
+        if ($keyword) {
+            $data['dataMb'] = $model->like('judul', $keyword)->findAll(); // asalkan returnType = 'array'
+        } else {
+            $data['dataMb'] = $model->tampilberitakegiatan();
+        }
+
+        $data['keyword'] = $keyword;
 
         echo view('admin/admin_header');
         echo view('admin/admin_nav');
         echo view('admin/berita_kegiatan/admin_beritakegiatan', $data);
         echo view('admin/admin_footer');
     }
+
 
     public function form_beritakegiatan()
     {
@@ -90,7 +98,7 @@ class Berita_Kegiatan extends BaseController
         }
 
         // Berhasil
-        return redirect()->to('form/BeritaKegiatan')->with('success', 'Data berhasil disimpan');
+        return redirect()->to('BeritaKegiatan')->with('success', 'Data berhasil disimpan');
     }
 
 
@@ -131,7 +139,7 @@ class Berita_Kegiatan extends BaseController
 
         // Data untuk disimpan
         $data = [
-            'tanggal' => $tanggal, 
+            'tanggal' => $tanggal,
             'judul' => $judul,
             'isi' => $isi,
             'gambar' => $namaGambar,
@@ -146,5 +154,17 @@ class Berita_Kegiatan extends BaseController
             return redirect()->back()->with('error', 'Gagal memperbarui data.');
         }
     }
+
+    public function user_beritakegiatan()
+    {
+        helper('text'); 
+        $model = new ModelBeritaKegiatan();
+        $data['berita'] = $model->findAll(); // Ambil semua berita dari database
+
+        echo view('user/user_header');
+        echo view('user/berita_kegiatan/user_beritakegiatan', $data); // kirim data ke view
+        echo view('user/user_footer');
+    }
+
 
 }

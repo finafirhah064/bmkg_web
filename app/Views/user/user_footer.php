@@ -4,7 +4,7 @@
 
     <footer class="text-center">
         <div class="container d-flex flex-column align-items-center">
-            <img src="./assets/img/bmkg-logo.png" alt="BMKG" class="logo mb-3">
+            <img src="../../assets/img/bmkg-logo.png" alt="BMKG" class="logo mb-3">
             <h5 class="fw-bold">KONTAK KAMI</h5>
             <p><i class="fas fa-map-marker-alt"></i> Jl. Bend. Lahor No.40, Karangkates, Kec. Sumberpucung, Kabupaten Malang, Jawa Timur 65165</p>
             <p><i class="fas fa-phone-alt"></i> 081232087312</p>

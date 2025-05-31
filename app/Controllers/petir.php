@@ -11,6 +11,16 @@ class Petir extends BaseController
     public function view_petir()
     {
         $model = new ModelPetir();
+        $keyword = $this->request->getGet('keyword');
+
+        if ($keyword) {
+            $data['dataMb'] = $model->like('wilayah', $keyword)
+            ->orlike('jenis_petir', $keyword)
+            ->findAll(); // asalkan returnType = 'array'
+        } else {
+            $data['dataMb'] = $model->findAll();
+        }
+        $model = new ModelPetir();
         $dataPetir = $model->findAll();
 
         $data = [
@@ -79,7 +89,7 @@ class Petir extends BaseController
 
         // Simpan ke database
         $model->insert($data);
-        return redirect()->to('/Petir')->with('success', 'Data berhasil disimpan.');
+        return redirect()->to('Petir')->with('success', 'Data berhasil disimpan.');
     }
 
 
@@ -103,7 +113,7 @@ class Petir extends BaseController
     {
         $model = new ModelPetir();
         $model->delete($id);
-        return redirect()->to('/Petir')->with('success', 'Data berhasil dihapus.');
+        return redirect()->to('Petir')->with('success', 'Data berhasil dihapus.');
     }
 
     public function upload()

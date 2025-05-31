@@ -123,15 +123,18 @@
                             <p class="text-secondary small mb-0">Total Sambaran Petir</p>
                         </div>
                     </div>
-                    <div class="col-6 col-md-3 col-lg-2">
-                        <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-                            <div class="icon-circle bg-light-red mb-3 mx-auto">
-                                <i class="fas fa-temperature-high fa-lg text-danger"></i>
-                            </div>
-                            <h5 class="fw-bold mb-1">33,4°C</h5>
-                            <p class="text-secondary small mb-0">Suhu tertinggi Hari Ini</p>
-                        </div>
-                    </div>
+
+                    <<div class="col-6 col-md-3 col-lg-2">
+    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
+        <div class="icon-circle bg-light-blue mb-3 mx-auto">
+            <i class="fas fa-tachometer-alt fa-lg text-info"></i>
+        </div>
+        <h5 class="fw-bold mb-1"><?= esc($tekanan) ?> hPa</h5>
+        <p class="text-secondary small mb-0">Tekanan Udara</p>
+    </div>
+</div>
+
+
                     <div class="col-6 col-md-3 col-lg-2">
                         <div class="card shadow-sm border-0 rounded-4 text-center p-3">
                             <div class="icon-circle bg-light-blue mb-3 mx-auto">
@@ -203,8 +206,6 @@
             </div>
         </section>
     </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

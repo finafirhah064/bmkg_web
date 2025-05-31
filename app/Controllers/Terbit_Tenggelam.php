@@ -10,9 +10,18 @@ class Terbit_Tenggelam extends BaseController
 {
     public function view_terbit_tenggelam()
     {
-        $mb = new ModelTerbitTenggelam();
-        $datamb = $mb->tampilterbitenggelam();
-        $data = array('dataMb' => $datamb, );
+        $model = new ModelTerbitTenggelam();
+        $keyword = $this->request->getGet('keyword');
+
+        if ($keyword) {
+            $data['dataMb'] = $model->like('tanggal', $keyword)
+            ->orLike('kecamatan', $keyword)
+            ->findAll(); // asalkan returnType = 'array'
+        } else {
+            $data['dataMb'] = $model->tampilterbitenggelam();
+        }
+
+        $data['keyword'] = $keyword;
 
         echo view('admin/admin_header');
         echo view('admin/admin_nav');
@@ -76,7 +85,7 @@ class Terbit_Tenggelam extends BaseController
         }
         // Cek hasil
         if ($simpan) {
-            return redirect()->to('FormTerbitTenggelam')->with('success', 'Data berhasil disimpan');
+            return redirect()->to('TerbitTenggelam')->with('success', 'Data berhasil disimpan');
         } else {
             return redirect()->back()->with('error', 'Gagal menyimpan data');
         }
@@ -110,7 +119,7 @@ class Terbit_Tenggelam extends BaseController
 
         // Check apakah update berhasil
         if ($simpan) {
-            return redirect()->to(base_url('/Home/updateterbittenggelam/' . $id))->with('success', 'Data berhasil diperbarui.');
+            return redirect()->to(base_url('TerbitTenggelam'))->with('success', 'Data berhasil diperbarui.');
         } else {
             return redirect()->back()->with('error', 'Gagal memperbarui data.');
         }

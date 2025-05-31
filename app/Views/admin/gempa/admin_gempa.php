@@ -79,17 +79,17 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item"><a href="#">Berita Kegiatan</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Form Tambah</li>
+                <li class="breadcrumb-item"><a href="#">Gempa</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Data Gempa</li>
             </ol>
         </nav>
         <div class="d-flex justify-content-between w-100 flex-wrap">
             <div class="mb-3 mb-lg-0">
-                <h1 class="h4">Data Temperatur</h1>
-                <p class="mb-0">Data temperatur bulanan</p>
+                <h1 class="h4">Data Gempa</h1>
+                <p class="mb-0">Data ini adalah data gempa</p>
             </div>
             <div>
-                <a href="<?php echo base_url('Temperatur/form_temperatur'); ?>"
+                <a href="<?php echo base_url('Gempa/form_gempa'); ?>"
                     class="btn btn-outline-gray-600 d-inline-flex align-items-center">
                     <!-- <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
@@ -117,35 +117,32 @@
                     <tr>
                         <th class="border-0 rounded-start">No</th>
                         <th class="border-0">Tanggal</th>
-                        <th class="border-0">07:00</th>
-                        <th class="border-0">13:00</th>
-                        <th class="border-0">18:00</th>
-                        <th class="border-0">Rata²</th>
-                        <th class="border-0">Max</th>
-                        <th class="border-0">Min</th>
-                        <th class="border-0">Curah Hujan</th>
-                        <th class="border-0">Penyinaran</th>
-                        <th class="border-0">Peristiwa Khusus</th>
+                        <th class="border-0">Jam</th>
+                        <th class="border-0">Lintang</th>
+                        <th class="border-0">Bujur</th>
+                        <th class="border-0">Depth</th>
+                        <th class="border-0">Magnitudo</th>
+                        <th class="border-0">Keterangan</th>
+                        <th class="border-0">Dirasakan</th>
                         <th class="border-0 rounded-end">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $no = 1; foreach ($dataTemperatur as $row): ?>
+                    <?php $no = 1; foreach ($dataGempa as $row): ?>
                         <tr>
                             <td><?= $no++; ?></td>
-                            <td><?= date('d-m-Y', strtotime($row->tgl)); ?></td>
-                            <td><?= $row->temperatur_07; ?>°C</td>
-                            <td><?= $row->temperatur_13; ?>°C</td>
-                            <td><?= $row->temperatur_18; ?>°C</td>
-                            <td><?= $row->rata2; ?>°C</td>
-                            <td><?= $row->max; ?>°C</td>
-                            <td><?= $row->min; ?>°C</td>
-                            <td><?= $row->curah_hujan_07; ?> mm</td>
-                            <td><?= $row->penyinaran_matahari; ?>%</td>
-                            <td><?= $row->peristiwa_khusus ?? '-'; ?></td>
+                            <td><?= date('d-m-Y', strtotime($row['tanggal'])); ?></td>  <!-- Benar -->
+                            <td><?= $row['Tanggal']; ?></td>
+                            <td><?= $row['Jam']; ?></td>
+                            <td><?= $row['Lintang']; ?></td>
+                            <td><?= $row['Bujur']; ?></td>
+                            <td><?= $row['Depth']; ?></td>
+                            <td><?= $row['Magnitudo']; ?></td>
+                            <td><?= $row['Keterangan']; ?></td>
+                            <td><?= $row['Dirasakan']; ?></td>
                             <td>
-                                <a href="<?= base_url('/Temperatur/form_update_temperatur/' . $row->id_temperatur); ?>" class="btn btn-sm btn-primary">Edit</a>
-                                <a href="<?= base_url('/Temperatur/delete_temperatur/' . $row->id_temperatur); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
+                                <a href="<?= base_url('/Gempa/form_update_gempa/' . $row->id_gempa); ?>" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="<?= base_url('/Gempa/delete_gempa/' . $row->id_gempa); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

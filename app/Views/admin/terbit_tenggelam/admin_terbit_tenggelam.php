@@ -5,63 +5,24 @@
             <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
                 <div class="d-flex align-items-center">
                     <!-- Search form -->
-                    <!-- <form class="navbar-search form-inline" id="navbar-search-main">
+                    <form class="navbar-search form-inline" id="navbar-search-main" method="GET"
+                        action="<?= base_url('TerbitTenggelam') ?>">
                         <div class="input-group input-group-merge search-bar">
                             <span class="input-group-text" id="topbar-addon">
                                 <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                    fill="currentColor" aria-hidden="true">
+                                    fill="currentColor">
                                     <path fill-rule="evenodd"
                                         d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
                                         clip-rule="evenodd"></path>
                                 </svg>
                             </span>
-                            <input type="text" class="form-control" id="topbarInputIconLeft" placeholder="Search"
+                            <input type="text" class="form-control" name="keyword" id="topbarInputIconLeft"
+                                placeholder="Cari Tanggal/Kecamatan..." value="<?= esc($keyword ?? '') ?>"
                                 aria-label="Search" aria-describedby="topbar-addon">
                         </div>
-                    </form> -->
-                    <!-- / Search form -->
+                    </form>
                 </div>
-                <!-- <ul class="navbar-nav align-items-center">
-                    <li class="nav-item dropdown ms-lg-3">
-                        <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <div class="media d-flex align-items-center">
-                                <img class="avatar rounded-circle" alt="Image placeholder"
-                                    src="../../assets/img/team/bmkg.jpg">
-                                <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                                    <span class="mb-0 font-small fw-bold text-gray-900">Admin</span>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="dropdown-menu dashboard-dropdown dropdown-menu-end mt-2 py-1">
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <svg class="dropdown-icon text-danger me-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
-                                    </path>
-                                </svg>
-                                Logout
-                            </a>
-                        </div>
-                    </li>
-                </ul> -->
             </div>
-        </div>
-    </nav>
-
-    <!-- Mobile Navbar -->
-    <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
-        <a class="navbar-brand me-lg-5" href="../../index.html">
-            <img class="navbar-brand-dark" src="../../assets/img/brand/light.svg" alt="Volt logo" />
-            <img class="navbar-brand-light" src="../../assets/img/brand/dark.svg" alt="Volt logo" />
-        </a>
-        <div class="d-flex align-items-center">
-            <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
         </div>
     </nav>
 
@@ -87,19 +48,13 @@
         <div class="d-flex justify-content-between w-100 flex-wrap">
             <div class="mb-3 mb-lg-0">
                 <h1 class="h4">Data Terbit Tenggelam</h1>
-                <p class="mb-0">Dozens of reusable components built to provide buttons, alerts, popovers, and more.</p>
+                <p class="mb-0">Tabel Terbit Tenggelam.</p>
             </div>
             <div>
                 <a href="<?php echo base_url('FormTerbitTenggelam'); ?>"
-                    class="btn btn-outline-gray-600 d-inline-flex align-items-center">
-                    <!-- <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                            clip-rule="evenodd"></path>
-                    </svg> -->
-                    <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor">
+                    class="btn btn-outline-success d-inline-flex align-items-center me-2">
+                    <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
@@ -108,20 +63,30 @@
             </div>
         </div>
     </div>
-
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?= session()->getFlashdata('success') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php elseif (session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?= session()->getFlashdata('error') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
     <!-- Table Card -->
     <div class="card border-0 shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-centered table-nowrap mb-0 rounded">
+                <table class="table table-centered table-hover mb-0 rounded">
                     <thead class="thead-light">
                         <tr>
-                            <th class="border-0 rounded-start">ID</th>
-                            <th class="border-0">Tanggal</th>
-                            <th class="border-0">Waktu Terbit</th>
-                            <th class="border-0">Waktu Tenggelam</th>
-                            <th class="border-0">Kota/Kecamatan</th>
-                            <th class="border-0 rounded-end">Action</th>
+                            <th>ID</th>
+                            <th>Tanggal</th>
+                            <th>Waktu Terbit</th>
+                            <th>Waktu Tenggelam</th>
+                            <th>Kota/Kecamatan</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -130,13 +95,16 @@
                             $no++; ?>
                             <tr>
                                 <td><?= $no; ?></td>
-                                <td><?= $row->tanggal; ?></td>
-                                <td><?= $row->waktu_terbit; ?></td>
-                                <td><?= $row->waktu_tenggelam; ?></td>
-                                <td><?= $row->kecamatan; ?></td>
+                                <td><?= $row['tanggal'] ?></td>
+                                <td><?= $row['waktu_terbit'] ?></td>
+                                <td><?= $row['waktu_tenggelam'] ?></td>
+                                <td><?= $row['kecamatan'] ?></td>
                                 <td>
-                                    <a href="<?= base_url('/Home/updateterbittenggelam/' . $row->id_terbit_tenggelam); ?>" class="btn btn-sm btn-primary">Edit</a>
-                                    <a href="<?= base_url('/Home/deleteterbittenggelam/' . $row->id_terbit_tenggelam); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
+                                    <a href="<?= base_url('/Home/updateterbittenggelam/' . $row['id_terbit_tenggelam']); ?>"
+                                        class="btn btn-sm btn-warning">Edit</a>
+                                    <a href="<?= base_url('/Home/deleteterbittenggelam/' . $row['id_terbit_tenggelam']); ?>"
+                                        class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -163,5 +131,3 @@
     <script src="../../vendor/simplebar/dist/simplebar.min.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="../../assets/js/volt.js"></script>
-
-    
