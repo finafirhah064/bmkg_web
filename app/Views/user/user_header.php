@@ -150,7 +150,7 @@
                 <div class="collapse navbar-collapse" id="navbar_global">
                     <ul class="navbar-nav ms-auto navbar-nav-hover align-items-lg-center">
                         <li class="nav-item me-3">
-                            <a href=<?= base_url('user/dashboard') ?> class="nav-link">Home</a>
+                            <a href=<?= base_url('/') ?> class="nav-link">Home</a>
                         </li>
 
                         <li class="nav-item dropdown me-3">
@@ -158,9 +158,8 @@
                                 Informasi
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="informasiDropdown">
-                                <li><a class="dropdown-item" href="<?= base_url('user/beritakegiatan') ?>">Berita Kegiatan</a></li>
-                                <li><a class="dropdown-item" href="#">Pengumuman</a></li>
-                                <li><a class="dropdown-item" href="#">Tentang BMKG</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('user/beritakegiatan') ?>">Berita & Pengumuman</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('user/tentangbmkg') ?>">Tentang BMKG</a></li>
                             </ul>
                         </li>
 

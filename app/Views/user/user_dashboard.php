@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="id">
 
 <head>
@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Selamat Datang di Dashboard BMKG</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" /> -->
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -99,114 +99,165 @@
 </head>
 
 <body>
-
-    <main>
-        <!-- Hero -->
-        <section class="section-header text-center">
-            <div class="container">
-                <h1 class="fw-bold">Selamat Datang!</h1>
-                <p class="lead">Pantau data cuaca, suhu, gempa, dan layanan publik secara real-time wilayah Malang.</p>
-            </div>
-        </section>
-
-        <!-- Statistik Harian -->
-        <section class="statistik-harian py-5">
-            <div class="container">
-                <h3 class="fw-bold text-dark mb-4 text-center">Statistik Harian</h3>
-                <div class="row justify-content-center g-4">
-                    <div class="col-6 col-md-3 col-lg-2">
-                        <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-                            <div class="icon-circle bg-light-orange mb-3 mx-auto">
-                                <i class="fas fa-bolt fa-lg text-orange"></i>
-                            </div>
-                            <h5 class="fw-bold mb-1">1.827</h5>
-                            <p class="text-secondary small mb-0">Total Sambaran Petir</p>
-                        </div>
-                    </div>
-
-                    <<div class="col-6 col-md-3 col-lg-2">
-    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-        <div class="icon-circle bg-light-blue mb-3 mx-auto">
-            <i class="fas fa-tachometer-alt fa-lg text-info"></i>
+    <!-- Hero -->
+    <section class="section-header text-center">
+        <div class="container">
+            <h1 class="fw-bold">Selamat Datang!</h1>
+            <p class="lead">Pantau data cuaca, suhu, gempa, dan layanan publik secara real-time wilayah Malang.</p>
         </div>
-        <h5 class="fw-bold mb-1"><?= esc($tekanan) ?> hPa</h5>
-        <p class="text-secondary small mb-0">Tekanan Udara</p>
-    </div>
-</div>
-
-
-                    <div class="col-6 col-md-3 col-lg-2">
-                        <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-                            <div class="icon-circle bg-light-blue mb-3 mx-auto">
-                                <i class="fas fa-tachometer-alt fa-lg text-info"></i>
-                            </div>
-                            <h5 class="fw-bold mb-1">1009 hPa</h5>
-                            <p class="text-secondary small mb-0">Tekanan Udara</p>
+    </section>
+    <!-- Statistik Harian -->
+    <section class="statistik-harian py-5">
+        <div class="container">
+            <h3 class="fw-bold text-dark mb-4 text-center">Statistik Harian</h3>
+            <div class="row justify-content-center g-4">
+                <!-- Kartu 1: Sambaran Petir -->
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
+                        <div class="icon-circle bg-light-orange mb-3 mx-auto">
+                            <i class="fas fa-bolt fa-lg text-orange"></i>
                         </div>
+                        <h5 class="fw-bold mb-1">1.827</h5>
+                        <p class="text-secondary small mb-0">Total Sambaran Petir</p>
                     </div>
-                    <div class="col-6 col-md-3 col-lg-2">
-                        <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-                            <div class="icon-circle bg-light-yellow mb-3 mx-auto">
-                                <i class="fas fa-sun fa-lg text-warning"></i>
-                            </div>
-                            <h5 class="fw-bold mb-1">05.31 - 17.52</h5>
-                            <p class="text-secondary small mb-0">Terbit & Tenggelam</p>
+                </div>
+
+                <!-- Kartu 2: Tekanan Udara (Dinamis) -->
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
+                        <div class="icon-circle bg-light-blue mb-3 mx-auto">
+                            <i class="fas fa-tachometer-alt fa-lg text-info"></i>
                         </div>
+                        <h5 class="fw-bold mb-1"><?= esc($tekanan) ?> hPa</h5>
+                        <p class="text-secondary small mb-0">Tekanan Udara</p>
+                    </div>
+                </div>
+
+                <!-- Kartu 3: Tekanan Udara (Statis) -->
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
+                        <div class="icon-circle bg-light-blue mb-3 mx-auto">
+                            <i class="fas fa-tachometer-alt fa-lg text-info"></i>
+                        </div>
+                        <h5 class="fw-bold mb-1">1009 hPa</h5>
+                        <p class="text-secondary small mb-0">Tekanan Udara</p>
+                    </div>
+                </div>
+
+                <!-- Kartu 4: Terbit & Tenggelam -->
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
+                        <div class="icon-circle bg-light-yellow mb-3 mx-auto">
+                            <i class="fas fa-sun fa-lg text-warning"></i>
+                        </div>
+                        <h5 class="fw-bold mb-1">05.31 - 17.52</h5>
+                        <p class="text-secondary small mb-0">Terbit & Tenggelam</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Berita Kegiatan -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-dark">Berita Kegiatan & Pengumuman</h2>
+                <p class="text-muted" style="color:rgb(0, 43, 86) !important;">Informasi terbaru dari kegiatan dan
+                    pengamatan yang dilakukan oleh BMKG.</p>
+            </div>
+            <div>
+                <!-- Tab Berita & Pengumuman -->
+                <div class="mb-4 d-flex justify-content-center">
+                    <ul class="nav nav-pills gap-2" id="beritaTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="btn btn-outline-birutua rounded-pill px-4 py-2 active" id="berita-tab"
+                                data-bs-toggle="pill" href="#berita" role="tab" aria-controls="berita"
+                                aria-selected="true">
+                                Berita Baru
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="btn btn-outline-birutua rounded-pill px-4 py-2" id="pengumuman-tab"
+                                data-bs-toggle="pill" href="#pengumuman" role="tab" aria-controls="pengumuman"
+                                aria-selected="false">
+                                Pengumuman
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content" id="beritaTabContent">
+                <div class="tab-pane fade show active" id="berita" role="tabpanel" aria-labelledby="berita-tab">
+                    <div class="row">
+                        <?php
+                        $ada_pengumuman = false;
+                        foreach ($berita as $item):
+                            if ($item['kategori'] == 'Berita Kegiatan'):
+                                $ada_pengumuman = true;
+                                ?>
+                                <div class="col-lg-4 col-md-6 mb-4">
+                                    <a href="<?= base_url('user/berita/' . $item['id_berita']) ?>"
+                                        class="text-decoration-none text-dark">
+                                        <div class="card h-100 shadow border-0 rounded-4 overflow-hidden">
+                                            <img src="<?= base_url('/uploads/berita/' . $item['gambar']) ?>" class="berita-img"
+                                                alt="Gambar Berita">
+                                            <div class="card-body">
+                                                <h5 class="card-title fw-semibold"><?= esc($item['judul']) ?></h5>
+                                                <p class="text-muted small">
+                                                    <i class="fas fa-calendar-alt me-1"></i>
+                                                    <?= date('d M Y', strtotime($item['tanggal'])) ?>
+                                                </p>
+                                                <p class="card-text">
+                                                    <?= esc(substr(strip_tags($item['isi']), 0, 90)) ?>...
+                                                </p>
+                                                <a href="<?= base_url('user/berita/' . $item['id_berita']) ?>"
+                                                    class="btn btn-outline-primary rounded-pill btn-sm mt-3 mb-3">
+                                                    Baca Selengkapnya <i class="fas fa-chevron-right ms-1"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php endif; endforeach; ?>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pengumuman" role="tabpanel" aria-labelledby="pengumuman-tab">
+                    <!-- Isi pengumuman di sini -->
+                    <div class="row">
+                        <?php
+                        $ada_pengumuman = false;
+                        foreach ($berita as $item):
+                            if ($item['kategori'] == 'Pengumuman'):
+                                $ada_pengumuman = true;
+                                ?>
+                                <div class="col-lg-4 col-md-6 mb-4">
+                                    <a href="<?= base_url('user/berita/' . $item['id_berita']) ?>"
+                                        class="text-decoration-none text-dark">
+                                        <div class="card h-100 shadow border-0 rounded-4 overflow-hidden">
+                                            <img src="<?= base_url('/uploads/berita/' . $item['gambar']) ?>" class="berita-img"
+                                                alt="Gambar Berita">
+                                            <div class="card-body">
+                                                <h5 class="card-title fw-semibold"><?= esc($item['judul']) ?></h5>
+                                                <p class="text-muted small">
+                                                    <i class="fas fa-calendar-alt me-1"></i>
+                                                    <?= date('d M Y', strtotime($item['tanggal'])) ?>
+                                                </p>
+                                                <p class="card-text">
+                                                    <?= esc(substr(strip_tags($item['isi']), 0, 90)) ?>...
+                                                </p>
+                                                <a href="<?= base_url('user/berita/' . $item['id_berita']) ?>"
+                                                    class="btn btn-outline-primary rounded-pill btn-sm mt-3 mb-3">
+                                                    Baca Selengkapnya <i class="fas fa-chevron-right ms-1"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php endif; endforeach; ?>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Berita Kegiatan -->
-        <!-- Berita Kegiatan -->
-        <section class="py-5 bg-white">
-            <div class="container">
-                <div class="text-center mb-5">
-                    <h2 class="fw-bold text-dark">Berita Kegiatan</h2>
-                    <p class="text-muted" style="color:rgb(0, 43, 86) !important;">Informasi terbaru dari kegiatan dan pengamatan yang dilakukan oleh BMKG.</p>
-
-                </div>
-                <div class="row">
-                    <!-- Berita Card -->
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100 shadow border-0 rounded-4 overflow-hidden">
-                            <img src="./assets/img/berita1.jpg" class="berita-img" alt="Berita 1">
-                            <div class="card-body">
-                                <h5 class="card-title fw-semibold text-dark">Judul Berita 1</h5>
-                                <p class="text-muted small"><i class="fas fa-calendar-alt me-1"></i> 27 Mei 2025</p>
-                                <p class="card-text">Ringkasan berita 1 ditampilkan di sini dalam 2–3 baris secara ringkas.</p>
-                                <a href="#" class="btn btn-outline-primary rounded-pill btn-sm">Baca Selengkapnya <i class="fas fa-chevron-right ms-1"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100 shadow border-0 rounded-4 overflow-hidden">
-                            <img src="./assets/img/berita1.jpg" class="berita-img" alt="Berita 2">
-                            <div class="card-body">
-                                <h5 class="card-title fw-semibold text-dark">Judul Berita 2</h5>
-                                <p class="text-muted small"><i class="fas fa-calendar-alt me-1"></i> 27 Mei 2025</p>
-                                <p class="card-text">Ringkasan berita 2 ditampilkan di sini dalam 2–3 baris secara ringkas.</p>
-                                <a href="#" class="btn btn-outline-primary rounded-pill btn-sm">Baca Selengkapnya <i class="fas fa-chevron-right ms-1"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100 shadow border-0 rounded-4 overflow-hidden">
-                            <img src="./assets/img/berita1.jpg" class="berita-img" alt="Berita 3">
-                            <div class="card-body">
-                                <h5 class="card-title fw-semibold text-dark">Judul Berita 3</h5>
-                                <p class="text-muted small"><i class="fas fa-calendar-alt me-1"></i> 27 Mei 2025</p>
-                                <p class="card-text">Ringkasan berita 3 ditampilkan di sini dalam 2–3 baris secara ringkas.</p>
-                                <a href="#" class="btn btn-outline-primary rounded-pill btn-sm">Baca Selengkapnya <i class="fas fa-chevron-right ms-1"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-</body>
-
-</html>
+        </div>
+    </section>

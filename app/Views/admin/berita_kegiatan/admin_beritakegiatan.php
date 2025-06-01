@@ -81,6 +81,7 @@
                             <th>Tanggal</th>
                             <th>Gambar</th>
                             <th>Judul</th>
+                            <th>Kategori</th>
                             <th>Isi</th> 
                             <th>Action</th>
                         </tr>
@@ -101,6 +102,7 @@
                                     <?php endif; ?>
                                 </td>
                                 <td><?= $row['judul']; ?></td>
+                                <td><?= $row['kategori']; ?></td>
                                 <td><?= substr(strip_tags($row['isi']), 0, 100) . '...'; ?></td>
                                 <td>
                                     <a href="<?= base_url('/update/FormBeritaKegiatan/' . $row['id_berita']); ?>"

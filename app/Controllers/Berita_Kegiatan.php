@@ -14,7 +14,9 @@ class Berita_Kegiatan extends BaseController
         $keyword = $this->request->getGet('keyword');
 
         if ($keyword) {
-            $data['dataMb'] = $model->like('judul', $keyword)->findAll(); // asalkan returnType = 'array'
+            $data['dataMb'] = $model->like('judul', $keyword)
+            ->orLike('kategori', $keyword)
+            ->findAll(); // asalkan returnType = 'array'
         } else {
             $data['dataMb'] = $model->tampilberitakegiatan();
         }
@@ -54,11 +56,12 @@ class Berita_Kegiatan extends BaseController
         $tanggal = date('Y-m-d'); // tidak ambil dari input form
         // Ambil input lainnya
         $judul = $this->request->getPost('judul');
+        $kategori = $this->request->getPost('kategori');
         $isi = $this->request->getPost('isi');
         $gambar = $this->request->getFile('gambar');
 
         // Validasi
-        if (empty($judul) || empty($isi)) {
+        if (empty($judul) || empty($isi) || empty($kategori)) {
             return redirect()->back()->with('error', 'Judul dan isi wajib diisi!');
         }
         // Default null
@@ -82,6 +85,7 @@ class Berita_Kegiatan extends BaseController
             'tanggal' => $tanggal,
             'gambar' => $namaGambar,
             'judul' => $judul,
+            'kategori' => $kategori,
             'isi' => $isi,
         ];
 
@@ -114,6 +118,7 @@ class Berita_Kegiatan extends BaseController
     {
         $tanggal = date('Y-m-d');
         $judul = $this->request->getPost('judul');
+        $kategori = $this->request->getPost('kategori');
         $isi = $this->request->getPost('isi');
         $gambar = $this->request->getFile('gambar');
 
@@ -141,6 +146,7 @@ class Berita_Kegiatan extends BaseController
         $data = [
             'tanggal' => $tanggal,
             'judul' => $judul,
+            'kategori' => $kategori,
             'isi' => $isi,
             'gambar' => $namaGambar,
         ];
@@ -157,14 +163,31 @@ class Berita_Kegiatan extends BaseController
 
     public function user_beritakegiatan()
     {
-        helper('text'); 
+        helper('text');
         $model = new ModelBeritaKegiatan();
-        $data['berita'] = $model->findAll(); // Ambil semua berita dari database
+
+        // Cukup satu query, nanti disaring di view
+        $data['berita'] = $model->orderBy('tanggal', 'DESC')->findAll();
 
         echo view('user/user_header');
         echo view('user/berita_kegiatan/user_beritakegiatan', $data); // kirim data ke view
         echo view('user/user_footer');
     }
+
+    public function detail_berita($id)
+    {
+        $model = new ModelBeritaKegiatan();
+        $berita = $model->find($id);
+
+        if (!$berita) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Berita tidak ditemukan");
+        }
+        echo view('user/user_header');
+        echo view('user/berita_kegiatan/user_detailberita', ['berita' => $berita]); // kirim data ke view
+        echo view('user/user_footer');
+    }
+
+
 
 
 }
