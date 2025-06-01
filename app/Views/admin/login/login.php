@@ -58,7 +58,6 @@
 </head>
 
 <body>
-
     <main>
         <section class="vh-100 d-flex align-items-center justify-content-center">
             <div class="container">
@@ -74,6 +73,21 @@
                                 <?php if (session()->getFlashdata('error')): ?>
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                         <?= session()->getFlashdata('error') ?>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                <?php endif; ?>
+
+                                <form action="<?= base_url('admin/loginauth') ?>" method="post">
+                                    <div class="mb-3 text-start">
+                                        <label for="username" class="form-label">Username</label>
+                                        <input type="text" class="form-control" id="username" name="username" required
+                                            autofocus>
+                                    </div>
+
+                                <?php if (session()->getFlashdata('success')): ?>
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <?= session()->getFlashdata('success') ?>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"
                                             aria-label="Close"></button>
                                     </div>

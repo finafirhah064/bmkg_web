@@ -28,6 +28,10 @@ $routes->post('add/BeritaKegiatan', 'Berita_Kegiatan::save_beritakegiatan');
 $routes->get('delete/BeritaKegiatan/(:num)', 'Berita_Kegiatan::delete_beritakegiatan/$1');
 $routes->get('/update/FormBeritaKegiatan/(:num)', 'Berita_Kegiatan::form_update_beritakegiatan/$1');
 $routes->post('update/BeritaKegiatan/(:num)', 'Berita_Kegiatan::update_beritakegiatan/$1');
+$routes->get('user/berita/(:num)', 'Berita_Kegiatan::detail_berita/$1');
+
+//Tentang BMKG
+$routes->get('user/tentangbmkg', 'Home::tentang_bmkg');
 
 // Hilal Routes - PASTIKAN PENULISAN 'hilal' KONSISTEN
 $routes->get('hilal', 'Home::hilal');
@@ -37,6 +41,12 @@ $routes->post('hilal/update/(:num)', 'HilalController::update_hilal/$1');
 $routes->get('hilal/delete/(:num)', 'HilalController::delete_hilal/$1');
 $routes->get('hilal/downloadExcel', 'HilalController::downloadExcel');
 $routes->post('hilal/uploadExcel', 'HilalController::uploadExcel');
+// app/Config/Routes.php
+
+$routes->get('user/hilal', 'UserController::hilal');  // Menampilkan data hilal untuk user
+$routes->get('user/hilal/detail/(:segment)', 'UserController::detail/$1'); // Menampilkan detail pengamatan hilal
+$routes->get('user/hilal/detail/(:num)', 'UserHilalController::detail/$1');
+
 
 
 // Temperatur Routes 

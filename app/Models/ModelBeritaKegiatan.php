@@ -13,7 +13,7 @@ class ModelBeritaKegiatan extends Model
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['tanggal', 'gambar', 'judul', 'isi'];
+    protected $allowedFields = ['tanggal', 'gambar', 'judul', 'isi', 'kategori'];
 
     protected $useTimestamps = false; // atau true kalau pakai created_at, updated_at
 

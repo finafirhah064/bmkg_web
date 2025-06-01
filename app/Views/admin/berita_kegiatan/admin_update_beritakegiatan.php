@@ -52,45 +52,56 @@
     </div>
 
     <!-- Form -->
-<div class="row">
-    <div class="col-12 mb-4">
-        <div class="card border-0 shadow components-section">
-            <div class="card-body">
-                <form method="POST" action="<?= site_url('update/BeritaKegiatan/' . $berita_kegiatan->id_berita) ?>" enctype="multipart/form-data">
-                    <div class="row">
-                        <!-- Judul -->
-                        <div class="col-md-12 mb-3">
-                            <label for="judul" class="form-label">Judul</label>
-                            <input type="text" class="form-control" id="judul" name="judul"
-                                   value="<?= esc($berita_kegiatan->judul) ?>" required>
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card border-0 shadow components-section">
+                <div class="card-body">
+                    <form method="POST" action="<?= site_url('update/BeritaKegiatan/' . $berita_kegiatan->id_berita) ?>"
+                        enctype="multipart/form-data">
+                        <div class="row">
+                            <!-- Judul -->
+                            <div class="col-md-12 mb-3">
+                                <label for="judul" class="form-label">Judul</label>
+                                <input type="text" class="form-control" id="judul" name="judul"
+                                    value="<?= esc($berita_kegiatan->judul) ?>" required>
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label for="kategori">Kategori</label>
+                                <select name="kategori" class="form-control" required>
+                                    <option value="">-- Pilih Kategori --</option>
+                                    <option value="Berita Kegiatan" <?= $berita_kegiatan->kategori == 'Berita Kegiatan' ? 'selected' : '' ?>>Berita Kegiatan</option>
+                                    <option value="Pengumuman" <?= $berita_kegiatan->kategori == 'Pengumuman' ? 'selected' : '' ?>>Pengumuman</option>
+                                </select>
+                            </div>
+                            <!-- Gambar -->
+                            <div class="col-md-12 mb-3">
+                                <label for="gambar" class="form-label">Gambar</label>
+                                <?php if (!empty($berita_kegiatan->gambar)): ?>
+                                    <p class="text-muted">Gambar saat ini:
+                                        <strong><?= esc($berita_kegiatan->gambar) ?></strong></p>
+                                <?php endif; ?>
+                                <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*">
+                            </div>
+
+                            <!-- Konten -->
+                            <div class="col-md-12 mb-3">
+                                <label for="isi" class="form-label">Konten</label>
+                                <input id="isi" type="hidden" name="isi"
+                                    value="<?= htmlspecialchars($berita_kegiatan->isi) ?>" required>
+                                <trix-editor input="isi"></trix-editor>
+                            </div>
                         </div>
 
-                        <!-- Gambar -->
-                        <div class="col-md-12 mb-3">
-                            <label for="gambar" class="form-label">Gambar</label>
-                            <?php if (!empty($berita_kegiatan->gambar)): ?>
-                                <p class="text-muted">Gambar saat ini: <strong><?= esc($berita_kegiatan->gambar) ?></strong></p>
-                            <?php endif; ?>
-                            <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*">
+                        <!-- Tombol Submit -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                         </div>
-
-                        <!-- Konten -->
-                        <div class="col-md-12 mb-3">
-                            <label for="isi" class="form-label">Konten</label>
-                            <input id="isi" type="hidden" name="isi" value="<?= htmlspecialchars($berita_kegiatan->isi) ?>" required>
-                            <trix-editor input="isi"></trix-editor>
-                        </div>
-                    </div>
-
-                    <!-- Tombol Submit -->
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <!-- Scripts -->
     <script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>

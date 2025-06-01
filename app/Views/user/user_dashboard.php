@@ -13,6 +13,13 @@
         background-color: #f4f6f9;
         color: #333;
     }
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+        }
 
     .section-header {
         background: linear-gradient(135deg, #003973, #E5E5BE);
@@ -149,6 +156,144 @@
                         </div>
                         <h5 class="fw-bold mb-1">05.31 - 17.52</h5>
                         <p class="text-secondary small mb-0">Terbit & Tenggelam</p>
+                    </div>
+                </div>
+
+                <!-- Kartu 2: Tekanan Udara (Dinamis) -->
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
+                        <div class="icon-circle bg-light-blue mb-3 mx-auto">
+                            <i class="fas fa-tachometer-alt fa-lg text-info"></i>
+                        </div>
+                        <h5 class="fw-bold mb-1"><?= esc($tekanan) ?> hPa</h5>
+                        <p class="text-secondary small mb-0">Tekanan Udara</p>
+                    </div>
+                </div>
+
+                <!-- Kartu 3: Tekanan Udara (Statis) -->
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
+                        <div class="icon-circle bg-light-blue mb-3 mx-auto">
+                            <i class="fas fa-tachometer-alt fa-lg text-info"></i>
+                        </div>
+                        <h5 class="fw-bold mb-1">1009 hPa</h5>
+                        <p class="text-secondary small mb-0">Tekanan Udara</p>
+                    </div>
+                </div>
+
+                <!-- Kartu 4: Terbit & Tenggelam -->
+                <div class="col-6 col-md-3 col-lg-2">
+                    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
+                        <div class="icon-circle bg-light-yellow mb-3 mx-auto">
+                            <i class="fas fa-sun fa-lg text-warning"></i>
+                        </div>
+                        <h5 class="fw-bold mb-1">05.31 - 17.52</h5>
+                        <p class="text-secondary small mb-0">Terbit & Tenggelam</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Berita Kegiatan -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-dark">Berita Kegiatan & Pengumuman</h2>
+                <p class="text-muted" style="color:rgb(0, 43, 86) !important;">Informasi terbaru dari kegiatan dan
+                    pengamatan yang dilakukan oleh BMKG.</p>
+            </div>
+            <div>
+                <!-- Tab Berita & Pengumuman -->
+                <div class="mb-4 d-flex justify-content-center">
+                    <ul class="nav nav-pills gap-2" id="beritaTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="btn btn-outline-birutua rounded-pill px-4 py-2 active" id="berita-tab"
+                                data-bs-toggle="pill" href="#berita" role="tab" aria-controls="berita"
+                                aria-selected="true">
+                                Berita Baru
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="btn btn-outline-birutua rounded-pill px-4 py-2" id="pengumuman-tab"
+                                data-bs-toggle="pill" href="#pengumuman" role="tab" aria-controls="pengumuman"
+                                aria-selected="false">
+                                Pengumuman
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content" id="beritaTabContent">
+                <div class="tab-pane fade show active" id="berita" role="tabpanel" aria-labelledby="berita-tab">
+                    <div class="row">
+                        <?php
+                        $ada_pengumuman = false;
+                        foreach ($berita as $item):
+                            if ($item['kategori'] == 'Berita Kegiatan'):
+                                $ada_pengumuman = true;
+                                ?>
+                                <div class="col-lg-4 col-md-6 mb-4">
+                                    <a href="<?= base_url('user/berita/' . $item['id_berita']) ?>"
+                                        class="text-decoration-none text-dark">
+                                        <div class="card h-100 shadow border-0 rounded-4 overflow-hidden">
+                                            <img src="<?= base_url('/uploads/berita/' . $item['gambar']) ?>" class="berita-img"
+                                                alt="Gambar Berita">
+                                            <div class="card-body">
+                                                <h5 class="card-title fw-semibold"><?= esc($item['judul']) ?></h5>
+                                                <p class="text-muted small">
+                                                    <i class="fas fa-calendar-alt me-1"></i>
+                                                    <?= date('d M Y', strtotime($item['tanggal'])) ?>
+                                                </p>
+                                                <p class="card-text">
+                                                    <?= esc(substr(strip_tags($item['isi']), 0, 90)) ?>...
+                                                </p>
+                                                <a href="<?= base_url('user/berita/' . $item['id_berita']) ?>"
+                                                    class="btn btn-outline-primary rounded-pill btn-sm mt-3 mb-3">
+                                                    Baca Selengkapnya <i class="fas fa-chevron-right ms-1"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php endif; endforeach; ?>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pengumuman" role="tabpanel" aria-labelledby="pengumuman-tab">
+                    <!-- Isi pengumuman di sini -->
+                    <div class="row">
+                        <?php
+                        $ada_pengumuman = false;
+                        foreach ($berita as $item):
+                            if ($item['kategori'] == 'Pengumuman'):
+                                $ada_pengumuman = true;
+                                ?>
+                                <div class="col-lg-4 col-md-6 mb-4">
+                                    <a href="<?= base_url('user/berita/' . $item['id_berita']) ?>"
+                                        class="text-decoration-none text-dark">
+                                        <div class="card h-100 shadow border-0 rounded-4 overflow-hidden">
+                                            <img src="<?= base_url('/uploads/berita/' . $item['gambar']) ?>" class="berita-img"
+                                                alt="Gambar Berita">
+                                            <div class="card-body">
+                                                <h5 class="card-title fw-semibold"><?= esc($item['judul']) ?></h5>
+                                                <p class="text-muted small">
+                                                    <i class="fas fa-calendar-alt me-1"></i>
+                                                    <?= date('d M Y', strtotime($item['tanggal'])) ?>
+                                                </p>
+                                                <p class="card-text">
+                                                    <?= esc(substr(strip_tags($item['isi']), 0, 90)) ?>...
+                                                </p>
+                                                <a href="<?= base_url('user/berita/' . $item['id_berita']) ?>"
+                                                    class="btn btn-outline-primary rounded-pill btn-sm mt-3 mb-3">
+                                                    Baca Selengkapnya <i class="fas fa-chevron-right ms-1"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php endif; endforeach; ?>
+
                     </div>
                 </div>
             </div>
@@ -424,4 +569,6 @@
                 </div>
             </div>
         </div>
+=======
+>>>>>>> cad161691c2597ff1e7a0e81b418fc09b52e423a
     </section>

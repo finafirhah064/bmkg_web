@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Controllers;
-
+use App\Models\Model_TekananUdara;
 use App\Models\ModelTerbitTenggelam;
 use App\Models\ModelPengamatanHilal;
 use App\Models\ModelGambarHilal;
+use App\Models\ModelBeritaKegiatan;
 
 class Home extends BaseController
 {
@@ -77,10 +78,29 @@ class Home extends BaseController
 
     public function user_dashboard()
     {
-        echo view('user/user_header');
-        echo view('user/user_dashboard');
+        $tekananModel = new Model_TekananUdara();
+        $today = $tekananModel->getTodayPressure();
+    
+        $data['tekanan'] = $today['tekanan_udara'] ?? '-';
+        $data['kelembaban_07'] = $today['kelembaban_07'] ?? '-';
+        $data['kecepatan_rata2'] = $today['kecepatan_rata2'] ?? '-';
+        $data['arah_terbanyak'] = $today['arah_terbanyak'] ?? '-';
+    
+        helper('text'); 
+        $model = new ModelBeritaKegiatan();
+        $data['berita'] = $model->orderBy('tanggal', 'DESC')->findAll(10);
+
+        echo view('user/user_header', $data);
+        echo view('user/user_dashboard', $data);
         echo view('user/user_footer');
-        
-        // echo view('admin/admin_footer');
     }
+
+    public function tentang_bmkg()
+    {
+        echo view('user/user_header');
+        echo view('user/tentang_bmkg/user_tentangbmkg'); // kirim data ke view
+        echo view('user/user_footer');
+    }
+    
+    
 }
