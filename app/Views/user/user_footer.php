@@ -4,7 +4,7 @@
 
     <footer class="text-center">
         <div class="container d-flex flex-column align-items-center">
-            <img src="./assets/img/bmkg-logo.png" alt="BMKG" class="logo mb-3">
+            <img src="../../assets/img/bmkg-logo.png" alt="BMKG" class="logo mb-3">
             <h5 class="fw-bold">KONTAK KAMI</h5>
             <p><i class="fas fa-map-marker-alt"></i> Jl. Bend. Lahor No.40, Karangkates, Kec. Sumberpucung, Kabupaten Malang, Jawa Timur 65165</p>
             <p><i class="fas fa-phone-alt"></i> 081232087312</p>
@@ -79,6 +79,12 @@
 
     <!-- Volt JS -->
     <script src="./assets/js/volt.js"></script>
+
+    <!-- Bootstrap JS (biasanya di akhir <body>) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
 
     </body>
 
