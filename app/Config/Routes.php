@@ -45,6 +45,8 @@ $routes->post('hilal/uploadExcel', 'HilalController::uploadExcel');
 
 $routes->get('user/hilal', 'UserController::hilal');  // Menampilkan data hilal untuk user
 $routes->get('user/hilal/detail/(:segment)', 'UserController::detail/$1'); // Menampilkan detail pengamatan hilal
+$routes->get('user/hilal/detail/(:num)', 'UserHilalController::detail/$1');
+
 
 
 // Temperatur Routes 
