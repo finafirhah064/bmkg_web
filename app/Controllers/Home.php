@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\Model_TekananUdara;
+use App\Models\Model_temperatur;
 use App\Models\ModelTerbitTenggelam;
 use App\Models\ModelPengamatanHilal;
 use App\Models\ModelGambarHilal;
@@ -77,23 +78,31 @@ class Home extends BaseController
 
 
     public function user_dashboard()
-    {
-        $tekananModel = new Model_TekananUdara();
-        $today = $tekananModel->getTodayPressure();
-    
-        $data['tekanan'] = $today['tekanan_udara'] ?? '-';
-        $data['kelembaban_07'] = $today['kelembaban_07'] ?? '-';
-        $data['kecepatan_rata2'] = $today['kecepatan_rata2'] ?? '-';
-        $data['arah_terbanyak'] = $today['arah_terbanyak'] ?? '-';
-    
-        helper('text'); 
-        $model = new ModelBeritaKegiatan();
-        $data['berita'] = $model->orderBy('tanggal', 'DESC')->findAll(10);
+{
+    $tekananModel = new Model_TekananUdara();
+    $today = $tekananModel->getTodayPressure();
 
-        echo view('user/user_header', $data);
-        echo view('user/user_dashboard', $data);
-        echo view('user/user_footer');
-    }
+    $data['tekanan'] = $today['tekanan_udara'] ?? '-';
+    $data['kelembaban_07'] = $today['kelembaban_07'] ?? '-';
+    $data['kecepatan_rata2'] = $today['kecepatan_rata2'] ?? '-';
+    $data['arah_terbanyak'] = $today['arah_terbanyak'] ?? '-';
+
+    // Tambahkan ini:
+    $temperaturModel = new model_temperatur();
+    $temperaturToday = $temperaturModel->getTodaytemperature();
+    $data['temperatur'] = $temperaturToday['temperatur_07'] ?? '-';
+    $data['curah_hujan'] = $temperaturToday['curah_hujan_07'] ?? '-';
+
+    helper('text'); 
+    $model = new ModelBeritaKegiatan();
+    $data['berita'] = $model->orderBy('tanggal', 'DESC')->findAll(10);
+
+    echo view('user/user_header', $data);
+    echo view('user/user_dashboard', $data);
+    echo view('user/user_footer');
+}
+
+
 
     public function tentang_bmkg()
     {

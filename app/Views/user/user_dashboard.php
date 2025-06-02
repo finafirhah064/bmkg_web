@@ -193,15 +193,17 @@
                             </div>
 
                             <!-- Kartu 3: Temperatur -->
-                            <div class="col-6 col-md-3 col-lg-2">
-                                <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-                                    <div class="icon-circle bg-light-red mb-3 mx-auto">
-                                        <i class="fas fa-thermometer-half fa-lg text-danger"></i> <!-- Ikon suhu -->
-                                    </div>
-                                    <h5 class="fw-bold mb-1">29°C</h5>
-                                    <p class="text-secondary small mb-0">Temperatur</p>
-                                </div>
-                            </div>
+                            <!-- Kartu Curah Hujan -->
+<div class="col-6 col-md-3 col-lg-2">
+    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
+        <div class="icon-circle bg-light-blue mb-3 mx-auto">
+            <i class="fas fa-cloud-rain fa-lg text-primary"></i>
+        </div>
+        <h5 class="fw-bold mb-1"><?= esc($curah_hujan)  ?> mm</h5>
+        <p class="text-secondary small mb-0">Curah Hujan</p>
+    </div>
+</div>
+
 
                             <!-- Kartu 4: Gempa -->
                             <div class="col-6 col-md-3 col-lg-2">

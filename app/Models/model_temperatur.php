@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class model_temperatur extends Model
+class Model_temperatur extends Model
 {
     protected $table = 'temperatur'; // nama tabel di database
     protected $primaryKey = 'id_temperatur'; // sesuaikan dengan primary key yang digunakan
@@ -66,4 +66,9 @@ class model_temperatur extends Model
     {
         return $this->db->table($this->table)->update($data, $where);
     }
+
+    public function getTodaytemperature()
+    {
+        return $this->where('tgl', date('Y-m-d'))->asArray()->first();
+    }  
 }
