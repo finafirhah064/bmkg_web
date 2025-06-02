@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Models\Model_TekananUdara;
 use App\Models\Model_temperatur;
+use App\Models\ModelGempa;
 use App\Models\ModelTerbitTenggelam;
 use App\Models\ModelPengamatanHilal;
 use App\Models\ModelGambarHilal;
@@ -76,7 +77,7 @@ class Home extends BaseController
         echo view('admin/admin_footer');
     }
 
-
+    // ==================== Statistik Harian ====================
     public function user_dashboard()
     {
         $tekananModel = new Model_TekananUdara();
@@ -92,13 +93,19 @@ class Home extends BaseController
         $data['temperatur'] = $temperaturToday['temperatur_07'] ?? '-';
         $data['curah_hujan'] = $temperaturToday['curah_hujan_07'] ?? '-';
 
+        //Terbit Tenggelam
         $modelTerbit = new ModelTerbitTenggelam();
-$data['dataTerbit'] = $modelTerbit->getLatestDataFiltered();
+        $data['dataTerbit'] = $modelTerbit->getLatestDataFiltered();
+        // Ambil tanggal terbaru untuk ditampilkan
+        $latest = $modelTerbit->select('tanggal')->orderBy('tanggal', 'DESC')->first();
+        $data['lastUpdate'] = $latest['tanggal'] ?? null;
 
-// Ambil tanggal terbaru untuk ditampilkan
-$latest = $modelTerbit->select('tanggal')->orderBy('tanggal', 'DESC')->first();
-$data['lastUpdate'] = $latest['tanggal'] ?? null;
-
+        //Gempa
+        $modelGempa = new ModelGempa();
+        $data['dataGempa'] = $modelGempa->getLatestGempaFiltered();
+        // Ambil tanggal terbaru untuk ditampilkan
+        $latest = $modelGempa->select('tanggal')->orderBy('tanggal', 'DESC')->first();
+        $data['lastUpdateGempa'] = $latest['tanggal'] ?? null;
 
         helper('text');
         $model = new ModelBeritaKegiatan();

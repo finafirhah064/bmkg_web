@@ -114,7 +114,7 @@
             <p class="lead">Pantau data cuaca, suhu, gempa, dan layanan publik secara real-time wilayah Malang.</p>
         </div>
     </section>
-    <section class="statistik-harian py-5">
+    <section class="statistik-harian py-5 mb-5">
         <div class="container">
             <h3 class="fw-bold text-dark mb-4 text-center">Statistik Harian</h3>
             <div id="statistikCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -154,13 +154,20 @@
                             </div>
                             <!-- Kartu 4: Gempa -->
                             <div class="col-6 col-md-3 col-lg-2">
-                                <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-                                    <div class="icon-circle bg-light-red mb-3 mx-auto">
-                                        <i class="fas fa-wave-square fa-lg text-danger"></i> <!-- Ikon gempa -->
+                                <?php foreach ($dataGempa as $item): ?>
+                                    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
+                                        <div class="icon-circle bg-light-red mb-3 mx-auto">
+                                            <i class="fas fa-wave-square fa-lg text-danger"></i> <!-- Ikon gempa -->
+                                        </div>
+                                        <h5 class="fw-bold mb-1"><?= esc($item['Magnitudo']) ?> SR</h5>
+                                        <p class="text-secondary small mb-0">Gempa</p>
+                                        <?php if (!empty($lastUpdateGempa)): ?>
+                                            <p class="text-secondary small mb-0" style="font-style: italic;">
+                                                <?= date('d M Y', strtotime($lastUpdateGempa)) ?>
+                                            </p>
+                                        <?php endif; ?>
                                     </div>
-                                    <h5 class="fw-bold mb-1">3.2 SR</h5>
-                                    <p class="text-secondary small mb-0">Gempa</p>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -213,7 +220,7 @@
 
 
     <!-- Berita Kegiatan -->
-    <section class="py-5 bg-white">
+    <section class="py-5 mt-5">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="fw-bold text-dark">Berita Kegiatan & Pengumuman</h2>

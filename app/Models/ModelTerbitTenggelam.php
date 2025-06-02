@@ -62,32 +62,32 @@ class ModelTerbitTenggelam extends Model
     }
 
     public function getLatestDataFiltered()
-{
-    $kecamatanList = [
-        'Malang',
-        'Batu',
-        'Kepanjen',
-        'Blitar',
-        'Tulungagung',
-        'Jember',
-        'Lumajang',
-        'Banyuwangi'
-    ];
+    {
+        $kecamatanList = [
+            'Malang',
+            'Batu',
+            'Kepanjen',
+            'Blitar',
+            'Tulungagung',
+            'Jember',
+            'Lumajang',
+            'Banyuwangi'
+        ];
 
-    // Ambil tanggal paling baru
-    $latestDate = $this->select('tanggal')
-                       ->orderBy('tanggal', 'DESC')
-                       ->limit(1)
-                       ->first();
+        // Ambil tanggal paling baru
+        $latestDate = $this->select('tanggal')
+            ->orderBy('tanggal', 'DESC')
+            ->limit(1)
+            ->first();
 
-    if ($latestDate) {
-        return $this->where('tanggal', $latestDate['tanggal'])
-                    ->whereIn('kecamatan', $kecamatanList)
-                    ->findAll();
+        if ($latestDate) {
+            return $this->where('tanggal', $latestDate['tanggal'])
+                ->whereIn('kecamatan', $kecamatanList)
+                ->findAll();
+        }
+
+        return []; // kalau tidak ada data
     }
-
-    return []; // kalau tidak ada data
-}
 
 
 
