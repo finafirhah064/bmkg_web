@@ -114,56 +114,6 @@
             <p class="lead">Pantau data cuaca, suhu, gempa, dan layanan publik secara real-time wilayah Malang.</p>
         </div>
     </section>
-
-    <!-- Statistik Harian -->
-    <section class="statistik-harian py-5">
-        <div class="container">
-            <h3 class="fw-bold text-dark mb-4 text-center">Statistik Harian</h3>
-            <div class="row justify-content-center g-4">
-                <!-- Kartu 1: Sambaran Petir -->
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-                        <div class="icon-circle bg-light-orange mb-3 mx-auto">
-                            <i class="fas fa-bolt fa-lg text-orange"></i>
-                        </div>
-                        <h5 class="fw-bold mb-1">1.827</h5>
-                        <p class="text-secondary small mb-0">Total Sambaran Petir</p>
-                    </div>
-                </div>
-                <!-- Kartu 2: Tekanan Udara (Dinamis) -->
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-                        <div class="icon-circle bg-light-blue mb-3 mx-auto">
-                            <i class="fas fa-tachometer-alt fa-lg text-info"></i>
-                        </div>
-                        <h5 class="fw-bold mb-1"><?= esc($tekanan) ?> hPa</h5>
-                        <p class="text-secondary small mb-0">Tekanan Udara</p>
-                    </div>
-                </div>
-                <!-- Kartu 2: Tekanan Udara (Dinamis) -->
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-                        <div class="icon-circle bg-light-blue mb-3 mx-auto">
-                            <i class="fas fa-tachometer-alt fa-lg text-info"></i>
-                        </div>
-                        <h5 class="fw-bold mb-1"><?= esc($tekanan) ?> hPa</h5>
-                        <p class="text-secondary small mb-0">Tekanan Udara</p>
-                    </div>
-                </div>
-                <!-- Kartu 4: Terbit & Tenggelam -->
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-                        <div class="icon-circle bg-light-yellow mb-3 mx-auto">
-                            <i class="fas fa-sun fa-lg text-warning"></i>
-                        </div>
-                        <h5 class="fw-bold mb-1">05.31 - 17.52</h5>
-                        <p class="text-secondary small mb-0">Terbit & Tenggelam</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="statistik-harian py-5">
         <div class="container">
             <h3 class="fw-bold text-dark mb-4 text-center">Statistik Harian</h3>
@@ -182,7 +132,6 @@
                                     <p class="text-secondary small mb-0">Total Sambaran Petir</p>
                                 </div>
                             </div>
-
                             <!-- Kartu 2: Tekanan Udara -->
                             <div class="col-6 col-md-3 col-lg-2">
                                 <div class="card shadow-sm border-0 rounded-4 text-center p-3">
@@ -194,25 +143,20 @@
                                     <p class="text-secondary small mb-0">Tekanan Udara</p>
                                 </div>
                             </div>
-
-                            <!-- Kartu 3: Temperatur -->
-                            <!-- Kartu Curah Hujan -->
-<div class="col-6 col-md-3 col-lg-2">
-    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-        <div class="icon-circle bg-light-blue mb-3 mx-auto">
-            <i class="fas fa-cloud-rain fa-lg text-primary"></i>
-        </div>
-        <h5 class="fw-bold mb-1"><?= esc($curah_hujan)  ?> mm</h5>
-        <p class="text-secondary small mb-0">Curah Hujan</p>
-    </div>
-</div>
-
-
+                            <div class="col-6 col-md-3 col-lg-2">
+                                <div class="card shadow-sm border-0 rounded-4 text-center p-3">
+                                    <div class="icon-circle bg-light-blue mb-3 mx-auto">
+                                        <i class="fas fa-cloud-rain fa-lg text-primary"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-1"><?= esc($curah_hujan) ?> mm</h5>
+                                    <p class="text-secondary small mb-0">Curah Hujan</p>
+                                </div>
+                            </div>
                             <!-- Kartu 4: Gempa -->
                             <div class="col-6 col-md-3 col-lg-2">
                                 <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-                                    <div class="icon-circle bg-light-gray mb-3 mx-auto">
-                                        <i class="fas fa-wave-square fa-lg text-secondary"></i> <!-- Ikon gempa -->
+                                    <div class="icon-circle bg-light-red mb-3 mx-auto">
+                                        <i class="fas fa-wave-square fa-lg text-danger"></i> <!-- Ikon gempa -->
                                     </div>
                                     <h5 class="fw-bold mb-1">3.2 SR</h5>
                                     <p class="text-secondary small mb-0">Gempa</p>
@@ -220,8 +164,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <!-- Slide 2 -->
                     <div class="carousel-item">
                         <div class="container">
@@ -229,108 +171,42 @@
                                 <div class="col-12 col-lg-8">
                                     <div class="card shadow-sm border-0 rounded-4 p-4 bg-white">
                                         <div class="d-flex align-items-center mb-3">
-                                            <div class="bg-warning-subtle rounded-circle d-flex justify-content-center align-items-center me-3"
+                                            <!-- <div class="bg-warning-subtle rounded-circle d-flex justify-content-center align-items-center me-3"
                                                 style="width: 40px; height: 40px;">
                                                 <i class="fas fa-sun text-warning fa-lg"></i>
-                                            </div>
+                                            </div> -->
                                             <h5 class="mb-0 fw-semibold text-dark">Terbit & Tenggelam — Beberapa Wilayah
                                             </h5>
                                         </div>
-
+                                        <?php if (!empty($lastUpdate)): ?>
+                                            <p class="text-muted" style="font-style: italic;">
+                                                Data terbit & tenggelam terakhir:
+                                                <?= date('d M Y', strtotime($lastUpdate)) ?>
+                                            </p>
+                                        <?php endif; ?>
                                         <div class="row row-cols-2 row-cols-md-4 g-3 text-dark"
                                             style="font-size: 14px;">
-                                            <div class="col">
-                                                <div class="bg-light rounded-3 px-2 py-2 d-flex align-items-center">
-                                                    <i class="fas fa-sun text-warning me-2"></i>
-                                                    <div>
-                                                        <strong>Malang</strong><br>
-                                                        <small class="text-muted">05.31 – 17.52</small>
+                                            <?php foreach ($dataTerbit as $item): ?>
+                                                <div class="col">
+                                                    <div class="bg-light rounded-3 px-2 py-2 d-flex align-items-center">
+                                                        <i class="fas fa-sun text-warning me-2"></i>
+                                                        <div>
+                                                            <strong><?= esc($item['kecamatan']) ?></strong><br>
+                                                            <small class="text-muted">
+                                                                <?= date('H:i', strtotime($item['waktu_terbit'])) ?> –
+                                                                <?= date('H:i', strtotime($item['waktu_tenggelam'])) ?>
+                                                            </small>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="bg-light rounded-3 px-2 py-2 d-flex align-items-center">
-                                                    <i class="fas fa-sun text-warning me-2"></i>
-                                                    <div>
-                                                        <strong>Batu</strong><br>
-                                                        <small class="text-muted">05.31 – 17.52</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="bg-light rounded-3 px-2 py-2 d-flex align-items-center">
-                                                    <i class="fas fa-sun text-warning me-2"></i>
-                                                    <div>
-                                                        <strong>Kepanjen</strong><br>
-                                                        <small class="text-muted">05.31 – 17.52</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="bg-light rounded-3 px-2 py-2 d-flex align-items-center">
-                                                    <i class="fas fa-sun text-warning me-2"></i>
-                                                    <div>
-                                                        <strong>Blitar</strong><br>
-                                                        <small class="text-muted">05.31 – 17.52</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="bg-light rounded-3 px-2 py-2 d-flex align-items-center">
-                                                    <i class="fas fa-sun text-warning me-2"></i>
-                                                    <div>
-                                                        <strong>Tulungagung</strong><br>
-                                                        <small class="text-muted">05.31 – 17.52</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="bg-light rounded-3 px-2 py-2 d-flex align-items-center">
-                                                    <i class="fas fa-sun text-warning me-2"></i>
-                                                    <div>
-                                                        <strong>Jember</strong><br>
-                                                        <small class="text-muted">05.31 – 17.52</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="bg-light rounded-3 px-2 py-2 d-flex align-items-center">
-                                                    <i class="fas fa-sun text-warning me-2"></i>
-                                                    <div>
-                                                        <strong>Lumajang</strong><br>
-                                                        <small class="text-muted">05.31 – 17.52</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="bg-light rounded-3 px-2 py-2 d-flex align-items-center">
-                                                    <i class="fas fa-sun text-warning me-2"></i>
-                                                    <div>
-                                                        <strong>Banyuwangi</strong><br>
-                                                        <small class="text-muted">05.31 – 17.52</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> <!-- end grid -->
+                                            <?php endforeach; ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-                <!-- Navigasi -->
-                <!-- <button class="carousel-control-prev" type="button" data-bs-target="#statistikCarousel"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Sebelumnya</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#statistikCarousel"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Berikutnya</span>
-                </button> -->
             </div>
         </div>
     </section>
@@ -439,8 +315,8 @@
             </div>
         </div>
     </section>
-<!-- HijriJS Library -->
-<script src="https://cdn.jsdelivr.net/gh/xsoh/Hijri.js/hijri.min.js"></script>
+    <!-- HijriJS Library -->
+    <script src="https://cdn.jsdelivr.net/gh/xsoh/Hijri.js/hijri.min.js"></script>
 
 
 </body>
