@@ -180,7 +180,7 @@
                                 Data Observasi
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dataDropdown">
-                                <li><a class="dropdown-item" href="#">Petir</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('user/petir'); ?>">Petir</a></li>
                                 <li><a class="dropdown-item" href="#">Temperatur</a></li>
                                 <li><a class="dropdown-item" href="#">Tekanan Udara</a></li>
                                 <li><a class="dropdown-item" href="#">Terbit & Tenggelam</a></li>
