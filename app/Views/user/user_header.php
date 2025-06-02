@@ -135,7 +135,7 @@
         <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg bg-white navbar-light border-bottom">
             <div class="container position-relative">
                 <a class="navbar-brand d-flex align-items-center" href="#">
-                    <img src="../../assets/img/bmkg-logo.png" alt="Logo BMKG" class="me-2">
+                    <img src="../../../assets/img/bmkg-logo.png" alt="Logo BMKG" class="me-2">
                     <div class="text-brand">
                         <strong>Badan Meteorologi,</strong>
                         <strong>Klimatologi, dan Geofisika</strong>
