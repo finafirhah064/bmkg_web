@@ -7,6 +7,8 @@
     <title>Selamat Datang di Dashboard BMKG</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" /> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 <style>
     body {
         font-family: 'Poppins', sans-serif;
@@ -14,7 +16,7 @@
         color: #333;
     }
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script><style>body {
+    body {
         font-family: 'Poppins', sans-serif;
         background-color: #f4f6f9;
         color: #333;
@@ -112,6 +114,7 @@
             <p class="lead">Pantau data cuaca, suhu, gempa, dan layanan publik secara real-time wilayah Malang.</p>
         </div>
     </section>
+
     <!-- Statistik Harian -->
     <section class="statistik-harian py-5">
         <div class="container">
@@ -436,3 +439,8 @@
             </div>
         </div>
     </section>
+<!-- HijriJS Library -->
+<script src="https://cdn.jsdelivr.net/gh/xsoh/Hijri.js/hijri.min.js"></script>
+
+
+</body>
