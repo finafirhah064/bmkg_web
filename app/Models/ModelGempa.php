@@ -43,4 +43,21 @@ class ModelGempa extends Model
 
     // Tidak perlu simpanPetir, updatePetir, hapus manual
     // Gunakan insert(), update(), delete() dari bawaan CI4
+
+    public function getLatestGempaFiltered()
+    {
+
+        // Ambil tanggal paling baru
+        $latestDate = $this->select('tanggal')
+            ->orderBy('tanggal', 'DESC')
+            ->limit(1)
+            ->first();
+
+        if ($latestDate) {
+            return $this->where('tanggal', $latestDate['tanggal'])
+                ->findAll();
+        }
+
+        return []; // kalau tidak ada data
+    }
 }

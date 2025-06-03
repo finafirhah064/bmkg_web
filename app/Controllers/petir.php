@@ -166,4 +166,47 @@ class Petir extends BaseController
 
         return redirect()->to('/Petir')->with('success', 'Data berhasil diupload dan disimpan.');
     }
+    public function view_petir_user()
+    {
+        $model = new ModelPetir();
+        $keyword = $this->request->getGet('keyword');
+
+        if ($keyword) {
+            $data['dataPetir'] = $model->like('wilayah', $keyword)
+            ->orlike('jenis_petir', $keyword)
+            ->findAll(); // asalkan returnType = 'array'
+        } else {
+            $data['dataPetir'] = $model->findAll();
+        }
+
+        $data['title'] = 'Data Petir';
+        
+        return view('user/user_header', $data) .
+               view('user/user_petir', $data) .
+               view('user/user_footer');
+    }
+     public function detail_petir($id)
+    {
+        $model = new ModelPetir();
+        $petir = $model->find($id); // Ambil data berdasarkan ID sambaran petir
+
+        if (!$petir) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+
+        $data = [
+            'title' => 'Detail Sambaran Petir',
+            'petir' => $petir,  // Kirimkan data sambaran petir
+            'latitude' => $petir['latitude'],
+            'longitude' => $petir['longitude'],
+        ];
+
+        // Tampilkan tampilan dengan peta
+         return view('user/user_header', $data) .
+                        view('user/detail_petir', $data) .
+                        view('user/user_footer');
+    }
 }
+ 
+               
+             

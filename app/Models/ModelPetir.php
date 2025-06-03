@@ -32,6 +32,7 @@ class ModelPetir extends Model
     {
         return $this->find($id); // sudah tersedia dari CI4
     }
+    
 
     // Tidak perlu simpanPetir, updatePetir, hapus manual
     // Gunakan insert(), update(), delete() dari bawaan CI4

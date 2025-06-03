@@ -96,14 +96,6 @@
                                 <div class="mb-4">
                                     <label for="waktuTerbit">Waktu Terbit</label>
                                     <div class="input-group">
-                                        <!-- <span class="input-group-text"> -->
-                                        <!-- Ikon jam -->
-                                        <!-- <svg class="icon icon-xs text-gray-600" fill="currentColor"
-                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M12 1.75a10.25 10.25 0 1 0 10.25 10.25A10.262 10.262 0 0 0 12 1.75Zm.75 11a.75.75 0 0 1-.75.75H8.5a.75.75 0 0 1 0-1.5h2.25V7a.75.75 0 0 1 1.5 0Z" />
-                                            </svg> -->
-                                        <!-- </span> -->
                                         <input type="time" class="form-control" id="waktuTerbit" name="waktu_terbit"
                                             placeholder="HH:mm" required>
                                     </div>
@@ -116,23 +108,24 @@
                                 <div class="mb-4">
                                     <label for="waktuTenggelam">Waktu Tenggelam</label>
                                     <div class="input-group">
-                                        <!-- <span class="input-group-text"> -->
-                                        <!-- Ikon jam -->
-                                        <!-- <svg class="icon icon-xs text-gray-600" fill="currentColor"
-                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M12 1.75a10.25 10.25 0 1 0 10.25 10.25A10.262 10.262 0 0 0 12 1.75Zm.75 11a.75.75 0 0 1-.75.75H8.5a.75.75 0 0 1 0-1.5h2.25V7a.75.75 0 0 1 1.5 0Z" />
-                                            </svg> -->
-                                        <!-- </span> -->
                                         <input type="time" class="form-control" id="waktuTenggelam"
                                             name="waktu_tenggelam" placeholder="HH:mm" required>
                                     </div>
                                 </div>
 
                                 <div class="mb-4">
-                                    <label for="kecamatan">Kota/Kecamatan</label>
-                                    <input type="text" class="form-control" id="kecamatan" name="kecamatan"
-                                        placeholder="Masukkan nama kecamatan">
+                                    <label for="kecamata">Kote/Kecamatan</label>
+                                    <select name="kecamatan" class="form-control" required>
+                                        <option value="">-- Pilih Kota/Kecamatan --</option>
+                                        <option value="Malang">Malang</option>
+                                        <option value="Batu">Batu</option>
+                                        <option value="Kepanjen">Kepanjen</option>
+                                        <option value="Blitar">Blitar</option>
+                                        <option value="Tulungagung">Tulungagung</option>
+                                        <option value="Jember">Jember</option>
+                                        <option value="Lumajang">Lumajang</option>
+                                        <option value="Jember">Jember</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>

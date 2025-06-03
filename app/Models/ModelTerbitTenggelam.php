@@ -12,7 +12,7 @@ class ModelTerbitTenggelam extends Model
     protected $primaryKey = 'id_terbit_tenggelam'; // sesuaikan dengan primary key yang kamu pakai
 
     protected $useAutoIncrement = true;
-    protected $returnType     = 'array';
+    protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
     protected $allowedFields = ['tanggal', 'waktu_terbit', 'waktu_tenggelam', 'kecamatan'];
@@ -60,4 +60,35 @@ class ModelTerbitTenggelam extends Model
     {
         return $this->db->table($table)->update($data, $where);
     }
+
+    public function getLatestDataFiltered()
+    {
+        $kecamatanList = [
+            'Malang',
+            'Batu',
+            'Kepanjen',
+            'Blitar',
+            'Tulungagung',
+            'Jember',
+            'Lumajang',
+            'Banyuwangi'
+        ];
+
+        // Ambil tanggal paling baru
+        $latestDate = $this->select('tanggal')
+            ->orderBy('tanggal', 'DESC')
+            ->limit(1)
+            ->first();
+
+        if ($latestDate) {
+            return $this->where('tanggal', $latestDate['tanggal'])
+                ->whereIn('kecamatan', $kecamatanList)
+                ->findAll();
+        }
+
+        return []; // kalau tidak ada data
+    }
+
+
+
 }

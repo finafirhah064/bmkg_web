@@ -10,14 +10,19 @@ class Model_TekananUdara extends Model
     protected $primaryKey = 'id_tekanan_udara'; // primary key
 
     protected $useAutoIncrement = true;
-    protected $returnType     = 'array';
+    protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
     protected $allowedFields = [
-        'tgl', 'tekanan_udara', 
-        'kelembaban_07', 'kelembaban_13', 'kelembaban_18', 
-        'kecepatan_rata2', 'arah_terbanyak', 
-        'kecepatan_terbesar', 'arah_kecepatan_terbesar'
+        'tgl',
+        'tekanan_udara',
+        'kelembaban_07',
+        'kelembaban_13',
+        'kelembaban_18',
+        'kecepatan_rata2',
+        'arah_terbanyak',
+        'kecepatan_terbesar',
+        'arah_kecepatan_terbesar'
     ];
 
     protected $useTimestamps = false; // ubah jika ada kolom timestamp
@@ -67,9 +72,9 @@ class Model_TekananUdara extends Model
     }
 
     public function getTodayPressure()
-{
-    return $this->where('tgl', date('Y-m-d'))->asArray()->first();
-}
+    {
+        return $this->where('tgl', date('Y-m-d'))->asArray()->first();
+    }
 
 
 

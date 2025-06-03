@@ -39,11 +39,18 @@
                             <label for="judul" class="form-label">Judul</label>
                             <input type="text" class="form-control" id="judul" name="judul" value="<?= old('judul') ?>" required>
                         </div>
-
+                        <div class="col-md-12 mb-3">
+                            <label for="kategori">Kategori</label>
+                            <select name="kategori" class="form-control" required>
+                                <option value="">-- Pilih Kategori --</option>
+                                <option value="Berita Kegiatan">Berita Kegiatan</option>
+                                <option value="Pengumuman">Pengumuman</option>
+                            </select>
+                        </div>
                         <!-- Gambar -->
                         <div class="col-md-12 mb-3">
                             <label for="gambar" class="form-label">Gambar</label>
-                            <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*" required>
+                            <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*">
                         </div>
 
                         <!-- Konten -->

@@ -112,7 +112,7 @@
 <div class="card border-0 shadow mb-4">
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-centered table-nowrap mb-0 rounded">
+        <table id="tabelTemperatur" class="table table-centered table-nowrap mb-0 rounded">
                 <thead class="thead-light">
                     <tr>
                         <th class="border-0 rounded-start">No</th>
@@ -171,6 +171,23 @@
     <script src="../../vendor/simplebar/dist/simplebar.min.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="../../assets/js/volt.js"></script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const input = document.getElementById("topbarInputIconLeft");
+        const table = document.getElementById("tabelTemperatur");
+        const rows = table.getElementsByTagName("tr");
+
+        input.addEventListener("keyup", function () {
+            const filter = input.value.toLowerCase();
+
+            for (let i = 1; i < rows.length; i++) {
+                const rowText = rows[i].textContent.toLowerCase();
+                rows[i].style.display = rowText.includes(filter) ? "" : "none";
+            }
+        });
+    });
+</script>
 
     <!-- Trix Editor -->
     <link rel="stylesheet" href="https://unpkg.com/trix@1.3.1/dist/trix.css">

@@ -28,6 +28,10 @@ $routes->post('add/BeritaKegiatan', 'Berita_Kegiatan::save_beritakegiatan');
 $routes->get('delete/BeritaKegiatan/(:num)', 'Berita_Kegiatan::delete_beritakegiatan/$1');
 $routes->get('/update/FormBeritaKegiatan/(:num)', 'Berita_Kegiatan::form_update_beritakegiatan/$1');
 $routes->post('update/BeritaKegiatan/(:num)', 'Berita_Kegiatan::update_beritakegiatan/$1');
+$routes->get('user/berita/(:num)', 'Berita_Kegiatan::detail_berita/$1');
+
+//Tentang BMKG
+$routes->get('user/tentangbmkg', 'Home::tentang_bmkg');
 
 // Hilal Routes - PASTIKAN PENULISAN 'hilal' KONSISTEN
 $routes->get('hilal', 'Home::hilal');
@@ -41,6 +45,8 @@ $routes->post('hilal/uploadExcel', 'HilalController::uploadExcel');
 
 $routes->get('user/hilal', 'UserController::hilal');  // Menampilkan data hilal untuk user
 $routes->get('user/hilal/detail/(:segment)', 'UserController::detail/$1'); // Menampilkan detail pengamatan hilal
+$routes->get('user/hilal/detail/(:num)', 'UserHilalController::detail/$1');
+
 
 
 // Temperatur Routes 
@@ -128,12 +134,17 @@ $routes->post('Petir/save', 'Petir::save');
 $routes->post('Petir/update/(:num)', 'Petir::update/$1');
 $routes->get('Petir/delete/(:num)', 'Petir::delete/$1');
 $routes->post('Petir/upload', 'Petir::upload');
+$routes->get('user/petir', 'petir::view_petir_user'); // User: Lihat data petir
+// Routing untuk melihat detail peta sambaran petir
+$routes->get('petir/detail/(:num)', 'petir::detail_petir/$1');
+
+
 
 //Routes untuk Gempa
 $routes->get('Gempa', 'Gempa::view_gempa');
-$routes->get('Gempa/form_gempa', 'Gempa::form_gempa');
+$routes->get('Gempa/form_gempa', 'Gempa::form');
 // form_temperatur', 'Temperatur::form_temperatur
-$routes->get('Gempa/form_update/(:num)', 'Petir::form_update/$1');
+$routes->get('Gempa/form_update_gempa/(:num)', 'Gempa::form_update/$1');
 $routes->post('Gempa/save', 'Gempa::save');
 $routes->post('Gempa/update/(:num)', 'Gempa::update/$1');
 $routes->get('Gempa/delete/(:num)', 'Gempa::delete/$1');

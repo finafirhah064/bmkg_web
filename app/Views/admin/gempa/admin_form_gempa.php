@@ -141,14 +141,14 @@
                                     <label for="lintang">Lintang</label>
                                     <input type="number" step="0.1" class="form-control" name="lintang" required>
                                 </div>
-                            </div>
-
-                            <!-- Kanan -->
-                            <div class="col-md-6">
                                 <div class="mb-4">
                                     <label for="bujur">Bujur</label>
                                     <input type="number" step="0.1" class="form-control" name="bujur" required>
                                 </div>
+                            </div>
+
+                            <!-- Kanan -->
+                            <div class="col-md-6">
                                 <div class="mb-4">
                                     <label for="depth">Depth</label>
                                     <input type="number" step="0.1" class="form-control" name="depth" required>
@@ -162,13 +162,13 @@
                                     <input type="text" step="0.1" class="form-control" name="keterangan">
                                 </div>
                                 <div class="mb-4">
-                                <label for="dirasakan">Dirasakan</label>
-                                <select class="form-control" id="dirasakan" name="dirasakan" required>
-                                    <option value="">-- Pilih --</option>
-                                    <option value="dirasakan">Dirasakan</option>
-                                    <option value="tidak dirasakan">Tidak Dirasakan</option>
-                                </select>
-                            </div>
+                                    <label for="dirasakan">Dirasakan</label>
+                                    <select class="form-control" id="dirasakan" name="dirasakan" required>
+                                        <option value="">-- Pilih --</option>
+                                        <option value="dirasakan">Dirasakan</option>
+                                        <option value="tidak dirasakan">Tidak Dirasakan</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
@@ -180,18 +180,18 @@
     </div>
 </main>
 
-  <!-- Scripts -->
-  <script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
-    <script src="../../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../../vendor/onscreen/dist/on-screen.umd.min.js"></script>
-    <script src="../../vendor/nouislider/distribute/nouislider.min.js"></script>
-    <script src="../../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-    <script src="../../vendor/chartist/dist/chartist.min.js"></script>
-    <script src="../../vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="../../vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
-    <script src="../../vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-    <script src="../../vendor/notyf/notyf.min.js"></script>
-    <script src="../../vendor/simplebar/dist/simplebar.min.js"></script>
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script src="../../assets/js/volt.js"></script>
+<!-- Scripts -->
+<script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
+<script src="../../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../vendor/onscreen/dist/on-screen.umd.min.js"></script>
+<script src="../../vendor/nouislider/distribute/nouislider.min.js"></script>
+<script src="../../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+<script src="../../vendor/chartist/dist/chartist.min.js"></script>
+<script src="../../vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+<script src="../../vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
+<script src="../../vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+<script src="../../vendor/notyf/notyf.min.js"></script>
+<script src="../../vendor/simplebar/dist/simplebar.min.js"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="../../assets/js/volt.js"></script>

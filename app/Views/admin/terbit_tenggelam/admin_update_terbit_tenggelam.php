@@ -53,18 +53,21 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow components-section">
                 <div class="card-body">
-                    <form method="POST" action="<?= site_url('Home/updateterbittenggelam/' . $terbit_tenggelam->id_terbit_tenggelam) ?>">
+                    <form method="POST"
+                        action="<?= site_url('Home/updateterbittenggelam/' . $terbit_tenggelam->id_terbit_tenggelam) ?>">
                         <div class="row mb-4">
                             <!-- Kolom Kiri -->
                             <div class="col-md-6">
                                 <div class="mb-4">
                                     <label for="tanggal">Tanggal</label>
-                                    <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?= date('Y-m-d', strtotime($terbit_tenggelam->tanggal)) ?>" required>
+                                    <input type="date" class="form-control" id="tanggal" name="tanggal"
+                                        value="<?= date('Y-m-d', strtotime($terbit_tenggelam->tanggal)) ?>" required>
                                 </div>
 
                                 <div class="mb-4">
                                     <label for="waktuTerbit">Waktu Terbit</label>
-                                    <input type="time" class="form-control" id="waktuTerbit" name="waktu_terbit" value="<?= $terbit_tenggelam->waktu_terbit ?>" required>
+                                    <input type="time" class="form-control" id="waktuTerbit" name="waktu_terbit"
+                                        value="<?= $terbit_tenggelam->waktu_terbit ?>" required>
                                 </div>
                             </div>
 
@@ -72,12 +75,23 @@
                             <div class="col-md-6">
                                 <div class="mb-4">
                                     <label for="waktuTenggelam">Waktu Tenggelam</label>
-                                    <input type="time" class="form-control" id="waktuTenggelam" name="waktu_tenggelam" value="<?= $terbit_tenggelam->waktu_tenggelam ?>" required>
+                                    <input type="time" class="form-control" id="waktuTenggelam" name="waktu_tenggelam"
+                                        value="<?= $terbit_tenggelam->waktu_tenggelam ?>" required>
                                 </div>
 
                                 <div class="mb-4">
                                     <label for="kecamatan">Kota/Kecamatan</label>
-                                    <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="<?= $terbit_tenggelam->kecamatan ?>" placeholder="Masukkan nama kecamatan">
+                                    <select name="kecamatan" class="form-control" required>
+                                        <option value="">-- Pilih Kota/Kecamatan --</option>
+                                        <option value="Malang" <?= $terbit_tenggelam->kecamatan == 'Malang' ? 'selected' : '' ?>>Malang</option>
+                                        <option value="Batu" <?= $terbit_tenggelam->kecamatan == 'Batu' ? 'selected' : '' ?>>Batu</option>
+                                        <option value="Kepanjen" <?= $terbit_tenggelam->kecamatan == 'kepanjen' ? 'selected' : '' ?>>Kepanjen</option>
+                                        <option value="Blitar" <?= $terbit_tenggelam->kecamatan == 'Blitar' ? 'selected' : '' ?>>Blitar</option>
+                                        <option value="Tulungagung" <?= $terbit_tenggelam->kecamatan == 'Tulungagung' ? 'selected' : '' ?>>Tulungagung</option>
+                                        <option value="Jember" <?= $terbit_tenggelam->kecamatan == 'Jember' ? 'selected' : '' ?>>Jember</option>
+                                        <option value="Lumajang" <?= $terbit_tenggelam->kecamatan == 'Lumajang' ? 'selected' : '' ?>>Lumajang</option>
+                                        <option value="Banyuwangi" <?= $terbit_tenggelam->kecamatan == 'Banyuwangi' ? 'selected' : '' ?>>Banyuwangi</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
