@@ -121,6 +121,11 @@ $routes->post('Petir/save', 'Petir::save');
 $routes->post('Petir/update/(:num)', 'Petir::update/$1');
 $routes->get('Petir/delete/(:num)', 'Petir::delete/$1');
 $routes->post('Petir/upload', 'Petir::upload');
+$routes->get('user/petir', 'petir::view_petir_user'); // User: Lihat data petir
+// Routing untuk melihat detail peta sambaran petir
+$routes->get('petir/detail/(:num)', 'petir::detail_petir/$1');
+
+
 
 //Routes untuk Gempa
 $routes->get('Gempa', 'Gempa::view_gempa');
