@@ -131,7 +131,6 @@
                     <?php $no = 1; foreach ($dataGempa as $row): ?>
                         <tr>
                             <td><?= $no++; ?></td>
-                            <td><?= date('d-m-Y', strtotime($row['tanggal'])); ?></td>  <!-- Benar -->
                             <td><?= $row['Tanggal']; ?></td>
                             <td><?= $row['Jam']; ?></td>
                             <td><?= $row['Lintang']; ?></td>
@@ -141,8 +140,8 @@
                             <td><?= $row['Keterangan']; ?></td>
                             <td><?= $row['Dirasakan']; ?></td>
                             <td>
-                                <a href="<?= base_url('/Gempa/form_update_gempa/' . $row->id_gempa); ?>" class="btn btn-sm btn-primary">Edit</a>
-                                <a href="<?= base_url('/Gempa/delete_gempa/' . $row->id_gempa); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
+                                <a href="<?= base_url('/Gempa/form_update_gempa/' . $row['id_gempa']); ?>" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="<?= base_url('/Gempa/delete_gempa/' . $row['id_gempa']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

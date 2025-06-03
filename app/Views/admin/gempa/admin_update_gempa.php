@@ -114,25 +114,25 @@
                             <div class="mb-4">
                                 <label for="tanggal">Tanggal</label>
                                 <input type="date" class="form-control" id="tanggal" name="tanggal"
-                                     value="<?= (strtotime($gempa['tanggal'])) ? date('Y-m-d', strtotime($gempa['tanggal'])) : '' ?>" required>
+                                    value="<?= (strtotime($gempa['Tanggal'])) ? date('Y-m-d', strtotime($gempa['Tanggal'])) : '' ?>" required>
                             </div>
 
                             <div class="mb-4">
                                 <label for="jam">Jam</label>
                                <input type="time" class="form-control" id="jam" name="jam"
-                                     value="<?= $gempa['jam'] ?>" required>
+                                     value="<?= $gempa['Jam'] ?>" required>
                             </div>
 
                             <div class="mb-4">
                                 <label for="lintang">Lintang</label>
                                 <input type="number" class="form-control" id="lintang" name="lintang"
-                                    value="<?= $gempa['lintang']?>" required>
+                                    value="<?= $gempa['Lintang']?>" required>
                             </div>
 
                             <div class="mb-4">
                                 <label for="bujur">Bujur</label>
                                 <input type="number" class="form-control" id="bujur" name="bujur"
-                                    value="<?= $gempa['bujur']?>" required>
+                                    value="<?= $gempa['Bujur']?>" required>
                             </div>
                         </div>
 
@@ -141,27 +141,27 @@
                             <div class="mb-4">
                                 <label for="depth">Depth</label>
                                 <input type="number" step="0.000001" class="form-control" id="depth" name="depth"
-                                    value="<?= $gempa['depth']?>" required>
+                                    value="<?= $gempa['Depth']?>" required>
                             </div>
 
                             <div class="mb-4">
                                 <label for="magnitudo">Magnitudo</label>
                                 <input type="number" step="0.000001" class="form-control" id="magnitudo" name="magnitudo"
-                                    value="<?= $gempa['magnitudo']?>" required>
+                                    value="<?= $gempa['Magnitudo']?>" required>
                             </div>
 
                             <div class="mb-4">
                                 <label for="keterangan">Keterangan</label>
                                 <input type="text" step="0.000001" class="form-control" id="keterangan" name="keterangan"
-                                    value="<?= $gempa['keterangan']?>" required>
+                                    value="<?= $gempa['Keterangan']?>" required>
                             </div>
 
                             <div class="mb-4">
                                 <label for="dirasakan">Dirasakan</label>
                                 <select class="form-control" id="dirasakan" name="dirasakan" required>
                                     <option value="">-- Pilih --</option>
-                                    <option value="ya, dirasakan" <?= $gempa['dirasakan'] === 'ya, dirasakan' ? 'selected' : '' ?>> Ya, Dirasakan</option>
-                                    <option value="tidak dirasakan" <?= $gempa['dirasakan'] === 'tidak dirasakan' ? 'selected' : '' ?>>Tidak Dirasakan</option>
+                                    <option value="Dirasakan" <?= $gempa['Dirasakan'] === 'Dirasakan' ? 'selected' : '' ?>>Dirasakan</option>
+                                    <option value="Tidak dirasakan" <?= $gempa['Dirasakan'] === 'Tidak dirasakan' ? 'selected' : '' ?>>Tidak Dirasakan</option>
                                 </select>
                             </div>
                         </div>

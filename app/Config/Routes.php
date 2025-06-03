@@ -129,9 +129,9 @@ $routes->get('petir/detail/(:num)', 'petir::detail_petir/$1');
 
 //Routes untuk Gempa
 $routes->get('Gempa', 'Gempa::view_gempa');
-$routes->get('Gempa/form_gempa', 'Gempa::form_gempa');
+$routes->get('Gempa/form_gempa', 'Gempa::form');
 // form_temperatur', 'Temperatur::form_temperatur
-$routes->get('Gempa/form_update/(:num)', 'Petir::form_update/$1');
+$routes->get('Gempa/form_update_gempa/(:num)', 'Gempa::form_update/$1');
 $routes->post('Gempa/save', 'Gempa::save');
 $routes->post('Gempa/update/(:num)', 'Gempa::update/$1');
 $routes->get('Gempa/delete/(:num)', 'Gempa::delete/$1');
