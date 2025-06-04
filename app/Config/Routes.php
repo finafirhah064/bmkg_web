@@ -8,7 +8,8 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::user_dashboard');
 $routes->get('admin/login', 'Login::index');
 $routes->post('admin/loginauth', 'Login::auth');
-$routes->get('admin/dashboard', 'Home::dashboard');
+//$routes->get('admin/dashboard', 'Home::dashboard');
+$routes->get('admin/dashboard', 'Dashboard::index');
 
 // Terbit Tenggelam
 $routes->get('TerbitTenggelam', 'Terbit_Tenggelam::view_terbit_tenggelam');
