@@ -128,7 +128,11 @@
             background-color: #e2e6ea;
         }
     </style>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+
+
 
 <body>
     <header class="header-global">
@@ -170,8 +174,8 @@
                             <ul class="dropdown-menu" aria-labelledby="layananDropdown">
                                 <li><a class="dropdown-item" href="<?= base_url('buku-tamu') ?>">Buku Tamu</a></li>
 
-                                <li><a class="dropdown-item" href="#">Pengajuan Surat</a></li>
-                                <li><a class="dropdown-item" href="#">Cek Status Surat</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('pengajuan_surat') ?>">Pengajuan Surat</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('cek_status_surat') ?>">Cek Status Surat</a></li>
                             </ul>
                         </li>
 

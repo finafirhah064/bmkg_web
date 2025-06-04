@@ -6,6 +6,12 @@ use App\Models\PengajuanSuratModel;
 
 class PengajuanSurat extends BaseController
 {
+    protected $pengajuanSuratModel;
+
+    public function __construct()
+    {
+        $this->pengajuanSuratModel = new PengajuanSuratModel();
+    }
     public function index()
     {
         $model = new PengajuanSuratModel();
@@ -74,5 +80,67 @@ class PengajuanSurat extends BaseController
         header('Cache-Control: max-age=0');
         $writer->save('php://output');
         exit;
+    }
+
+    public function form()
+    {
+        return view('user/user_pengajuan_surat');
+    }
+
+    public function simpan()
+    {
+        $model = new PengajuanSuratModel();
+
+        $fileSurat = $this->request->getFile('file_surat');
+        $namaFile = '';
+
+        if ($fileSurat && $fileSurat->isValid() && !$fileSurat->hasMoved()) {
+            $namaFile = time() . '_' . $fileSurat->getClientName();
+            $fileSurat->move('uploads/surat', $namaFile);
+        }
+
+        $model->insert([
+            'nama_pengaju' => $this->request->getPost('nama_pengaju'),
+            'no_hp' => $this->request->getPost('no_hp'),
+            'jenis_surat' => $this->request->getPost('jenis_surat'),
+            'keperluan' => $this->request->getPost('keperluan'),
+            'file_surat' => $namaFile,
+            'status' => 'Diajukan',
+            'tanggal_pengajuan' => date('Y-m-d')
+        ]);
+
+        return redirect()->to('pengajuan_surat')->with('success', 'Pengajuan surat berhasil dikirim.');
+    }
+
+    public function cek_status()
+    {
+        $model = new \App\Models\PengajuanSuratModel();
+        $keyword = $this->request->getGet('keyword');
+
+        if ($keyword) {
+            $data['surats'] = $model->like('nama_pengaju', $keyword)->findAll();
+        } else {
+            $data['surats'] = $model->orderBy('tanggal_pengajuan', 'DESC')->findAll();
+        }
+
+        $data['keyword'] = $keyword;
+
+        return view('user/cek_status_surat', $data);
+    }
+
+    public function ubah_status_ajax()
+    {
+        if ($this->request->isAJAX()) {
+            $id = $this->request->getJSON()->id;
+            $status = $this->request->getJSON()->status;
+
+            $this->pengajuanSuratModel->update($id, [
+                'status' => $status,
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+
+            return $this->response->setJSON(['success' => true]);
+        }
+        return $this->response->setJSON(['success' => false]);
     }
 }

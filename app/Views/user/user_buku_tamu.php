@@ -1,23 +1,29 @@
+<!-- Tambahkan Font, Ikon, dan SweetAlert2 -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
 <style>
     body {
-        font-family: 'Poppins', sans-serif;
-        background: #f7fbfc;
+        background: linear-gradient(135deg, rgb(223, 252, 247) 0%, rgb(224, 229, 254) 100%);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     .form-container {
         background: #fff;
         padding: 40px;
         border-radius: 20px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
     }
 
     .form-title {
-        color: rgb(0, 4, 30);
+        color: #001233;
         font-weight: 700;
     }
 
     .form-subtitle {
-        color: #666;
+        color: #6c757d;
+        font-size: 15px;
     }
 
     .form-label {
@@ -26,17 +32,18 @@
     }
 
     .btn-method {
-        border-radius: 20px;
-        padding: 6px 16px;
+        border-radius: 30px;
+        padding: 6px 18px;
         font-size: 14px;
-        margin-right: 8px;
-        transition: 0.2s ease-in-out;
+        margin-right: 10px;
+        transition: 0.25s ease;
+        font-weight: 500;
     }
 
     .btn-upload {
         background-color: #e3f2fd;
         border: 1px solid #2196f3;
-        color: #2196f3;
+        color: #1976d2;
     }
 
     .btn-upload:hover {
@@ -46,7 +53,7 @@
     .btn-camera {
         background-color: #e8f5e9;
         border: 1px solid #4caf50;
-        color: #388e3c;
+        color: #2e7d32;
     }
 
     .btn-camera:hover {
@@ -60,6 +67,7 @@
         font-size: 16px;
         border-radius: 30px;
         font-weight: 600;
+        transition: 0.3s ease;
     }
 
     .btn-submit:hover {
@@ -73,7 +81,7 @@
 
     video {
         width: 100%;
-        border-radius: 10px;
+        border-radius: 12px;
         border: 1px solid #ccc;
     }
 
@@ -88,12 +96,6 @@
 <section class="py-5">
     <div class="container">
         <div class="col-md-8 mx-auto form-container">
-            <?php if (session()->getFlashdata('success')) : ?>
-                <div class="alert alert-success text-center rounded-pill">
-                    <?= session()->getFlashdata('success') ?>
-                </div>
-            <?php endif; ?>
-
             <h2 class="form-title text-center mb-2">Formulir Buku Tamu</h2>
             <p class="form-subtitle text-center mb-4">Silakan isi form berikut saat berkunjung ke BMKG Karangkates.</p>
 
@@ -123,8 +125,12 @@
                 <!-- Pilih Metode Upload -->
                 <div class="mb-3">
                     <label class="form-label">Metode Unggah Foto</label><br>
-                    <button type="button" class="btn btn-method btn-upload" onclick="showUpload()">Upload File</button>
-                    <button type="button" class="btn btn-method btn-camera" onclick="showCamera()">Gunakan Kamera</button>
+                    <button type="button" class="btn btn-method btn-upload" onclick="showUpload()">
+                        <i class="fas fa-upload me-1"></i> Upload File
+                    </button>
+                    <button type="button" class="btn btn-method btn-camera" onclick="showCamera()">
+                        <i class="fas fa-camera me-1"></i> Gunakan Kamera
+                    </button>
                 </div>
 
                 <!-- Upload File -->
@@ -137,19 +143,38 @@
                 <div class="mb-3" id="cameraSection" style="display: none;">
                     <label class="form-label">Ambil Foto dari Kamera</label>
                     <video id="camera" autoplay playsinline></video>
-                    <button type="button" class="btn btn-secondary btn-sm mt-2" onclick="takeSnapshot()">Ambil Foto</button>
+                    <button type="button" class="btn btn-secondary btn-sm mt-2" onclick="takeSnapshot()">
+                        <i class="fas fa-camera-retro me-1"></i> Ambil Foto
+                    </button>
                     <canvas id="snapshot" style="display: none;"></canvas>
                     <img id="preview" style="display: none;" class="mt-2 img-fluid rounded" />
                     <input type="hidden" id="foto_data" name="foto_data">
                 </div>
 
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-submit"><i class="fas fa-paper-plane me-2"></i> Kirim Buku Tamu</button>
+                    <button type="submit" class="btn btn-submit">
+                        <i class="fas fa-paper-plane me-2"></i> Kirim Buku Tamu
+                    </button>
                 </div>
             </form>
         </div>
     </div>
 </section>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<?php if (session()->getFlashdata('success')): ?>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: '<?= session()->getFlashdata("success") ?>',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Oke'
+        });
+    </script>
+<?php endif; ?>
 
 <script>
     const camera = document.getElementById('camera');
