@@ -1,12 +1,12 @@
-<!-- Tambahkan Font & Ikon -->
+<!-- Tambahkan Font, Ikon, dan SweetAlert2 -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
 <style>
     body {
         background: linear-gradient(135deg, rgb(223, 252, 247) 0%, rgb(224, 229, 254) 100%);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
     }
 
     .form-container {
@@ -91,26 +91,11 @@
         border-radius: 12px;
         margin-top: 12px;
     }
-
-    .alert-success {
-        font-size: 15px;
-        padding: 12px;
-        background-color: #e6f4ea;
-        border: 1px solid #4caf50;
-        color: #2e7d32;
-    }
 </style>
 
 <section class="py-5">
     <div class="container">
         <div class="col-md-8 mx-auto form-container">
-            <?php if (session()->getFlashdata('success')) : ?>
-                <div class="alert alert-success text-center rounded-pill">
-                    <i class="fas fa-check-circle me-2"></i>
-                    <?= session()->getFlashdata('success') ?>
-                </div>
-            <?php endif; ?>
-
             <h2 class="form-title text-center mb-2">Formulir Buku Tamu</h2>
             <p class="form-subtitle text-center mb-4">Silakan isi form berikut saat berkunjung ke BMKG Karangkates.</p>
 
@@ -175,6 +160,21 @@
         </div>
     </div>
 </section>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<?php if (session()->getFlashdata('success')): ?>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: '<?= session()->getFlashdata("success") ?>',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Oke'
+        });
+    </script>
+<?php endif; ?>
 
 <script>
     const camera = document.getElementById('camera');

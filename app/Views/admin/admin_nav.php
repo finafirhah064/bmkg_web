@@ -1,6 +1,7 @@
 <?php
 $uri = service('uri'); // mengambil instance URI
 $segment1 = $uri->getSegment(1); // bagian pertama dari URL (misalnya: 'dashboard', 'administrasi', dll)
+$segment2 = service('uri')->getSegment(2);
 ?>
 
 <nav id="sidebarMenu" class="sidebar d-lg-block collapse" data-simplebar style="background-color:rgb(245, 250, 255);">
@@ -213,7 +214,7 @@ $segment1 = $uri->getSegment(1); // bagian pertama dari URL (misalnya: 'dashboar
       </li>
 
       <li class="nav-item">
-        <a class="nav-link <?= $segment1 == 'pengajuan_surat' ? 'active' : ''; ?>" href="<?= base_url('admin/pengajuan_surat'); ?>">
+        <a class="nav-link <?= ($segment1 == 'admin' && $segment2 == 'pengajuan_surat') ? 'active' : ''; ?>" href="<?= base_url('admin/pengajuan_surat'); ?>">
           <span class="sidebar-icon">
             <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
               <path d="M6 2h9a2 2 0 012 2v2h-2V4H6v16h6v2H6a2 2 0 01-2-2V4a2 2 0 012-2zm10 10l4 4v-3h3l-4-4h-3v3z" />

@@ -117,7 +117,11 @@ $routes->get('admin/pengajuan_surat/export_excel', 'PengajuanSurat::export_excel
 $routes->get('admin/pengajuan_surat/ubah_status/(:num)/(:segment)', 'PengajuanSurat::ubah_status/$1/$2');
 $routes->match(['get', 'post'], 'cek_status_surat', 'PengajuanSurat::cek_status');
 
+
+
 $routes->get('pengajuan_surat', 'PengajuanSurat::form');
+$routes->post('admin/pengajuan_surat/ubah_status_ajax', 'PengajuanSurat::ubah_status_ajax');
+
 
 
 

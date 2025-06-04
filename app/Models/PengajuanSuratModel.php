@@ -15,8 +15,32 @@ class PengajuanSuratModel extends Model
         'keperluan',
         'status',
         'file_surat',
-        'tanggal_pengajuan',
-        'updated_at'
+        'tanggal_pengajuan'
     ];
-    protected $useTimestamps = false; // Karena kamu menggunakan CURRENT_TIMESTAMP dari MySQL
+    protected $useTimestamps = true;
+    protected $createdField = 'tanggal_pengajuan';
+    protected $updatedField = 'updated_at';
+
+    // Fungsi untuk mencari berdasarkan nama pengaju
+    public function cariByNama($nama)
+    {
+        return $this->like('nama_pengaju', $nama, 'both')->findAll();
+    }
+
+    // Fungsi untuk mendapatkan data dengan status tertentu
+    public function getByStatus($status)
+    {
+        return $this->where('status', $status)->findAll();
+    }
+
+    // Fungsi untuk mendapatkan statistik
+    public function getStatistik()
+    {
+        return [
+            'total' => $this->countAll(),
+            'pending' => $this->where('status', 'Pending')->countAllResults(false),
+            'disetujui' => $this->where('status', 'Disetujui')->countAllResults(false),
+            'ditolak' => $this->where('status', 'Ditolak')->countAllResults(false)
+        ];
+    }
 }

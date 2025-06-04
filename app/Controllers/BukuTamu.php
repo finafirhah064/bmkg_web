@@ -12,12 +12,25 @@ class BukuTamu extends BaseController
     public function index()
     {
         $model = new BukuTamuModel();
-        $data['bukutamu'] = $model->findAll(); // Ini yang belum ada
+        $keyword = $this->request->getGet('keyword');
+
+        if ($keyword) {
+            $data['bukutamu'] = $model
+                ->like('nama', $keyword)
+                ->orLike('instansi', $keyword)
+                ->findAll();
+        } else {
+            $data['bukutamu'] = $model->findAll();
+        }
+
+        $data['keyword'] = $keyword;
+
         echo view('admin/admin_header');
         echo view('admin/admin_nav');
-        echo view('admin/buku_tamu/admin_buku_tamu', $data); // Kirim data
+        echo view('admin/buku_tamu/admin_buku_tamu', $data);
         echo view('admin/admin_footer');
     }
+
 
     public function form()
     {

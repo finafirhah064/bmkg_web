@@ -6,6 +6,12 @@ use App\Models\PengajuanSuratModel;
 
 class PengajuanSurat extends BaseController
 {
+    protected $pengajuanSuratModel;
+
+    public function __construct()
+    {
+        $this->pengajuanSuratModel = new PengajuanSuratModel();
+    }
     public function index()
     {
         $model = new PengajuanSuratModel();
@@ -108,18 +114,33 @@ class PengajuanSurat extends BaseController
 
     public function cek_status()
     {
-        helper(['form']);
-        $data = []; // Tambahkan ini
+        $model = new \App\Models\PengajuanSuratModel();
+        $keyword = $this->request->getGet('keyword');
 
-        if ($this->request->getMethod() === 'post') {
-            $nama = $this->request->getPost('nama_pengaju');
-
-            $suratModel = new \App\Models\PengajuanSuratModel();
-            $data['surats'] = $suratModel
-                ->like('nama_pengaju', $nama)
-                ->findAll();
+        if ($keyword) {
+            $data['surats'] = $model->like('nama_pengaju', $keyword)->findAll();
+        } else {
+            $data['surats'] = $model->orderBy('tanggal_pengajuan', 'DESC')->findAll();
         }
 
+        $data['keyword'] = $keyword;
+
         return view('user/cek_status_surat', $data);
+    }
+
+    public function ubah_status_ajax()
+    {
+        if ($this->request->isAJAX()) {
+            $id = $this->request->getJSON()->id;
+            $status = $this->request->getJSON()->status;
+
+            $this->pengajuanSuratModel->update($id, [
+                'status' => $status,
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+
+            return $this->response->setJSON(['success' => true]);
+        }
+        return $this->response->setJSON(['success' => false]);
     }
 }

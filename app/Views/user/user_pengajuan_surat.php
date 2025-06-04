@@ -1,5 +1,8 @@
 <?= view('user/user_header'); ?>
 
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <style>
     body {
         background: linear-gradient(135deg, rgb(223, 252, 247) 0%, rgb(224, 229, 254) 100%);
@@ -63,12 +66,6 @@
 
 <section class="py-5">
     <div class="container">
-        <?php if (session()->getFlashdata('success')): ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <?= session()->getFlashdata('success') ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        <?php endif; ?>
 
         <h2 class="text-center form-title">Form Pengajuan Surat</h2>
 
@@ -111,5 +108,16 @@
         </form>
     </div>
 </section>
+
+<?php if (session()->getFlashdata('success')) : ?>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: '<?= session()->getFlashdata('success') ?>',
+            confirmButtonColor: '#3085d6'
+        });
+    </script>
+<?php endif; ?>
 
 <?= view('user/user_footer'); ?>
