@@ -1,33 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <title>Data Pengamatan Hilal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <!-- Custom Volt CSS -->
-    <link href="../../assets/css/volt.css" rel="stylesheet">
+
+    <!-- Volt Admin CSS (via CDN) -->
+    <link href="https://themesberg.github.io/volt-bootstrap-5-dashboard/assets/css/volt.css" rel="stylesheet">
+
+    <!-- SweetAlert2 CSS (UNPKG) -->
+<link href="https://unpkg.com/sweetalert2@11.7.27/dist/sweetalert2.min.css" rel="stylesheet">
+
+<!-- Notyf CSS (UNPKG) -->
+<link href="https://unpkg.com/notyf@3.10.0/notyf.min.css" rel="stylesheet">
+
     <style>
         .progress-thin {
             height: 6px;
         }
+
         .badge-visibility {
             min-width: 80px;
         }
+
         .btn-custom {
-    background-color: #4CAF50; /* Hijau */
-    color: white;
-    border: none;
-}
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
 
-.btn-custom:hover {
-    background-color: #45a049; /* Warna hover */
-}
-
+        .btn-custom:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 
@@ -500,23 +511,32 @@
                 </div>
             </div>
         </div>
+<!-- JS Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="https://themesberg.github.io/volt-bootstrap-5-dashboard/assets/js/volt.js"></script>
+    <!-- Simplebar -->
+<script src="https://cdn.jsdelivr.net/npm/simplebar@5.3.10/dist/simplebar.min.js"></script>
 
+<!-- Smooth Scroll -->
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.polyfills.min.js"></script>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/volt.js"></script>
+<!-- On-screen -->
+<script src="https://cdn.jsdelivr.net/npm/on-screen@1.4.0/dist/on-screen.umd.min.js"></script>
+
     <script>
-        // Auto-fill month name based on Hijri month number
+        // Auto-fill nama bulan berdasarkan angka Hijriyah
         document.querySelectorAll('input[name="bulan_hijri"]').forEach(input => {
-            input.addEventListener('change', function() {
+            input.addEventListener('change', function () {
                 const monthNames = [
-                    '', 'Muharram', 'Safar', 'Rabiul Awal', 'Rabiul Akhir', 
-                    'Jumadil Awal', 'Jumadil Akhir', 'Rajab', 'Sya\'ban', 
+                    '', 'Muharram', 'Safar', 'Rabiul Awal', 'Rabiul Akhir',
+                    'Jumadil Awal', 'Jumadil Akhir', 'Rajab', 'Sya\'ban',
                     'Ramadhan', 'Syawal', 'Dzulqaidah', 'Dzulhijjah'
                 ];
                 const monthNumber = parseInt(this.value);
                 if (monthNumber >= 1 && monthNumber <= 12) {
-                    const namaBulanField = this.closest('.modal-body').querySelector('input[name="nama_bulan"]');
+                    const namaBulanField = this.closest('.modal-body')?.querySelector('input[name="nama_bulan"]');
                     if (namaBulanField) {
                         namaBulanField.value = monthNames[monthNumber];
                     }
@@ -524,3 +544,6 @@
             });
         });
     </script>
+</body>
+
+</html>
