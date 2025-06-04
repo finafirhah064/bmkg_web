@@ -88,10 +88,21 @@
                 <h1 class="h4">Tambah Data Tekanan Udara</h1>
                 <p class="mb-0">Form input data tekanan udara dan kelembaban harian.</p>
             </div>
-            <div>
-                <form action="<?= site_url('TekananUdara/upload_excel') ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= site_url('tekananudara/upload_excel') ?>" method="post" enctype="multipart/form-data">
                     <input type="file" name="excel_file" id="fileInput" style="display: none;" accept=".xls,.xlsx,.csv"
-                           onchange="this.form.submit();">
+                        onchange="this.form.submit();">
+                    <a href="#" class="btn btn-outline-gray-600 d-inline-flex align-items-center"
+                        onclick="document.getElementById('fileInput').click(); return false;">
+                        <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m15 11.25-3-3m0 0-3 3m3-3v7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        Upload Excel
+                    </a>
+                </form>
+
+
                     <a href="#" class="btn btn-outline-gray-600 d-inline-flex align-items-center"
                        onclick="document.getElementById('fileInput').click(); return false;">
                         <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none"

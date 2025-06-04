@@ -125,7 +125,7 @@ class temperatur extends BaseController
 
         $sheet = $spreadsheet->getActiveSheet();
         $rows = $sheet->toArray();
-        $model = new ModelTemperatur();
+        $model = new model_temperatur();
         $header = array_map('strtolower', $rows[0]);
 
         for ($i = 1; $i < count($rows); $i++) {

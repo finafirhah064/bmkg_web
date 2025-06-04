@@ -72,8 +72,7 @@ $routes->post('/tekananudara/update/(:num)', 'TekananUdara::update/$1'); // Pros
 
 $routes->get('/tekananudara/delete/(:num)', 'TekananUdara::delete/$1'); // Hapus data
 
-$routes->post('/tekananudara/upload_excel', 'TekananUdara::upload_excel'); // Upload Excel
-
+$routes->post('/tekananudara/upload_excel', 'TekananUdara::upload_excel');
 // Routes untuk Mahasiswa
 $routes->group('mahasiswa', function ($routes) {
     $routes->get('', 'Admin\Mahasiswa::index');
