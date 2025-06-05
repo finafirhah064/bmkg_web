@@ -89,6 +89,24 @@ class ModelTerbitTenggelam extends Model
         return []; // kalau tidak ada data
     }
 
+    public function getDataBulanTerbaru()
+    {
+        // Ambil bulan dan tahun terbaru dari data
+        $latest = $this->select('MONTH(tanggal) as bulan, YEAR(tanggal) as tahun')
+            ->orderBy('tanggal', 'DESC')
+            ->first();
+
+        if ($latest) {
+            return $this->where('MONTH(tanggal)', $latest['bulan'])
+                ->where('YEAR(tanggal)', $latest['tahun'])
+                ->orderBy('tanggal', 'ASC')
+                ->findAll();
+        }
+
+        return []; // Jika tidak ada data
+    }
+
+
 
 
 }

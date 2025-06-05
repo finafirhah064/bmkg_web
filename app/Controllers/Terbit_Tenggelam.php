@@ -15,8 +15,8 @@ class Terbit_Tenggelam extends BaseController
 
         if ($keyword) {
             $data['dataMb'] = $model->like('tanggal', $keyword)
-            ->orLike('kecamatan', $keyword)
-            ->findAll(); // asalkan returnType = 'array'
+                ->orLike('kecamatan', $keyword)
+                ->findAll(); // asalkan returnType = 'array'
         } else {
             $data['dataMb'] = $model->tampilterbitenggelam();
         }
@@ -207,4 +207,14 @@ class Terbit_Tenggelam extends BaseController
 
         return redirect()->to('TerbitTenggelam')->with('success', 'Data berhasil diupload dan disimpan.');
     }
+
+    public function user_terbittenggelam()
+    {
+        $model = new ModelTerbitTenggelam();
+        $data['dataTerbit'] = $model->getDataBulanTerbaru();
+        echo view('user/user_header');
+        echo view('user/terbit_tenggelam/view_terbittenggelam', $data);
+        echo view('user/user_footer');
+    }
+
 }

@@ -162,3 +162,4 @@ $routes->post('Gempa/upload', 'Gempa::upload');
 
 
 $routes->get('user/beritakegiatan', 'Berita_Kegiatan::user_beritakegiatan');
+$routes->get('/user/terbit-tenggelam', 'Terbit_Tenggelam::user_terbittenggelam');

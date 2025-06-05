@@ -187,7 +187,7 @@
                                 <li><a class="dropdown-item" href="<?= base_url('user/petir'); ?>">Petir</a></li>
                                 <li><a class="dropdown-item" href="#">Temperatur</a></li>
                                 <li><a class="dropdown-item" href="#">Tekanan Udara</a></li>
-                                <li><a class="dropdown-item" href="#">Terbit & Tenggelam</a></li>
+                                <li><a class="dropdown-item" href="<?= base_url('/user/terbit-tenggelam'); ?>">Terbit & Tenggelam</a></li>
                                 <li><a class="dropdown-item" href="<?= base_url('user/hilal'); ?>">Hilal</a></li>
                                 <li><a class="dropdown-item" href="#">Hiposenter</a></li>
                             </ul>
