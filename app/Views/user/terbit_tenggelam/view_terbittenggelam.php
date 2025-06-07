@@ -20,6 +20,7 @@
         background-color: #004e89;
         
     }
+    
 </style>
 
 <main>
@@ -68,8 +69,8 @@
                                 <tr>
                                     <td><?= date('j F Y', strtotime($tanggal)) ?></td>
                                     <?php foreach ($kecamatanList as $kec): ?>
-                                        <td><?= $dataKecamatan[$kec]['terbit'] ?? '-' ?></td>
-                                        <td><?= $dataKecamatan[$kec]['tenggelam'] ?? '-' ?></td>
+                                        <td class="td-terbit"><?= $dataKecamatan[$kec]['terbit'] ?? '-' ?></td>
+                                        <td class="td-tenggelam"><?= $dataKecamatan[$kec]['tenggelam'] ?? '-' ?></td>
                                     <?php endforeach; ?>
                                 </tr>
                             <?php endforeach; ?>

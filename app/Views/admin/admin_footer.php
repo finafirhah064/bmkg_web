@@ -22,7 +22,7 @@
         </div>
     </div>
 </footer>
-</main>
+
 
 
     <!-- Core -->
@@ -65,6 +65,7 @@
 
 <!-- Volt JS -->
 <script src="../../assets/js/volt.js"></script>
+
 
     
 </body>

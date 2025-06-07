@@ -51,7 +51,7 @@
                 <p class="mb-0">Tabel Terbit Tenggelam.</p>
             </div>
             <div>
-                <a href="<?php echo base_url('FormTerbitTenggelam'); ?>"
+                <a href="<?php echo base_url('admin/terbit-tenggelam/form'); ?>"
                     class="btn btn-outline-success d-inline-flex align-items-center me-2">
                     <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke-width="1.5" stroke="currentColor">
@@ -100,16 +100,15 @@
                                 <td><?= $row['waktu_tenggelam'] ?></td>
                                 <td><?= $row['kecamatan'] ?></td>
                                 <td>
-                                    <a href="<?= base_url('/Home/updateterbittenggelam/' . $row['id_terbit_tenggelam']); ?>"
+                                    <a href="<?= base_url('admin/terbit-tenggelam/edit/' . $row['id_terbit_tenggelam']); ?>"
                                         class="btn btn-sm btn-warning">Edit</a>
-                                    <a href="<?= base_url('/Home/deleteterbittenggelam/' . $row['id_terbit_tenggelam']); ?>"
+                                    <a href="<?= base_url('admin/terbit-tenggelam/delete/' . $row['id_terbit_tenggelam']); ?>"
                                         class="btn btn-danger btn-sm"
                                         onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
-
                 </table>
             </div>
         </div>

@@ -186,79 +186,89 @@ public function downloadExcel()
 
 public function uploadExcel()
 {
-    $file = $this->request->getFile('file'); // Menggunakan 'file' sesuai dengan name di form
+    $file = $this->request->getFile('file');
 
-    // Memeriksa apakah file valid
+    // Validasi file
     if (!$file || !$file->isValid()) {
         return redirect()->back()->with('error', 'File tidak ditemukan atau tidak valid.');
     }
 
-    // Validasi ekstensi file (xls, xlsx, csv)
     $allowedExtensions = ['xls', 'xlsx', 'csv'];
     $ext = strtolower($file->getClientExtension());
     if (!in_array($ext, $allowedExtensions)) {
         return redirect()->back()->with('error', 'Format file tidak didukung. Harap unggah file Excel yang valid.');
     }
 
-    // Pindahkan file ke folder sementara
+    // Simpan sementara
     $randomName = $file->getRandomName();
-    $file->move(WRITEPATH . 'uploads', $randomName); // Menyimpan file di folder sementara
+    $file->move(WRITEPATH . 'uploads', $randomName);
     $filePath = WRITEPATH . 'uploads/' . $randomName;
 
     try {
-        // Membaca file dengan PhpSpreadsheet
         $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($filePath);
     } catch (\PhpOffice\PhpSpreadsheet\Reader\Exception $e) {
         return redirect()->back()->with('error', 'Gagal membaca file Excel: ' . $e->getMessage());
     }
 
     $sheet = $spreadsheet->getActiveSheet();
-    $rows = $sheet->toArray(); // Mengonversi sheet ke array
+    $rows = $sheet->toArray();
 
-    $model = new ModelPengamatanHilal();
+    if (count($rows) < 2) {
+        return redirect()->back()->with('error', 'File tidak memiliki data yang cukup.');
+    }
 
-    $header = array_map('strtolower', $rows[0]); // Mengonversi header menjadi huruf kecil untuk konsistensi
+    $model = new \App\Models\ModelPengamatanHilal();
 
     for ($i = 1; $i < count($rows); $i++) {
         $row = $rows[$i];
-        $data = array_combine($header, $row);
 
-        // Siapkan data sesuai struktur tabel
+        // Normalisasi status_visibilitas
+        $statusInput = strtolower(trim($row[8]));
+        if (stripos($statusInput, 'tidak dilakukan') !== false) {
+            $status = 'tidak dilakukan';
+        } elseif (stripos($statusInput, 'tidak') !== false) {
+            $status = 'tidak teramati';
+        } elseif (stripos($statusInput, 'teramati') !== false) {
+            $status = 'teramati';
+        } else {
+            $status = 'tidak teramati'; // fallback default
+        }
+
         $saveData = [
-            'tahun_hijri' => isset($data['tahun_hijri']) ? $data['tahun_hijri'] : null,
-            'bulan_hijri' => isset($data['bulan_hijri']) ? $data['bulan_hijri'] : null,
-            'nama_bulan' => isset($data['nama_bulan']) ? $data['nama_bulan'] : null,
-            'tanggal_observasi' => isset($data['tanggal_observasi']) ? date('Y-m-d', strtotime($data['tanggal_observasi'])) : null,
-            'waktu_observasi' => isset($data['waktu_observasi']) ? $data['waktu_observasi'] : null,
-            'lokasi' => isset($data['lokasi']) ? $data['lokasi'] : null,
-            'latitude' => isset($data['latitude']) ? $data['latitude'] : null,
-            'longitude' => isset($data['longitude']) ? $data['longitude'] : null,
-            'ketinggian' => isset($data['ketinggian']) ? $data['ketinggian'] : null,
-            'status_visibilitas' => isset($data['status_visibilitas']) ? $data['status_visibilitas'] : null,
-            'deskripsi' => isset($data['deskripsi']) ? $data['deskripsi'] : null,
-            'kondisi_cuaca' => isset($data['kondisi_cuaca']) ? $data['kondisi_cuaca'] : null,
-            'waktu_terbenam_matahari' => isset($data['waktu_terbenam_matahari']) ? $data['waktu_terbenam_matahari'] : null,
-            'waktu_terbenam_bulan' => isset($data['waktu_terbenam_bulan']) ? $data['waktu_terbenam_bulan'] : null,
-            'azimuth_matahari' => isset($data['azimuth_matahari']) ? $data['azimuth_matahari'] : null,
-            'azimuth_bulan' => isset($data['azimuth_bulan']) ? $data['azimuth_bulan'] : null,
-            'tinggi_bulan' => isset($data['tinggi_bulan']) ? $data['tinggi_bulan'] : null,
-            'elongasi' => isset($data['elongasi']) ? $data['elongasi'] : null,
-            'judul_laporan' => isset($data['judul_laporan']) ? $data['judul_laporan'] : null,
-            'isi_laporan' => isset($data['isi_laporan']) ? $data['isi_laporan'] : null,
-            'dipublikasikan' => isset($data['dipublikasikan']) ? ($data['dipublikasikan'] == 'Published' ? 1 : 0) : 0,
-            'waktu_observasi' => isset($data['waktu_observasi']) ? date('Y-m-d', strtotime($data['waktu_observasi'])) : null,
+            'tahun_hijri' => $row[2] ?? null,
+            'bulan_hijri' => $row[2] ?? null,
+            'nama_bulan' => $row[3] ?? null,
+            'tanggal_observasi' => isset($row[1]) ? date('Y-m-d', strtotime($row[1])) : null,
+            'waktu_observasi' => $row[20] ?? null,
+            'lokasi' => $row[4] ?? null,
+            'latitude' => $row[5] ?? null,
+            'longitude' => $row[6] ?? null,
+            'ketinggian' => $row[7] ?? null,
+            'status_visibilitas' => $status,
+            'deskripsi' => $row[9] ?? null,
+            'kondisi_cuaca' => $row[10] ?? null,
+            'waktu_terbenam_matahari' => $row[11] ?? null,
+            'waktu_terbenam_bulan' => $row[12] ?? null,
+            'azimuth_matahari' => $row[13] ?? null,
+            'azimuth_bulan' => $row[14] ?? null,
+            'tinggi_bulan' => $row[15] ?? null,
+            'elongasi' => $row[16] ?? null,
+            'judul_laporan' => $row[17] ?? null,
+            'isi_laporan' => $row[18] ?? null,
+            'dipublikasikan' => ($row[19] == 'Published' || $row[19] == 1) ? 1 : 0,
         ];
 
-        // Debug: Tampilkan data yang akan disimpan
-        var_dump($saveData); // Tampilkan data sebelum insert
-
-        // Simpan data ke database
+        // Insert ke database jika tanggal valid
         if ($saveData['tanggal_observasi']) {
-            $model->insert($saveData);
+            $insert = $model->insert($saveData);
+            if (!$insert) {
+                log_message('error', 'GAGAL INSERT: ' . json_encode($saveData));
+                log_message('error', 'VALIDATION ERROR: ' . json_encode($model->errors()));
+            }
         }
     }
 
-    // Hapus file yang telah dipindahkan setelah proses selesai (opsional)
+    // Hapus file sementara
     if (file_exists($filePath)) {
         unlink($filePath);
     }

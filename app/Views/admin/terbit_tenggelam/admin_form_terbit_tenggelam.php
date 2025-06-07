@@ -49,7 +49,7 @@
                 <p class="mb-0">Halaman Data Terbit Tenggelam</p>
             </div>
             <div>
-                <form action="<?= site_url('TerbitTenggelam/process_upload') ?>" method="post"
+                <form action="<?= site_url('admin/terbit-tenggelam/upload') ?>" method="post"
                     enctype="multipart/form-data">
                     <input type="file" name="excel_file" id="fileInput" style="display: none;" accept=".xls,.xlsx,.csv"
                         onchange="this.form.submit();">
@@ -72,22 +72,13 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow components-section">
                 <div class="card-body">
-                    <form method="POST" action="<?= site_url('Home/terbit_tenggelam') ?>">
+                    <form method="POST" action="<?= site_url('admin/terbit-tenggelam/save') ?>">
                         <div class="row mb-4">
                             <!-- Kolom Kiri -->
                             <div class="col-md-6">
                                 <div class="mb-4">
                                     <label for="tanggal">Tanggal</label>
                                     <div class="input-group">
-                                        <!-- <span class="input-group-text"> -->
-                                        <!-- Ikon kalender -->
-                                        <!-- <svg class="icon icon-xs text-gray-600" fill="currentColor"
-                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                                    clip-rule="evenodd" />
-                                            </svg> -->
-                                        <!-- </span> -->
                                         <input type="date" class="form-control" id="tanggal" name="tanggal" required>
                                     </div>
                                 </div>
@@ -114,7 +105,7 @@
                                 </div>
 
                                 <div class="mb-4">
-                                    <label for="kecamata">Kote/Kecamatan</label>
+                                    <label for="kecamata">Kota/Kecamatan</label>
                                     <select name="kecamatan" class="form-control" required>
                                         <option value="">-- Pilih Kota/Kecamatan --</option>
                                         <option value="Malang">Malang</option>
@@ -124,7 +115,7 @@
                                         <option value="Tulungagung">Tulungagung</option>
                                         <option value="Jember">Jember</option>
                                         <option value="Lumajang">Lumajang</option>
-                                        <option value="Jember">Jember</option>
+                                        <option value="Jember">Banyuwangi</option>
                                     </select>
                                 </div>
                             </div>

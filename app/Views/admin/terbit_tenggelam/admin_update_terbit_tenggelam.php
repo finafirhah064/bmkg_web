@@ -21,6 +21,8 @@
                     </form> -->
                     <!-- / Search form -->
                 </div>
+            </div>
+        </div>
     </nav>
     <!-- Breadcrumb -->
     <div class="py-4">
@@ -54,7 +56,7 @@
             <div class="card border-0 shadow components-section">
                 <div class="card-body">
                     <form method="POST"
-                        action="<?= site_url('Home/updateterbittenggelam/' . $terbit_tenggelam->id_terbit_tenggelam) ?>">
+                        action="<?= site_url('admin/terbit-tenggelam/update/' . $terbit_tenggelam->id_terbit_tenggelam) ?>">
                         <div class="row mb-4">
                             <!-- Kolom Kiri -->
                             <div class="col-md-6">
