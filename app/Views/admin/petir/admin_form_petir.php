@@ -96,7 +96,7 @@
     <div class="col-12 mb-4">
         <div class="card border-0 shadow components-section">
             <div class="card-body">
-                <form method="POST" action="<?= site_url('Petir/save') ?>">
+                <form method="POST" action="<?= base_url('Petir/save') ?>">
                     <div class="row">
                         <!-- Kolom Kiri -->
                         <div class="col-md-6">

@@ -335,7 +335,7 @@ $segment2 = service('uri')->getSegment(2);
 
       <li class="nav-item">
         <!-- Berita Kegiatan -->
-        <a href="<?php echo base_url('BeritaKegiatan'); ?>"
+        <a href="<?php echo base_url('beritakegiatan'); ?>"
           class="nav-link d-flex align-items-center <?= $segment1 == 'BeritaKegiatan' ? 'active' : ''; ?>">
           <span class="sidebar-icon me-3">
             <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 23 23"

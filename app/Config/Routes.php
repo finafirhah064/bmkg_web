@@ -93,7 +93,7 @@ $routes->group('Temperatur', ['filter' => 'auth'], function ($routes) {
     $routes->post('upload_excel', 'Temperatur::upload_excel'); // Upload Excel
 });
 
-$routes->group('petir', ['filter' => 'auth'], function($routes) {
+$routes->group('Petir', ['filter' => 'auth'], function($routes) {
     $routes->get('/', 'Petir::view_petir');                            // Tabel utama data petir
     $routes->get('form', 'Petir::form');                               // Form tambah data
     $routes->get('form_update/(:num)', 'Petir::form_update/$1');       // Form edit data

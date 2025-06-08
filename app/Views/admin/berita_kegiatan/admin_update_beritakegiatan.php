@@ -56,7 +56,7 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow components-section">
                 <div class="card-body">
-                    <form method="POST" action="<?= site_url('update/BeritaKegiatan/' . $berita_kegiatan->id_berita) ?>"
+                    <form method="POST" action="<?= site_url('beritakegiatan/update/' . $berita_kegiatan->id_berita) ?>"
                         enctype="multipart/form-data">
                         <div class="row">
                             <!-- Judul -->
