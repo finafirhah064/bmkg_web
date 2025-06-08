@@ -45,7 +45,7 @@ $routes->group('admin/pengajuan_surat', ['filter' => 'auth'], function($routes) 
     $routes->post('admin/pengajuan_surat/ubah_status_ajax', 'PengajuanSurat::ubah_status_ajax');
 
 // Grup untuk admin - Gempa harus login
-$routes->group('gempa', ['filter' => 'auth'], function($routes) {
+$routes->group('Gempa', ['filter' => 'auth'], function($routes) {
     $routes->get('/', 'Gempa::view_gempa');                      // Tampilkan semua data gempa
     $routes->get('form', 'Gempa::form');                         // Form tambah data gempa
     $routes->get('edit/(:num)', 'Gempa::form_update/$1');       // Form update data

@@ -16,10 +16,10 @@
     <link href="https://themesberg.github.io/volt-bootstrap-5-dashboard/assets/css/volt.css" rel="stylesheet">
 
     <!-- SweetAlert2 CSS (UNPKG) -->
-<link href="https://unpkg.com/sweetalert2@11.7.27/dist/sweetalert2.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/sweetalert2@11.7.27/dist/sweetalert2.min.css" rel="stylesheet">
 
-<!-- Notyf CSS (UNPKG) -->
-<link href="https://unpkg.com/notyf@3.10.0/notyf.min.css" rel="stylesheet">
+    <!-- Notyf CSS (UNPKG) -->
+    <link href="https://unpkg.com/notyf@3.10.0/notyf.min.css" rel="stylesheet">
 
     <style>
         .progress-thin {
@@ -102,11 +102,11 @@
         </div>
 <!-- Tab Navigation -->
     <div class="card-body">
-        <a href="<?= base_url('hilal/downloadExcel'); ?>" class="btn btn-success mb-3">
+        <a href="<?= base_url('hilal/download'); ?>" class="btn btn-success mb-3">
             <i class="fas fa-file-excel me-2"></i> Download Excel
         </a>
         <!-- Form Upload -->
-        <form action="<?= base_url('hilal/uploadExcel'); ?>" method="post" enctype="multipart/form-data" class="d-flex gap-2 align-items-end">
+        <form action="<?= base_url('hilal/upload'); ?>" method="post" enctype="multipart/form-data" class="d-flex gap-2 align-items-end">
             <div class="w-50">
                 <label for="file" class="form-label">Unggah File Excel</label>
                 <input type="file" class="form-control" id="file" name="file" accept=".xlsx" required>
@@ -359,7 +359,7 @@
                 <h5 class="modal-title">Unggah Data Pengamatan Hilal</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('hilal/uploadExcel'); ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url('hilal/upload'); ?>" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label">Pilih File Excel</label>

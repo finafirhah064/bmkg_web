@@ -255,7 +255,7 @@ $segment2 = service('uri')->getSegment(2);
         <div class="multi-level collapse" role="list" id="submenu-hilal">
           <ul class="flex-column nav">
             <li class="nav-item">
-              <a class="nav-link ps-4" href="<?php echo base_url('Hilal'); ?>">
+              <a class="nav-link ps-4" href="<?php echo base_url('hilal'); ?>">
                 <span class="sidebar-text">Data Hilal</span>
               </a>
             </li>
