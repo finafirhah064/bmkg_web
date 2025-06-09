@@ -97,7 +97,7 @@ class Gempa extends BaseController
 
         // Simpan ke database
         $model->insert($data);
-        return redirect()->to('/Gempa')->with('success', 'Data berhasil disimpan.');
+        return redirect()->to('Gempa')->with('success', 'Data berhasil disimpan.');
     }
 
 
@@ -116,14 +116,14 @@ class Gempa extends BaseController
         ];
 
         $model->update($id, $data);
-        return redirect()->to('/Gempa')->with('success', 'Data berhasil diperbarui.');
+        return redirect()->to('Gempa')->with('success', 'Data berhasil diperbarui.');
     }
 
     public function delete($id)
     {
         $model = new ModelGempa();
         $model->delete($id);
-        return redirect()->to('/Gempa')->with('success', 'Data berhasil dihapus.');
+        return redirect()->to('Gempa')->with('success', 'Data berhasil dihapus.');
     }
 
     public function upload()
@@ -176,6 +176,6 @@ class Gempa extends BaseController
             unlink($filePath);
         }
 
-        return redirect()->to('/Gempa')->with('success', 'Data berhasil diupload dan disimpan.');
+        return redirect()->to('Gempa')->with('success', 'Data berhasil diupload dan disimpan.');
     }
 }

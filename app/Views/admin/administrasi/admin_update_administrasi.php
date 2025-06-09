@@ -59,7 +59,7 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow components-section">
                 <div class="card-body">
-                    <form method="POST" action="<?= site_url('administrasi/update_administrasi/' . $administrasi->id_mahasiswa) ?>" enctype="multipart/form-data">
+                    <form method="POST" action="<?= site_url('administrasi/update/' . $administrasi->id_mahasiswa) ?>" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3"><label>NIM</label><input type="text" class="form-control" name="nim" value="<?= $administrasi->nim ?>"></div>

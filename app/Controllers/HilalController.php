@@ -124,13 +124,26 @@ public function downloadExcel()
 
     // Header row
     $sheet->setCellValue('A1', 'ID')
-          ->setCellValue('B1', 'Tanggal')
+          ->setCellValue('B1', 'Tanggal Observasi')
           ->setCellValue('C1', 'Bulan Hijriyah')
-          ->setCellValue('D1', 'Lokasi')
-          ->setCellValue('E1', 'Tinggi Hilal')
-          ->setCellValue('F1', 'Visibilitas')
-          ->setCellValue('G1', 'Status')
-          ->setCellValue('H1', 'Aksi');
+          ->setCellValue('D1', 'Nama Bulan')
+          ->setCellValue('E1', 'Lokasi')
+          ->setCellValue('F1', 'Latitude')
+          ->setCellValue('G1', 'Longitude')
+          ->setCellValue('H1', 'Ketinggian')
+          ->setCellValue('I1', 'Status Visibilitas')
+          ->setCellValue('J1', 'Deskripsi')
+          ->setCellValue('K1', 'Kondisi Cuaca')
+          ->setCellValue('L1', 'Waktu Terbenam Matahari')
+          ->setCellValue('M1', 'Waktu Terbenam Bulan')
+          ->setCellValue('N1', 'Azimuth Matahari')
+          ->setCellValue('O1', 'Azimuth Bulan')
+          ->setCellValue('P1', 'Tinggi Bulan')
+          ->setCellValue('Q1', 'Elongasi')
+          ->setCellValue('R1', 'Judul Laporan')
+          ->setCellValue('S1', 'Isi Laporan')
+          ->setCellValue('T1', 'Dipublikasikan')
+          ->setCellValue('U1', 'Waktu Observasi'); // Tidak ada kolom "updated_at"
 
     // Populate data
     $row = 2;
@@ -138,10 +151,24 @@ public function downloadExcel()
         $sheet->setCellValue('A' . $row, $item['id_pengamatan_hilal'])
               ->setCellValue('B' . $row, date('d/m/Y', strtotime($item['tanggal_observasi'])))
               ->setCellValue('C' . $row, $item['bulan_hijri'])
-              ->setCellValue('D' . $row, $item['lokasi'])
-              ->setCellValue('E' . $row, $item['tinggi_bulan'])
-              ->setCellValue('F' . $row, $item['status_visibilitas'])
-              ->setCellValue('G' . $row, $item['dipublikasikan'] ? 'Published' : 'Draft');
+              ->setCellValue('D' . $row, $item['nama_bulan'])
+              ->setCellValue('E' . $row, $item['lokasi'])
+              ->setCellValue('F' . $row, $item['latitude'])
+              ->setCellValue('G' . $row, $item['longitude'])
+              ->setCellValue('H' . $row, $item['ketinggian'])
+              ->setCellValue('I' . $row, $item['status_visibilitas'])
+              ->setCellValue('J' . $row, $item['deskripsi'])
+              ->setCellValue('K' . $row, $item['kondisi_cuaca'])
+              ->setCellValue('L' . $row, $item['waktu_terbenam_matahari'])
+              ->setCellValue('M' . $row, $item['waktu_terbenam_bulan'])
+              ->setCellValue('N' . $row, $item['azimuth_matahari'])
+              ->setCellValue('O' . $row, $item['azimuth_bulan'])
+              ->setCellValue('P' . $row, $item['tinggi_bulan'])
+              ->setCellValue('Q' . $row, $item['elongasi'])
+              ->setCellValue('R' . $row, $item['judul_laporan'])
+              ->setCellValue('S' . $row, $item['isi_laporan'])
+              ->setCellValue('T' . $row, $item['dipublikasikan'] ? 'Published' : 'Draft')
+              ->setCellValue('U' . $row, $item['waktu_observasi']);
         $row++;
     }
 
@@ -155,54 +182,99 @@ public function downloadExcel()
     $writer->save('php://output');
     exit;
 }
+
+
 public function uploadExcel()
 {
-    if ($this->request->getMethod() == 'post' && $this->validate([
-        'file' => 'uploaded[file]|ext_in[file,xlsx]'
-    ])) {
-        $file = $this->request->getFile('file');
+    $file = $this->request->getFile('file');
 
-        // Load PhpSpreadsheet library
-        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file->getTempName());
-        $sheet = $spreadsheet->getActiveSheet();
-
-        // Loop through rows and insert data into database
-        $model = new ModelPengamatanHilal();
-        $row = 2;
-        while ($sheet->getCell('A' . $row)->getValue() != '') {
-            $data = [
-                'tahun_hijri' => $sheet->getCell('A' . $row)->getValue(),
-                'bulan_hijri' => $sheet->getCell('B' . $row)->getValue(),
-                'nama_bulan' => $sheet->getCell('C' . $row)->getValue(),
-                'tanggal_observasi' => $sheet->getCell('D' . $row)->getFormattedValue(),
-                'waktu_observasi' => $sheet->getCell('E' . $row)->getFormattedValue(),
-                'lokasi' => $sheet->getCell('F' . $row)->getValue(),
-                'latitude' => $sheet->getCell('G' . $row)->getValue(),
-                'longitude' => $sheet->getCell('H' . $row)->getValue(),
-                'ketinggian' => $sheet->getCell('I' . $row)->getValue(),
-                'status_visibilitas' => $sheet->getCell('J' . $row)->getValue(),
-                'deskripsi' => $sheet->getCell('K' . $row)->getValue(),
-                'kondisi_cuaca' => $sheet->getCell('L' . $row)->getValue(),
-                'waktu_terbenam_matahari' => $sheet->getCell('M' . $row)->getFormattedValue(),
-                'waktu_terbenam_bulan' => $sheet->getCell('N' . $row)->getFormattedValue(),
-                'azimuth_matahari' => $sheet->getCell('O' . $row)->getValue(),
-                'azimuth_bulan' => $sheet->getCell('P' . $row)->getValue(),
-                'tinggi_bulan' => $sheet->getCell('Q' . $row)->getValue(),
-                'elongasi' => $sheet->getCell('R' . $row)->getValue(),
-                'judul_laporan' => $sheet->getCell('S' . $row)->getValue(),
-                'dipublikasikan' => $sheet->getCell('T' . $row)->getValue() == 'Published' ? 1 : 0
-            ];
-
-            $model->insert($data);
-            $row++;
-        }
-
-        return redirect()->to(base_url('hilal'))->with('success', 'Data pengamatan hilal berhasil diupload');
+    // Validasi file
+    if (!$file || !$file->isValid()) {
+        return redirect()->back()->with('error', 'File tidak ditemukan atau tidak valid.');
     }
 
-    return redirect()->back()->with('error', 'File tidak valid');
-}
+    $allowedExtensions = ['xls', 'xlsx', 'csv'];
+    $ext = strtolower($file->getClientExtension());
+    if (!in_array($ext, $allowedExtensions)) {
+        return redirect()->back()->with('error', 'Format file tidak didukung. Harap unggah file Excel yang valid.');
+    }
 
+    // Simpan sementara
+    $randomName = $file->getRandomName();
+    $file->move(WRITEPATH . 'uploads', $randomName);
+    $filePath = WRITEPATH . 'uploads/' . $randomName;
+
+    try {
+        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($filePath);
+    } catch (\PhpOffice\PhpSpreadsheet\Reader\Exception $e) {
+        return redirect()->back()->with('error', 'Gagal membaca file Excel: ' . $e->getMessage());
+    }
+
+    $sheet = $spreadsheet->getActiveSheet();
+    $rows = $sheet->toArray();
+
+    if (count($rows) < 2) {
+        return redirect()->back()->with('error', 'File tidak memiliki data yang cukup.');
+    }
+
+    $model = new \App\Models\ModelPengamatanHilal();
+
+    for ($i = 1; $i < count($rows); $i++) {
+        $row = $rows[$i];
+
+        // Normalisasi status_visibilitas
+        $statusInput = strtolower(trim($row[8]));
+        if (stripos($statusInput, 'tidak dilakukan') !== false) {
+            $status = 'tidak dilakukan';
+        } elseif (stripos($statusInput, 'tidak') !== false) {
+            $status = 'tidak teramati';
+        } elseif (stripos($statusInput, 'teramati') !== false) {
+            $status = 'teramati';
+        } else {
+            $status = 'tidak teramati'; // fallback default
+        }
+
+        $saveData = [
+            'tahun_hijri' => $row[2] ?? null,
+            'bulan_hijri' => $row[2] ?? null,
+            'nama_bulan' => $row[3] ?? null,
+            'tanggal_observasi' => isset($row[1]) ? date('Y-m-d', strtotime($row[1])) : null,
+            'waktu_observasi' => $row[20] ?? null,
+            'lokasi' => $row[4] ?? null,
+            'latitude' => $row[5] ?? null,
+            'longitude' => $row[6] ?? null,
+            'ketinggian' => $row[7] ?? null,
+            'status_visibilitas' => $status,
+            'deskripsi' => $row[9] ?? null,
+            'kondisi_cuaca' => $row[10] ?? null,
+            'waktu_terbenam_matahari' => $row[11] ?? null,
+            'waktu_terbenam_bulan' => $row[12] ?? null,
+            'azimuth_matahari' => $row[13] ?? null,
+            'azimuth_bulan' => $row[14] ?? null,
+            'tinggi_bulan' => $row[15] ?? null,
+            'elongasi' => $row[16] ?? null,
+            'judul_laporan' => $row[17] ?? null,
+            'isi_laporan' => $row[18] ?? null,
+            'dipublikasikan' => ($row[19] == 'Published' || $row[19] == 1) ? 1 : 0,
+        ];
+
+        // Insert ke database jika tanggal valid
+        if ($saveData['tanggal_observasi']) {
+            $insert = $model->insert($saveData);
+            if (!$insert) {
+                log_message('error', 'GAGAL INSERT: ' . json_encode($saveData));
+                log_message('error', 'VALIDATION ERROR: ' . json_encode($model->errors()));
+            }
+        }
+    }
+
+    // Hapus file sementara
+    if (file_exists($filePath)) {
+        unlink($filePath);
+    }
+
+    return redirect()->to(base_url('hilal'))->with('success', 'Data pengamatan hilal berhasil diupload dan disimpan.');
+}
 
 
 }

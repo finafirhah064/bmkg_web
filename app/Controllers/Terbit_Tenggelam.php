@@ -15,8 +15,8 @@ class Terbit_Tenggelam extends BaseController
 
         if ($keyword) {
             $data['dataMb'] = $model->like('tanggal', $keyword)
-            ->orLike('kecamatan', $keyword)
-            ->findAll(); // asalkan returnType = 'array'
+                ->orLike('kecamatan', $keyword)
+                ->findAll(); // asalkan returnType = 'array'
         } else {
             $data['dataMb'] = $model->tampilterbitenggelam();
         }
@@ -85,7 +85,7 @@ class Terbit_Tenggelam extends BaseController
         }
         // Cek hasil
         if ($simpan) {
-            return redirect()->to('TerbitTenggelam')->with('success', 'Data berhasil disimpan');
+            return redirect()->to('admin/terbit-tenggelam')->with('success', 'Data berhasil disimpan');
         } else {
             return redirect()->back()->with('error', 'Gagal menyimpan data');
         }
@@ -119,7 +119,7 @@ class Terbit_Tenggelam extends BaseController
 
         // Check apakah update berhasil
         if ($simpan) {
-            return redirect()->to(base_url('TerbitTenggelam'))->with('success', 'Data berhasil diperbarui.');
+            return redirect()->to(base_url('admin/terbit-tenggelam'))->with('success', 'Data berhasil diperbarui.');
         } else {
             return redirect()->back()->with('error', 'Gagal memperbarui data.');
         }
@@ -129,7 +129,7 @@ class Terbit_Tenggelam extends BaseController
     {
         $mb = new ModelTerbitTenggelam();
         $mb->hapus($id);  // Panggil fungsi hapus
-        return redirect()->to(site_url('TerbitTenggelam'));
+        return redirect()->to(site_url('admin/terbit-tenggelam'));
     }
 
     public function process_upload()
@@ -205,6 +205,16 @@ class Terbit_Tenggelam extends BaseController
             unlink($filePath);
         }
 
-        return redirect()->to('TerbitTenggelam')->with('success', 'Data berhasil diupload dan disimpan.');
+        return redirect()->to('admin/terbit-tenggelam')->with('success', 'Data berhasil diupload dan disimpan.');
     }
+
+    public function user_terbittenggelam()
+    {
+        $model = new ModelTerbitTenggelam();
+        $data['dataTerbit'] = $model->getDataBulanTerbaru();
+        echo view('user/user_header');
+        echo view('user/terbit_tenggelam/view_terbittenggelam', $data);
+        echo view('user/user_footer');
+    }
+
 }

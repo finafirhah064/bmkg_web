@@ -47,27 +47,12 @@
                     </li>
                 </ul> -->
     </nav>
-
-    <!-- Mobile Navbar -->
-    <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
-        <a class="navbar-brand me-lg-5" href="../../index.html">
-            <img class="navbar-brand-dark" src="../../assets/img/brand/light.svg" alt="Volt logo" />
-            <img class="navbar-brand-light" src="../../assets/img/brand/dark.svg" alt="Volt logo" />
-        </a>
-        <div class="d-flex align-items-center">
-            <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
 <!-- Breadcrumb -->
 <div class="py-4">
     <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
         <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
             <li class="breadcrumb-item">
-                <a href="<?= site_url('dashboard'); ?>">
+                <a href="<?= base_url('admin/dashboard'); ?>">
                     <svg class="icon icon-xxs" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -76,7 +61,7 @@
                     </svg>
                 </a>
             </li>
-            <li class="breadcrumb-item"><a href="<?= site_url('Gempa'); ?>">Data Gempa</a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url('Gempa'); ?>">Data Gempa</a></li>
             <li class="breadcrumb-item active" aria-current="page">Update Data</li>
         </ol>
     </nav>
@@ -161,7 +146,7 @@
                                 <select class="form-control" id="dirasakan" name="dirasakan" required>
                                     <option value="">-- Pilih --</option>
                                     <option value="Dirasakan" <?= $gempa['Dirasakan'] === 'Dirasakan' ? 'selected' : '' ?>>Dirasakan</option>
-                                    <option value="Tidak dirasakan" <?= $gempa['Dirasakan'] === 'Tidak dirasakan' ? 'selected' : '' ?>>Tidak Dirasakan</option>
+                                    <option value="Tidak Dirasakan" <?= $gempa['Dirasakan'] === 'Tidak Dirasakan' ? 'selected' : '' ?>>Tidak Dirasakan</option>
                                 </select>
                             </div>
                         </div>

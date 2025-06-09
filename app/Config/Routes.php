@@ -8,50 +8,82 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::user_dashboard');
 $routes->get('admin/login', 'Login::index');
 $routes->post('admin/loginauth', 'Login::auth');
-//$routes->get('admin/dashboard', 'Home::dashboard');
-$routes->get('admin/dashboard', 'Dashboard::index');
+$routes->get('admin/logout', 'Login::logout');
 
-// Terbit Tenggelam
-$routes->get('TerbitTenggelam', 'Terbit_Tenggelam::view_terbit_tenggelam');
-$routes->get('/Home/updateterbittenggelam/(:num)', 'Terbit_Tenggelam::form_update_terbit_tenggelam/$1');
-$routes->post('Home/updateterbittenggelam/(:num)', 'Terbit_Tenggelam::update_terbit_tenggelam/$1');
-$routes->post('Home/terbit_tenggelam', 'Terbit_Tenggelam::save_terbit_tenggelam');
-$routes->get('/Home/deleteterbittenggelam/(:num)', 'Terbit_Tenggelam::delete_terbit_tenggelam/$1');
-$routes->get('FormTerbitTenggelam', 'Terbit_Tenggelam::form_terbit_tenggelam');
-$routes->post('TerbitTenggelam/process_upload', 'Terbit_Tenggelam::process_upload');
+// Grup untuk Admin Dasboard
+$routes->group('admin', ['filter' => 'auth'], function($routes) {
+$routes->get('dashboard', 'Dashboard::index');
+});
 
+// Grup untuk admin - Administrasi harus login
+$routes->group('administrasi', ['filter' => 'auth'], function($routes) {
+    $routes->get('/', 'Administrasi::index');
+    $routes->get('form', 'Administrasi::form_administrasi');
+    $routes->get('edit/(:num)', 'Administrasi::form_update_administrasi/$1');
+    $routes->post('save', 'Administrasi::save_administrasi');
+    $routes->post('update/(:num)', 'Administrasi::update_administrasi/$1');
+    $routes->get('delete/(:num)', 'Administrasi::delete_administrasi/$1');
+    $routes->get('export', 'Administrasi::export_excel');
+    $routes->post('upload', 'Administrasi::process_upload');
+});
 
+// Grup untuk admin - Buku Tamu harus login
+$routes->group('buku_tamu', ['filter' => 'auth'], function($routes) {
+    $routes->get('/', 'BukuTamu::index');                        // Tampilkan data buku tamu (admin/user tergantung view)
+    $routes->get('export', 'BukuTamu::export_excel');           // Ekspor data ke Excel
+    $routes->post('simpan', 'BukuTamu::simpan');                // Simpan data dari form buku tamu
+});
 
-//Berita Kegiatan
-$routes->get('BeritaKegiatan', 'Berita_Kegiatan::view_beritakegiatan');
-$routes->get('form/BeritaKegiatan', 'Berita_Kegiatan::form_beritakegiatan');
-$routes->post('add/BeritaKegiatan', 'Berita_Kegiatan::save_beritakegiatan');
-$routes->get('delete/BeritaKegiatan/(:num)', 'Berita_Kegiatan::delete_beritakegiatan/$1');
-$routes->get('/update/FormBeritaKegiatan/(:num)', 'Berita_Kegiatan::form_update_beritakegiatan/$1');
-$routes->post('update/BeritaKegiatan/(:num)', 'Berita_Kegiatan::update_beritakegiatan/$1');
-$routes->get('user/berita/(:num)', 'Berita_Kegiatan::detail_berita/$1');
+// Grup untuk admin - Pengajuan Surat harus login
+$routes->group('admin/pengajuan_surat', ['filter' => 'auth'], function($routes) {
+    $routes->get('/', 'PengajuanSurat::index'); // Halaman utama pengajuan surat
+    $routes->get('export', 'PengajuanSurat::export_excel'); // Ekspor data
+    $routes->get('ubah_status/(:num)/(:segment)', 'PengajuanSurat::ubah_status/$1/$2'); // Ubah status surat
+});
 
-//Tentang BMKG
-$routes->get('user/tentangbmkg', 'Home::tentang_bmkg');
+    $routes->get('pengajuan_surat', 'PengajuanSurat::form');
+    $routes->post('admin/pengajuan_surat/ubah_status_ajax', 'PengajuanSurat::ubah_status_ajax');
 
-// Hilal Routes - PASTIKAN PENULISAN 'hilal' KONSISTEN
-$routes->get('hilal', 'Home::hilal');
-$routes->get('Hilal', 'Home::hilal');
-$routes->post('hilal/simpan', 'HilalController::simpan_hilal');
-$routes->post('hilal/update/(:num)', 'HilalController::update_hilal/$1');
-$routes->get('hilal/delete/(:num)', 'HilalController::delete_hilal/$1');
-$routes->get('hilal/downloadExcel', 'HilalController::downloadExcel');
-$routes->post('hilal/uploadExcel', 'HilalController::uploadExcel');
-// app/Config/Routes.php
+// Grup untuk admin - Gempa harus login
+$routes->group('Gempa', ['filter' => 'auth'], function($routes) {
+    $routes->get('/', 'Gempa::view_gempa');                      // Tampilkan semua data gempa
+    $routes->get('form', 'Gempa::form');                         // Form tambah data gempa
+    $routes->get('edit/(:num)', 'Gempa::form_update/$1');       // Form update data
+    $routes->post('save', 'Gempa::save');                        // Simpan data baru
+    $routes->post('update/(:num)', 'Gempa::update/$1');          // Update data
+    $routes->get('delete/(:num)', 'Gempa::delete/$1');           // Hapus data
+    $routes->post('upload', 'Gempa::upload');                    // Upload data dari file
+});
 
-$routes->get('user/hilal', 'UserController::hilal');  // Menampilkan data hilal untuk user
-$routes->get('user/hilal/detail/(:segment)', 'UserController::detail/$1'); // Menampilkan detail pengamatan hilal
-$routes->get('user/hilal/detail/(:num)', 'UserHilalController::detail/$1');
+// Grup untuk admin - Hilal harus login
+$routes->group('hilal', ['filter' => 'auth'], function($routes) {
+    $routes->get('/', 'Home::hilal');                                  // Tampilan utama data hilal
+    $routes->post('simpan', 'HilalController::simpan_hilal');          // Simpan data baru
+    $routes->post('update/(:num)', 'HilalController::update_hilal/$1'); // Update data
+    $routes->get('delete/(:num)', 'HilalController::delete_hilal/$1'); // Hapus data
+    $routes->get('download', 'HilalController::downloadExcel');        // Ekspor Excel
+    $routes->post('upload', 'HilalController::uploadExcel');           // Import Excel
 
+    // Gambar hilal
+    $routes->get('gambar', 'GambarHilalController::index');
+    $routes->post('upload_gambar', 'GambarHilalController::upload_gambar');
+    $routes->post('update_gambar/(:num)', 'GambarHilalController::update_gambar/$1');
+    $routes->get('delete_gambar/(:num)', 'GambarHilalController::delete_gambar/$1');
+});
 
+// Grup untuk admin - Tekanan Udara harus login
+$routes->group('tekananudara', ['filter' => 'auth'], function($routes) {
+    $routes->get('/', 'TekananUdara::view');                             // Tampilkan tabel tekanan udara
+    $routes->get('form', 'TekananUdara::form');                          // Form tambah data
+    $routes->post('save', 'TekananUdara::save');                         // Simpan data
+    $routes->get('form_update/(:num)', 'TekananUdara::form_update/$1'); // Form edit data
+    $routes->post('update/(:num)', 'TekananUdara::update/$1');          // Proses update
+    $routes->get('delete/(:num)', 'TekananUdara::delete/$1');           // Hapus data
+    $routes->post('upload_excel', 'TekananUdara::upload_excel');        // Upload data Excel
+});
 
-// Temperatur Routes 
-$routes->group('Temperatur', function ($routes) {
+// Grup untuk admin - Temperatur harus login
+$routes->group('Temperatur', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'Temperatur::view_temperatur'); // Tampilkan semua data
     $routes->get('form_temperatur', 'Temperatur::form_temperatur'); // Form tambah
     $routes->post('save_temperatur', 'Temperatur::save_temperatur'); // Simpan data
@@ -61,20 +93,29 @@ $routes->group('Temperatur', function ($routes) {
     $routes->post('upload_excel', 'Temperatur::upload_excel'); // Upload Excel
 });
 
-// Udara Routes 
-// ROUTES UNTUK TEKANAN UDARA
-$routes->get('/tekananudara', 'TekananUdara::view'); // Tampilkan tabel
-$routes->get('/tekananudara/form', 'TekananUdara::form'); // Form tambah data
-$routes->post('/tekananudara/save', 'TekananUdara::save'); // Simpan data baru
+$routes->group('Petir', ['filter' => 'auth'], function($routes) {
+    $routes->get('/', 'Petir::view_petir');                            // Tabel utama data petir
+    $routes->get('form', 'Petir::form');                               // Form tambah data
+    $routes->get('form_update/(:num)', 'Petir::form_update/$1');       // Form edit data
+    $routes->post('save', 'Petir::save');                              // Simpan data baru
+    $routes->post('update/(:num)', 'Petir::update/$1');                // Update data
+    $routes->get('delete/(:num)', 'Petir::delete/$1');                 // Hapus data
+    $routes->post('upload', 'Petir::upload');                          // Upload file Excel
+});
 
-$routes->get('/tekananudara/form_update/(:num)', 'TekananUdara::form_update/$1'); // Form edit
-$routes->post('/tekananudara/update/(:num)', 'TekananUdara::update/$1'); // Proses update
+// Grup untuk Admin - Terbit tenggelam harus login
+$routes->group('admin/terbit-tenggelam', ['filter' => 'auth'], function($routes) {
+    $routes->get('/', 'Terbit_Tenggelam::view_terbit_tenggelam');
+    $routes->get('form', 'Terbit_Tenggelam::form_terbit_tenggelam');
+    $routes->post('save', 'Terbit_Tenggelam::save_terbit_tenggelam');
+    $routes->get('edit/(:num)', 'Terbit_Tenggelam::form_update_terbit_tenggelam/$1');
+    $routes->post('update/(:num)', 'Terbit_Tenggelam::update_terbit_tenggelam/$1');
+    $routes->get('delete/(:num)', 'Terbit_Tenggelam::delete_terbit_tenggelam/$1');
+    $routes->post('upload', 'Terbit_Tenggelam::process_upload');
+});
 
-$routes->get('/tekananudara/delete/(:num)', 'TekananUdara::delete/$1'); // Hapus data
-
-$routes->post('/tekananudara/upload_excel', 'TekananUdara::upload_excel');
 // Routes untuk Mahasiswa
-$routes->group('mahasiswa', function ($routes) {
+$routes->group('mahasiswa', ['filter' => 'auth'], function ($routes) {
     $routes->get('', 'Admin\Mahasiswa::index');
     $routes->get('tambah', 'Admin\Mahasiswa::tambah');
     $routes->post('simpan', 'Admin\Mahasiswa::simpan');
@@ -83,81 +124,28 @@ $routes->group('mahasiswa', function ($routes) {
     $routes->get('hapus/(:num)', 'Admin\Mahasiswa::hapus/$1');
 });
 
-$routes->get('hilal/gambar', 'GambarHilalController::index');
-$routes->post('hilal/upload_gambar', 'GambarHilalController::upload_gambar');
-$routes->post('hilal/update_gambar/(:num)', 'GambarHilalController::update_gambar/$1');
-$routes->get('hilal/delete_gambar/(:num)', 'GambarHilalController::delete_gambar/$1');
+// Grup untuk admin - berita kegiatan harus login
+$routes->group('beritakegiatan', ['filter' => 'auth'], function($routes) {
+    $routes->get('/', 'Berita_Kegiatan::view_beritakegiatan');                   // Tampilkan semua berita
+    $routes->get('form', 'Berita_Kegiatan::form_beritakegiatan');               // Form tambah berita
+    $routes->post('add', 'Berita_Kegiatan::save_beritakegiatan');               // Simpan berita
+    $routes->get('delete/(:num)', 'Berita_Kegiatan::delete_beritakegiatan/$1'); // Hapus berita
+    $routes->get('edit/(:num)', 'Berita_Kegiatan::form_update_beritakegiatan/$1'); // Form update
+    $routes->post('update/(:num)', 'Berita_Kegiatan::update_beritakegiatan/$1');   // Proses update
+});
 
-// Routes untuk Administrasi
-$routes->get('administrasi', 'Administrasi::index');
-$routes->get('administrasi/form_administrasi', 'Administrasi::form_administrasi');
-$routes->get('administrasi/form_update_administrasi/(:num)', 'Administrasi::form_update_administrasi/$1');
-$routes->post('administrasi/save_administrasi', 'Administrasi::save_administrasi');
-$routes->post('administrasi/update_administrasi/(:num)', 'Administrasi::update_administrasi/$1');
-$routes->get('administrasi/delete_administrasi/(:num)', 'Administrasi::delete_administrasi/$1');
-$routes->get('administrasi/export_excel', 'Administrasi::export_excel');
-$routes->post('administrasi/process_upload', 'Administrasi::process_upload');
-$routes->post('administrasi/process_upload', 'Administrasi::process_upload');
+$routes->group('user', function($routes) {
+    $routes->get('beritakegiatan', 'Berita_Kegiatan::user_beritakegiatan');
+    $routes->get('berita/(:num)', 'Berita_Kegiatan::detail_berita/$1');
+    $routes->get('tentangbmkg', 'Home::tentang_bmkg');
+    $routes->get('terbit-tenggelam', 'Terbit_Tenggelam::user_terbittenggelam');
+    $routes->get('hilal', 'UserController::hilal');
+    $routes->get('hilal/detail/(:segment)', 'UserController::detail/$1');
+    $routes->get('hilal/detail/(:num)', 'UserHilalController::detail/$1');
+    $routes->get('petir', 'Petir::view_petir_user');
+    $routes->get('petir/detail/(:num)', 'Petir::detail_petir/$1');
 
-//buku tamu
-$routes->get('buku_tamu', 'BukuTamu::index');
-$routes->get('buku_tamu/export_excel', 'BukuTamu::export_excel');
-$routes->post('buku-tamu/simpan', 'BukuTamu::simpan');
+});
 $routes->get('buku-tamu', 'BukuTamu::form'); // route untuk halaman form buku tamu user
-
-
-
-// Routes untuk Pengajuan Surat
-// ===== ROUTES USER =====
 $routes->post('pengajuan_surat/simpan', 'PengajuanSurat::simpan');
-
-// ===== ROUTES ADMIN =====
-$routes->get('admin/pengajuan_surat', 'PengajuanSurat::index');
-$routes->get('admin/pengajuan_surat/export_excel', 'PengajuanSurat::export_excel');
-$routes->get('admin/pengajuan_surat/ubah_status/(:num)/(:segment)', 'PengajuanSurat::ubah_status/$1/$2');
-$routes->match(['get', 'post'], 'cek_status_surat', 'PengajuanSurat::cek_status');
-
-
-
-$routes->get('pengajuan_surat', 'PengajuanSurat::form');
-$routes->post('admin/pengajuan_surat/ubah_status_ajax', 'PengajuanSurat::ubah_status_ajax');
-
-
-
-
-
-
-
-
-
-//routes untuk petir
-$routes->get('Petir', 'Petir::view_petir');
-$routes->get('Petir/form', 'Petir::form');
-$routes->get('Petir/form_update/(:num)', 'Petir::form_update/$1');
-$routes->post('Petir/save', 'Petir::save');
-$routes->post('Petir/update/(:num)', 'Petir::update/$1');
-$routes->get('Petir/delete/(:num)', 'Petir::delete/$1');
-$routes->post('Petir/upload', 'Petir::upload');
-$routes->get('user/petir', 'petir::view_petir_user'); // User: Lihat data petir
-// Routing untuk melihat detail peta sambaran petir
-$routes->get('petir/detail/(:num)', 'petir::detail_petir/$1');
-
-
-
-//Routes untuk Gempa
-$routes->get('Gempa', 'Gempa::view_gempa');
-$routes->get('Gempa/form_gempa', 'Gempa::form');
-// form_temperatur', 'Temperatur::form_temperatur
-$routes->get('Gempa/form_update_gempa/(:num)', 'Gempa::form_update/$1');
-$routes->post('Gempa/save', 'Gempa::save');
-$routes->post('Gempa/update/(:num)', 'Gempa::update/$1');
-$routes->get('Gempa/delete/(:num)', 'Gempa::delete/$1');
-$routes->post('Gempa/upload', 'Gempa::upload');
-
-
-
-
-
-
-
-$routes->get('user/beritakegiatan', 'Berita_Kegiatan::user_beritakegiatan');
+$routes->get('cek_status_surat', 'PengajuanSurat::cek_status'); // Ekspor data

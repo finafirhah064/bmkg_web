@@ -1,6 +1,12 @@
+<style>
+    body {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        font-family: 'Poppins', sans-serif;
+    }
+</style>
 <main>
-    <section class="py-5 bg-white">
-        <div class="container">
+    <section>
+        <div class="container py-5">
             <div class="text-center mb-5">
                 <h2 class="fw-bold text-dark">Berita Kegiatan & Pengumuman</h2>
                 <p class="text-muted">Informasi terbaru dari kegiatan dan pengamatan yang dilakukan oleh BMKG.</p>

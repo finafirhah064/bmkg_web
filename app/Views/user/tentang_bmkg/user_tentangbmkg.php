@@ -1,3 +1,9 @@
+<style>
+    body {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        font-family: 'Poppins', sans-serif;
+    }
+</style>
 <main>
     <section class="py-5 bg-light">
         <div class="container text-center mb-5">
@@ -75,13 +81,13 @@
                         </div>
                     </div>
                 </div>
-
-                
             </div>
         </div>
     </section>
+</main>
 
     <!-- Bootstrap & Font Awesome JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
 </main>
+

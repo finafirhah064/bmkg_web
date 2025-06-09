@@ -12,23 +12,23 @@ class Login extends BaseController
     }
 
     public function auth()
-{
-    $model = new ModelLogin();
-    $username = $this->request->getPost('username');
-    $password = $this->request->getPost('password');
+    {
+        $model = new ModelLogin();
+        $username = $this->request->getPost('username');
+        $password = $this->request->getPost('password');
 
-    $user = $model->cekLogin($username, $password);
+        $user = $model->cekLogin($username, $password);
 
-    if ($user) {
-        session()->set([
-            'username' => $user['username'],
-            'logged_in' => true
-        ]);
-        return redirect()->to('admin/dashboard')->with('success', 'Berhasil login');
-    } else {
-        return redirect()->back()->with('error', 'Username atau Password salah!');
+        if ($user) {
+            session()->set([
+                'username' => $user['username'],
+                'isLoggedIn' => true
+            ]);
+            return redirect()->to('admin/dashboard')->with('success', 'Berhasil login');
+        } else {
+            return redirect()->back()->with('error', 'Username atau Password salah!');
+        }
     }
-}
 
 
     public function logout()

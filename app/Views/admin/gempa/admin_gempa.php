@@ -50,21 +50,6 @@
         </div>
     </nav>
 
-    <!-- Mobile Navbar -->
-    <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
-        <a class="navbar-brand me-lg-5" href="../../index.html">
-            <img class="navbar-brand-dark" src="../../assets/img/brand/light.svg" alt="Volt logo" />
-            <img class="navbar-brand-light" src="../../assets/img/brand/dark.svg" alt="Volt logo" />
-        </a>
-        <div class="d-flex align-items-center">
-            <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
-
     <!-- Breadcrumb -->
     <div class="py-4">
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
@@ -89,7 +74,7 @@
                 <p class="mb-0">Data ini adalah data gempa</p>
             </div>
             <div>
-                <a href="<?php echo base_url('Gempa/form_gempa'); ?>"
+                <a href="<?php echo base_url('Gempa/form'); ?>"
                     class="btn btn-outline-gray-600 d-inline-flex align-items-center">
                     <!-- <svg class="icon icon-xs me-1" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
@@ -140,8 +125,8 @@
                             <td><?= $row['Keterangan']; ?></td>
                             <td><?= $row['Dirasakan']; ?></td>
                             <td>
-                                <a href="<?= base_url('/Gempa/form_update_gempa/' . $row['id_gempa']); ?>" class="btn btn-sm btn-primary">Edit</a>
-                                <a href="<?= base_url('/Gempa/delete_gempa/' . $row['id_gempa']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
+                                <a href="<?= base_url('Gempa/edit/' . $row['id_gempa']); ?>" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="<?= base_url('Gempa/delete/' . $row['id_gempa']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

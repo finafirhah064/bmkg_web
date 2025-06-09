@@ -48,7 +48,7 @@
     <link type="text/css" href="../../vendor/notyf/notyf.min.css" rel="stylesheet">
 
     <!-- Volt CSS -->
-    <link type="text/css" href="../../css/volt.css" rel="stylesheet">   
+    <link type="text/css" href="../../../css/volt.css" rel="stylesheet">   
     <!-- Bootstrap JS (Wajib untuk collapse/dropdown) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- text editor -->

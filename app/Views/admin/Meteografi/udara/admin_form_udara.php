@@ -4,22 +4,6 @@
         <div class="container-fluid px-0">
             <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
                 <div class="d-flex align-items-center">
-                    <!-- Search form -->
-                    <form class="navbar-search form-inline" id="navbar-search-main">
-                        <div class="input-group input-group-merge search-bar">
-                            <span class="input-group-text" id="topbar-addon">
-                                <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                    fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </span>
-                            <input type="text" class="form-control" id="topbarInputIconLeft" placeholder="Search"
-                                aria-label="Search" aria-describedby="topbar-addon">
-                        </div>
-                    </form>
-                    <!-- / Search form -->
                 </div>
                 <ul class="navbar-nav align-items-center">
                     <li class="nav-item dropdown ms-lg-3">
@@ -49,24 +33,6 @@
             </div>
         </div>
     </nav>
-
-    <!-- Mobile Navbar -->
-    <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
-        <a class="navbar-brand me-lg-5" href="../../index.html">
-            <img class="navbar-brand-dark" src="../../assets/img/brand/light.svg" alt="Volt logo" />
-            <img class="navbar-brand-light" src="../../assets/img/brand/dark.svg" alt="Volt logo" />
-        </a>
-        <div class="d-flex align-items-center">
-            <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav> 
-
-    <main class="content">
-    <!-- ...Navbar dan Breadcrumb tetap sama... -->
 
     <div class="py-4">
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
@@ -179,7 +145,6 @@
             </div>
         </div>
     </div>
-</main>
 
 
      <!-- Scripts -->

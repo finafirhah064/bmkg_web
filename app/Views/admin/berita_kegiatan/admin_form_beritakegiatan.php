@@ -32,7 +32,7 @@
         <div class="card border-0 shadow components-section">
             <div class="card-body">
                 <!-- Form -->
-                <form method="POST" action="<?= site_url('add/BeritaKegiatan') ?>" enctype="multipart/form-data">
+                <form method="POST" action="<?= base_url('beritakegiatan/add') ?>" enctype="multipart/form-data">
                     <div class="row">
                         <!-- Judul -->
                         <div class="col-md-12 mb-3">

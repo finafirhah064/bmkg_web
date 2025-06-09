@@ -15,8 +15,8 @@ class Petir extends BaseController
 
         if ($keyword) {
             $data['dataMb'] = $model->like('wilayah', $keyword)
-            ->orlike('jenis_petir', $keyword)
-            ->findAll(); // asalkan returnType = 'array'
+                ->orlike('jenis_petir', $keyword)
+                ->findAll(); // asalkan returnType = 'array'
         } else {
             $data['dataMb'] = $model->findAll();
         }
@@ -75,22 +75,26 @@ class Petir extends BaseController
 
         // Cek jika ada field kosong
         if (in_array(null, $data, true) || in_array('', $data, true)) {
-            return redirect()->back()->with('error', 'Semua field wajib diisi!');
+            return redirect()->back()->withInput()->with('error', 'Semua field wajib diisi!');
         }
 
         // Validasi latitude dan longitude
         if (!is_numeric($latitude) || $latitude < -90 || $latitude > 90) {
-            return redirect()->back()->with('error', 'Latitude harus bernilai antara -90 dan 90.');
+            return redirect()->back()->withInput()->with('error', 'Latitude harus bernilai antara -90 dan 90.');
         }
 
         if (!is_numeric($longitude) || $longitude < -180 || $longitude > 180) {
-            return redirect()->back()->with('error', 'Longitude harus bernilai antara -180 dan 180.');
+            return redirect()->back()->withInput()->with('error', 'Longitude harus bernilai antara -180 dan 180.');
         }
 
         // Simpan ke database
-        $model->insert($data);
+        if (!$model->insert($data)) {
+            return redirect()->back()->withInput()->with('error', 'Gagal menyimpan data ke database.');
+        }
+
         return redirect()->to('Petir')->with('success', 'Data berhasil disimpan.');
     }
+
 
 
     public function update($id)
@@ -106,7 +110,7 @@ class Petir extends BaseController
         ];
 
         $model->update($id, $data);
-        return redirect()->to('/Petir')->with('success', 'Data berhasil diperbarui.');
+        return redirect()->to('Petir')->with('success', 'Data berhasil diperbarui.');
     }
 
     public function delete($id)
@@ -164,7 +168,7 @@ class Petir extends BaseController
             unlink($filePath);
         }
 
-        return redirect()->to('/Petir')->with('success', 'Data berhasil diupload dan disimpan.');
+        return redirect()->to('Petir')->with('success', 'Data berhasil diupload dan disimpan.');
     }
     public function view_petir_user()
     {
@@ -173,19 +177,19 @@ class Petir extends BaseController
 
         if ($keyword) {
             $data['dataPetir'] = $model->like('wilayah', $keyword)
-            ->orlike('jenis_petir', $keyword)
-            ->findAll(); // asalkan returnType = 'array'
+                ->orlike('jenis_petir', $keyword)
+                ->findAll(); // asalkan returnType = 'array'
         } else {
             $data['dataPetir'] = $model->findAll();
         }
 
         $data['title'] = 'Data Petir';
-        
+
         return view('user/user_header', $data) .
-               view('user/user_petir', $data) .
-               view('user/user_footer');
+            view('user/user_petir', $data) .
+            view('user/user_footer');
     }
-     public function detail_petir($id)
+    public function detail_petir($id)
     {
         $model = new ModelPetir();
         $petir = $model->find($id); // Ambil data berdasarkan ID sambaran petir
@@ -202,11 +206,10 @@ class Petir extends BaseController
         ];
 
         // Tampilkan tampilan dengan peta
-         return view('user/user_header', $data) .
-                        view('user/detail_petir', $data) .
-                        view('user/user_footer');
+        return view('user/user_header', $data) .
+            view('user/detail_petir', $data) .
+            view('user/user_footer');
     }
 }
- 
-               
-             
+
+

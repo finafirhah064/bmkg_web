@@ -146,19 +146,19 @@ $segment2 = service('uri')->getSegment(2);
     </style>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('DOMContentLoaded', function () {
         const sidebar = document.getElementById('sidebarMenu');
         const toggleBtn = document.createElement('button');
         toggleBtn.className = 'btn btn-primary sidebar-toggle d-lg-none';
         toggleBtn.innerHTML = '☰ Menu';
         document.body.appendChild(toggleBtn);
 
-        toggleBtn.addEventListener('click', function() {
+        toggleBtn.addEventListener('click', function () {
           sidebar.classList.toggle('show');
         });
         toggleBtn.setAttribute('aria-label', 'Toggle sidebar menu');
         // Tutup sidebar saat mengklik di luar
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
           if (!sidebar.contains(e.target) && e.target !== toggleBtn) {
             sidebar.classList.remove('show');
           }
@@ -168,15 +168,6 @@ $segment2 = service('uri')->getSegment(2);
 
 
     <ul class="nav flex-column">
-      <!-- <li class="nav-item">
-        <a href="../../index.html" class="nav-link d-flex align-items-center">
-          <span class="sidebar-icon">
-            <img src="../../assets/img/brand/light.svg" height="20" width="20" alt="Volt Logo">
-          </span>
-          <span class="mt-1 ms-1 sidebar-text">Volt Overview</span>
-        </a>
-      </li> -->
-
       <li class="nav-item">
         <a class="nav-link <?= $segment1 == '' ? 'active' : ''; ?>" href="<?= base_url('admin/dashboard'); ?>">
           <span class="sidebar-icon">
@@ -214,7 +205,8 @@ $segment2 = service('uri')->getSegment(2);
       </li>
 
       <li class="nav-item">
-        <a class="nav-link <?= ($segment1 == 'admin' && $segment2 == 'pengajuan_surat') ? 'active' : ''; ?>" href="<?= base_url('admin/pengajuan_surat'); ?>">
+        <a class="nav-link <?= ($segment1 == 'admin' && $segment2 == 'pengajuan_surat') ? 'active' : ''; ?>"
+          href="<?= base_url('admin/pengajuan_surat'); ?>">
           <span class="sidebar-icon">
             <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
               <path d="M6 2h9a2 2 0 012 2v2h-2V4H6v16h6v2H6a2 2 0 01-2-2V4a2 2 0 012-2zm10 10l4 4v-3h3l-4-4h-3v3z" />
@@ -227,7 +219,8 @@ $segment2 = service('uri')->getSegment(2);
 
       <!-- Contoh perbaikan untuk menu GEMPA -->
       <li class="nav-item">
-        <a href="<?php echo base_url('Gempa'); ?>" class="nav-link d-flex align-items-center <?= $segment1 == 'Gempa' ? 'active' : ''; ?>">
+        <a href="<?php echo base_url('Gempa'); ?>"
+          class="nav-link d-flex align-items-center <?= $segment1 == 'Gempa' ? 'active' : ''; ?>">
           <span class="sidebar-icon me-3">
             <svg class="icon icon-xs" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -262,7 +255,7 @@ $segment2 = service('uri')->getSegment(2);
         <div class="multi-level collapse" role="list" id="submenu-hilal">
           <ul class="flex-column nav">
             <li class="nav-item">
-              <a class="nav-link ps-4" href="<?php echo base_url('Hilal'); ?>">
+              <a class="nav-link ps-4" href="<?php echo base_url('hilal'); ?>">
                 <span class="sidebar-text">Data Hilal</span>
               </a>
             </li>
@@ -327,7 +320,8 @@ $segment2 = service('uri')->getSegment(2);
 
       <li class="nav-item">
         <!-- Terbit Tenggelam -->
-        <a class="nav-link <?= $segment1 == 'TerbitTenggelam' ? 'active' : ''; ?>" href="<?= base_url('TerbitTenggelam'); ?>">
+        <a class="nav-link <?= $segment1 == 'TerbitTenggelam' ? 'active' : ''; ?>"
+          href="<?= base_url('admin/terbit-tenggelam/'); ?>">
           <span class="sidebar-icon me-3">
             <svg class="icon icon-xs" fill="currentColor" stroke="currentColor" stroke-width="1.5" viewBox="0 0 23 23"
               xmlns="http://www.w3.org/2000/svg">
@@ -341,10 +335,11 @@ $segment2 = service('uri')->getSegment(2);
 
       <li class="nav-item">
         <!-- Berita Kegiatan -->
-        <a href="<?php echo base_url('BeritaKegiatan'); ?>" class="nav-link d-flex align-items-center <?= $segment1 == 'BeritaKegiatan' ? 'active' : ''; ?>">
+        <a href="<?php echo base_url('beritakegiatan'); ?>"
+          class="nav-link d-flex align-items-center <?= $segment1 == 'BeritaKegiatan' ? 'active' : ''; ?>">
           <span class="sidebar-icon me-3">
-            <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 23 23" stroke-width="1.5"
-              stroke="currentColor" class="size-6">
+            <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 23 23"
+              stroke-width="1.5" stroke="currentColor" class="size-6">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
             </svg>
@@ -352,19 +347,22 @@ $segment2 = service('uri')->getSegment(2);
           <span class="sidebar-text">Berita Kegiatan</span>
         </a>
       </li>
+      <!-- Garis pemisah -->
+      <hr class="my-3 border-top border-secondary">
 
-      <!-- <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li> -->
-
-      <!-- <li class="nav-item">
-        <a href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/getting-started/quick-start/" target="_blank" class="nav-link d-flex align-items-center">
+      <!-- Logout -->
+      <li class="nav-item">
+        <a href="<?= base_url('admin/logout'); ?>" class="nav-link d-flex align-items-center text-danger">
           <span class="sidebar-icon me-3">
-            <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
+            <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6A2.25 2.25 0 005.25 5.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l3 3m0 0l-3 3m3-3H3" />
             </svg>
           </span>
-          <span class="sidebar-text">Documentation <span class="badge badge-sm bg-secondary ms-1 text-gray-800">v1.4</span></span>
+          <span class="sidebar-text">Logout</span>
         </a>
-      </li> -->
+      </li>
     </ul>
   </div>
 </nav>

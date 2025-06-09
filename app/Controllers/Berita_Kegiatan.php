@@ -102,7 +102,7 @@ class Berita_Kegiatan extends BaseController
         }
 
         // Berhasil
-        return redirect()->to('BeritaKegiatan')->with('success', 'Data berhasil disimpan');
+        return redirect()->to('beritakegiatan')->with('success', 'Data berhasil disimpan');
     }
 
 
@@ -110,7 +110,7 @@ class Berita_Kegiatan extends BaseController
     {
         $mb = new ModelBeritaKegiatan();
         $mb->hapus($id);  // Panggil fungsi hapus
-        return redirect()->to(site_url('BeritaKegiatan'));
+        return redirect()->to(site_url('beritakegiatan'));
     }
 
     // Metode untuk update data berdasarkan ID
@@ -155,7 +155,7 @@ class Berita_Kegiatan extends BaseController
         $simpan = $mb->updateberitakegiatan($tabel, $data, $where);
 
         if ($simpan) {
-            return redirect()->to(base_url('BeritaKegiatan'))->with('success', 'Data berhasil diperbarui.');
+            return redirect()->to(base_url('beritakegiatan'))->with('success', 'Data berhasil diperbarui.');
         } else {
             return redirect()->back()->with('error', 'Gagal memperbarui data.');
         }

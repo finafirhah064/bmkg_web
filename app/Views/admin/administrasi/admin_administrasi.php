@@ -76,7 +76,7 @@
                 </a>
 
 
-                <a href="<?= base_url('administrasi/form_administrasi') ?>" class="btn btn-outline-success d-inline-flex align-items-center me-2">
+                <a href="<?= base_url('administrasi/form') ?>" class="btn btn-outline-success d-inline-flex align-items-center me-2">
                     <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -124,15 +124,15 @@
                                 <td><?= $row->tanggal_selesai ?></td>
                                 <td>
                                     <?php if ($row->file_laporan): ?>
-                                        <a href="<?= base_url('uploads/laporan/' . $row->file_laporan) ?>" target="_blank">Download</a>
+                                        <a href="<?= base_url('administrasi/upload/' . $row->file_laporan) ?>" target="_blank">Download</a>
                                     <?php else: ?>
                                         <span class="text-muted">Tidak ada</span>
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <a href="<?= base_url('administrasi/form_update_administrasi/' . $row->id_mahasiswa); ?>"
+                                    <a href="<?= base_url('administrasi/edit/' . $row->id_mahasiswa); ?>"
                                         class="btn btn-sm btn-warning">Edit</a>
-                                    <a href="<?= base_url('administrasi/delete_administrasi/' . $row->id_mahasiswa) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')">Hapus</a>
+                                    <a href="<?= base_url('administrasi/delete/' . $row->id_mahasiswa) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus?')">Hapus</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

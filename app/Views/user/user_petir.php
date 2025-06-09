@@ -124,7 +124,7 @@
                             </p>
                             <p class="card-text flex-grow-1"><?= htmlspecialchars(substr($row['jenis_petir'], 0, 100)); ?>...</p>
                         <!-- app/Views/user/user_petir.php -->
-<a href="<?= base_url('petir/detail/' . $row['id']); ?>" class="btn btn-info btn-sm">
+<a href="<?= base_url('user/petir/detail/' . $row['id']); ?>" class="btn btn-info btn-sm">
     Lihat Detail <i class="fas fa-map-marker-alt"></i>
 </a>
 

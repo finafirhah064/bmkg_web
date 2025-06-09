@@ -64,7 +64,7 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow components-section">
                 <div class="card-body">
-                    <form method="POST" action="<?= site_url('administrasi/save_administrasi') ?>" enctype="multipart/form-data">
+                    <form method="POST" action="<?= site_url('administrasi/save') ?>" enctype="multipart/form-data">
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="mb-4">

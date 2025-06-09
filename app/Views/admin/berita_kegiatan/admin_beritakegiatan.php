@@ -46,7 +46,7 @@
                 <p class="mb-0">Tabel Berita Kegiatan dan Pengumuman.</p>
             </div>
             <div>
-                <a href="<?= base_url('form/BeritaKegiatan') ?>" class="btn btn-outline-success d-inline-flex align-items-center me-2">
+                <a href="<?= base_url('beritakegiatan/form') ?>" class="btn btn-outline-success d-inline-flex align-items-center me-2">
                     <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -105,9 +105,9 @@
                                 <td><?= $row['kategori']; ?></td>
                                 <td><?= substr(strip_tags($row['isi']), 0, 100) . '...'; ?></td>
                                 <td>
-                                    <a href="<?= base_url('/update/FormBeritaKegiatan/' . $row['id_berita']); ?>"
+                                    <a href="<?= base_url('beritakegiatan/edit/' . $row['id_berita']); ?>"
                                         class="btn btn-sm btn-warning">Edit</a>
-                                    <a href="<?= base_url('delete/BeritaKegiatan/' . $row['id_berita']); ?>"
+                                    <a href="<?= base_url(relativePath: 'beritakegiatan/delete/' . $row['id_berita']); ?>"
                                         class="btn btn-danger btn-sm"
                                         onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
                                 </td>
