@@ -185,11 +185,11 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dataDropdown">
                                 <li><a class="dropdown-item" href="<?= base_url('user/petir'); ?>">Petir</a></li>
-                                <li><a class="dropdown-item" href="#">Temperatur</a></li>
-                                <li><a class="dropdown-item" href="#">Tekanan Udara</a></li>
+                                <!-- <li><a class="dropdown-item" href="#">Temperatur</a></li>
+                                <li><a class="dropdown-item" href="#">Tekanan Udara</a></li> -->
                                 <li><a class="dropdown-item" href="<?= base_url('/user/terbit-tenggelam'); ?>">Terbit & Tenggelam</a></li>
                                 <li><a class="dropdown-item" href="<?= base_url('user/hilal'); ?>">Hilal</a></li>
-                                <li><a class="dropdown-item" href="#">Hiposenter</a></li>
+                                <!-- <li><a class="dropdown-item" href="#">Hiposenter</a></li> -->
                             </ul>
                         </li>
                     </ul>
@@ -199,7 +199,7 @@
     </header>
 
         <!-- Bootstrap JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
