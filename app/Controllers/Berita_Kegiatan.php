@@ -14,13 +14,15 @@ class Berita_Kegiatan extends BaseController
         $keyword = $this->request->getGet('keyword');
 
         if ($keyword) {
-            $data['dataMb'] = $model->like('judul', $keyword)
-            ->orLike('kategori', $keyword)
-            ->findAll(); // asalkan returnType = 'array'
+            $data['dataMb'] = $model
+                ->like('judul', $keyword)
+                ->orLike('kategori', $keyword)
+                ->paginate(30, 'berita'); // 10 item per halaman
         } else {
             $data['dataMb'] = $model->tampilberitakegiatan();
         }
 
+        $data['pager'] = $model->pager;
         $data['keyword'] = $keyword;
 
         echo view('admin/admin_header');
@@ -163,16 +165,28 @@ class Berita_Kegiatan extends BaseController
 
     public function user_beritakegiatan()
     {
-        helper('text');
+        helper(['text', 'url']);
         $model = new ModelBeritaKegiatan();
 
-        // Cukup satu query, nanti disaring di view
-        $data['berita'] = $model->orderBy('tanggal', 'DESC')->findAll();
+        $keyword = $this->request->getGet('q'); // Ambil keyword dari query string
+
+        if ($keyword) {
+            $data['berita'] = $model
+                ->like('judul', $keyword)
+                ->orLike('isi', $keyword)
+                ->orderBy('tanggal', 'DESC')
+                ->findAll();
+        } else {
+            $data['berita'] = $model->orderBy('tanggal', 'DESC')->findAll();
+        }
+
+        $data['keyword'] = $keyword; // kirim juga ke view agar input tetap muncul
 
         echo view('user/user_header');
-        echo view('user/berita_kegiatan/user_beritakegiatan', $data); // kirim data ke view
+        echo view('user/berita_kegiatan/user_beritakegiatan', $data);
         echo view('user/user_footer');
     }
+
 
     public function detail_berita($id)
     {

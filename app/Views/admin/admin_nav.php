@@ -169,7 +169,8 @@ $segment2 = service('uri')->getSegment(2);
 
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link <?= $segment1 == '' ? 'active' : ''; ?>" href="<?= base_url('admin/dashboard'); ?>">
+        <a class="nav-link <?= ($segment1 == 'admin' && $segment2 == 'dashboard') ? 'active' : ''; ?>"
+          href="<?= base_url('admin/dashboard'); ?>">
           <span class="sidebar-icon">
             <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
@@ -255,7 +256,8 @@ $segment2 = service('uri')->getSegment(2);
         <div class="multi-level collapse" role="list" id="submenu-hilal">
           <ul class="flex-column nav">
             <li class="nav-item">
-              <a class="nav-link ps-4" href="<?php echo base_url('hilal'); ?>">
+              <a href="<?php echo base_url('hilal'); ?>"
+          class="nav-link d-flex align-items-center <?= $segment1 == 'hilal' ? 'active' : ''; ?>">
                 <span class="sidebar-text">Data Hilal</span>
               </a>
             </li>
@@ -292,12 +294,14 @@ $segment2 = service('uri')->getSegment(2);
         <div class="multi-level collapse" role="list" id="submenu-meteografi">
           <ul class="flex-column nav">
             <li class="nav-item">
-              <a class="nav-link ps-4" href="<?= base_url('Temperatur'); ?>">
+              <a href="<?php echo base_url('Temperatur'); ?>"
+                class="nav-link d-flex align-items-center <?= $segment1 == 'Temperatur' ? 'active' : ''; ?>">
                 <span class="sidebar-text">Temperatur</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link ps-4" href="<?php echo base_url('tekananudara'); ?>">
+              <a href="<?php echo base_url('tekananudara'); ?>"
+                class="nav-link d-flex align-items-center <?= $segment1 == 'tekananudara' ? 'active' : ''; ?>">
                 <span class="sidebar-text">Udara</span>
               </a>
             </li>
@@ -307,7 +311,8 @@ $segment2 = service('uri')->getSegment(2);
 
       <li class="nav-item">
         <!-- Petir -->
-        <a href="<?php echo base_url('Petir'); ?>" class="nav-link d-flex align-items-center">
+        <a href="<?php echo base_url('Petir'); ?>"
+          class="nav-link d-flex align-items-center <?= $segment1 == 'Petir' ? 'active' : ''; ?>">
           <span class="sidebar-icon me-3">
             <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 23 23" stroke-width="1.5" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -320,8 +325,8 @@ $segment2 = service('uri')->getSegment(2);
 
       <li class="nav-item">
         <!-- Terbit Tenggelam -->
-        <a class="nav-link <?= $segment1 == 'TerbitTenggelam' ? 'active' : ''; ?>"
-          href="<?= base_url('admin/terbit-tenggelam/'); ?>">
+        <a class="nav-link <?= ($segment1 == 'admin' && $segment2 == 'terbit-tenggelam') ? 'active' : ''; ?>"
+          href="<?= base_url('admin/terbit-tenggelam'); ?>">
           <span class="sidebar-icon me-3">
             <svg class="icon icon-xs" fill="currentColor" stroke="currentColor" stroke-width="1.5" viewBox="0 0 23 23"
               xmlns="http://www.w3.org/2000/svg">
@@ -336,7 +341,7 @@ $segment2 = service('uri')->getSegment(2);
       <li class="nav-item">
         <!-- Berita Kegiatan -->
         <a href="<?php echo base_url('beritakegiatan'); ?>"
-          class="nav-link d-flex align-items-center <?= $segment1 == 'BeritaKegiatan' ? 'active' : ''; ?>">
+          class="nav-link d-flex align-items-center <?= $segment1 == 'beritakegiatan' ? 'active' : ''; ?>">
           <span class="sidebar-icon me-3">
             <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 23 23"
               stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -352,7 +357,8 @@ $segment2 = service('uri')->getSegment(2);
 
       <!-- Logout -->
       <li class="nav-item">
-        <a href="<?= base_url('admin/logout'); ?>" class="nav-link d-flex align-items-center text-danger">
+        <a class="nav-link <?= ($segment1 == 'admin' && $segment2 == 'logout') ? 'active' : ''; ?>"
+          href="<?= base_url('admin/logout'); ?>">
           <span class="sidebar-icon me-3">
             <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
               stroke="currentColor" stroke-width="1.5">

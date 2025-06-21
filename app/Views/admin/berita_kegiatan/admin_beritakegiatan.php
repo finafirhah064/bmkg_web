@@ -5,15 +5,20 @@
             <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
                 <div class="d-flex align-items-center">
                     <!-- Search form -->
-                    <form class="navbar-search form-inline" id="navbar-search-main" method="GET" action="<?= base_url('BeritaKegiatan') ?>">
+                    <form class="navbar-search form-inline" id="navbar-search-main" method="GET"
+                        action="<?= base_url('BeritaKegiatan') ?>">
                         <div class="input-group input-group-merge search-bar">
                             <span class="input-group-text" id="topbar-addon">
-                                <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                                <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                        clip-rule="evenodd"></path>
                                 </svg>
                             </span>
-                            <input type="text" class="form-control" name="keyword" id="topbarInputIconLeft" placeholder="Cari Judul..."
-                                value="<?= esc($keyword ?? '') ?>" aria-label="Search" aria-describedby="topbar-addon">
+                            <input type="text" class="form-control" name="keyword" id="topbarInputIconLeft"
+                                placeholder="Cari Judul..." value="<?= esc($keyword ?? '') ?>" aria-label="Search"
+                                aria-describedby="topbar-addon">
                         </div>
                     </form>
                 </div>
@@ -46,7 +51,8 @@
                 <p class="mb-0">Tabel Berita Kegiatan dan Pengumuman.</p>
             </div>
             <div>
-                <a href="<?= base_url('beritakegiatan/form') ?>" class="btn btn-outline-success d-inline-flex align-items-center me-2">
+                <a href="<?= base_url('beritakegiatan/form') ?>"
+                    class="btn btn-outline-success d-inline-flex align-items-center me-2">
                     <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -57,19 +63,19 @@
             </div>
         </div>
     </div>
-    
-                <!-- Flash Message -->
-                <?php if (session()->getFlashdata('success')): ?>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <?= session()->getFlashdata('success') ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php elseif (session()->getFlashdata('error')): ?>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <?= session()->getFlashdata('error') ?>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                <?php endif; ?>
+
+    <!-- Flash Message -->
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?= session()->getFlashdata('success') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php elseif (session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?= session()->getFlashdata('error') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
     <!-- Table Card -->
     <div class="card border-0 shadow mb-4">
         <div class="card-body">
@@ -82,7 +88,7 @@
                             <th>Gambar</th>
                             <th>Judul</th>
                             <th>Kategori</th>
-                            <th>Isi</th> 
+                            <th>Isi</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -115,6 +121,10 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+                <!-- Pagination -->
+                <div class="d-flex justify-content-center mt-4">
+                    <?= $pager->links('berita', 'bootstrap_custom') ?>
+                </div>
             </div>
         </div>
     </div>

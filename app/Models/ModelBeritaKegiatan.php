@@ -20,8 +20,9 @@ class ModelBeritaKegiatan extends Model
     // Menampilkan semua data
     public function tampilberitakegiatan()
     {
-        return $this->db->table($this->table)->get()->getResult('array'); // tambahkan 'array'
+        return $this->orderBy('tanggal', 'DESC')->paginate(30, 'berita');
     }
+
 
     // Mengambil data berdasarkan ID
     public function getById($id)
