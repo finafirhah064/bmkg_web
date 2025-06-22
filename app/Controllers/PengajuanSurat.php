@@ -12,6 +12,7 @@ class PengajuanSurat extends BaseController
     {
         $this->pengajuanSuratModel = new PengajuanSuratModel();
     }
+
     public function index()
     {
         $model = new PengajuanSuratModel();
@@ -34,9 +35,7 @@ class PengajuanSurat extends BaseController
 
     public function ubah_status($id, $status)
     {
-        $model = new PengajuanSuratModel();
-        $model->update($id, ['status' => $status]);
-
+        $this->pengajuanSuratModel->update($id, ['status' => $status]);
         return redirect()->to(base_url('pengajuan_surat'))->with('success', 'Status berhasil diubah.');
     }
 
@@ -89,8 +88,6 @@ class PengajuanSurat extends BaseController
 
     public function simpan()
     {
-        $model = new PengajuanSuratModel();
-
         $fileSurat = $this->request->getFile('file_surat');
         $namaFile = '';
 
@@ -99,10 +96,16 @@ class PengajuanSurat extends BaseController
             $fileSurat->move('uploads/surat', $namaFile);
         }
 
-        $model->insert([
+        // Ambil jenis surat dari form
+        $jenisSurat = $this->request->getPost('jenis_surat');
+        if ($jenisSurat === 'Lainnya') {
+            $jenisSurat = $this->request->getPost('jenis_surat_lain');
+        }
+
+        $this->pengajuanSuratModel->insert([
             'nama_pengaju' => $this->request->getPost('nama_pengaju'),
             'no_hp' => $this->request->getPost('no_hp'),
-            'jenis_surat' => $this->request->getPost('jenis_surat'),
+            'jenis_surat' => $jenisSurat,
             'keperluan' => $this->request->getPost('keperluan'),
             'file_surat' => $namaFile,
             'status' => 'Diajukan',
@@ -114,7 +117,7 @@ class PengajuanSurat extends BaseController
 
     public function cek_status()
     {
-        $model = new \App\Models\PengajuanSuratModel();
+        $model = new PengajuanSuratModel();
         $keyword = $this->request->getGet('keyword');
 
         if ($keyword) {

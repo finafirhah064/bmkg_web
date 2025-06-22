@@ -16,7 +16,6 @@
                                 value="<?= esc($keyword ?? '') ?>">
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -62,11 +61,12 @@
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
-                            <th>No HP</th>
+                            <th>Email</th>
                             <th>Instansi</th>
                             <th>Kegiatan</th>
-                            <th>Foto</th>
+                            <th>Tanggal</th>
                             <th>Waktu</th>
+                            <th>Kesan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,17 +75,12 @@
                             <tr>
                                 <td><?= $no++ ?></td>
                                 <td><?= esc($row->nama) ?></td>
-                                <td><?= esc($row->no_hp) ?></td>
-                                <td><?= esc($row->instansi) ?></td>
-                                <td><?= esc($row->kegiatan) ?></td>
-                                <td>
-                                    <?php if ($row->foto_kegiatan): ?>
-                                        <a href="<?= base_url('uploads/foto_kegiatan/' . $row->foto_kegiatan) ?>" target="_blank">Lihat Foto</a>
-                                    <?php else: ?>
-                                        <span class="text-muted">Tidak ada</span>
-                                    <?php endif; ?>
-                                </td>
-                                <td><?= esc($row->created_at) ?></td>
+                                <td><?= esc($row->email ?? '-') ?></td>
+                                <td><?= esc($row->instansi ?? '-') ?></td>
+                                <td><?= esc($row->kegiatan ?? '-') ?></td>
+                                <td><?= esc($row->tanggal_kunjungan ?? '-') ?></td>
+                                <td><?= esc($row->waktu_kunjungan ?? '-') ?></td>
+                                <td><?= esc($row->kesan ?? '-') ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -95,17 +90,18 @@
     </div>
 
     <!-- Scripts -->
-    <script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
-    <script src="../../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../../vendor/onscreen/dist/on-screen.umd.min.js"></script>
-    <script src="../../vendor/nouislider/distribute/nouislider.min.js"></script>
-    <script src="../../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-    <script src="../../vendor/chartist/dist/chartist.min.js"></script>
-    <script src="../../vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="../../vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
-    <script src="../../vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="<?= base_url('vendor/@popperjs/core/dist/umd/popper.min.js') ?>"></script>
+    <script src="<?= base_url('vendor/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
+    <script src="<?= base_url('vendor/onscreen/dist/on-screen.umd.min.js') ?>"></script>
+    <script src="<?= base_url('vendor/nouislider/distribute/nouislider.min.js') ?>"></script>
+    <script src="<?= base_url('vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') ?>"></script>
+    <script src="<?= base_url('vendor/chartist/dist/chartist.min.js') ?>"></script>
+    <script src="<?= base_url('vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js') ?>"></script>
+    <script src="<?= base_url('vendor/vanillajs-datepicker/dist/js/datepicker.min.js') ?>"></script>
+    <script src="<?= base_url('vendor/sweetalert2/dist/sweetalert2.all.min.js') ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-    <script src="../../vendor/notyf/notyf.min.js"></script>
-    <script src="../../vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="<?= base_url('vendor/notyf/notyf.min.js') ?>"></script>
+    <script src="<?= base_url('vendor/simplebar/dist/simplebar.min.js') ?>"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script src="../../assets/js/volt.js"></script>
+    <script src="<?= base_url('assets/js/volt.js') ?>"></script>
+</main>

@@ -5,7 +5,7 @@
 
 <style>
     body {
-        background: linear-gradient(135deg, rgb(223, 252, 247) 0%, rgb(224, 229, 254) 100%);
+        background: linear-gradient(135deg, #dffcf7, #e0e5fe);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
@@ -31,35 +31,6 @@
         color: #333;
     }
 
-    .btn-method {
-        border-radius: 30px;
-        padding: 6px 18px;
-        font-size: 14px;
-        margin-right: 10px;
-        transition: 0.25s ease;
-        font-weight: 500;
-    }
-
-    .btn-upload {
-        background-color: #e3f2fd;
-        border: 1px solid #2196f3;
-        color: #1976d2;
-    }
-
-    .btn-upload:hover {
-        background-color: #bbdefb;
-    }
-
-    .btn-camera {
-        background-color: #e8f5e9;
-        border: 1px solid #4caf50;
-        color: #2e7d32;
-    }
-
-    .btn-camera:hover {
-        background-color: #c8e6c9;
-    }
-
     .btn-submit {
         background-color: #0060df;
         color: #fff;
@@ -78,19 +49,6 @@
     textarea {
         border-radius: 12px !important;
     }
-
-    video {
-        width: 100%;
-        border-radius: 12px;
-        border: 1px solid #ccc;
-    }
-
-    canvas,
-    #preview {
-        width: 100%;
-        border-radius: 12px;
-        margin-top: 12px;
-    }
 </style>
 
 <section class="py-5">
@@ -99,7 +57,7 @@
             <h2 class="form-title text-center mb-2">Formulir Buku Tamu</h2>
             <p class="form-subtitle text-center mb-4">Silakan isi form berikut saat berkunjung ke BMKG Karangkates.</p>
 
-            <form action="<?= base_url('buku_tamu/simpan') ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url('buku_tamu/simpan') ?>" method="post">
                 <?= csrf_field(); ?>
 
                 <div class="mb-3">
@@ -108,8 +66,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="no_hp" class="form-label">No. HP</label>
-                    <input type="tel" class="form-control" id="no_hp" name="no_hp" required>
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
                 </div>
 
                 <div class="mb-3">
@@ -122,33 +80,19 @@
                     <textarea class="form-control" id="kegiatan" name="kegiatan" rows="3" required></textarea>
                 </div>
 
-                <!-- Pilih Metode Upload -->
                 <div class="mb-3">
-                    <label class="form-label">Metode Unggah Foto</label><br>
-                    <button type="button" class="btn btn-method btn-upload" onclick="showUpload()">
-                        <i class="fas fa-upload me-1"></i> Upload File
-                    </button>
-                    <button type="button" class="btn btn-method btn-camera" onclick="showCamera()">
-                        <i class="fas fa-camera me-1"></i> Gunakan Kamera
-                    </button>
+                    <label for="tanggal_kunjungan" class="form-label">Tanggal Kunjungan</label>
+                    <input type="date" class="form-control" id="tanggal_kunjungan" name="tanggal_kunjungan" required>
                 </div>
 
-                <!-- Upload File -->
-                <div class="mb-3" id="uploadSection" style="display: none;">
-                    <label for="foto_kegiatan" class="form-label">Upload Foto</label>
-                    <input type="file" class="form-control" id="foto_kegiatan" name="foto_kegiatan" accept="image/*">
+                <div class="mb-3">
+                    <label for="waktu_kunjungan" class="form-label">Waktu Kunjungan</label>
+                    <input type="time" class="form-control" id="waktu_kunjungan" name="waktu_kunjungan" required>
                 </div>
 
-                <!-- Kamera -->
-                <div class="mb-3" id="cameraSection" style="display: none;">
-                    <label class="form-label">Ambil Foto dari Kamera</label>
-                    <video id="camera" autoplay playsinline></video>
-                    <button type="button" class="btn btn-secondary btn-sm mt-2" onclick="takeSnapshot()">
-                        <i class="fas fa-camera-retro me-1"></i> Ambil Foto
-                    </button>
-                    <canvas id="snapshot" style="display: none;"></canvas>
-                    <img id="preview" style="display: none;" class="mt-2 img-fluid rounded" />
-                    <input type="hidden" id="foto_data" name="foto_data">
+                <div class="mb-3">
+                    <label for="kesan" class="form-label">Kesan & Pesan</label>
+                    <textarea class="form-control" id="kesan" name="kesan" rows="3" required></textarea>
                 </div>
 
                 <div class="text-center mt-4">
@@ -175,50 +119,3 @@
         });
     </script>
 <?php endif; ?>
-
-<script>
-    const camera = document.getElementById('camera');
-    const canvas = document.getElementById('snapshot');
-    const preview = document.getElementById('preview');
-    const fotoData = document.getElementById('foto_data');
-    let stream;
-
-    function showUpload() {
-        document.getElementById('uploadSection').style.display = 'block';
-        document.getElementById('cameraSection').style.display = 'none';
-        stopCamera();
-    }
-
-    function showCamera() {
-        document.getElementById('uploadSection').style.display = 'none';
-        document.getElementById('cameraSection').style.display = 'block';
-        navigator.mediaDevices.getUserMedia({
-                video: true
-            })
-            .then(s => {
-                stream = s;
-                camera.srcObject = stream;
-            })
-            .catch(err => alert("Tidak dapat mengakses kamera: " + err.message));
-    }
-
-    function stopCamera() {
-        if (stream) {
-            stream.getTracks().forEach(track => track.stop());
-            stream = null;
-        }
-    }
-
-    function takeSnapshot() {
-        const ctx = canvas.getContext('2d');
-        canvas.width = camera.videoWidth;
-        canvas.height = camera.videoHeight;
-        ctx.drawImage(camera, 0, 0);
-        const dataURL = canvas.toDataURL('image/jpeg');
-        preview.src = dataURL;
-        preview.style.display = 'block';
-        fotoData.value = dataURL;
-    }
-
-    window.addEventListener("beforeunload", () => stopCamera());
-</script>

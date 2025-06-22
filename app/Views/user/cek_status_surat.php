@@ -94,7 +94,6 @@
                             <th>Keperluan</th>
                             <th>Status</th>
                             <th>Tanggal Pengajuan</th>
-                            <th>File Surat</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -118,13 +117,7 @@
                                         <span class="badge badge-<?= $badgeClass ?>"><?= esc($surat['status']) ?></span>
                                     </td>
                                     <td class="text-center"><?= date('d-m-Y', strtotime($surat['tanggal_pengajuan'])) ?></td>
-                                    <td class="text-center">
-                                        <?php if (!empty($surat['file_surat'])): ?>
-                                            <a href="<?= base_url('uploads/surat/' . $surat['file_surat']) ?>" class="btn btn-sm btn-outline-primary" target="_blank">Lihat</a>
-                                        <?php else: ?>
-                                            <span class="text-muted">-</span>
-                                        <?php endif; ?>
-                                    </td>
+
                                 </tr>
                             <?php endforeach ?>
                         <?php else: ?>

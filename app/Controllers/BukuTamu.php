@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Controllers;
 
 use App\Models\BukuTamuModel;
@@ -31,7 +30,6 @@ class BukuTamu extends BaseController
         echo view('admin/admin_footer');
     }
 
-
     public function form()
     {
         return view('user/user_header')
@@ -39,52 +37,40 @@ class BukuTamu extends BaseController
             . view('user/user_footer');
     }
 
-
     public function export_excel()
     {
-        $model = new \App\Models\BukuTamuModel();
+        $model = new BukuTamuModel();
         $data = $model->findAll();
 
-        $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+        $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
-        // Header
+        // Header kolom
         $sheet->setCellValue('A1', 'Nama');
         $sheet->setCellValue('B1', 'Instansi');
-        $sheet->setCellValue('C1', 'No. HP');
+        $sheet->setCellValue('C1', 'Email');
         $sheet->setCellValue('D1', 'Kegiatan');
-        $sheet->setCellValue('E1', 'Waktu');
-        $sheet->setCellValue('F1', 'Foto');
+        $sheet->setCellValue('E1', 'Tanggal');
+        $sheet->setCellValue('F1', 'Waktu');
+        $sheet->setCellValue('G1', 'Kesan');
 
-        // Data
+        // Data isi
         $row = 2;
         foreach ($data as $d) {
             $sheet->setCellValue("A$row", $d->nama ?? '-');
             $sheet->setCellValue("B$row", $d->instansi ?? '-');
-            $sheet->setCellValue("C$row", $d->no_hp ?? '-');
+            $sheet->setCellValue("C$row", $d->email ?? '-');
             $sheet->setCellValue("D$row", $d->kegiatan ?? '-');
-
-            $createdAt = isset($d->created_at) && $d->created_at != null
-                ? date('d-m-Y H:i', strtotime($d->created_at))
-                : '-';
-            $sheet->setCellValue("E$row", $createdAt);
-
-            $link = base_url('uploads/foto_kegiatan/' . $d->foto_kegiatan);
-            $sheet->setCellValue("F$row", $link);
-            $sheet->getCell("F$row")->getHyperlink()->setUrl($link);
-            $sheet->getStyle("F$row")->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLUE);
-            $sheet->getStyle("F$row")->getFont()->setUnderline(true);
-
+            $sheet->setCellValue("E$row", $d->tanggal_kunjungan ?? '-');
+            $sheet->setCellValue("F$row", $d->waktu_kunjungan ?? '-');
+            $sheet->setCellValue("G$row", $d->kesan ?? '-');
             $row++;
         }
 
-
-
-        // Download file
-        $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+        // Output file Excel
+        $writer = new Xlsx($spreadsheet);
         $filename = 'Laporan_Buku_Tamu_' . date('Ymd_His') . '.xlsx';
 
-        // Headers
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header("Content-Disposition: attachment;filename=\"$filename\"");
         header('Cache-Control: max-age=0');
@@ -93,44 +79,23 @@ class BukuTamu extends BaseController
         exit;
     }
 
-
     public function simpan()
     {
         $model = new BukuTamuModel();
 
-        // Ambil data form
-        $nama = $this->request->getPost('nama');
-        $no_hp = $this->request->getPost('no_hp');
-        $instansi = $this->request->getPost('instansi');
-        $kegiatan = $this->request->getPost('kegiatan');
-
-        $fotoData = $this->request->getPost('foto_data'); // base64 dari kamera
-        $fotoFile = $this->request->getFile('foto_kegiatan'); // jika upload manual
-        $namaFile = null;
-
-        // === Jika user ambil dari kamera (base64) ===
-        if (!empty($fotoData)) {
-            // Format: data:image/jpeg;base64,...
-            $fotoData = str_replace('data:image/jpeg;base64,', '', $fotoData);
-            $fotoData = base64_decode($fotoData);
-            $namaFile = time() . '_' . uniqid() . '.jpg';
-            file_put_contents(FCPATH . 'uploads/foto_kegiatan/' . $namaFile, $fotoData);
-        }
-        // === Jika user upload file manual ===
-        elseif ($fotoFile && $fotoFile->isValid() && !$fotoFile->hasMoved()) {
-            $namaFile = time() . '_' . $fotoFile->getRandomName();
-            $fotoFile->move('uploads/foto_kegiatan', $namaFile);
-        }
+        // Ambil data dari form
+        $data = [
+            'nama' => $this->request->getPost('nama'),
+            'email' => $this->request->getPost('email'),
+            'instansi' => $this->request->getPost('instansi'),
+            'kegiatan' => $this->request->getPost('kegiatan'),
+            'tanggal_kunjungan' => $this->request->getPost('tanggal_kunjungan'),
+            'waktu_kunjungan' => $this->request->getPost('waktu_kunjungan'),
+            'kesan' => $this->request->getPost('kesan'),
+        ];
 
         // Simpan ke database
-        $model->insert([
-            'nama' => $nama,
-            'no_hp' => $no_hp,
-            'instansi' => $instansi,
-            'kegiatan' => $kegiatan,
-            'foto_kegiatan' => $namaFile,
-            'tanggal' => date('Y-m-d')
-        ]);
+        $model->insert($data);
 
         return redirect()->back()->with('success', 'Buku tamu berhasil dikirim.');
     }

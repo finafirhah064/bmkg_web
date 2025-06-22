@@ -29,7 +29,7 @@ class Database extends Config
         'hostname'     => 'localhost',
         'username'     => 'root',
         'password'     => '',
-        'database'     => 'db_webbmkg',
+        'database'     => 'db_webbmkg3',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,
@@ -52,6 +52,8 @@ class Database extends Config
     ];
 
     //    /**
+
+
     //     * Sample database connection for SQLite3.
     //     *
     //     * @var array<string, mixed>

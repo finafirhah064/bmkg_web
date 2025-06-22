@@ -7,15 +7,16 @@ use CodeIgniter\Model;
 class BukuTamuModel extends Model
 {
     protected $table = 'buku_tamu';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_buku_tamu';
     protected $allowedFields = [
         'nama',
-        'no_hp',
+        'email',
         'instansi',
         'kegiatan',
-        'foto_kegiatan',
         'tanggal_kunjungan',
-        'waktu_kunjungan'
+        'waktu_kunjungan',
+        'kesan',
+        'created_at'
     ];
 
     protected $returnType = 'object';

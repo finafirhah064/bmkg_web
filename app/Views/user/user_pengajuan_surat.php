@@ -86,11 +86,33 @@
                 <label for="jenisSurat" class="form-label">Jenis Surat</label>
                 <select name="jenis_surat" class="form-select" id="jenisSurat" required>
                     <option value="">-- Pilih Jenis Surat --</option>
-                    <option value="Surat Permohonan">Surat Permohonan</option>
-                    <option value="Surat Keterangan">Surat Keterangan</option>
-                    <option value="Surat Tugas">Surat Tugas</option>
+                    <option value="Surat Permohonan Magang">Surat Permohonan Magang</option>
+                    <option value="Surat Permohonan Skripsi">Surat Permohonan Skripsi</option>
+                    <option value="Lainnya">Lainnya</option>
                 </select>
             </div>
+
+            <!-- Input jenis surat jika pilih 'Lainnya' -->
+            <div class="form-floating mb-3" id="jenisSuratLain" style="display: none;">
+                <input type="text" name="jenis_surat_lain" class="form-control" id="inputJenisSuratLain" placeholder="Tulis jenis surat">
+                <label for="inputJenisSuratLain">Jenis Surat Lainnya</label>
+            </div>
+            <script>
+                const jenisSuratSelect = document.getElementById('jenisSurat');
+                const jenisSuratLainDiv = document.getElementById('jenisSuratLain');
+                const jenisSuratInput = document.getElementById('inputJenisSuratLain');
+
+                jenisSuratSelect.addEventListener('change', function() {
+                    if (this.value === 'Lainnya') {
+                        jenisSuratLainDiv.style.display = 'block';
+                        jenisSuratInput.required = true;
+                    } else {
+                        jenisSuratLainDiv.style.display = 'none';
+                        jenisSuratInput.required = false;
+                        jenisSuratInput.value = '';
+                    }
+                });
+            </script>
 
             <div class="form-floating mb-3">
                 <textarea name="keperluan" class="form-control" placeholder="Tuliskan keperluan" id="keperluan" style="height: 120px" required></textarea>
