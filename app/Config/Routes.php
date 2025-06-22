@@ -11,12 +11,12 @@ $routes->post('admin/loginauth', 'Login::auth');
 $routes->get('admin/logout', 'Login::logout');
 
 // Grup untuk Admin Dasboard
-$routes->group('admin', ['filter' => 'auth'], function($routes) {
-$routes->get('dashboard', 'Dashboard::index');
+$routes->group('admin', ['filter' => 'auth'], function ($routes) {
+    $routes->get('dashboard', 'Dashboard::index');
 });
 
 // Grup untuk admin - Administrasi harus login
-$routes->group('administrasi', ['filter' => 'auth'], function($routes) {
+$routes->group('administrasi', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'Administrasi::index');
     $routes->get('form', 'Administrasi::form_administrasi');
     $routes->get('edit/(:num)', 'Administrasi::form_update_administrasi/$1');
@@ -28,24 +28,24 @@ $routes->group('administrasi', ['filter' => 'auth'], function($routes) {
 });
 
 // Grup untuk admin - Buku Tamu harus login
-$routes->group('buku_tamu', ['filter' => 'auth'], function($routes) {
+$routes->group('buku_tamu',  function ($routes) {
     $routes->get('/', 'BukuTamu::index');                        // Tampilkan data buku tamu (admin/user tergantung view)
     $routes->get('export', 'BukuTamu::export_excel');           // Ekspor data ke Excel
     $routes->post('simpan', 'BukuTamu::simpan');                // Simpan data dari form buku tamu
 });
 
 // Grup untuk admin - Pengajuan Surat harus login
-$routes->group('admin/pengajuan_surat', ['filter' => 'auth'], function($routes) {
+$routes->group('admin/pengajuan_surat', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'PengajuanSurat::index'); // Halaman utama pengajuan surat
     $routes->get('export', 'PengajuanSurat::export_excel'); // Ekspor data
     $routes->get('ubah_status/(:num)/(:segment)', 'PengajuanSurat::ubah_status/$1/$2'); // Ubah status surat
 });
 
-    $routes->get('pengajuan_surat', 'PengajuanSurat::form');
-    $routes->post('admin/pengajuan_surat/ubah_status_ajax', 'PengajuanSurat::ubah_status_ajax');
+$routes->get('pengajuan_surat', 'PengajuanSurat::form');
+$routes->post('admin/pengajuan_surat/ubah_status_ajax', 'PengajuanSurat::ubah_status_ajax');
 
 // Grup untuk admin - Gempa harus login
-$routes->group('Gempa', ['filter' => 'auth'], function($routes) {
+$routes->group('Gempa', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'Gempa::view_gempa');                      // Tampilkan semua data gempa
     $routes->get('form', 'Gempa::form');                         // Form tambah data gempa
     $routes->get('edit/(:num)', 'Gempa::form_update/$1');       // Form update data
@@ -56,7 +56,7 @@ $routes->group('Gempa', ['filter' => 'auth'], function($routes) {
 });
 
 // Grup untuk admin - Hilal harus login
-$routes->group('hilal', ['filter' => 'auth'], function($routes) {
+$routes->group('hilal', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'Home::hilal');                                  // Tampilan utama data hilal
     $routes->post('simpan', 'HilalController::simpan_hilal');          // Simpan data baru
     $routes->post('update/(:num)', 'HilalController::update_hilal/$1'); // Update data
@@ -72,7 +72,7 @@ $routes->group('hilal', ['filter' => 'auth'], function($routes) {
 });
 
 // Grup untuk admin - Tekanan Udara harus login
-$routes->group('tekananudara', ['filter' => 'auth'], function($routes) {
+$routes->group('tekananudara', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'TekananUdara::view');                             // Tampilkan tabel tekanan udara
     $routes->get('form', 'TekananUdara::form');                          // Form tambah data
     $routes->post('save', 'TekananUdara::save');                         // Simpan data
@@ -93,7 +93,7 @@ $routes->group('Temperatur', ['filter' => 'auth'], function ($routes) {
     $routes->post('upload_excel', 'Temperatur::upload_excel'); // Upload Excel
 });
 
-$routes->group('Petir', ['filter' => 'auth'], function($routes) {
+$routes->group('Petir', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'Petir::view_petir');                            // Tabel utama data petir
     $routes->get('form', 'Petir::form');                               // Form tambah data
     $routes->get('form_update/(:num)', 'Petir::form_update/$1');       // Form edit data
@@ -104,7 +104,7 @@ $routes->group('Petir', ['filter' => 'auth'], function($routes) {
 });
 
 // Grup untuk Admin - Terbit tenggelam harus login
-$routes->group('admin/terbit-tenggelam', ['filter' => 'auth'], function($routes) {
+$routes->group('admin/terbit-tenggelam', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'Terbit_Tenggelam::view_terbit_tenggelam');
     $routes->get('form', 'Terbit_Tenggelam::form_terbit_tenggelam');
     $routes->post('save', 'Terbit_Tenggelam::save_terbit_tenggelam');
@@ -125,7 +125,7 @@ $routes->group('mahasiswa', ['filter' => 'auth'], function ($routes) {
 });
 
 // Grup untuk admin - berita kegiatan harus login
-$routes->group('beritakegiatan', ['filter' => 'auth'], function($routes) {
+$routes->group('beritakegiatan', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'Berita_Kegiatan::view_beritakegiatan');                   // Tampilkan semua berita
     $routes->get('form', 'Berita_Kegiatan::form_beritakegiatan');               // Form tambah berita
     $routes->post('add', 'Berita_Kegiatan::save_beritakegiatan');               // Simpan berita
@@ -134,7 +134,7 @@ $routes->group('beritakegiatan', ['filter' => 'auth'], function($routes) {
     $routes->post('update/(:num)', 'Berita_Kegiatan::update_beritakegiatan/$1');   // Proses update
 });
 
-$routes->group('user', function($routes) {
+$routes->group('user', function ($routes) {
     $routes->get('beritakegiatan', 'Berita_Kegiatan::user_beritakegiatan');
     $routes->get('berita/(:num)', 'Berita_Kegiatan::detail_berita/$1');
     $routes->get('tentangbmkg', 'Home::tentang_bmkg');

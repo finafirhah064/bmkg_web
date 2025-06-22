@@ -99,7 +99,7 @@
             <h2 class="form-title text-center mb-2">Formulir Buku Tamu</h2>
             <p class="form-subtitle text-center mb-4">Silakan isi form berikut saat berkunjung ke BMKG Karangkates.</p>
 
-            <form action="<?= base_url('buku-tamu/simpan') ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url('buku_tamu/simpan') ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
 
                 <div class="mb-3">
