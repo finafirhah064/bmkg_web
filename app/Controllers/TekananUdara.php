@@ -13,6 +13,9 @@ class TekananUdara extends BaseController
         $model = new Model_TekananUdara();
         $data['dataTekanan'] = $model->tampilData();
 
+        $todayData = $model->getTodayPressure();
+          $data['tekanan'] = $todayData['tekanan_udara'] ?? 'N/A';
+
         echo view('admin/admin_header');
         echo view('admin/admin_nav');
         echo view('admin/Meteografi/udara/admin_udara', $data);

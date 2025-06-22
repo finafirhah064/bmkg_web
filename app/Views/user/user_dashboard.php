@@ -139,7 +139,7 @@
                                         <i class="fas fa-tachometer-alt fa-lg text-info"></i>
                                         <!-- Ikon tekanan udara -->
                                     </div>
-                                    <h5 class="fw-bold mb-1"><?= esc($tekanan) ?> hPa</h5>
+                                    <h5 class="fw-bold mb-1"><?= esc($tekanan)?> hPa</h5>
                                     <p class="text-secondary small mb-0">Tekanan Udara</p>
                                 </div>
                             </div>
@@ -148,7 +148,7 @@
                                     <div class="icon-circle bg-light-blue mb-3 mx-auto">
                                         <i class="fas fa-cloud-rain fa-lg text-primary"></i>
                                     </div>
-                                    <h5 class="fw-bold mb-1"><?= esc($curah_hujan) ?> mm</h5>
+                                    <h5 class="fw-bold mb-1"><?= esc($curah_hujan)?> mm</h5>
                                     <p class="text-secondary small mb-0">Curah Hujan</p>
                                 </div>
                             </div>
