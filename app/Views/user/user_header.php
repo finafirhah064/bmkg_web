@@ -130,7 +130,6 @@
     </style>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 
@@ -142,13 +141,8 @@
                 <a class="navbar-brand d-flex align-items-center" href="#">
                     <img src="../../../assets/img/bmkg-logo.png" alt="Logo BMKG" class="me-2">
                     <div class="text-brand">
-<<<<<<< HEAD
-                        <strong>Stasiun Geofisika</strong>
-                        <strong>Kelas III </strong>
-=======
                         <strong>Stasiun</strong>
                         <strong>Geofisika Kelas III </strong>
->>>>>>> 3af061a (Resolve merge conflict in Database.php)
                         <span>Malang</span>
                     </div>
                 </a>
@@ -206,7 +200,6 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
     <!-- Bootstrap JS -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
 

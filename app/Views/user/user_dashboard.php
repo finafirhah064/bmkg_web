@@ -152,6 +152,16 @@
                                     <p class="text-secondary small mb-0">Curah Hujan</p>
                                 </div>
                             </div>
+                            <!-- Kartu 4: Fase Hilal -->
+                            <div class="col-6 col-md-3 col-lg-2">
+                                <div class="card shadow-sm border-0 rounded-4 text-center p-3">
+                                    <div class="icon-circle bg-light-green mb-3 mx-auto">
+                                        <i class="fas fa-moon fa-lg text-success"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-1" id="faseHilal">Bulan Sabit</h5>
+                                    <p class="text-secondary small mb-0">Fase Hilal Saat Ini</p>
+                                </div>
+                            </div>
                             <!-- Kartu 4: Gempa -->
                             <div class="col-6 col-md-3 col-lg-2">
                                 <?php foreach ($dataGempa as $item): ?>
