@@ -88,10 +88,12 @@ class Home extends BaseController
 
         // Temperatur & Curah Hujan
         $temperaturModel = new Model_temperatur();
-        $temperaturToday = $temperaturModel->getTodaytemperature();
-        $data['temperatur']   = $temperaturToday['temperatur_07'] ?? '-';
-        $data['curah_hujan']  = $temperaturToday['curah_hujan_07'] ?? '-';
-
+        $rata2BulanLalu = $temperaturModel->getRataRataBulanLalu();
+        $bulanLaluEn = date('F', strtotime('first day of last month')); // ex: "May"
+        $data['nama_bulan_lalu'] = bulanIndo($bulanLaluEn); // ex: "Mei"
+        $data['rata_temp_bulan_lalu'] = number_format($rata2BulanLalu['avg_temp_07'], 1);
+        $data['rata_hujan_bulan_lalu'] = number_format($rata2BulanLalu['avg_hujan'], 1);
+        helper('bulan');
         // Data Terbit & Tenggelam
         $modelTerbit = new ModelTerbitTenggelam();
         $data['dataTerbit'] = $modelTerbit->getLatestDataFiltered();
