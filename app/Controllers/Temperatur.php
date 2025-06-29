@@ -41,8 +41,8 @@ class temperatur extends BaseController
     public function save_temperatur()
     {
         $data = [
-            'bulan' => $this->request->getPost('bulan'),
-            'tahun' => $this->request->getPost('tahun'),
+            // 'bulan' => $this->request->getPost('bulan'),
+            // 'tahun' => $this->request->getPost('tahun'),
             'tgl' => date('Y-m-d', strtotime($this->request->getPost('tgl'))),
             'temperatur_07' => $this->request->getPost('temperatur_07'),
             'temperatur_13' => $this->request->getPost('temperatur_13'),
@@ -68,8 +68,8 @@ class temperatur extends BaseController
     public function update_temperatur($id)
     {
         $data = [
-            'bulan' => $this->request->getPost('bulan'),
-            'tahun' => $this->request->getPost('tahun'),
+            // 'bulan' => $this->request->getPost('bulan'),
+            // 'tahun' => $this->request->getPost('tahun'),
             'tgl' => date('Y-m-d', strtotime($this->request->getPost('tgl'))),
             'temperatur_07' => $this->request->getPost('temperatur_07'),
             'temperatur_13' => $this->request->getPost('temperatur_13'),
@@ -133,8 +133,8 @@ class temperatur extends BaseController
             $data = array_combine($header, $row);
 
             $saveData = [
-                'bulan' => $data['bulan'] ?? null,
-                'tahun' => $data['tahun'] ?? null,
+                // 'bulan' => $data['bulan'] ?? null,
+                // 'tahun' => $data['tahun'] ?? null,
                 'tgl' => isset($data['tgl']) ? date('Y-m-d', strtotime($data['tgl'])) : null,
                 'temperatur_07' => $data['07:00'] ?? null,
                 'temperatur_13' => $data['13:00'] ?? null,

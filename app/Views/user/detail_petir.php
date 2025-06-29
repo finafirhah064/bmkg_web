@@ -9,10 +9,11 @@
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Bootstrap & Font Awesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
     <style>
-        /* Membuat peta penuh dan tampilannya menarik */
         #map {
             height: 450px;
             width: 100%;
@@ -77,50 +78,61 @@
         .leaflet-popup-content {
             color: #004e89;
         }
+
+        .custom-div-icon i {
+            font-size: 28px;
+            color: orange;
+        }
     </style>
 </head>
 
 <body>
     <div class="container mt-5 mb-5">
-        <!-- Header Section -->
+        <!-- Header -->
         <div class="detail-header mb-4">
             <h2>Detail Sambaran Petir</h2>
-            <p>Informasi mengenai sambaran petir di daerah <strong><?= $petir['wilayah']; ?></strong></p>
+            <p>Informasi mengenai sambaran petir di daerah <strong><?= esc($petir['wilayah']); ?></strong></p>
         </div>
 
-        <!-- Kembali ke Halaman Sebelumnya -->
+        <!-- Tombol Kembali -->
         <div class="mb-4 text-center">
-           <a href="<?= base_url('user/petir') ?>" class="btn-back">
-    <i class="fas fa-arrow-left"></i> Kembali ke Data Petir
-</a>
-
+            <a href="<?= base_url('user/petir') ?>" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Kembali ke Data Petir
+            </a>
         </div>
 
-        <!-- Detail Informasi Petir -->
+        <!-- Info Sambaran -->
         <div class="info-box mb-4">
-            <p><strong>Jenis Petir:</strong> <?= $petir['jenis_petir']; ?></p>
-            <p><strong>Waktu Sambaran:</strong> <?= $petir['waktu_sambaran']; ?></p>
+            <p><strong>Jenis Petir:</strong> <?= esc($petir['jenis_petir']); ?></p>
+            <p><strong>Waktu Sambaran:</strong> <?= esc($petir['waktu_sambaran']); ?></p>
         </div>
 
-        <!-- Peta Sambaran Petir -->
+        <!-- Peta -->
         <div id="map"></div>
 
+        <!-- Leaflet JS -->
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
         <script>
-            // Inisialisasi peta
             var map = L.map('map').setView([<?= $latitude ?>, <?= $longitude ?>], 13);
 
-            // Tambahkan layer peta dari OpenStreetMap
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
             }).addTo(map);
 
-            // Tambahkan marker untuk sambaran petir utama
-            L.marker([<?= $latitude ?>, <?= $longitude ?>])
+            // Marker petir menggunakan ikon Font Awesome
+            var lightningIcon = L.divIcon({
+                className: 'custom-div-icon',
+                html: "<div><i class='fas fa-bolt'></i></div>",
+                iconSize: [30, 42],
+                iconAnchor: [15, 42],
+                popupAnchor: [0, -40]
+            });
+
+            L.marker([<?= $latitude ?>, <?= $longitude ?>], { icon: lightningIcon })
                 .addTo(map)
-                .bindPopup("<b><?= $petir['wilayah']; ?></b><br>" +
-                    "Jenis Petir: <?= $petir['jenis_petir']; ?><br>" +
-                    "Waktu: <?= $petir['waktu_sambaran']; ?>")
+                .bindPopup("<b><?= esc($petir['wilayah']); ?></b><br>" +
+                    "Jenis Petir: <?= esc($petir['jenis_petir']); ?><br>" +
+                    "Waktu: <?= esc($petir['waktu_sambaran']); ?>")
                 .openPopup();
         </script>
     </div>

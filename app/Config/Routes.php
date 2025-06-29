@@ -23,21 +23,22 @@ $routes->group('administrasi', ['filter' => 'auth'], function ($routes) {
     $routes->post('save', 'Administrasi::save_administrasi');
     $routes->post('update/(:num)', 'Administrasi::update_administrasi/$1');
     $routes->get('delete/(:num)', 'Administrasi::delete_administrasi/$1');
-    $routes->get('export', 'Administrasi::export_excel');
+    $routes->get('export_excel', 'Administrasi::export_excel');
     $routes->post('upload', 'Administrasi::process_upload');
 });
 
+
 // Grup untuk admin - Buku Tamu harus login
-$routes->group('buku_tamu',  function ($routes) {
+$routes->group('buku_tamu',  ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'BukuTamu::index');                        // Tampilkan data buku tamu (admin/user tergantung view)
-    $routes->get('export', 'BukuTamu::export_excel');           // Ekspor data ke Excel
+    $routes->get('export_excel', 'BukuTamu::export_excel');           // Ekspor data ke Excel
     $routes->post('simpan', 'BukuTamu::simpan');                // Simpan data dari form buku tamu
 });
 
 // Grup untuk admin - Pengajuan Surat harus login
 $routes->group('admin/pengajuan_surat', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'PengajuanSurat::index'); // Halaman utama pengajuan surat
-    $routes->get('export', 'PengajuanSurat::export_excel'); // Ekspor data
+    $routes->get('export_excel', 'PengajuanSurat::export_excel'); // Ekspor data
     $routes->get('ubah_status/(:num)/(:segment)', 'PengajuanSurat::ubah_status/$1/$2'); // Ubah status surat
 });
 
@@ -144,8 +145,33 @@ $routes->group('user', function ($routes) {
     $routes->get('hilal/detail/(:num)', 'UserHilalController::detail/$1');
     $routes->get('petir', 'Petir::view_petir_user');
     $routes->get('petir/detail/(:num)', 'Petir::detail_petir/$1');
-
 });
 $routes->get('buku-tamu', 'BukuTamu::form'); // route untuk halaman form buku tamu user
 $routes->post('pengajuan_surat/simpan', 'PengajuanSurat::simpan');
 $routes->get('cek_status_surat', 'PengajuanSurat::cek_status'); // Ekspor data
+
+// Grup untuk admin - Administrasi harus login
+$routes->group('administrasi', ['filter' => 'auth'], function ($routes) {
+    $routes->get('/', 'Administrasi::index');
+    $routes->get('form', 'Administrasi::form_administrasi');
+    $routes->get('edit/(:num)', 'Administrasi::form_update_administrasi/$1');
+    $routes->post('save', 'Administrasi::save_administrasi');
+    $routes->post('update/(:num)', 'Administrasi::update_administrasi/$1');
+    $routes->get('delete/(:num)', 'Administrasi::delete_administrasi/$1');
+    $routes->get('export_excel', 'Administrasi::export_excel');
+    $routes->post('upload', 'Administrasi::process_upload');
+});
+
+// Grup untuk admin - Buku Tamu harus login
+$routes->group('buku_tamu',  ['filter' => 'auth'], function ($routes) {
+    $routes->get('/', 'BukuTamu::index');                        // Tampilkan data buku tamu (admin/user tergantung view)
+    $routes->get('export', 'BukuTamu::export_excel');           // Ekspor data ke Excel
+    $routes->post('simpan', 'BukuTamu::simpan');                // Simpan data dari form buku tamu
+});
+
+// Grup untuk admin - Pengajuan Surat harus login
+$routes->group('admin/pengajuan_surat', ['filter' => 'auth'], function ($routes) {
+    $routes->get('/', 'PengajuanSurat::index'); // Halaman utama pengajuan surat
+    $routes->get('export_excel', 'PengajuanSurat::export_excel'); // Ekspor data
+    $routes->get('ubah_status/(:num)/(:segment)', 'PengajuanSurat::ubah_status/$1/$2'); // Ubah status surat
+});

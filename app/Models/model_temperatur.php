@@ -10,11 +10,12 @@ class Model_temperatur extends Model
     protected $primaryKey = 'id_temperatur'; // sesuaikan dengan primary key yang digunakan
 
     protected $useAutoIncrement = true;
+
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
 
     protected $allowedFields = [
-        'bulan', 'tahun', 'tgl',
+        'tgl',
         'temperatur_07', 'temperatur_13', 'temperatur_18',
         'rata2', 'max', 'min',
         'curah_hujan_07', 'penyinaran_matahari', 'peristiwa_khusus'

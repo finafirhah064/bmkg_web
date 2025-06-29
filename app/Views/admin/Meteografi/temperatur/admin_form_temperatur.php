@@ -127,14 +127,14 @@
                     <form method="POST" action="<?= site_url('Temperatur/save_temperatur') ?>">
                         <div class="row mb-4">
                             <div class="col-md-6">
-                                <div class="mb-4">
+                                <!-- <div class="mb-4">
                                     <label for="bulan">Bulan</label>
                                     <input type="text" class="form-control" name="bulan" value="<?= old('bulan') ?>" required>
                                 </div>
                                 <div class="mb-4">
                                     <label for="tahun">Tahun</label>
                                     <input type="number" class="form-control" name="tahun" value="<?= old('tahun') ?>" required>
-                                </div>
+                                </div> -->
                                 <div class="mb-4">
                                     <label for="tgl">Tanggal</label>
                                     <input type="date" class="form-control" name="tgl" value="<?= old('tgl') ?>" required>

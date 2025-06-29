@@ -162,25 +162,28 @@
                                     <p class="text-secondary small mb-0">Fase Hilal Saat Ini</p>
                                 </div>
                             </div>
-                            <!-- Kartu 4: Gempa -->
-                            <div class="col-6 col-md-3 col-lg-2">
-                                <?php foreach ($dataGempa as $item): ?>
-                                    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-                                        <div class="icon-circle bg-light-red mb-3 mx-auto">
-                                            <i class="fas fa-wave-square fa-lg text-danger"></i> <!-- Ikon gempa -->
-                                        </div>
-                                        <h5 class="fw-bold mb-1"><?= esc($item['Magnitudo']) ?> SR</h5>
-                                        <p class="text-secondary small mb-0">Gempa</p>
-                                        <?php if (!empty($lastUpdateGempa)): ?>
-                                            <p class="text-secondary small mb-0" style="font-style: italic;">
-                                                <?= date('d M Y', strtotime($lastUpdateGempa)) ?>
-                                            </p>
-                                        <?php endif; ?>
-                                    </div>
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
-                    </div>
+                            
+                  <!-- Kartu 5: Gempa (dari API BMKG) -->
+<div class="col-6 col-md-3 col-lg-2">
+    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
+        <div class="icon-circle bg-light-red mb-3 mx-auto">
+            <i class="fas fa-wave-square fa-lg text-danger"></i>
+        </div>
+
+        <?php if (!empty($gempa_bmkg)): ?>
+            <h5 class="fw-bold mb-1"><?= esc($gempa_bmkg['Magnitude']) ?> SR</h5>
+            <p class="text-secondary small mb-0"><?= esc($gempa_bmkg['Wilayah']) ?></p>
+            <p class="text-secondary small mb-0"><?= esc($gempa_bmkg['Kedalaman']) ?></p>
+            <p class="text-secondary small mb-0" style="font-style: italic;">
+                <?= date('d M Y', strtotime($gempa_bmkg['Tanggal'])) ?>
+            </p>
+        <?php else: ?>
+            <h5 class="fw-bold mb-1">N/A</h5>
+            <p class="text-secondary small mb-0">Data gempa tidak tersedia</p>
+        <?php endif; ?>
+    </div>
+</div>
+
                     <!-- Slide 2 -->
                     <div class="carousel-item">
                         <div class="container">
