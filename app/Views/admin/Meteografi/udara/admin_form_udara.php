@@ -1,39 +1,4 @@
 <main class="content">
-    <!-- Top Navbar -->
-    <nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark ps-0 pe-2 pb-0">
-        <div class="container-fluid px-0">
-            <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
-                <div class="d-flex align-items-center">
-                </div>
-                <ul class="navbar-nav align-items-center">
-                    <li class="nav-item dropdown ms-lg-3">
-                        <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <div class="media d-flex align-items-center">
-                                <img class="avatar rounded-circle" alt="Image placeholder"
-                                    src="../../assets/img/team/bmkg.jpg">
-                                <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                                    <span class="mb-0 font-small fw-bold text-gray-900">Admin</span>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="dropdown-menu dashboard-dropdown dropdown-menu-end mt-2 py-1">
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <svg class="dropdown-icon text-danger me-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
-                                    </path>
-                                </svg>
-                                Logout
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
     <div class="py-4">
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
             <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
@@ -41,7 +6,7 @@
                     <a href="#">
                         <svg class="icon icon-xxs" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                         </svg>
                     </a>
                 </li>
@@ -55,32 +20,30 @@
                 <p class="mb-0">Form input data tekanan udara dan kelembaban harian.</p>
             </div>
             <form action="<?= site_url('tekananudara/upload_excel') ?>" method="post" enctype="multipart/form-data">
-                    <input type="file" name="excel_file" id="fileInput" style="display: none;" accept=".xls,.xlsx,.csv"
-                        onchange="this.form.submit();">
-                    <a href="#" class="btn btn-outline-gray-600 d-inline-flex align-items-center"
-                        onclick="document.getElementById('fileInput').click(); return false;">
-                        <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="m15 11.25-3-3m0 0-3 3m3-3v7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-                        Upload Excel
-                    </a>
-                </form>
-
-
-                    <a href="#" class="btn btn-outline-gray-600 d-inline-flex align-items-center"
-                       onclick="document.getElementById('fileInput').click(); return false;">
-                        <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none"
-                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="m15 11.25-3-3m0 0-3 3m3-3v7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-                        Upload Excel
-                    </a>
-                </form>
-            </div>
+                <input type="file" name="excel_file" id="fileInput" style="display: none;" accept=".xls,.xlsx,.csv"
+                    onchange="this.form.submit();">
+                <a href="#" class="btn btn-outline-success d-inline-flex align-items-center me-2"
+                    onclick="document.getElementById('fileInput').click(); return false;">
+                    <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m15 11.25-3-3m0 0-3 3m3-3v7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    Upload Excel
+                </a>
+            </form>
+            <a href="#" class="btn btn-outline-success d-inline-flex align-items-center me-2"
+                onclick="document.getElementById('fileInput').click(); return false;">
+                <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="m15 11.25-3-3m0 0-3 3m3-3v7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                Upload Excel
+            </a>
+            </form>
         </div>
+    </div>
     </div>
 
     <!-- Form -->
@@ -147,8 +110,8 @@
     </div>
 
 
-     <!-- Scripts -->
-  <script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
+    <!-- Scripts -->
+    <script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="../../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../../vendor/onscreen/dist/on-screen.umd.min.js"></script>
     <script src="../../vendor/nouislider/distribute/nouislider.min.js"></script>

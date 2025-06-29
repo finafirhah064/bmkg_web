@@ -22,8 +22,8 @@ $segment2 = service('uri')->getSegment(2);
     <div class="d-flex align-items-center gap-3 mb-4 px-2">
       <img src="../../assets/img/team/bmkg.jpg" alt="BMKG Logo" width="60" height="60" class="logo">
       <div class="text-start">
-        <div class="sidebar-title">Badan Meteorologi,<br>Klimatologi, dan Geofisika</div>
-        <div class="sidebar-subtitle">Karangkates</div>
+        <div class="sidebar-title">Stasiun BMKG<br>Kelas III</div>
+        <div class="sidebar-subtitle">Malang</div>
       </div>
     </div>
 

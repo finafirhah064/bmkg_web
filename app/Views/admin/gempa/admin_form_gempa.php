@@ -21,31 +21,6 @@
                     </form>
                     <!-- / Search form -->
                 </div>
-                <ul class="navbar-nav align-items-center">
-                    <li class="nav-item dropdown ms-lg-3">
-                        <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <div class="media d-flex align-items-center">
-                                <img class="avatar rounded-circle" alt="Image placeholder"
-                                    src="../../assets/img/team/bmkg.jpg">
-                                <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                                    <span class="mb-0 font-small fw-bold text-gray-900">Admin</span>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="dropdown-menu dashboard-dropdown dropdown-menu-end mt-2 py-1">
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <svg class="dropdown-icon text-danger me-2" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
-                                    </path>
-                                </svg>
-                                Logout
-                            </a>
-                        </div>
-                    </li>
-                </ul>
             </div>
         </div>
     </nav>
@@ -93,7 +68,7 @@
                 <form action="<?= site_url('Gempa/upload_excel') ?>" method="post" enctype="multipart/form-data">
                     <input type="file" name="excel_file" id="fileInput" style="display: none;" accept=".xls,.xlsx,.csv"
                         onchange="this.form.submit();">
-                    <a href="#" class="btn btn-outline-gray-600 d-inline-flex align-items-center"
+                    <a href="#" class="btn btn-outline-success d-inline-flex align-items-center me-2"
                         onclick="document.getElementById('fileInput').click(); return false;">
                         <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

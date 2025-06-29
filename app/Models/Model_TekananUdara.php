@@ -76,6 +76,17 @@ class Model_TekananUdara extends Model
         return $this->where('tgl', date('Y-m-d'))->asArray()->first();
     }
 
+    public function getRataRataBulanSebelumnya()
+    {
+        $lastMonthStart = date('Y-m-01', strtotime('first day of last month'));
+        $thisMonthStart = date('Y-m-01');
 
+        return $this->select("DATE_FORMAT(tgl, '%Y-%m') AS bulan, AVG(tekanan_udara) AS rata_rata_tekanan")
+            ->where('tgl >=', $lastMonthStart)
+            ->where('tgl <', $thisMonthStart)
+            ->groupBy("DATE_FORMAT(tgl, '%Y-%m')")
+            ->get()
+            ->getRow();
+    }
 
 }

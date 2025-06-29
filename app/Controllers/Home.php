@@ -83,6 +83,8 @@ class Home extends BaseController
         $data['kelembaban_07']    = $today['kelembaban_07'] ?? '-';
         $data['kecepatan_rata2']  = $today['kecepatan_rata2'] ?? '-';
         $data['arah_terbanyak']   = $today['arah_terbanyak'] ?? '-';
+        $data['rata_tekanan']     = $tekananModel->getRataRataBulanSebelumnya();
+        helper('bulan');
 
         // Temperatur & Curah Hujan
         $temperaturModel = new Model_temperatur();

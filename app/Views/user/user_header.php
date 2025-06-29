@@ -142,8 +142,8 @@
                     <img src="../../../assets/img/bmkg-logo.png" alt="Logo BMKG" class="me-2">
                     <div class="text-brand">
                         <strong>Stasiun</strong>
-                        <strong>Geofisika Kelas III </strong>
-                        <span>Malang</span>
+                        <strong> Badan Meteorologi Klimatologi dan Geofisika</strong>
+                        <span>Kelas III Malang</span>
                     </div>
                 </a>
 

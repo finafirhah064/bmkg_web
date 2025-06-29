@@ -126,7 +126,7 @@
                             <div class="col-6 col-md-3 col-lg-2">
                                 <div class="card shadow-sm border-0 rounded-4 text-center p-3">
                                     <div class="icon-circle bg-light-orange mb-3 mx-auto">
-                                        <i class="fas fa-bolt fa-lg text-orange"></i> <!-- Ikon petir -->
+                                        <i class="fas fa-bolt fa-lg text-orange"></i>
                                     </div>
                                     <h5 class="fw-bold mb-1">1.827</h5>
                                     <p class="text-secondary small mb-0">Total Sambaran Petir</p>
@@ -134,21 +134,33 @@
                             </div>
                             <!-- Kartu 2: Tekanan Udara -->
                             <div class="col-6 col-md-3 col-lg-2">
+                                <!-- Di file app/Views/dashboard_view.php -->
                                 <div class="card shadow-sm border-0 rounded-4 text-center p-3">
                                     <div class="icon-circle bg-light-blue mb-3 mx-auto">
                                         <i class="fas fa-tachometer-alt fa-lg text-info"></i>
-                                        <!-- Ikon tekanan udara -->
                                     </div>
-                                    <h5 class="fw-bold mb-1"><?= esc($tekanan)?> hPa</h5>
-                                    <p class="text-secondary small mb-0">Tekanan Udara</p>
+
+                                    <?php if (!empty($rata_tekanan)): ?>
+                                        <h5 class="fw-bold mb-1"><?= number_format($rata_tekanan->rata_rata_tekanan, 1) ?>
+                                            hPa</h5>
+                                        <p class="text-secondary small mb-0">
+                                            Rata-rata Tekanan Udara Bulan
+                                            <?= bulanIndo(date('F', strtotime($rata_tekanan->bulan . '-01'))) ?>
+                                            <?= date('Y', strtotime($rata_tekanan->bulan . '-01')) ?>
+                                        </p>
+                                    <?php else: ?>
+                                        <h5 class="fw-bold mb-1">N/A</h5>
+                                        <p class="text-secondary small mb-0">Data tekanan udara tidak tersedia</p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
+                            <!-- Kartu 3: Curah Hujan -->
                             <div class="col-6 col-md-3 col-lg-2">
                                 <div class="card shadow-sm border-0 rounded-4 text-center p-3">
                                     <div class="icon-circle bg-light-blue mb-3 mx-auto">
                                         <i class="fas fa-cloud-rain fa-lg text-primary"></i>
                                     </div>
-                                    <h5 class="fw-bold mb-1"><?= esc($curah_hujan)?> mm</h5>
+                                    <h5 class="fw-bold mb-1"><?= esc($curah_hujan) ?> mm</h5>
                                     <p class="text-secondary small mb-0">Curah Hujan</p>
                                 </div>
                             </div>
@@ -162,27 +174,27 @@
                                     <p class="text-secondary small mb-0">Fase Hilal Saat Ini</p>
                                 </div>
                             </div>
-                            
-                  <!-- Kartu 5: Gempa (dari API BMKG) -->
-<div class="col-6 col-md-3 col-lg-2">
-    <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-        <div class="icon-circle bg-light-red mb-3 mx-auto">
-            <i class="fas fa-wave-square fa-lg text-danger"></i>
-        </div>
-
-        <?php if (!empty($gempa_bmkg)): ?>
-            <h5 class="fw-bold mb-1"><?= esc($gempa_bmkg['Magnitude']) ?> SR</h5>
-            <p class="text-secondary small mb-0"><?= esc($gempa_bmkg['Wilayah']) ?></p>
-            <p class="text-secondary small mb-0"><?= esc($gempa_bmkg['Kedalaman']) ?></p>
-            <p class="text-secondary small mb-0" style="font-style: italic;">
-                <?= date('d M Y', strtotime($gempa_bmkg['Tanggal'])) ?>
-            </p>
-        <?php else: ?>
-            <h5 class="fw-bold mb-1">N/A</h5>
-            <p class="text-secondary small mb-0">Data gempa tidak tersedia</p>
-        <?php endif; ?>
-    </div>
-</div>
+                            <!-- Kartu 5: Gempa -->
+                            <div class="col-6 col-md-3 col-lg-2">
+                                <div class="card shadow-sm border-0 rounded-4 text-center p-3">
+                                    <div class="icon-circle bg-light-red mb-3 mx-auto">
+                                        <i class="fas fa-wave-square fa-lg text-danger"></i>
+                                    </div>
+                                    <?php if (!empty($gempa_bmkg)): ?>
+                                        <h5 class="fw-bold mb-1"><?= esc($gempa_bmkg['Magnitude']) ?> SR</h5>
+                                        <p class="text-secondary small mb-0"><?= esc($gempa_bmkg['Wilayah']) ?></p>
+                                        <p class="text-secondary small mb-0"><?= esc($gempa_bmkg['Kedalaman']) ?></p>
+                                        <p class="text-secondary small mb-0" style="font-style: italic;">
+                                            <?= date('d M Y', strtotime($gempa_bmkg['Tanggal'])) ?>
+                                        </p>
+                                    <?php else: ?>
+                                        <h5 class="fw-bold mb-1">N/A</h5>
+                                        <p class="text-secondary small mb-0">Data gempa tidak tersedia</p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- Penutup Slide 1 -->
 
                     <!-- Slide 2 -->
                     <div class="carousel-item">
@@ -191,10 +203,6 @@
                                 <div class="col-12 col-lg-8">
                                     <div class="card shadow-sm border-0 rounded-4 p-4 bg-white">
                                         <div class="d-flex align-items-center mb-3">
-                                            <!-- <div class="bg-warning-subtle rounded-circle d-flex justify-content-center align-items-center me-3"
-                                                style="width: 40px; height: 40px;">
-                                                <i class="fas fa-sun text-warning fa-lg"></i>
-                                            </div> -->
                                             <h5 class="mb-0 fw-semibold text-dark">Terbit & Tenggelam — Beberapa Wilayah
                                             </h5>
                                         </div>
@@ -213,7 +221,8 @@
                                                         <div>
                                                             <strong><?= esc($item['kecamatan']) ?></strong><br>
                                                             <small class="text-muted">
-                                                                <?= date('H:i', strtotime($item['waktu_terbit'])) ?> –
+                                                                <?= date('H:i', strtotime($item['waktu_terbit'])) ?>
+                                                                –
                                                                 <?= date('H:i', strtotime($item['waktu_tenggelam'])) ?>
                                                             </small>
                                                         </div>
@@ -225,13 +234,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </div> <!-- Penutup Slide 2 -->
+                </div> <!-- Penutup carousel-inner -->
+            </div> <!-- Penutup carousel -->
+        </div> <!-- Penutup container -->
     </section>
-
-
     <!-- Berita Kegiatan -->
     <section class="py-5 mt-5">
         <div class="container">
