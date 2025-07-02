@@ -217,9 +217,9 @@ $segment2 = service('uri')->getSegment(2);
         </a>
       </li>
 
-
-      <!-- Contoh perbaikan untuk menu GEMPA -->
-      <li class="nav-item">
+<!-- 
+      Contoh perbaikan untuk menu GEMPA -->
+      <!-- <li class="nav-item">
         <a href="<?php echo base_url('Gempa'); ?>"
           class="nav-link d-flex align-items-center <?= $segment1 == 'Gempa' ? 'active' : ''; ?>">
           <span class="sidebar-icon me-3">
@@ -230,7 +230,7 @@ $segment2 = service('uri')->getSegment(2);
           </span>
           <span class="sidebar-text">Gempa</span>
         </a>
-      </li>
+      </li> -->
 
       <li class="nav-item">
         <a class="nav-link d-flex align-items-center justify-content-between" data-bs-toggle="collapse"

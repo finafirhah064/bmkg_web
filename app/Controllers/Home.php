@@ -100,17 +100,37 @@ class Home extends BaseController
         $latest = $modelTerbit->select('tanggal')->orderBy('tanggal', 'DESC')->first();
         $data['lastUpdate'] = $latest['tanggal'] ?? null;
 
-        // Data Gempa dari API BMKG
-        $apiUrl = "https://data.bmkg.go.id/DataMKG/TEWS/autogempa.json";
+        // // Data Gempa dari API BMKG
+        // $apiUrl = "https://data.bmkg.go.id/DataMKG/TEWS/autogempa.json";
+        // try {
+        //     $client = \Config\Services::curlrequest();
+        //     $response = $client->get($apiUrl);
+        //     $gempaData = json_decode($response->getBody(), true);
+        //     $data['gempa_bmkg'] = $gempaData['Infogempa']['gempa'] ?? null;
+        // } catch (\Exception $e) {
+        //     $data['gempa_bmkg'] = null;
+        // }
+
+        $apiUrl = "https://data.bmkg.go.id/DataMKG/TEWS/gempadirasakan.json";
         try {
             $client = \Config\Services::curlrequest();
             $response = $client->get($apiUrl);
             $gempaData = json_decode($response->getBody(), true);
-            $data['gempa_bmkg'] = $gempaData['Infogempa']['gempa'] ?? null;
+            $data['gempa_dirasakan'] = $gempaData['Infogempa']['gempa'] ?? [];
         } catch (\Exception $e) {
-            $data['gempa_bmkg'] = null;
+            $data['gempa_dirasakan'] = [];
         }
 
+        $apiUrl = "https://data.bmkg.go.id/DataMKG/TEWS/gempaterkini.json";
+        try {
+            $client = \Config\Services::curlrequest();
+            $response = $client->get($apiUrl);
+            $gempaData = json_decode($response->getBody(), true);
+            $data['gempa_terbaru'] = $gempaData['Infogempa']['gempa'] ?? [];
+        } catch (\Exception $e) {
+            $data['gempa_terbaru'] = [];
+        }
+        
         // Berita Kegiatan
         helper('text');
         $model = new ModelBeritaKegiatan();

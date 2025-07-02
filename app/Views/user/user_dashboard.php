@@ -185,24 +185,28 @@
                                 </div>
                             </div>
                             <!-- Kartu 5: Gempa -->
+                            <?php if (!empty($gempa_dirasakan)): ?>
+                            <?php $dirasakan = $gempa_dirasakan[0]; ?>
                             <div class="col-6 col-md-3 col-lg-2">
                                 <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-                                    <div class="icon-circle bg-light-red mb-3 mx-auto">
-                                        <i class="fas fa-wave-square fa-lg text-danger"></i>
+                                    <div class="icon-circle bg-light-blue mb-2 mx-auto">
+                                        <i class="fas fa-globe-asia fa-lg text-primary"></i> <!-- ikon gunung -->
                                     </div>
-                                    <?php if (!empty($gempa_bmkg)): ?>
-                                        <h5 class="fw-bold mb-1"><?= esc($gempa_bmkg['Magnitude']) ?> SR</h5>
-                                        <p class="text-secondary small mb-0"><?= esc($gempa_bmkg['Wilayah']) ?></p>
-                                        <p class="text-secondary small mb-0"><?= esc($gempa_bmkg['Kedalaman']) ?></p>
-                                        <p class="text-secondary small mb-0" style="font-style: italic;">
-                                            <?= date('d M Y', strtotime($gempa_bmkg['Tanggal'])) ?>
-                                        </p>
-                                    <?php else: ?>
-                                        <h5 class="fw-bold mb-1">N/A</h5>
-                                        <p class="text-secondary small mb-0">Data gempa tidak tersedia</p>
-                                    <?php endif; ?>
+                                    <p class="fw-semibold text-primary small mb-1">Gempa Dirasakan</p>
+                                    <h5 class="fw-bold mb-1"><?= esc($dirasakan['Magnitude']) ?> SR</h5>
+                                    <p class="text-secondary small mb-0"><?= esc($dirasakan['Wilayah']) ?></p>
+                                    <p class="text-secondary small mb-0"><?= esc($dirasakan['Kedalaman']) ?></p>
+                                    <p class="text-secondary small mb-0"><strong>Dirasakan:</strong> <?= esc($dirasakan['Dirasakan']) ?></p>
+                                    <p class="text-secondary small mb-0" style="font-style: italic;">
+                                        <?= date('d M Y', strtotime($dirasakan['Tanggal'])) ?>
+                                    </p>
                                 </div>
                             </div>
+                        <?php endif; ?>
+
+
+
+
                         </div>
                     </div> <!-- Penutup Slide 1 -->
 
