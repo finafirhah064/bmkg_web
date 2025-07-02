@@ -9,16 +9,16 @@ class ModelGambarHilal extends Model
     protected $primaryKey = 'id_gambar_hilal';
 
     protected $allowedFields = [
-    'id_pengamatan_hilal',
-    'path_gambar',
-    'keterangan',
-    'adalah_gambar_utama',
-    'tahun_hijri', // kolom tahun hijriyah
-    'bulan_hijri'  // kolom bulan hijriyah
-];
+        'id_pengamatan_hilal',
+        'path_gambar',
+        'keterangan',
+        'adalah_gambar_utama',
+        'tahun_hijri', // kolom tahun hijriyah
+        'bulan_hijri'  // kolom bulan hijriyah
+    ];
 
 
     protected $useTimestamps = true;
-    protected $createdField  = 'dibuat_pada';
-    protected $updatedField  = 'diperbarui_pada';
+    protected $createdField = 'dibuat_pada';
+    protected $updatedField = 'diperbarui_pada';
 }

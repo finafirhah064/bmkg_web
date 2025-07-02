@@ -103,6 +103,10 @@
             font-size: 1.8rem;
         }
     }
+
+    /* .fixed-height-card {
+        height: 320px;
+    } */
 </style>
 </head>
 
@@ -124,22 +128,30 @@
                         <div class="row justify-content-center g-4">
                             <!-- Kartu 1: Sambaran Petir -->
                             <div class="col-6 col-md-3 col-lg-2">
-                                <div class="card shadow-sm border-0 rounded-4 text-center p-3">
+                                <div class="card shadow-sm border-0 rounded-4 text-center p-3 fixed-height-card">
                                     <div class="icon-circle bg-light-orange mb-3 mx-auto">
                                         <i class="fas fa-bolt fa-lg text-orange"></i>
                                     </div>
-                                    <h5 class="fw-bold mb-1">1.827</h5>
-                                    <p class="text-secondary small mb-0">Total Sambaran Petir</p>
+                                    <?php if (!empty($TotalSambaran)): ?>
+                                        <h5 class="fw-bold mb-1"><?= number_format($TotalSambaran->total_sambaran) ?></h5>
+                                        <p class="text-secondary small mb-0">
+                                            Total Sambaran Petir Bulan
+                                            <?= bulanIndo(date('F', strtotime($TotalSambaran->bulan . '-01'))) ?>
+                                            <?= date('Y', strtotime($TotalSambaran->bulan . '-01')) ?>
+                                        </p>
+                                    <?php else: ?>
+                                        <h5 class="fw-bold mb-1">N/A</h5>
+                                        <p class="text-secondary small mb-0">Data sambaran tidak tersedia</p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <!-- Kartu 2: Tekanan Udara -->
                             <div class="col-6 col-md-3 col-lg-2">
                                 <!-- Di file app/Views/dashboard_view.php -->
-                                <div class="card shadow-sm border-0 rounded-4 text-center p-3">
+                                <div class="card shadow-sm border-0 rounded-4 text-center p-3 fixed-height-card">
                                     <div class="icon-circle bg-light-blue mb-3 mx-auto">
                                         <i class="fas fa-tachometer-alt fa-lg text-info"></i>
                                     </div>
-
                                     <?php if (!empty($rata_tekanan)): ?>
                                         <h5 class="fw-bold mb-1"><?= number_format($rata_tekanan->rata_rata_tekanan, 1) ?>
                                             hPa</h5>
@@ -154,59 +166,49 @@
                                     <?php endif; ?>
                                 </div>
                             </div>
-                            <!-- Kartu 3: Curah Hujan -->
-                            <div class="col-6 col-md-3 col-lg-2">
-                            <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-                         <div class="icon-circle bg-warning mb-3 mx-auto">
-                             <i class="fas fa-thermometer-half fa-lg text-dark"></i>
-            </div>
-            <h5 class="fw-bold mb-1"><?= esc($rata_temp_bulan_lalu) ?>°C</h5>
-            <p class="text-secondary small mb-0">Rata-rata Temperature (<?= esc($nama_bulan_lalu) ?>)</p>
-        </div>
-    </div>
-
-    <div class="col-6 col-md-3 col-lg-2">
-        <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-            <div class="icon-circle bg-info mb-3 mx-auto">
-                <i class="fas fa-cloud-showers-heavy fa-lg text-white"></i>
-            </div>
-            <h5 class="fw-bold mb-1"><?= esc($rata_hujan_bulan_lalu) ?> mm</h5>
-            <p class="text-secondary small mb-0">Rata-rata Hujan (<?= esc($nama_bulan_lalu) ?>)</p>
-        </div>
-    </div>
-                            <!-- Kartu 4: Fase Hilal -->
-                            <div class="col-6 col-md-3 col-lg-2">
-                                <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-                                    <div class="icon-circle bg-light-green mb-3 mx-auto">
-                                        <i class="fas fa-moon fa-lg text-success"></i>
-                                    </div>
-                                    <h5 class="fw-bold mb-1" id="faseHilal">Bulan Sabit</h5>
-                                    <p class="text-secondary small mb-0">Fase Hilal Saat Ini</p>
-                                </div>
-                            </div>
                             <!-- Kartu 5: Gempa -->
                             <?php if (!empty($gempa_dirasakan)): ?>
-                            <?php $dirasakan = $gempa_dirasakan[0]; ?>
-                            <div class="col-6 col-md-3 col-lg-2">
-                                <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-                                    <div class="icon-circle bg-light-blue mb-2 mx-auto">
-                                        <i class="fas fa-globe-asia fa-lg text-primary"></i> <!-- ikon gunung -->
+                                <?php $dirasakan = $gempa_dirasakan[0]; ?>
+                                <div class="col-6 col-md-3 col-lg-2">
+                                    <div class="card shadow-sm border-0 rounded-4 text-center p-3 fixed-height-card">
+                                        <div class="icon-circle bg-light-blue mb-3 mx-auto">
+                                            <i class="fas fa-globe-asia fa-lg text-primary"></i> <!-- ikon gunung -->
+                                        </div>
+                                        <h5 class="fw-bold mb-1"><?= esc($dirasakan['Magnitude']) ?> SR</h5>
+                                        <p class="fw-semibold text-primary small mb-1">Gempa Dirasakan</p>
+                                        <p class="text-secondary small mb-0"><?= esc($dirasakan['Wilayah']) ?></p>
+                                        <p class="text-secondary small mb-0"><?= esc($dirasakan['Kedalaman']) ?></p>
+                                        <p class="text-secondary small mb-0"><strong>Dirasakan:</strong>
+                                            <?= esc($dirasakan['Dirasakan']) ?></p>
+                                        <p class="text-secondary small mb-0" style="font-style: italic;">
+                                            <?= date('d M Y', strtotime($dirasakan['Tanggal'])) ?>
+                                        </p>
                                     </div>
-                                    <p class="fw-semibold text-primary small mb-1">Gempa Dirasakan</p>
-                                    <h5 class="fw-bold mb-1"><?= esc($dirasakan['Magnitude']) ?> SR</h5>
-                                    <p class="text-secondary small mb-0"><?= esc($dirasakan['Wilayah']) ?></p>
-                                    <p class="text-secondary small mb-0"><?= esc($dirasakan['Kedalaman']) ?></p>
-                                    <p class="text-secondary small mb-0"><strong>Dirasakan:</strong> <?= esc($dirasakan['Dirasakan']) ?></p>
-                                    <p class="text-secondary small mb-0" style="font-style: italic;">
-                                        <?= date('d M Y', strtotime($dirasakan['Tanggal'])) ?>
-                                    </p>
+                                </div>
+                            <?php endif; ?>
+                            <!-- Kartu 3: Curah Hujan -->
+                            <div class="col-6 col-md-3 col-lg-2">
+                                <div class="card shadow-sm border-0 rounded-4 text-center p-3 fixed-height-card">
+                                    <div class="icon-circle bg-warning mb-3 mx-auto">
+                                        <i class="fas fa-thermometer-half fa-lg text-dark"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-1"><?= esc($rata_temp_bulan_lalu) ?>°C</h5>
+                                    <p class="text-secondary small mb-0">Rata-rata Temperatur</p>
+                                    <p class="text-secondary small mb-0">Bulan <?= esc($nama_bulan_lalu) ?>
+                                        <?= date('Y') ?></p>
                                 </div>
                             </div>
-                        <?php endif; ?>
-
-
-
-
+                            <div class="col-6 col-md-3 col-lg-2">
+                                <div class="card shadow-sm border-0 rounded-4 text-center p-3 fixed-height-card">
+                                    <div class="icon-circle bg-info mb-3 mx-auto">
+                                        <i class="fas fa-cloud-showers-heavy fa-lg text-white"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-1"><?= esc($rata_hujan_bulan_lalu) ?> mm</h5>
+                                    <p class="text-secondary small mb-0">Rata-rata Hujan</p>
+                                    <p class="text-secondary small mb-0">Bulan <?= esc($nama_bulan_lalu) ?>
+                                        <?= date('Y') ?></p>
+                                </div>
+                            </div>
                         </div>
                     </div> <!-- Penutup Slide 1 -->
 
@@ -215,7 +217,7 @@
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-12 col-lg-8">
-                                    <div class="card shadow-sm border-0 rounded-4 p-4 bg-white">
+                                    <div class="card shadow-sm border-0 rounded-4 p-4 bg-white fixed-height-card">
                                         <div class="d-flex align-items-center mb-3">
                                             <h5 class="mb-0 fw-semibold text-dark">Terbit & Tenggelam — Beberapa Wilayah
                                             </h5>

@@ -18,7 +18,8 @@
                     <input type="text" name="q" class="form-control rounded-start-pill px-4 py-2 border-0 shadow-sm"
                         placeholder="Cari berita atau pengumuman..." value="<?= esc($keyword ?? '') ?>"
                         style="font-size: 0.95rem; height: 38px;">
-                    <button class="btn btn-outline-primary rounded-end-pill px-4 py-2" type="submit" style="height: 38px;">
+                    <button class="btn btn-outline-primary rounded-end-pill px-4 py-2" type="submit"
+                        style="height: 38px;">
                         <i class="fas fa-search me-1"></i>
                     </button>
                 </form>

@@ -57,8 +57,8 @@
                             d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
                             clip-rule="evenodd"></path>
                     </svg> -->
-                    <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor">
+                    <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
@@ -68,48 +68,52 @@
         </div>
     </div>
 
-<!-- Table Card -->
-<div class="card border-0 shadow mb-4">
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-centered table-nowrap mb-0 rounded">
-                <thead class="thead-light">
-                    <tr>
-                        <th class="border-0 rounded-start">No</th>
-                        <th class="border-0">Tanggal</th>
-                        <th class="border-0">Jam</th>
-                        <th class="border-0">Lintang</th>
-                        <th class="border-0">Bujur</th>
-                        <th class="border-0">Depth</th>
-                        <th class="border-0">Magnitudo</th>
-                        <th class="border-0">Keterangan</th>
-                        <th class="border-0">Dirasakan</th>
-                        <th class="border-0 rounded-end">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $no = 1; foreach ($dataGempa as $row): ?>
+    <!-- Table Card -->
+    <div class="card border-0 shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-centered table-nowrap mb-0 rounded">
+                    <thead class="thead-light">
                         <tr>
-                            <td><?= $no++; ?></td>
-                            <td><?= $row['Tanggal']; ?></td>
-                            <td><?= $row['Jam']; ?></td>
-                            <td><?= $row['Lintang']; ?></td>
-                            <td><?= $row['Bujur']; ?></td>
-                            <td><?= $row['Depth']; ?></td>
-                            <td><?= $row['Magnitudo']; ?></td>
-                            <td><?= $row['Keterangan']; ?></td>
-                            <td><?= $row['Dirasakan']; ?></td>
-                            <td>
-                                <a href="<?= base_url('Gempa/edit/' . $row['id_gempa']); ?>" class="btn btn-sm btn-primary">Edit</a>
-                                <a href="<?= base_url('Gempa/delete/' . $row['id_gempa']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
-                            </td>
+                            <th class="border-0 rounded-start">No</th>
+                            <th class="border-0">Tanggal</th>
+                            <th class="border-0">Jam</th>
+                            <th class="border-0">Lintang</th>
+                            <th class="border-0">Bujur</th>
+                            <th class="border-0">Depth</th>
+                            <th class="border-0">Magnitudo</th>
+                            <th class="border-0">Keterangan</th>
+                            <th class="border-0">Dirasakan</th>
+                            <th class="border-0 rounded-end">Aksi</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php $no = 1;
+                        foreach ($dataGempa as $row): ?>
+                            <tr>
+                                <td><?= $no++; ?></td>
+                                <td><?= $row['Tanggal']; ?></td>
+                                <td><?= $row['Jam']; ?></td>
+                                <td><?= $row['Lintang']; ?></td>
+                                <td><?= $row['Bujur']; ?></td>
+                                <td><?= $row['Depth']; ?></td>
+                                <td><?= $row['Magnitudo']; ?></td>
+                                <td><?= $row['Keterangan']; ?></td>
+                                <td><?= $row['Dirasakan']; ?></td>
+                                <td>
+                                    <a href="<?= base_url('Gempa/edit/' . $row['id_gempa']); ?>"
+                                        class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="<?= base_url('Gempa/delete/' . $row['id_gempa']); ?>"
+                                        class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 
 
     <!-- Scripts -->

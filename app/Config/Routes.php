@@ -29,7 +29,7 @@ $routes->group('administrasi', ['filter' => 'auth'], function ($routes) {
 
 
 // Grup untuk admin - Buku Tamu harus login
-$routes->group('buku_tamu',  ['filter' => 'auth'], function ($routes) {
+$routes->group('buku_tamu', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'BukuTamu::index');                        // Tampilkan data buku tamu (admin/user tergantung view)
     $routes->get('export_excel', 'BukuTamu::export_excel');           // Ekspor data ke Excel
     $routes->post('simpan', 'BukuTamu::simpan');                // Simpan data dari form buku tamu
@@ -164,7 +164,7 @@ $routes->group('administrasi', ['filter' => 'auth'], function ($routes) {
 });
 
 // Grup untuk admin - Buku Tamu harus login
-$routes->group('buku_tamu',  ['filter' => 'auth'], function ($routes) {
+$routes->group('buku_tamu', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'BukuTamu::index');                        // Tampilkan data buku tamu (admin/user tergantung view)
     $routes->get('export', 'BukuTamu::export_excel');           // Ekspor data ke Excel
     $routes->post('simpan', 'BukuTamu::simpan');                // Simpan data dari form buku tamu

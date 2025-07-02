@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\Model_TekananUdara;
 use App\Models\Model_temperatur;
 use App\Models\ModelGempa;
+use App\Models\ModelPetir;
 use App\Models\ModelTerbitTenggelam;
 use App\Models\ModelPengamatanHilal;
 use App\Models\ModelGambarHilal;
@@ -35,8 +36,8 @@ class Home extends BaseController
     {
         $mb = new ModelTerbitTenggelam();
         $data = [
-            'title'   => 'Data Terbit Tenggelam',
-            'dataMb'  => $mb->tampilterbitenggelam()
+            'title' => 'Data Terbit Tenggelam',
+            'dataMb' => $mb->tampilterbitenggelam()
         ];
 
         echo view('admin/admin_header', $data);
@@ -61,10 +62,10 @@ class Home extends BaseController
     {
         $model = new ModelPengamatanHilal();
         $data = [
-            'title'       => 'Pengamatan Hilal',
-            'pengamatan'  => $model->where('dipublikasikan', 1)
-                                   ->orderBy('id_pengamatan_hilal', 'ASC')
-                                   ->findAll()
+            'title' => 'Pengamatan Hilal',
+            'pengamatan' => $model->where('dipublikasikan', 1)
+                ->orderBy('id_pengamatan_hilal', 'ASC')
+                ->findAll()
         ];
 
         echo view('admin/admin_header', $data);
@@ -79,11 +80,11 @@ class Home extends BaseController
         // Tekanan Udara
         $tekananModel = new Model_TekananUdara();
         $today = $tekananModel->getTodayPressure();
-        $data['tekanan']          = $today['tekanan_udara'] ?? '-';
-        $data['kelembaban_07']    = $today['kelembaban_07'] ?? '-';
-        $data['kecepatan_rata2']  = $today['kecepatan_rata2'] ?? '-';
-        $data['arah_terbanyak']   = $today['arah_terbanyak'] ?? '-';
-        $data['rata_tekanan']     = $tekananModel->getRataRataBulanSebelumnya();
+        $data['tekanan'] = $today['tekanan_udara'] ?? '-';
+        $data['kelembaban_07'] = $today['kelembaban_07'] ?? '-';
+        $data['kecepatan_rata2'] = $today['kecepatan_rata2'] ?? '-';
+        $data['arah_terbanyak'] = $today['arah_terbanyak'] ?? '-';
+        $data['rata_tekanan'] = $tekananModel->getRataRataBulanSebelumnya();
         helper('bulan');
 
         // Temperatur & Curah Hujan
@@ -94,6 +95,11 @@ class Home extends BaseController
         $data['rata_temp_bulan_lalu'] = number_format($rata2BulanLalu['avg_temp_07'], 1);
         $data['rata_hujan_bulan_lalu'] = number_format($rata2BulanLalu['avg_hujan'], 1);
         helper('bulan');
+
+        //Petir
+        $modelPetir = new ModelPetir();
+        $data['TotalSambaran'] = $modelPetir->getTotalSambaranBulanSebelumnya();
+        
         // Data Terbit & Tenggelam
         $modelTerbit = new ModelTerbitTenggelam();
         $data['dataTerbit'] = $modelTerbit->getLatestDataFiltered();
@@ -130,7 +136,7 @@ class Home extends BaseController
         } catch (\Exception $e) {
             $data['gempa_terbaru'] = [];
         }
-        
+
         // Berita Kegiatan
         helper('text');
         $model = new ModelBeritaKegiatan();

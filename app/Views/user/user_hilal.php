@@ -25,7 +25,8 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        h1, h3 {
+        h1,
+        h3 {
             color: var(--bmkg-blue);
             font-weight: 700;
         }
@@ -97,7 +98,8 @@
 
 <body>
     <div class="container mt-4 mb-5">
-        <h1 class="mb-3 text-center"><i class="fas fa-moon fa-fw me-2" style="color: var(--bmkg-orange);"></i>Data Pengamatan Hilal</h1>
+        <h1 class="mb-3 text-center"><i class="fas fa-moon fa-fw me-2" style="color: var(--bmkg-orange);"></i>Data
+            Pengamatan Hilal</h1>
         <p class="text-center text-secondary mb-5 fs-5">Tampilan data pengamatan hilal berdasarkan tahun hijriyah</p>
 
         <!-- Loop per Tahun Hijriyah -->
@@ -112,14 +114,17 @@
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">
                                         <i class="fas fa-star-and-crescent me-1" style="color: var(--bmkg-orange);"></i>
-                                        <?= htmlspecialchars($item['nama_bulan']); ?> <?= htmlspecialchars($item['bulan_hijri']); ?>
+                                        <?= htmlspecialchars($item['nama_bulan']); ?>
+                                        <?= htmlspecialchars($item['bulan_hijri']); ?>
                                     </h5>
                                     <p class="text-muted small mb-2">
                                         <i class="fas fa-clock date-icon me-1"></i>
                                         <?= date('d/m/Y', strtotime($item['tanggal_observasi'])); ?>
                                     </p>
-                                    <p class="card-text flex-grow-1"><?= htmlspecialchars(substr($item['deskripsi'], 0, 100)); ?>...</p>
-                                    <a href="<?= base_url('user/hilal/detail/' . $item['id_pengamatan_hilal']); ?>" class="btn btn-outline-primary mt-auto align-self-start">
+                                    <p class="card-text flex-grow-1">
+                                        <?= htmlspecialchars(substr($item['deskripsi'], 0, 100)); ?>...</p>
+                                    <a href="<?= base_url('user/hilal/detail/' . $item['id_pengamatan_hilal']); ?>"
+                                        class="btn btn-outline-primary mt-auto align-self-start">
                                         Baca Selengkapnya <i class="fas fa-chevron-right ms-1"></i>
                                     </a>
                                 </div>
@@ -127,7 +132,8 @@
                                     <small class="text-muted fst-italic">
                                         Tinggi Hilal: <strong><?= htmlspecialchars($item['tinggi_bulan']); ?>°</strong>
                                         &nbsp;&middot;&nbsp;
-                                        Visibilitas: <strong><?= htmlspecialchars(ucfirst($item['status_visibilitas'])); ?></strong>
+                                        Visibilitas:
+                                        <strong><?= htmlspecialchars(ucfirst($item['status_visibilitas'])); ?></strong>
                                     </small>
                                 </div>
                             </div>

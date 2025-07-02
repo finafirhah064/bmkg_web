@@ -27,50 +27,51 @@
     </div>
 
     <!-- Form -->
-<div class="row">
-    <div class="col-12 mb-4">
-        <div class="card border-0 shadow components-section">
-            <div class="card-body">
-                <!-- Form -->
-                <form method="POST" action="<?= base_url('beritakegiatan/add') ?>" enctype="multipart/form-data">
-                    <div class="row">
-                        <!-- Judul -->
-                        <div class="col-md-12 mb-3">
-                            <label for="judul" class="form-label">Judul</label>
-                            <input type="text" class="form-control" id="judul" name="judul" value="<?= old('judul') ?>" required>
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <label for="kategori">Kategori</label>
-                            <select name="kategori" class="form-control" required>
-                                <option value="">-- Pilih Kategori --</option>
-                                <option value="Berita Kegiatan">Berita Kegiatan</option>
-                                <option value="Pengumuman">Pengumuman</option>
-                            </select>
-                        </div>
-                        <!-- Gambar -->
-                        <div class="col-md-12 mb-3">
-                            <label for="gambar" class="form-label">Gambar</label>
-                            <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card border-0 shadow components-section">
+                <div class="card-body">
+                    <!-- Form -->
+                    <form method="POST" action="<?= base_url('beritakegiatan/add') ?>" enctype="multipart/form-data">
+                        <div class="row">
+                            <!-- Judul -->
+                            <div class="col-md-12 mb-3">
+                                <label for="judul" class="form-label">Judul</label>
+                                <input type="text" class="form-control" id="judul" name="judul"
+                                    value="<?= old('judul') ?>" required>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="kategori">Kategori</label>
+                                <select name="kategori" class="form-control" required>
+                                    <option value="">-- Pilih Kategori --</option>
+                                    <option value="Berita Kegiatan">Berita Kegiatan</option>
+                                    <option value="Pengumuman">Pengumuman</option>
+                                </select>
+                            </div>
+                            <!-- Gambar -->
+                            <div class="col-md-12 mb-3">
+                                <label for="gambar" class="form-label">Gambar</label>
+                                <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*">
+                            </div>
+
+                            <!-- Konten -->
+                            <div class="col-md-12 mb-4">
+                                <label for="isi" class="form-label">Konten</label>
+                                <input id="isi" type="hidden" name="isi" value="<?= old('isi') ?>" required>
+                                <trix-editor input="isi"></trix-editor>
+                            </div>
                         </div>
 
-                        <!-- Konten -->
-                        <div class="col-md-12 mb-4">
-                            <label for="isi" class="form-label">Konten</label>
-                            <input id="isi" type="hidden" name="isi" value="<?= old('isi') ?>" required>
-                            <trix-editor input="isi"></trix-editor>
+                        <!-- Tombol Submit -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
-                    </div>
+                    </form>
 
-                    <!-- Tombol Submit -->
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
-
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 

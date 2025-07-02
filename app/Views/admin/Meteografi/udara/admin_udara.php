@@ -8,11 +8,15 @@
                     <form class="navbar-search form-inline" id="navbar-search-main">
                         <div class="input-group input-group-merge search-bar">
                             <span class="input-group-text" id="topbar-addon">
-                                <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                        clip-rule="evenodd" />
                                 </svg>
                             </span>
-                            <input type="text" class="form-control" id="topbarInputIconLeft" placeholder="Search" aria-label="Search" aria-describedby="topbar-addon">
+                            <input type="text" class="form-control" id="topbarInputIconLeft" placeholder="Search"
+                                aria-label="Search" aria-describedby="topbar-addon">
                         </div>
                     </form>
                 </div>
@@ -24,7 +28,11 @@
     <div class="py-4">
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
             <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
-                <li class="breadcrumb-item"><a href="#"><svg class="icon icon-xxs" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></a></li>
+                <li class="breadcrumb-item"><a href="#"><svg class="icon icon-xxs" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg></a></li>
                 <li class="breadcrumb-item"><a href="#">Meteografi</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Tekanan Udara</li>
             </ol>
@@ -35,9 +43,12 @@
                 <p class="mb-0">Laporan harian tekanan udara dan kelembaban BMKG</p>
             </div>
             <div>
-                <a href="<?= base_url('tekananudara/form'); ?>" class="btn btn-outline-success d-inline-flex align-items-center me-2">
-                    <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                <a href="<?= base_url('tekananudara/form'); ?>"
+                    class="btn btn-outline-success d-inline-flex align-items-center me-2">
+                    <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
                     Tambah
                 </a>
@@ -49,7 +60,7 @@
     <div class="card border-0 shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-            <table id="tabelTekanan" class="table table-centered table-nowrap mb-0 rounded">
+                <table id="tabelTekanan" class="table table-centered table-nowrap mb-0 rounded">
                     <thead class="thead-light">
                         <tr>
                             <th class="border-0 rounded-start">No</th>
@@ -66,7 +77,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $no = 1; foreach ($dataTekanan as $row): ?>
+                        <?php $no = 1;
+                        foreach ($dataTekanan as $row): ?>
                             <tr>
                                 <td><?= $no++; ?></td>
                                 <td><?= date('d-m-Y', strtotime($row->tgl)); ?></td>
@@ -79,8 +91,11 @@
                                 <td><?= esc($row->kecepatan_terbesar); ?></td>
                                 <td><?= esc($row->arah_kecepatan_terbesar); ?></td>
                                 <td>
-                                    <a href="<?= base_url('tekananudara/form_update/' . $row->id_tekanan_udara); ?>" class="btn btn-sm btn-primary">Edit</a>
-                                    <a href="<?= base_url('tekananudara/delete/' . $row->id_tekanan_udara); ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
+                                    <a href="<?= base_url('tekananudara/form_update/' . $row->id_tekanan_udara); ?>"
+                                        class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="<?= base_url('tekananudara/delete/' . $row->id_tekanan_udara); ?>"
+                                        class="btn btn-sm btn-danger"
+                                        onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -95,8 +110,8 @@
         </div>
     </div>
 
-  <!-- Scripts -->
-  <script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
+    <!-- Scripts -->
+    <script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="../../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../../vendor/onscreen/dist/on-screen.umd.min.js"></script>
     <script src="../../vendor/nouislider/distribute/nouislider.min.js"></script>
@@ -112,22 +127,21 @@
     <script src="../../assets/js/volt.js"></script>
 
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const input = document.getElementById("topbarInputIconLeft");
-        const table = document.getElementById("tabelTekanan");
-        const rows = table.getElementsByTagName("tr");
+        document.addEventListener("DOMContentLoaded", function () {
+            const input = document.getElementById("topbarInputIconLeft");
+            const table = document.getElementById("tabelTekanan");
+            const rows = table.getElementsByTagName("tr");
 
-        input.addEventListener("keyup", function () {
-            const filter = input.value.toLowerCase();
+            input.addEventListener("keyup", function () {
+                const filter = input.value.toLowerCase();
 
-            for (let i = 1; i < rows.length; i++) {
-                const rowText = rows[i].textContent.toLowerCase();
-                rows[i].style.display = rowText.includes(filter) ? "" : "none";
-            }
+                for (let i = 1; i < rows.length; i++) {
+                    const rowText = rows[i].textContent.toLowerCase();
+                    rows[i].style.display = rowText.includes(filter) ? "" : "none";
+                }
+            });
         });
-    });
     </script>
-        <!-- Trix Editor -->
-        <link rel="stylesheet" href="https://unpkg.com/trix@1.3.1/dist/trix.css">
+    <!-- Trix Editor -->
+    <link rel="stylesheet" href="https://unpkg.com/trix@1.3.1/dist/trix.css">
     <script src="https://unpkg.com/trix@1.3.1/dist/trix.js"></script>
-

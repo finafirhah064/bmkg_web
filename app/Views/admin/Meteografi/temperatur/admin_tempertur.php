@@ -65,9 +65,9 @@
             </div>
             <div>
                 <a href="<?php echo base_url('Temperatur/form_temperatur'); ?>"
-                   class="btn btn-outline-success d-inline-flex align-items-center me-2">
-                    <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor">
+                    class="btn btn-outline-success d-inline-flex align-items-center me-2">
+                    <svg class="icon icon-xs me-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
@@ -77,52 +77,56 @@
         </div>
     </div>
 
-<!-- Table Card -->
-<div class="card border-0 shadow mb-4">
-    <div class="card-body">
-        <div class="table-responsive">
-        <table id="tabelTemperatur" class="table table-centered table-nowrap mb-0 rounded">
-                <thead class="thead-light">
-                    <tr>
-                        <th class="border-0 rounded-start">No</th>
-                        <th class="border-0">Tanggal</th>
-                        <th class="border-0">07:00</th>
-                        <th class="border-0">13:00</th>
-                        <th class="border-0">18:00</th>
-                        <th class="border-0">Rata²</th>
-                        <th class="border-0">Max</th>
-                        <th class="border-0">Min</th>
-                        <th class="border-0">Curah Hujan</th>
-                        <th class="border-0">Penyinaran</th>
-                        <th class="border-0">Peristiwa Khusus</th>
-                        <th class="border-0 rounded-end">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $no = 1; foreach ($dataTemperatur as $row): ?>
+    <!-- Table Card -->
+    <div class="card border-0 shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="tabelTemperatur" class="table table-centered table-nowrap mb-0 rounded">
+                    <thead class="thead-light">
                         <tr>
-                            <td><?= $no++; ?></td>
-                            <td><?= date('d-m-Y', strtotime($row->tgl)); ?></td>
-                            <td><?= $row->temperatur_07; ?>°C</td>
-                            <td><?= $row->temperatur_13; ?>°C</td>
-                            <td><?= $row->temperatur_18; ?>°C</td>
-                            <td><?= $row->rata2; ?>°C</td>
-                            <td><?= $row->max; ?>°C</td>
-                            <td><?= $row->min; ?>°C</td>
-                            <td><?= $row->curah_hujan_07; ?> mm</td>
-                            <td><?= $row->penyinaran_matahari; ?>%</td>
-                            <td><?= $row->peristiwa_khusus ?? '-'; ?></td>
-                            <td>
-                                <a href="<?= base_url('/Temperatur/form_update_temperatur/' . $row->id_temperatur); ?>" class="btn btn-sm btn-primary">Edit</a>
-                                <a href="<?= base_url('/Temperatur/delete_temperatur/' . $row->id_temperatur); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
-                            </td>
+                            <th class="border-0 rounded-start">No</th>
+                            <th class="border-0">Tanggal</th>
+                            <th class="border-0">07:00</th>
+                            <th class="border-0">13:00</th>
+                            <th class="border-0">18:00</th>
+                            <th class="border-0">Rata²</th>
+                            <th class="border-0">Max</th>
+                            <th class="border-0">Min</th>
+                            <th class="border-0">Curah Hujan</th>
+                            <th class="border-0">Penyinaran</th>
+                            <th class="border-0">Peristiwa Khusus</th>
+                            <th class="border-0 rounded-end">Aksi</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php $no = 1;
+                        foreach ($dataTemperatur as $row): ?>
+                            <tr>
+                                <td><?= $no++; ?></td>
+                                <td><?= date('d-m-Y', strtotime($row->tgl)); ?></td>
+                                <td><?= $row->temperatur_07; ?>°C</td>
+                                <td><?= $row->temperatur_13; ?>°C</td>
+                                <td><?= $row->temperatur_18; ?>°C</td>
+                                <td><?= $row->rata2; ?>°C</td>
+                                <td><?= $row->max; ?>°C</td>
+                                <td><?= $row->min; ?>°C</td>
+                                <td><?= $row->curah_hujan_07; ?> mm</td>
+                                <td><?= $row->penyinaran_matahari; ?>%</td>
+                                <td><?= $row->peristiwa_khusus ?? '-'; ?></td>
+                                <td>
+                                    <a href="<?= base_url('/Temperatur/form_update_temperatur/' . $row->id_temperatur); ?>"
+                                        class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="<?= base_url('/Temperatur/delete_temperatur/' . $row->id_temperatur); ?>"
+                                        class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Yakin ingin menghapus data ini?');">Hapus</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 
 
     <!-- Scripts -->
@@ -142,21 +146,21 @@
     <script src="../../assets/js/volt.js"></script>
 
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const input = document.getElementById("topbarInputIconLeft");
-        const table = document.getElementById("tabelTemperatur");
-        const rows = table.getElementsByTagName("tr");
+        document.addEventListener("DOMContentLoaded", function () {
+            const input = document.getElementById("topbarInputIconLeft");
+            const table = document.getElementById("tabelTemperatur");
+            const rows = table.getElementsByTagName("tr");
 
-        input.addEventListener("keyup", function () {
-            const filter = input.value.toLowerCase();
+            input.addEventListener("keyup", function () {
+                const filter = input.value.toLowerCase();
 
-            for (let i = 1; i < rows.length; i++) {
-                const rowText = rows[i].textContent.toLowerCase();
-                rows[i].style.display = rowText.includes(filter) ? "" : "none";
-            }
+                for (let i = 1; i < rows.length; i++) {
+                    const rowText = rows[i].textContent.toLowerCase();
+                    rows[i].style.display = rowText.includes(filter) ? "" : "none";
+                }
+            });
         });
-    });
-</script>
+    </script>
 
     <!-- Trix Editor -->
     <link rel="stylesheet" href="https://unpkg.com/trix@1.3.1/dist/trix.css">

@@ -1,22 +1,4 @@
 <main class="content">
-    <nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark ps-0 pe-2 pb-0">
-        <div class="container-fluid px-0">
-            <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
-                <div class="d-flex align-items-center">
-                    <!-- Search form -->
-                    <!-- <form class="navbar-search form-inline" id="navbar-search-main" method="GET" action="<?= base_url('Petir') ?>">
-                        <div class="input-group input-group-merge search-bar">
-                            <span class="input-group-text" id="topbar-addon">
-                                <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                                </svg>
-                            </span>
-                            <input type="text" class="form-control" name="keyword" id="topbarInputIconLeft" placeholder="Cari wilayah..."
-                                value="<?= esc($keyword ?? '') ?>" aria-label="Search" aria-describedby="topbar-addon">
-                        </div>
-                    </form> -->
-                </div>
-    </nav>
     <!-- Breadcrumb -->
     <div class="py-4">
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
@@ -48,7 +30,6 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow components-section">
                 <div class="card-body">
-
                     <!-- Flash Message -->
                     <?php if (session()->getFlashdata('success')): ?>
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -61,7 +42,6 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     <?php endif; ?>
-
                     <!-- Form Start -->
                     <form method="POST" action="<?= site_url('Petir/update/' . ($petir['id'] ?? '')) ?>">
                         <div class="row">
@@ -73,20 +53,17 @@
                                         value="<?= isset($petir['tanggal']) ? date('Y-m-d', strtotime($petir['tanggal'])) : '' ?>"
                                         required>
                                 </div>
-
                                 <div class="mb-3">
                                     <label for="waktu_sambaran" class="form-label">Waktu Sambaran</label>
                                     <input type="time" class="form-control" id="waktu_sambaran" name="waktu_sambaran"
                                         value="<?= esc($petir['waktu_sambaran'] ?? '') ?>" required>
                                 </div>
-
                                 <div class="mb-3">
                                     <label for="wilayah" class="form-label">Wilayah</label>
                                     <input type="text" class="form-control" id="wilayah" name="wilayah"
                                         value="<?= esc($petir['wilayah'] ?? '') ?>" required>
                                 </div>
                             </div>
-
                             <!-- Kolom Kanan -->
                             <div class="col-md-6">
                                 <div class="mb-3">
@@ -94,13 +71,11 @@
                                     <input type="number" step="0.000001" class="form-control" id="latitude"
                                         name="latitude" value="<?= esc($petir['latitude'] ?? '') ?>" required>
                                 </div>
-
                                 <div class="mb-3">
                                     <label for="longitude" class="form-label">Longitude</label>
                                     <input type="number" step="0.000001" class="form-control" id="longitude"
                                         name="longitude" value="<?= esc($petir['longitude'] ?? '') ?>" required>
                                 </div>
-
                                 <div class="mb-3">
                                     <label for="jenis_petir" class="form-label">Jenis Petir</label>
                                     <select class="form-control" id="jenis_petir" name="jenis_petir" required>
@@ -112,25 +87,17 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- Tombol Submit -->
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary">Perbarui Data</button>
                         </div>
                     </form>
                     <!-- Form End -->
-
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
+    
     <!-- Scripts -->
     <script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="../../vendor/bootstrap/dist/js/bootstrap.min.js"></script>

@@ -14,7 +14,7 @@ class TekananUdara extends BaseController
         $data['dataTekanan'] = $model->tampilData();
 
         $todayData = $model->getTodayPressure();
-          $data['tekanan'] = $todayData['tekanan_udara'] ?? 'N/A';
+        $data['tekanan'] = $todayData['tekanan_udara'] ?? 'N/A';
 
         echo view('admin/admin_header');
         echo view('admin/admin_nav');

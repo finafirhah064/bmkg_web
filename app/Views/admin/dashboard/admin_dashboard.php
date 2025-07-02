@@ -14,12 +14,15 @@
         body {
             background-color: #f8f9fa;
         }
+
         .card {
             transition: transform 0.2s ease-in-out;
         }
+
         .card:hover {
             transform: scale(1.02);
         }
+
         .chart-container {
             position: relative;
             height: 400px;

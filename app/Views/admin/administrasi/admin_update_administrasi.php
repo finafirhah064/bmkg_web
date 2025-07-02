@@ -10,8 +10,11 @@
                     <form class="navbar-search form-inline" id="navbar-search-main">
                         <div class="input-group input-group-merge search-bar">
                             <span class="input-group-text" id="topbar-addon">
-                                <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                                <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                        clip-rule="evenodd"></path>
                                 </svg>
                             </span>
                             <input type="text" class="form-control" id="topbarInputIconLeft" placeholder="Search">
@@ -37,12 +40,16 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow components-section">
                 <div class="card-body">
-                    <form method="POST" action="<?= site_url('administrasi/update/' . $administrasi->id_mahasiswa) ?>" enctype="multipart/form-data">
+                    <form method="POST" action="<?= site_url('administrasi/update/' . $administrasi->id_mahasiswa) ?>"
+                        enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="mb-3"><label>NIM</label><input type="text" class="form-control" name="nim" value="<?= $administrasi->nim ?>"></div>
-                                <div class="mb-3"><label>Nama</label><input type="text" class="form-control" name="nama" value="<?= $administrasi->nama ?>"></div>
-                                <div class="mb-3"><label>Universitas</label><input type="text" class="form-control" name="universitas" value="<?= $administrasi->universitas ?>"></div>
+                                <div class="mb-3"><label>NIM</label><input type="text" class="form-control" name="nim"
+                                        value="<?= $administrasi->nim ?>"></div>
+                                <div class="mb-3"><label>Nama</label><input type="text" class="form-control" name="nama"
+                                        value="<?= $administrasi->nama ?>"></div>
+                                <div class="mb-3"><label>Universitas</label><input type="text" class="form-control"
+                                        name="universitas" value="<?= $administrasi->universitas ?>"></div>
                                 <div class="mb-3">
                                     <label>Jenis Kegiatan</label>
                                     <select name="jenis_kegiatan" class="form-control">
@@ -51,14 +58,20 @@
                                         <option value="Kunjungan" <?= $administrasi->jenis_kegiatan == 'Kunjungan' ? 'selected' : '' ?>>Kunjungan</option>
                                     </select>
                                 </div>
-                                <div class="mb-3"><label>Judul</label><input type="text" class="form-control" name="judul" value="<?= $administrasi->judul ?>"></div>
+                                <div class="mb-3"><label>Judul</label><input type="text" class="form-control"
+                                        name="judul" value="<?= $administrasi->judul ?>"></div>
                             </div>
                             <div class="col-md-6">
-                                <div class="mb-3"><label>Pembimbing</label><input type="text" class="form-control" name="pembimbing" value="<?= $administrasi->pembimbing ?>"></div>
-                                <div class="mb-3"><label>Stasiun/Divisi</label><input type="text" class="form-control" name="stasiun_divisi" value="<?= $administrasi->stasiun_divisi ?>"></div>
-                                <div class="mb-3"><label>Tanggal Mulai</label><input type="date" class="form-control" name="tanggal_mulai" value="<?= $administrasi->tanggal_mulai ?>"></div>
-                                <div class="mb-3"><label>Tanggal Selesai</label><input type="date" class="form-control" name="tanggal_selesai" value="<?= $administrasi->tanggal_selesai ?>"></div>
-                                <div class="mb-3"><label>File Laporan</label><input type="file" class="form-control" name="file_laporan"></div>
+                                <div class="mb-3"><label>Pembimbing</label><input type="text" class="form-control"
+                                        name="pembimbing" value="<?= $administrasi->pembimbing ?>"></div>
+                                <div class="mb-3"><label>Stasiun/Divisi</label><input type="text" class="form-control"
+                                        name="stasiun_divisi" value="<?= $administrasi->stasiun_divisi ?>"></div>
+                                <div class="mb-3"><label>Tanggal Mulai</label><input type="date" class="form-control"
+                                        name="tanggal_mulai" value="<?= $administrasi->tanggal_mulai ?>"></div>
+                                <div class="mb-3"><label>Tanggal Selesai</label><input type="date" class="form-control"
+                                        name="tanggal_selesai" value="<?= $administrasi->tanggal_selesai ?>"></div>
+                                <div class="mb-3"><label>File Laporan</label><input type="file" class="form-control"
+                                        name="file_laporan"></div>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Update Data</button>

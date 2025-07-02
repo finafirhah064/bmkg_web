@@ -69,11 +69,13 @@
 
         <h2 class="text-center form-title">Form Pengajuan Surat</h2>
 
-        <form action="<?= base_url('pengajuan_surat/simpan') ?>" method="post" enctype="multipart/form-data" class="form-glass">
+        <form action="<?= base_url('pengajuan_surat/simpan') ?>" method="post" enctype="multipart/form-data"
+            class="form-glass">
             <?= csrf_field(); ?>
 
             <div class="form-floating mb-3">
-                <input type="text" name="nama_pengaju" class="form-control" id="namaPengaju" placeholder="Nama Pengaju" required>
+                <input type="text" name="nama_pengaju" class="form-control" id="namaPengaju" placeholder="Nama Pengaju"
+                    required>
                 <label for="namaPengaju">Nama Pengaju</label>
             </div>
 
@@ -94,7 +96,8 @@
 
             <!-- Input jenis surat jika pilih 'Lainnya' -->
             <div class="form-floating mb-3" id="jenisSuratLain" style="display: none;">
-                <input type="text" name="jenis_surat_lain" class="form-control" id="inputJenisSuratLain" placeholder="Tulis jenis surat">
+                <input type="text" name="jenis_surat_lain" class="form-control" id="inputJenisSuratLain"
+                    placeholder="Tulis jenis surat">
                 <label for="inputJenisSuratLain">Jenis Surat Lainnya</label>
             </div>
             <script>
@@ -102,7 +105,7 @@
                 const jenisSuratLainDiv = document.getElementById('jenisSuratLain');
                 const jenisSuratInput = document.getElementById('inputJenisSuratLain');
 
-                jenisSuratSelect.addEventListener('change', function() {
+                jenisSuratSelect.addEventListener('change', function () {
                     if (this.value === 'Lainnya') {
                         jenisSuratLainDiv.style.display = 'block';
                         jenisSuratInput.required = true;
@@ -115,13 +118,15 @@
             </script>
 
             <div class="form-floating mb-3">
-                <textarea name="keperluan" class="form-control" placeholder="Tuliskan keperluan" id="keperluan" style="height: 120px" required></textarea>
+                <textarea name="keperluan" class="form-control" placeholder="Tuliskan keperluan" id="keperluan"
+                    style="height: 120px" required></textarea>
                 <label for="keperluan">Keperluan</label>
             </div>
 
             <div class="mb-3">
                 <label for="fileSurat" class="form-label">Upload File Surat (PDF)</label>
-                <input type="file" name="file_surat" class="form-control" id="fileSurat" accept="application/pdf" required>
+                <input type="file" name="file_surat" class="form-control" id="fileSurat" accept="application/pdf"
+                    required>
             </div>
 
             <div class="text-center mt-4">
@@ -131,7 +136,7 @@
     </div>
 </section>
 
-<?php if (session()->getFlashdata('success')) : ?>
+<?php if (session()->getFlashdata('success')): ?>
     <script>
         Swal.fire({
             icon: 'success',

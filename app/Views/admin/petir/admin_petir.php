@@ -43,7 +43,6 @@
                 <li class="breadcrumb-item active" aria-current="page">Data</li>
             </ol>
         </nav>
-
         <div class="d-flex justify-content-between w-100 flex-wrap">
             <div class="mb-3 mb-lg-0">
                 <h1 class="h4">Data Petir</h1>
@@ -138,7 +137,6 @@
 
     <script>
         let map;
-
         function openMapModal(lat, lng, popupText) {
             // Tampilkan modal
             const modal = new bootstrap.Modal(document.getElementById('mapModal'));

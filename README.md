@@ -1,3 +1,56 @@
+# 📊 Sistem Monitoring BMKG - Laporan PKL
+
+![Dashboard BMKG](/public/readme/user-dashboard2.jpg)  
+*Gambar 1: Tampilan Utama Sistem Monitoring BMKG*
+
+## 🌟 Tentang Proyek
+Sistem monitoring cuaca dan gempa berbasis web untuk Badan Meteorologi, Klimatologi, dan Geofisika (BMKG) yang dikembangkan sebagai proyek Praktik Kerja Lapangan.
+
+![Login Panel](/public/readme/admin-login.jpg)
+
+## 🛠 Fitur Utama
+
+### 👨‍💻 Panel Admin
+![Admin Panel](/public/readme/admin-dashboard.jpg)
+
+- **Manajemen Data**:
+  - Input data observasi
+  - Update informasi real-time
+  - Hapus data tidak valid
+
+- **Manajemen Konten**:
+  - Publikasi berita terbaru
+  - Update informasi layanan
+
+### 👤 Panel Pengguna
+![User Interface](/public/readme/user-dashboard.jpg)
+
+- **ITentang BMKG**:
+  - Profil dan sejarah BMKG
+
+- **Statistik Harian**:
+  - Data sambaran petir
+  - Tekanan udara
+  - Temperatur
+  - Curah hujan
+  - Aktivitas gempa terkini
+
+- **Berita & Kegiatan**:
+  - Daftar berita terbaru
+  - Agenda kegiatan BMKG
+  - Pengumuman penting
+
+- **Layanan Publik**:
+  - Buku tamu
+  - Pengajuan Surat
+  - Cek status surat
+
+- **Data Observasi**:
+  - Data Petir
+  - Data Terbit Tenggelam
+  - Data Hilal
+--
+
 # CodeIgniter 4 Application Starter
 
 ## What is CodeIgniter?

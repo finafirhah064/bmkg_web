@@ -107,63 +107,73 @@
         </div>
     </div>
 
-<form method="POST" action="<?= site_url('Temperatur/update_temperatur/' . $temperatur->id_temperatur) ?>">
-    <div class="row mb-4">
-        <!-- Kolom Kiri -->
-        <div class="col-md-6">
-            <div class="mb-4">
-                <label for="tgl">Tanggal</label>
-                <input type="date" class="form-control" name="tgl" value="<?= date('Y-m-d', strtotime($temperatur->tgl)) ?>" required>
+    <form method="POST" action="<?= site_url('Temperatur/update_temperatur/' . $temperatur->id_temperatur) ?>">
+        <div class="row mb-4">
+            <!-- Kolom Kiri -->
+            <div class="col-md-6">
+                <div class="mb-4">
+                    <label for="tgl">Tanggal</label>
+                    <input type="date" class="form-control" name="tgl"
+                        value="<?= date('Y-m-d', strtotime($temperatur->tgl)) ?>" required>
+                </div>
+                <div class="mb-4">
+                    <label for="temperatur_07">Temperatur 07:00</label>
+                    <input type="number" step="0.1" class="form-control" name="temperatur_07"
+                        value="<?= $temperatur->temperatur_07 ?>" required>
+                </div>
+                <div class="mb-4">
+                    <label for="temperatur_13">Temperatur 13:00</label>
+                    <input type="number" step="0.1" class="form-control" name="temperatur_13"
+                        value="<?= $temperatur->temperatur_13 ?>" required>
+                </div>
+                <div class="mb-4">
+                    <label for="temperatur_18">Temperatur 18:00</label>
+                    <input type="number" step="0.1" class="form-control" name="temperatur_18"
+                        value="<?= $temperatur->temperatur_18 ?>" required>
+                </div>
             </div>
-            <div class="mb-4">
-                <label for="temperatur_07">Temperatur 07:00</label>
-                <input type="number" step="0.1" class="form-control" name="temperatur_07" value="<?= $temperatur->temperatur_07 ?>" required>
-            </div>
-            <div class="mb-4">
-                <label for="temperatur_13">Temperatur 13:00</label>
-                <input type="number" step="0.1" class="form-control" name="temperatur_13" value="<?= $temperatur->temperatur_13 ?>" required>
-            </div>
-            <div class="mb-4">
-                <label for="temperatur_18">Temperatur 18:00</label>
-                <input type="number" step="0.1" class="form-control" name="temperatur_18" value="<?= $temperatur->temperatur_18 ?>" required>
+
+            <!-- Kolom Kanan -->
+            <div class="col-md-6">
+                <div class="mb-4">
+                    <label for="rata2">Rata-rata</label>
+                    <input type="number" step="0.1" class="form-control" name="rata2" value="<?= $temperatur->rata2 ?>"
+                        required>
+                </div>
+                <div class="mb-4">
+                    <label for="max">Max</label>
+                    <input type="number" step="0.1" class="form-control" name="max" value="<?= $temperatur->max ?>"
+                        required>
+                </div>
+                <div class="mb-4">
+                    <label for="min">Min</label>
+                    <input type="number" step="0.1" class="form-control" name="min" value="<?= $temperatur->min ?>"
+                        required>
+                </div>
+                <div class="mb-4">
+                    <label for="curah_hujan_07">Curah Hujan (mm)</label>
+                    <input type="number" step="0.1" class="form-control" name="curah_hujan_07"
+                        value="<?= $temperatur->curah_hujan_07 ?>">
+                </div>
+                <div class="mb-4">
+                    <label for="penyinaran_matahari">Penyinaran Matahari (%)</label>
+                    <input type="number" class="form-control" name="penyinaran_matahari"
+                        value="<?= $temperatur->penyinaran_matahari ?>">
+                </div>
+                <div class="mb-4">
+                    <label for="peristiwa_khusus">Peristiwa Cuaca Khusus</label>
+                    <input type="text" class="form-control" name="peristiwa_khusus"
+                        value="<?= $temperatur->peristiwa_khusus ?>">
+                </div>
             </div>
         </div>
 
-        <!-- Kolom Kanan -->
-        <div class="col-md-6">
-            <div class="mb-4">
-                <label for="rata2">Rata-rata</label>
-                <input type="number" step="0.1" class="form-control" name="rata2" value="<?= $temperatur->rata2 ?>" required>
-            </div>
-            <div class="mb-4">
-                <label for="max">Max</label>
-                <input type="number" step="0.1" class="form-control" name="max" value="<?= $temperatur->max ?>" required>
-            </div>
-            <div class="mb-4">
-                <label for="min">Min</label>
-                <input type="number" step="0.1" class="form-control" name="min" value="<?= $temperatur->min ?>" required>
-            </div>
-            <div class="mb-4">
-                <label for="curah_hujan_07">Curah Hujan (mm)</label>
-                <input type="number" step="0.1" class="form-control" name="curah_hujan_07" value="<?= $temperatur->curah_hujan_07 ?>">
-            </div>
-            <div class="mb-4">
-                <label for="penyinaran_matahari">Penyinaran Matahari (%)</label>
-                <input type="number" class="form-control" name="penyinaran_matahari" value="<?= $temperatur->penyinaran_matahari ?>">
-            </div>
-            <div class="mb-4">
-                <label for="peristiwa_khusus">Peristiwa Cuaca Khusus</label>
-                <input type="text" class="form-control" name="peristiwa_khusus" value="<?= $temperatur->peristiwa_khusus ?>">
-            </div>
-        </div>
-    </div>
-
-    <button type="submit" class="btn btn-primary w-100">Simpan Perubahan</button>
-</form>
+        <button type="submit" class="btn btn-primary w-100">Simpan Perubahan</button>
+    </form>
 
 
-  <!-- Scripts -->
-  <script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
+    <!-- Scripts -->
+    <script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="../../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../../vendor/onscreen/dist/on-screen.umd.min.js"></script>
     <script src="../../vendor/nouislider/distribute/nouislider.min.js"></script>

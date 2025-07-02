@@ -10,9 +10,9 @@ class Gempa extends BaseController
 {
 
     public function index()
-{
-    return $this->view_gempa();
-}
+    {
+        return $this->view_gempa();
+    }
 
     public function view_gempa()
     {
@@ -87,11 +87,11 @@ class Gempa extends BaseController
             return redirect()->back()->with('error', 'Longitude harus bernilai antara -180 dan 180.');
         }
 
-         if (!is_numeric($depth) || $depth < -180 || $depth > 180) {
+        if (!is_numeric($depth) || $depth < -180 || $depth > 180) {
             return redirect()->back()->with('error', 'Longitude harus bernilai antara -180 dan 180.');
         }
 
-         if (!is_numeric($magnitudo) || $magnitudo < -180 || $magnitudo > 180) {
+        if (!is_numeric($magnitudo) || $magnitudo < -180 || $magnitudo > 180) {
             return redirect()->back()->with('error', 'Longitude harus bernilai antara -180 dan 180.');
         }
 

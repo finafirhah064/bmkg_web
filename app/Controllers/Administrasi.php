@@ -9,8 +9,6 @@ use PhpOffice\PhpSpreadsheet\Reader\Exception as ReaderException;
 class Administrasi extends BaseController
 {
     public function index()
-
-
     {
         $model = new AdministrasiModel();
         $keyword = $this->request->getGet('keyword');

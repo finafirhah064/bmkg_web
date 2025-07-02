@@ -26,8 +26,8 @@ class UserController extends BaseController
 
         // Return views sebagai gabungan string
         return view('user/user_header') .
-               view('user/user_hilal', ['pengamatanByYear' => $pengamatanByYear]) .
-               view('user/user_footer');
+            view('user/user_hilal', ['pengamatanByYear' => $pengamatanByYear]) .
+            view('user/user_footer');
     }
 
     // Menampilkan detail laporan pengamatan hilal berdasar ID dengan foto URL online
@@ -51,7 +51,7 @@ class UserController extends BaseController
         ];
 
         return view('user/user_header', $data) .
-               view('user/user_hilal_detail', $data) .
-               view('user/user_footer');
+            view('user/user_hilal_detail', $data) .
+            view('user/user_footer');
     }
 }

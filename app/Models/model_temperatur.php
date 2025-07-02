@@ -11,14 +11,20 @@ class Model_temperatur extends Model
 
     protected $useAutoIncrement = true;
 
-    protected $returnType     = 'array';
+    protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
     protected $allowedFields = [
         'tgl',
-        'temperatur_07', 'temperatur_13', 'temperatur_18',
-        'rata2', 'max', 'min',
-        'curah_hujan_07', 'penyinaran_matahari', 'peristiwa_khusus'
+        'temperatur_07',
+        'temperatur_13',
+        'temperatur_18',
+        'rata2',
+        'max',
+        'min',
+        'curah_hujan_07',
+        'penyinaran_matahari',
+        'peristiwa_khusus'
     ];
 
     protected $useTimestamps = false; // Ubah ke true jika tabel memiliki kolom created_at dan updated_at
@@ -71,19 +77,19 @@ class Model_temperatur extends Model
     public function getTodaytemperature()
     {
         return $this->where('tgl', date('Y-m-d'))->asArray()->first();
-    }  
+    }
 
     // Ambil rata-rata temperatur dan curah hujan bulan sebelumnya
     public function getRataRataBulanLalu()
     {
         $bulanLalu = date('Y-m', strtotime('first day of last month'));
-    
+
         return $this->db->table($this->table)
             ->select('AVG(temperatur_07) AS avg_temp_07, AVG(curah_hujan_07) AS avg_hujan')
             ->like('tgl', $bulanLalu)
             ->get()
             ->getRowArray();
     }
-    
+
 
 }

@@ -78,7 +78,8 @@
                             placeholder="Contoh: Dinda Ayu Permata" value="<?= esc($keyword ?? '') ?>">
                     </div>
                     <div class="col-md-3 text-end">
-                        <button type="submit" class="btn btn-success w-100"><i class="fa fa-search me-1"></i> Cari Status</button>
+                        <button type="submit" class="btn btn-success w-100"><i class="fa fa-search me-1"></i> Cari
+                            Status</button>
                     </div>
                 </div>
             </form>

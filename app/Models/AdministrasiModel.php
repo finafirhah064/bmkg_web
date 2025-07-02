@@ -6,11 +6,11 @@ use CodeIgniter\Model;
 
 class AdministrasiModel extends Model
 {
-    protected $table            = 'administrasi';
-    protected $primaryKey       = 'id_mahasiswa';
+    protected $table = 'administrasi';
+    protected $primaryKey = 'id_mahasiswa';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'object'; // Bisa 'array' juga jika kamu mau
-    protected $useSoftDeletes   = false;
+    protected $returnType = 'object'; // Bisa 'array' juga jika kamu mau
+    protected $useSoftDeletes = false;
 
     protected $allowedFields = [
         'nim',

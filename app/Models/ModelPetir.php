@@ -14,7 +14,12 @@ class ModelPetir extends Model
     protected $useSoftDeletes = false;
 
     protected $allowedFields = [
-        'tanggal', 'waktu_sambaran', 'wilayah', 'latitude', 'longitude', 'jenis_petir'
+        'tanggal',
+        'waktu_sambaran',
+        'wilayah',
+        'latitude',
+        'longitude',
+        'jenis_petir'
     ];
 
     protected $useTimestamps = false;
@@ -32,7 +37,19 @@ class ModelPetir extends Model
     {
         return $this->find($id); // sudah tersedia dari CI4
     }
-    
+
+    public function getTotalSambaranBulanSebelumnya()
+    {
+        $lastMonthStart = date('Y-m-01', strtotime('first day of last month'));
+        $thisMonthStart = date('Y-m-01');
+
+        return $this->select("DATE_FORMAT(tanggal, '%Y-%m') AS bulan, COUNT(*) AS total_sambaran")
+            ->where('tanggal >=', $lastMonthStart)
+            ->where('tanggal <', $thisMonthStart)
+            ->groupBy("DATE_FORMAT(tanggal, '%Y-%m')")
+            ->get()
+            ->getRow();
+    }
 
     // Tidak perlu simpanPetir, updatePetir, hapus manual
     // Gunakan insert(), update(), delete() dari bawaan CI4

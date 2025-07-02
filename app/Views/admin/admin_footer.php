@@ -1,7 +1,8 @@
 <footer class="py-3 border-top">
     <div class="row">
         <div class="col-12 col-md-4 col-xl-6 mb-4 mb-md-0">
-            <p class="mb-0 text-center text-lg-start">© 2025-<span class="current-year"></span> <a class="text-primary fw-normal" href="https://themesberg.com" target="_blank">PKL-UIN MALANG</a></p>
+            <p class="mb-0 text-center text-lg-start">© 2025-<span class="current-year"></span> <a
+                    class="text-primary fw-normal" href="https://themesberg.com" target="_blank">PKL-UIN MALANG</a></p>
         </div>
         <div class="col-12 col-md-8 col-xl-6 text-center text-lg-start">
             <!-- List -->
@@ -23,9 +24,7 @@
     </div>
 </footer>
 
-
-
-    <!-- Core -->
+<!-- Core -->
 <script src="../../vendor/@popperjs/core/dist/umd/popper.min.js"></script>
 <script src="../../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -66,8 +65,5 @@
 <!-- Volt JS -->
 <script src="../../assets/js/volt.js"></script>
 
-
-    
 </body>
-
 </html>

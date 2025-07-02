@@ -6,12 +6,20 @@ use CodeIgniter\Model;
 
 class PengamatanModel extends Model
 {
-    protected $table      = 'pengamatan_hilal';
+    protected $table = 'pengamatan_hilal';
     protected $primaryKey = 'id_pengamatan_hilal';
 
     protected $allowedFields = [
-        'bulan_hijri', 'nama_bulan', 'tanggal_observasi', 'lokasi', 'tinggi_bulan', 
-        'status_visibilitas', 'dipublikasikan', 'gambar_utama', 'deskripsi', 'kondisi_cuaca'
+        'bulan_hijri',
+        'nama_bulan',
+        'tanggal_observasi',
+        'lokasi',
+        'tinggi_bulan',
+        'status_visibilitas',
+        'dipublikasikan',
+        'gambar_utama',
+        'deskripsi',
+        'kondisi_cuaca'
     ];
 
     // Mendapatkan semua pengamatan hilal yang dipublikasikan
@@ -24,8 +32,8 @@ class PengamatanModel extends Model
     public function searchPengamatan($search)
     {
         return $this->like('bulan_hijri', $search)
-                    ->orLike('lokasi', $search)
-                    ->where('dipublikasikan', 1)
-                    ->findAll();
+            ->orLike('lokasi', $search)
+            ->where('dipublikasikan', 1)
+            ->findAll();
     }
 }

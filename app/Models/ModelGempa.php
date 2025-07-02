@@ -12,7 +12,7 @@ class ModelGempa extends Model
     protected $primaryKey = 'id_gempa'; // sesuaikan dengan primary key yang kamu pakai
 
     protected $useAutoIncrement = true;
-    protected $returnType     = 'array';
+    protected $returnType = 'array';
     protected $useSoftDeletes = false;
 
     protected $allowedFields = [
