@@ -207,9 +207,22 @@
                                                             <input type="number" class="form-control" name="bulan_hijri" value="<?= $item['bulan_hijri']; ?>" required>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label class="form-label">Nama Bulan</label>
-                                                            <input type="text" class="form-control" name="nama_bulan" value="<?= $item['nama_bulan']; ?>">
-                                                        </div>
+    <label class="form-label">Nama Bulan Hijriyah</label>
+    <select class="form-select" name="nama_bulan" required>
+        <?php 
+        $bulanHijriyah = [
+            "Muharram", "Safar", "Rabi'ul Awwal", "Rabi'ul Akhir",
+            "Jumadil Ula", "Jumadil Akhir", "Rajab", "Sya'ban",
+            "Ramadhan", "Syawal", "Dzulkaidah", "Dzulhijjah"
+        ];
+        foreach ($bulanHijriyah as $bulan) : ?>
+            <option value="<?= $bulan; ?>" <?= $item['nama_bulan'] == $bulan ? 'selected' : ''; ?>>
+                <?= $bulan; ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+</div>
+
                                                     </div>
                                                     <div class="col-md-6">
                                                         <h6 class="mb-3">Data Observasi</h6>
@@ -398,10 +411,23 @@
                                         <label class="form-label">Bulan Hijriyah</label>
                                         <input type="number" class="form-control" name="bulan_hijri" min="1" max="12" required>
                                     </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Nama Bulan</label>
-                                        <input type="text" class="form-control" name="nama_bulan">
-                                    </div>
+                                   <div class="mb-3">
+    <label class="form-label">Nama Bulan Hijriyah</label>
+    <select class="form-select" name="nama_bulan" required>
+        <?php 
+        $bulanHijriyah = [
+            "Muharram", "Safar", "Rabi'ul Awwal", "Rabi'ul Akhir",
+            "Jumadil Ula", "Jumadil Akhir", "Rajab", "Sya'ban",
+            "Ramadhan", "Syawal", "Dzulkaidah", "Dzulhijjah"
+        ];
+        foreach ($bulanHijriyah as $bulan) : ?>
+            <option value="<?= $bulan; ?>" <?= $item['nama_bulan'] == $bulan ? 'selected' : ''; ?>>
+                <?= $bulan; ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+</div>
+
                                 </div>
                                 <div class="col-md-6">
                                     <h6 class="mb-3">Data Observasi</h6>

@@ -156,14 +156,24 @@
                             </div>
                             <!-- Kartu 3: Curah Hujan -->
                             <div class="col-6 col-md-3 col-lg-2">
-                                <div class="card shadow-sm border-0 rounded-4 text-center p-3">
-                                    <div class="icon-circle bg-light-blue mb-3 mx-auto">
-                                        <i class="fas fa-cloud-rain fa-lg text-primary"></i>
-                                    </div>
-                                    <h5 class="fw-bold mb-1"><?= esc($curah_hujan) ?> mm</h5>
-                                    <p class="text-secondary small mb-0">Curah Hujan</p>
-                                </div>
-                            </div>
+                            <div class="card shadow-sm border-0 rounded-4 text-center p-3">
+                         <div class="icon-circle bg-warning mb-3 mx-auto">
+                             <i class="fas fa-thermometer-half fa-lg text-dark"></i>
+            </div>
+            <h5 class="fw-bold mb-1"><?= esc($rata_temp_bulan_lalu) ?>°C</h5>
+            <p class="text-secondary small mb-0">Rata-rata Temperature (<?= esc($nama_bulan_lalu) ?>)</p>
+        </div>
+    </div>
+
+    <div class="col-6 col-md-3 col-lg-2">
+        <div class="card shadow-sm border-0 rounded-4 text-center p-3">
+            <div class="icon-circle bg-info mb-3 mx-auto">
+                <i class="fas fa-cloud-showers-heavy fa-lg text-white"></i>
+            </div>
+            <h5 class="fw-bold mb-1"><?= esc($rata_hujan_bulan_lalu) ?> mm</h5>
+            <p class="text-secondary small mb-0">Rata-rata Hujan (<?= esc($nama_bulan_lalu) ?>)</p>
+        </div>
+    </div>
                             <!-- Kartu 4: Fase Hilal -->
                             <div class="col-6 col-md-3 col-lg-2">
                                 <div class="card shadow-sm border-0 rounded-4 text-center p-3">
