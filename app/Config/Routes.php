@@ -143,8 +143,9 @@ $routes->group('user', function ($routes) {
     $routes->get('hilal', 'UserController::hilal');
     $routes->get('hilal/detail/(:segment)', 'UserController::detail/$1');
     $routes->get('hilal/detail/(:num)', 'UserHilalController::detail/$1');
-    $routes->get('petir', 'Petir::view_petir_user');
+    $routes->get('petir', 'Petir::view_klaster_dominan_user');
     $routes->get('petir/detail/(:num)', 'Petir::detail_petir/$1');
+    $routes->get('petir/cluster/(:segment)', 'Petir::detail_klaster/$1');
 });
 $routes->get('buku-tamu', 'BukuTamu::form'); // route untuk halaman form buku tamu user
 $routes->post('pengajuan_surat/simpan', 'PengajuanSurat::simpan');

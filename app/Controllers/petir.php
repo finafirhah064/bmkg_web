@@ -210,6 +210,96 @@ class Petir extends BaseController
             view('user/detail_petir', $data) .
             view('user/user_footer');
     }
+
+    public function detail_klaster(string $wilayahEncoded)
+    {
+        $wilayah = urldecode($wilayahEncoded);
+
+        $model = new ModelPetir();
+
+        // Ambil semua sambaran di wilayah tsb
+        $dataPetir = $model->where('wilayah', $wilayah)
+            ->orderBy('waktu_sambaran', 'DESC')
+            ->findAll();
+
+        if (!$dataPetir) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Wilayah tidak ditemukan");
+        }
+
+        // Hitung centroid koordinat untuk “center map”
+        $latSum = $lonSum = 0;
+        foreach ($dataPetir as $p) {
+            $latSum += $p['latitude'];
+            $lonSum += $p['longitude'];
+        }
+        $centerLat = $latSum / count($dataPetir);
+        $centerLon = $lonSum / count($dataPetir);
+
+        $data = [
+            'title' => 'Detail Klaster – ' . $wilayah,
+            'wilayah' => $wilayah,
+            'points' => $dataPetir,
+            'centerLat' => $centerLat,
+            'centerLon' => $centerLon,
+        ];
+
+        return view('user/user_header', $data)
+            . view('user/detail_klaster_petir', $data)   // ➜ view baru (lihat #4)
+            . view('user/user_footer');
+    }
+
+    public function view_klaster_dominan_user()
+    {
+        $model = new ModelPetir();
+
+        // ------------------------------
+        // 1. Hitung jumlah sambaran per wilayah + waktu terakhir
+        // ------------------------------
+        $builder = $model->select('wilayah,
+                               COUNT(*)       AS cnt,
+                               MAX(waktu_sambaran) AS latest_time')
+            ->groupBy('wilayah')
+            ->orderBy('cnt', 'DESC')
+            ->get();
+
+        $topWilayah = $builder->getResultArray();   // hasil: tiap wilayah + cnt + latest
+
+        // ------------------------------
+        // 2. Tentukan jenis petir dominan per wilayah
+        // ------------------------------
+        $clusters = [];
+        $i = 1;
+        foreach ($topWilayah as $row) {
+            // Ambil jenis petir paling sering untuk wilayah ini
+            $jenis = $model->select('jenis_petir, COUNT(*) AS jcnt')
+                ->where('wilayah', $row['wilayah'])
+                ->groupBy('jenis_petir')
+                ->orderBy('jcnt', 'DESC')
+                ->limit(1)
+                ->get()
+                ->getRowArray();
+
+            $clusters[] = [
+                'cluster_id' => $i++,                        // indeks klaster
+                'wilayah' => $row['wilayah'],
+                'jenis_dominan' => $jenis['jenis_petir'] ?? '-',
+                'count' => (int) $row['cnt'],
+                'latest_time' => $row['latest_time']
+            ];
+        }
+
+        // ------------------------------
+        // 3. Kirim ke view
+        // ------------------------------
+        $data = [
+            'title' => 'Klaster Petir Dominan',
+            'clusters' => $clusters          // << dipakai di user_petir.php
+        ];
+
+        return view('user/user_header', $data)
+            . view('user/user_petir', $data)
+            . view('user/user_footer');
+    }
 }
 
 
