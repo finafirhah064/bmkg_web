@@ -27,6 +27,7 @@ Sistem monitoring cuaca dan gempa berbasis web untuk Badan Meteorologi, Klimatol
 
 - **ITentang BMKG**:
   - Profil dan sejarah BMKG
+![image](https://github.com/user-attachments/assets/f079f5c4-1bc3-4f8e-9876-d50b5f8f316e)
 
 - **Statistik Harian**:
   - Data sambaran petir
